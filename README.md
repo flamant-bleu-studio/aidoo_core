@@ -1,2 +1,2 @@
-aidoo
+aidoo core
 =====
