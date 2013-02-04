@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	
+	<config>
+		<name>skins</name>
+		<version>0.0</version>
+		<type>Module</type>
+		<description>Skins</description>
+		<uninstallable>false</uninstallable>
+		<deactivable>false</deactivable>
+		
+		<lang>
+			<translatable>true</translatable>
+			<frontFiles>
+				<file src="/controllers/FrontController.php" />
+				<folder src="/views/front/" />
+			</frontFiles>
+		</lang>
+		
+	</config>
+
+	<routes>
+	
+		<skins_back type="Zend_Controller_Router_Route">
+			<route>administration/skins/:action/:name</route>
+			<defaults>
+				<module>skins</module>
+				<controller>back</controller>
+				<action>index</action>
+				<name>0</name>
+				<_isAdmin>true</_isAdmin>
+			</defaults>
+		</skins_back>
+		
+		<skins_favicon type="Zend_Controller_Router_Route">
+			<route>administration/favicon/:action/:name</route>
+			<defaults>
+				<module>skins</module>
+				<controller>favicon</controller>
+				<action>index</action>
+				<name>0</name>
+				<_isAdmin>true</_isAdmin>
+			</defaults>
+		</skins_favicon>	
+			
+		
+	</routes>
+</module>

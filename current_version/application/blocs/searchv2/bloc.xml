@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Search</name>
+	<type>Bloc_Searchv2_Search</type>
+	<version>0.1</version>
+	<color>#c360ff</color>
+</bloc>

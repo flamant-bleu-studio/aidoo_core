@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Weather</name>
+	<type>Bloc_Weather_Weather</type>
+	<version>0.1</version>
+	<color>#D1E2F4</color>
+</bloc>

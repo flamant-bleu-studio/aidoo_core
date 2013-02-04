@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+
+	<config>
+		<name>contact</name>
+		<version>0.0</version>
+		<type>Module</type>
+		<description>Contact</description>
+		<uninstallable>false</uninstallable>
+		<deactivable>false</deactivable>
+		
+		<lang>
+			<translatable>true</translatable>
+			<frontFiles>
+				<file src="/controllers/FrontController.php" />
+				<folder src="/views/front/" />
+			</frontFiles>
+		</lang>
+	</config>
+	
+	<routes>
+		<contact_back type="Zend_Controller_Router_Route">
+			<route>administration/contact/:action/:id</route>
+			<defaults>
+				<module>contact</module>
+				<controller>back</controller>
+				<action>index</action>
+				<id>0</id>
+				<_isAdmin>true</_isAdmin>
+			</defaults>
+		</contact_back>		
+		
+		<contact type="Zend_Controller_Router_Route">
+			<route>contact/:type</route>
+			<defaults>
+				<module>contact</module>
+				<controller>front</controller>
+				<action>contact</action>
+			</defaults>
+		</contact>
+		
+		<contact_mailing type="Zend_Controller_Router_Route">
+			<route>contact/mailing/:action</route>
+			<defaults>
+				<module>contact</module>
+				<controller>mailing</controller>
+				<action>index</action>
+				<_isAjax>true</_isAjax>
+			</defaults>
+		</contact_mailing>
+		
+		<contact_ajax type="Zend_Controller_Router_Route">
+			<route>ajax/contact/:action</route>
+			<defaults>
+				<module>contact</module>
+				<controller>ajax</controller>
+				<action>index</action>
+			</defaults>
+		</contact_ajax>
+	
+	</routes>
+</module>

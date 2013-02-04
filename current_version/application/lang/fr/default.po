@@ -1,0 +1,4544 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cms Aïdoo V0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-01-03 12:53+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Simon Cadec <scadec@flamant-bleu.com>\n"
+"Language-Team: Simon Cadec\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED KINGDOM\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _t;gettext;ngettext:1,2;plural:1,2\n"
+"Plural-Forms: nplurals=2; plural=n>1\n"
+"X-Poedit-Basepath: /var/CMS\n"
+"X-Poedit-SearchPath-0: current_version/application\n"
+"X-Poedit-SearchPath-1: current_version/library/CMS\n"
+
+#: current_version/application/blocs/galeriePhotov2/AdminForm.php:10
+#, fuzzy
+msgid "Select type galerie"
+msgstr "Selectionnez un modèle"
+
+#: current_version/application/blocs/galeriePhotov2/AdminForm.php:25
+#, fuzzy
+msgid "Select galerie"
+msgstr "Sélectionner la catégorie"
+
+#: current_version/application/blocs/galeriePhotov2/AdminForm.php:31
+msgid "Select default diaporama"
+msgstr "Sélectionnez un diaporama par défaut"
+
+#: current_version/application/blocs/galeriePhotov2/AdminForm.php:38
+#, fuzzy
+msgid "Active pagination"
+msgstr "Actif"
+
+#: current_version/application/blocs/galeriePhotov2/AdminForm.php:40
+msgid "yes"
+msgstr "Oui"
+
+#: current_version/application/blocs/galeriePhotov2/AdminForm.php:40
+msgid "no"
+msgstr "Non"
+
+#: current_version/application/blocs/jobsv2/AdminForm.php:10
+#: current_version/application/blocs/articlesv2/AdminForm.php:10
+msgid "Number"
+msgstr "Nombre"
+
+#: current_version/application/blocs/jobsv2/AdminForm.php:11
+msgid "Number of jobs"
+msgstr "Nombre d'offre"
+
+#: current_version/application/blocs/selectupSearchLinkv2/AdminForm.php:10
+msgid "Text display"
+msgstr "Texte"
+
+#: current_version/application/blocs/selectupSearchLinkv2/AdminForm.php:14
+msgid "Select type of search link"
+msgstr ""
+
+#: current_version/application/blocs/selectupSearchLinkv2/AdminForm.php:19
+msgid "Character separate link"
+msgstr "Caractère de séparation"
+
+#: current_version/application/blocs/selectupSearchLinkv2/AdminForm.php:23
+#, fuzzy
+msgid "Select type view"
+msgstr "Selectionnez un modèle"
+
+#: current_version/application/blocs/flashContentv2/AdminForm.php:10
+msgid "Adobe Flash version"
+msgstr "Version d'Adobe Flash"
+
+#: current_version/application/blocs/flashContentv2/AdminForm.php:11
+msgid "Minimal version required"
+msgstr "Version minimale requise"
+
+#: current_version/application/blocs/flashContentv2/AdminForm.php:17
+msgid "Width"
+msgstr "Largeur"
+
+#: current_version/application/blocs/flashContentv2/AdminForm.php:18
+msgid "swf width (px)"
+msgstr "Largeur du fichier swf"
+
+#: current_version/application/blocs/flashContentv2/AdminForm.php:24
+msgid "Height"
+msgstr "Hauteur"
+
+#: current_version/application/blocs/flashContentv2/AdminForm.php:25
+msgid "swf height (px)"
+msgstr "Hauteur du fichier swf"
+
+#: current_version/application/blocs/flashContentv2/AdminForm.php:31
+msgid "File"
+msgstr "Fichier"
+
+#: current_version/application/blocs/flashContentv2/AdminForm.php:32
+msgid "Select swf file"
+msgstr "Sélectionnez le fichier swf"
+
+#: current_version/application/blocs/articlesv2/AdminForm.php:11
+msgid "Number of article"
+msgstr "Nombre d'articles"
+
+#: current_version/application/blocs/articlesv2/AdminForm.php:27
+msgid "Category"
+msgstr "Catégorie"
+
+#: current_version/application/blocs/articlesv2/AdminForm.php:32
+msgid "Archive ?"
+msgstr "Archive ?"
+
+#: current_version/application/blocs/articlesv2/AdminForm.php:33
+msgid "Display archive link ?"
+msgstr "Afficher le lien des archives ?"
+
+#: current_version/application/blocs/articlesv2/AdminForm.php:37
+msgid "Date ?"
+msgstr "Date ?"
+
+#: current_version/application/blocs/articlesv2/AdminForm.php:38
+msgid "Display date articles ?"
+msgstr "Afficher la date des articles ?"
+
+#: current_version/application/blocs/loginv2/AdminForm.php:10
+msgid "Type"
+msgstr "Type"
+
+#: current_version/application/blocs/loginv2/AdminForm.php:11
+msgid "Choose type bloc"
+msgstr "Choisir le type de bloc"
+
+#: current_version/application/blocs/selectupUserv2/AdminForm.php:10
+#, fuzzy
+msgid "Display My selection"
+msgstr "Afficher ce bloc dans"
+
+#: current_version/application/blocs/selectupUserv2/AdminForm.php:15
+msgid "Display My account"
+msgstr "Afficher mon compte"
+
+#: current_version/application/blocs/diaporamav2/AdminForm.php:10
+msgid "Select type diaporama"
+msgstr "Comportement"
+
+#: current_version/application/blocs/diaporamav2/AdminForm.php:25
+msgid "Select diaporama"
+msgstr "Selectionnez un diaporama"
+
+#: current_version/application/blocs/facebookv2/AdminForm.php:11
+msgid "Block width (px)"
+msgstr "Largeur du bloc (px)"
+
+#: current_version/application/blocs/facebookv2/AdminForm.php:18
+msgid "Blcok height (px)"
+msgstr "Hauteur du bloc (px)"
+
+#: current_version/application/blocs/facebookv2/AdminForm.php:24
+msgid "Color"
+msgstr "Couleur"
+
+#: current_version/application/blocs/facebookv2/AdminForm.php:25
+msgid "Block color"
+msgstr "Couleur du bloc"
+
+#: current_version/application/blocs/facebookv2/AdminForm.php:31
+msgid "Profile pictures ?"
+msgstr "Photos de profile ?"
+
+#: current_version/application/blocs/facebookv2/AdminForm.php:32
+msgid "Display profile pictures ?"
+msgstr "Afficher les photos de profile"
+
+#: current_version/application/blocs/facebookv2/AdminForm.php:37
+msgid "Border color"
+msgstr "Couleur de la bordure"
+
+#: current_version/application/blocs/facebookv2/AdminForm.php:38
+msgid "Block border color"
+msgstr "Couleur de la bordure du bloc"
+
+#: current_version/application/blocs/facebookv2/AdminForm.php:42
+msgid "Stream ?"
+msgstr ""
+
+#: current_version/application/blocs/facebookv2/AdminForm.php:43
+msgid "Display profile stream"
+msgstr "Afficher les photos de profile"
+
+#: current_version/application/blocs/selectupVehiculesv2/AdminForm.php:21
+msgid "Recovery"
+msgstr "Récupération"
+
+#: current_version/application/blocs/selectupVehiculesv2/AdminForm.php:22
+msgid "Quantity to be recovered"
+msgstr "Quantité à récupérer"
+
+#: current_version/application/blocs/selectupVehiculesv2/AdminForm.php:29
+msgid "Display"
+msgstr "Affichage"
+
+#: current_version/application/blocs/selectupVehiculesv2/AdminForm.php:30
+msgid "Quantity to be display"
+msgstr "Quantité à afficher"
+
+#: current_version/application/blocs/immoSearch/AdminForm.php:10
+#: current_version/application/blocs/immoSearch/AdminForm.php:11
+#: current_version/application/blocs/immoSearch/AdminForm.php:12
+#: current_version/application/blocs/selectupSearchv2/AdminForm.php:17
+msgid "No"
+msgstr "Non"
+
+#: current_version/application/blocs/immoSearch/AdminForm.php:10
+#: current_version/application/blocs/selectupSearchv2/AdminForm.php:17
+msgid "Yes"
+msgstr "Oui"
+
+#: current_version/application/blocs/immoSearch/AdminForm.php:12
+msgid "Text input"
+msgstr "Champ texte"
+
+#: current_version/application/blocs/immoSearch/AdminForm.php:12
+msgid "Select input"
+msgstr "Champ de sélection"
+
+#: current_version/application/blocs/activitiesv2/AdminForm.php:11
+msgid "Number of activities"
+msgstr ""
+
+#: current_version/application/blocs/activitiesv2/AdminForm.php:16
+msgid "Display date activities ?"
+msgstr "Afficher la date des activitées ?"
+
+#: current_version/application/blocs/activitiesv2/AdminForm.php:20
+msgid "List activities"
+msgstr "Liste des activitées"
+
+#: current_version/application/blocs/activitiesv2/AdminForm.php:21
+msgid "Choose display activities"
+msgstr "Choisissez les activitées affichées"
+
+#: current_version/application/blocs/staticHtmlv2/AdminForm.php:10
+msgid "Background image"
+msgstr "Image de fond"
+
+#: current_version/application/blocs/advertisingv2/AdminForm.php:10
+msgid "Choose Campaign"
+msgstr "Choisissez la campagne"
+
+#: current_version/application/blocs/menu/AdminForm.php:25
+msgid "Folder"
+msgstr "Dossier"
+
+#: current_version/application/blocs/menu/AdminForm.php:26
+msgid "From which folder"
+msgstr "Depuis quel dossier"
+
+#: current_version/application/blocs/menu/AdminForm.php:28
+msgid "None"
+msgstr "Aucun"
+
+#: current_version/application/blocs/menu/AdminForm.php:48
+msgid "Menu"
+msgstr "Menu"
+
+#: current_version/application/blocs/menu/AdminForm.php:49
+msgid "Select menu to display"
+msgstr "Selectionnez le menu à afficher"
+
+#: current_version/application/blocs/menu/AdminForm.php:60
+msgid "Unlimited"
+msgstr "Illimité"
+
+#: current_version/application/blocs/menu/AdminForm.php:64
+msgid "Display only folder at level 1"
+msgstr "Afficher uniquement les dossier du premier niveau"
+
+#: current_version/application/blocs/menu/AdminForm.php:65
+msgid "Check to enable"
+msgstr "Cocher pour activer"
+
+#: current_version/application/blocs/menu/AdminForm.php:69
+msgid "Level"
+msgstr "Niveau"
+
+#: current_version/application/blocs/menu/AdminForm.php:70
+msgid "To which level"
+msgstr "Jusqu'à quel niveau"
+
+#: current_version/application/blocs/menu/AdminForm.php:75
+msgid "Menu alignment"
+msgstr "Alignement du menu"
+
+#: current_version/application/blocs/menu/AdminForm.php:76
+msgid "Select menu alignment"
+msgstr "Selectionnez l'alignement du menu"
+
+#: current_version/application/blocs/menu/AdminForm.php:81
+msgid "Disable drop down menu"
+msgstr "Désactiver le menu déroulant"
+
+#: current_version/application/blocs/menu/AdminForm.php:82
+msgid "Check to disable"
+msgstr "Cocher pour désactiver"
+
+#: current_version/application/blocs/menu/AdminForm.php:86
+msgid "Separator"
+msgstr "Séparateur"
+
+#: current_version/application/blocs/menu/AdminForm.php:87
+msgid "Separator character"
+msgstr "Caractère de séparation"
+
+#: current_version/application/blocs/contactv2/AdminForm.php:41
+msgid "Choose type form contact"
+msgstr "Choisissez un type de formulaire"
+
+#: current_version/application/blocs/contactv2/AdminForm.php:42
+msgid "List type form contact available to bloc"
+msgstr ""
+
+#: current_version/application/blocs/contactv2/Contact.php:20
+msgid "Send"
+msgstr "Envoyer"
+
+#: current_version/application/blocs/contactv2/Contact.php:24
+msgid "This type from doesn't available to bloc"
+msgstr ""
+
+#: current_version/application/blocs/contactv2/Contact.php:27
+msgid "This type xml doesn't exist"
+msgstr "Ce type n'existe pas"
+
+#: current_version/application/modules/selectup/models/DbTable/Alerts.php:29
+msgid "There is no data to create a \"distributeur\""
+msgstr "Il n'y a pas de données à créer un distributeur"
+
+#: current_version/application/modules/selectup/models/DbTable/Alerts.php:45
+#, fuzzy
+msgid "There is no data to update alerts"
+msgstr "Il n'y a aucune donnée pour mettre à jour la zone"
+
+#: current_version/application/modules/selectup/models/DbTable/Alerts.php:47
+#, fuzzy
+msgid "There is no id to update alerts"
+msgstr "Il n'y a pas d'ID à mettre à jour la zone"
+
+#: current_version/application/modules/selectup/models/DbTable/Alerts.php:65
+#: current_version/application/modules/selectup/models/DbTable/Pages.php:47
+#: current_version/application/modules/selectup/models/DbTable/Pages.php:69
+#: current_version/application/modules/selectup/models/DbTable/Pages.php:84
+msgid "Missing parameter"
+msgstr "Paramètre manquant"
+
+#: current_version/application/modules/selectup/models/DbTable/Alerts.php:93
+msgid "Missing User id"
+msgstr "ID utilisateur manquant"
+
+#: current_version/application/modules/selectup/models/DbTable/Alerts.php:100
+msgid "You can only delete your own alerts"
+msgstr "Vous pouvez seulement supprimmer vos propres alertes"
+
+#: current_version/application/modules/selectup/forms/Page.php:8
+msgid "Title"
+msgstr "Titre"
+
+#: current_version/application/modules/selectup/forms/Page.php:9
+msgid "Title of your search page"
+msgstr "Titre de votre page de recherche"
+
+#: current_version/application/modules/selectup/forms/Page.php:14
+#: current_version/application/modules/selectup/forms/Page.php:19
+msgid "Text"
+msgstr "Texte"
+
+#: current_version/application/modules/selectup/forms/Page.php:15
+msgid "Introduction text of your search page"
+msgstr "Texte d'introduction de votre page de recherche"
+
+#: current_version/application/modules/selectup/forms/Page.php:20
+#, fuzzy
+msgid "Ending text of your search page"
+msgstr "Texte d'introduction de votre page de recherche"
+
+#: current_version/application/modules/selectup/forms/Info.php:32
+msgid "Name"
+msgstr "Nom"
+
+#: current_version/application/modules/selectup/forms/Info.php:37
+msgid "Firstname"
+msgstr "Prénom"
+
+#: current_version/application/modules/selectup/forms/Info.php:42
+msgid "Address"
+msgstr "Adresse"
+
+#: current_version/application/modules/selectup/forms/Info.php:46
+msgid "Postal Code "
+msgstr "Code Postal"
+
+#: current_version/application/modules/selectup/forms/Info.php:51
+msgid "City"
+msgstr "Ville"
+
+#: current_version/application/modules/selectup/forms/Info.php:60
+msgid "Email"
+msgstr "Email"
+
+#: current_version/application/modules/selectup/forms/Info.php:66
+msgid "Message"
+msgstr "Message"
+
+#: current_version/application/modules/selectup/forms/Info.php:72
+msgid "Submit"
+msgstr "Valider"
+
+#: current_version/application/modules/selectup/forms/Iframe.php:23
+msgid "Funding"
+msgstr "Financement"
+
+#: current_version/application/modules/selectup/forms/Iframe.php:28
+msgid "Warranty"
+msgstr "Garanties"
+
+#: current_version/application/modules/selectup/forms/Iframe.php:33
+#: current_version/application/modules/selectup/forms/Iframe.php:34
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: current_version/application/modules/selectup/forms/Contact.php:25
+msgid "Lastname"
+msgstr "Nom de famille"
+
+#: current_version/application/modules/selectup/forms/Contact.php:42
+msgid "Phone Number"
+msgstr "Numéro de Tel."
+
+#: current_version/application/modules/selectup/forms/Contact.php:52
+msgid "Object"
+msgstr "Objet"
+
+#: current_version/application/modules/selectup/controllers/PagesController.php:41
+#: current_version/application/modules/selectup/controllers/PagesController.php:102
+#: current_version/application/modules/selectup/controllers/PagesController.php:182
+#: current_version/application/modules/selectup/controllers/PagesController.php:206
+#: current_version/application/modules/selectup/controllers/PagesController.php:219
+#: current_version/application/modules/selectup/controllers/FormsController.php:41
+#: current_version/application/modules/selectup/controllers/FormsController.php:80
+#: current_version/application/modules/selectup/controllers/BackController.php:111
+#: current_version/application/modules/selectup/controllers/BackController.php:140
+#: current_version/application/modules/selectup/controllers/BackController.php:184
+#: current_version/application/modules/selectup/controllers/BackController.php:210
+#: current_version/application/modules/selectup/controllers/BackController.php:224
+msgid "Insufficient rights"
+msgstr "Vous ne pouvez pas accéder à cette partie"
+
+#: current_version/application/modules/selectup/controllers/PagesController.php:74
+msgid "Page created"
+msgstr "Page créée"
+
+#: current_version/application/modules/selectup/controllers/PagesController.php:112
+#: current_version/application/modules/selectup/controllers/PagesController.php:192
+msgid "Id is missing"
+msgstr "ID manquante"
+
+#: current_version/application/modules/selectup/controllers/PagesController.php:138
+msgid "Page edited"
+msgstr "Page éditée"
+
+#: current_version/application/modules/selectup/controllers/PagesController.php:200
+msgid "Page deleted"
+msgstr "Page supprimée"
+
+#: current_version/application/modules/selectup/controllers/PagesController.php:217
+#: current_version/application/modules/selectup/controllers/FormsController.php:78
+#: current_version/application/modules/selectup/controllers/BackController.php:222
+msgid "Rights updated"
+msgstr "Droits mis à jour"
+
+#: current_version/application/modules/selectup/controllers/FormsController.php:65
+msgid "Configuration saved"
+msgstr "Configuration sauvegardée"
+
+#: current_version/application/modules/selectup/controllers/AjaxController.php:170
+msgid "Wrong email address"
+msgstr "Email invalide"
+
+#: current_version/application/modules/selectup/controllers/AjaxController.php:240
+msgid "Invalid ID"
+msgstr "Identifiant invalide"
+
+#: current_version/application/modules/selectup/controllers/AjaxController.php:283
+#: current_version/application/modules/selectup/controllers/AjaxController.php:425
+msgid "No email configured for this form"
+msgstr "Aucun e-mail n'est configuré pour ce formulaire"
+
+#: current_version/application/modules/selectup/controllers/AjaxController.php:332
+#: current_version/application/modules/selectup/controllers/AjaxController.php:471
+msgid "Invalid form"
+msgstr "Erreur dans le formulaire ..."
+
+#: current_version/application/modules/selectup/controllers/AjaxController.php:372
+msgid "Invalid vehicule ID"
+msgstr "ID véhicule invalide"
+
+#: current_version/application/modules/selectup/controllers/FrontController.php:142
+msgid "Missing Id"
+msgstr "Id manquant"
+
+#: current_version/application/modules/selectup/controllers/FrontController.php:227
+#: current_version/application/modules/selectup/controllers/FrontController.php:233
+#: current_version/application/modules/selectup/controllers/FrontController.php:329
+msgid "Page not found"
+msgstr "Page introuvable"
+
+#: current_version/application/modules/selectup/controllers/BackController.php:136
+#: current_version/application/modules/selectup/controllers/BackController.php:206
+msgid "Modification saved"
+msgstr "Modifications sauvegardées"
+
+#: current_version/application/modules/selectup/lib/Vehicule.php:484
+#: current_version/application/modules/selectup/lib/Vehicule.php:487
+msgid "Invalid parameter"
+msgstr "Paramètre invalide"
+
+#: current_version/application/modules/selectup/lib/Alerts.php:130
+msgid "Missing id"
+msgstr "ID manquant"
+
+#: current_version/application/modules/selectup/lib/UpdateVehicules.php:53
+msgid "XML Update in progress"
+msgstr "Mise à jour en cours"
+
+#: current_version/application/modules/selectup/lib/UpdateVehicules.php:58
+msgid "Update folder does not have write permission : "
+msgstr "Le dossier de mise à jour n'a pas les droits en écriture"
+
+#: current_version/application/modules/selectup/lib/UpdateVehicules.php:61
+msgid "One or more files is missing, update aborted ..."
+msgstr "Fichier manquant, mise à jour annulée"
+
+#: current_version/application/modules/selectup/lib/UpdateVehicules.php:76
+msgid "Some files do not have write permission"
+msgstr "Des fichiers n'ont pas le droit en écriture"
+
+#: current_version/application/modules/selectup/lib/UpdateVehicules.php:100
+msgid "Database updated successfully"
+msgstr "Base de données mise à jour avec succès"
+
+#: current_version/application/modules/selectup/lib/UpdateVehicules.php:107
+msgid "No update require"
+msgstr "Mise à jour non nécessaire"
+
+#: current_version/application/modules/selectup/lib/UpdateVehicules.php:127
+msgid "Image folder does not have write permission : "
+msgstr "Le dossier d'image n'a pas les droits en écriture"
+
+#: current_version/application/modules/selectup/lib/UpdateVehicules.php:143
+msgid "Image Update in progress"
+msgstr "Upload de l'image en cours"
+
+#: current_version/application/modules/selectup/lib/UpdateVehicules.php:156
+msgid "Image log file does not have write permission : "
+msgstr "Le fichier de log des images n'a pas les droits en écritures"
+
+#: current_version/application/modules/documentsMulti/models/DbTable/Content.php:32
+#: current_version/application/modules/documentsMulti/models/DbTable/Content.php:66
+msgid "There is no data to update content"
+msgstr "Il n'y a pas de données à mettre à jour"
+
+#: current_version/application/modules/documentsMulti/models/DbTable/Content.php:68
+msgid "There is no id to update content"
+msgstr "Il n'y a pas d'ID à mettre à jour"
+
+#: current_version/application/modules/documentsMulti/models/DbTable/Content.php:101
+msgid "Delete function failed; could not find content"
+msgstr "Impossible d'effacer; Contenu introuvable"
+
+#: current_version/application/modules/documentsMulti/forms/Form.php:41
+msgid "Status"
+msgstr "Statut"
+
+#: current_version/application/modules/documentsMulti/forms/Form.php:42
+msgid "Brouillon"
+msgstr "Brouillon"
+
+#: current_version/application/modules/documentsMulti/forms/Form.php:42
+msgid "Publié"
+msgstr "Publié"
+
+#: current_version/application/modules/documentsMulti/forms/Form.php:84
+msgid "Access"
+msgstr "Accès"
+
+#: current_version/application/modules/documentsMulti/forms/FilterForm.php:26
+msgid "Select status"
+msgstr "Sélectionner le statut"
+
+#: current_version/application/modules/documentsMulti/forms/FilterForm.php:27
+msgid "Publish"
+msgstr "Publier"
+
+#: current_version/application/modules/documentsMulti/forms/FilterForm.php:28
+msgid "draft"
+msgstr "Brouillon"
+
+#: current_version/application/modules/documentsMulti/controllers/FrontController.php:32
+#: current_version/application/modules/documentsMulti/controllers/BackController.php:269
+msgid "Invalid document type"
+msgstr "Type de page invalide"
+
+#: current_version/application/modules/documentsMulti/controllers/BackController.php:87
+msgid "New document is now in homepage"
+msgstr "Nouvelle page sur l'accueil"
+
+#: current_version/application/modules/documentsMulti/controllers/BackController.php:237
+msgid "Document created"
+msgstr "Page créée"
+
+#: current_version/application/modules/documentsMulti/controllers/BackController.php:247
+msgid "Create"
+msgstr "Créer"
+
+#: current_version/application/modules/documentsMulti/controllers/BackController.php:248
+msgid "Create & Edit"
+msgstr "Créer & éditer"
+
+#: current_version/application/modules/documentsMulti/controllers/BackController.php:275
+msgid "No document type"
+msgstr "Pas de type de page"
+
+#: current_version/application/modules/documentsMulti/controllers/BackController.php:308
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: current_version/application/modules/documentsMulti/controllers/BackController.php:309
+msgid "Update & Edit"
+msgstr "Mettre à jour & éditer"
+
+#: current_version/application/modules/documentsMulti/controllers/BackController.php:363
+msgid "Document saved"
+msgstr "Page enregistrée"
+
+#: current_version/application/modules/documentsMulti/controllers/BackController.php:387
+msgid "invalid form"
+msgstr "Erreur dans le formulaire ..."
+
+#: current_version/application/modules/documentsMulti/controllers/BackController.php:436
+msgid "Document deleted"
+msgstr "Page supprimée"
+
+#: current_version/application/modules/documentsMulti/lib/Manager.php:102
+#, php-format
+msgid "unknown param '%s' in this document type XML"
+msgstr "Paramètre inconnu '%s' dans ce type de document xml"
+
+#: current_version/application/modules/documentsMulti/lib/Content.php:53
+msgid "Method not allowed"
+msgstr "Méthode non autorisée"
+
+#: current_version/application/modules/skins/controllers/BackController.php:134
+msgid "front skin changed"
+msgstr "Le thème du frontend a été changé"
+
+#: current_version/application/modules/skins/controllers/BackController.php:176
+msgid "back skin changed"
+msgstr "Le thème du backoffice a été changé"
+
+#: current_version/application/modules/blocs/forms/General.php:24
+msgid "Templates available"
+msgstr "Modèle de disposition disponible"
+
+#: current_version/application/modules/blocs/forms/General.php:39
+msgid "Theme"
+msgstr "Thème"
+
+#: current_version/application/modules/blocs/forms/General.php:40
+msgid "Theme of your template"
+msgstr "Thème de votre modèle"
+
+#: current_version/application/modules/blocs/forms/General.php:72
+msgid "Delete this template"
+msgstr "Effacer ce modèle"
+
+#: current_version/application/modules/blocs/forms/General.php:77
+msgid "Create a new template"
+msgstr "Créer un nouveau modèle"
+
+#: current_version/application/modules/blocs/forms/General.php:82
+msgid "Save this template"
+msgstr "Enregistrer ce modèle"
+
+#: current_version/application/modules/blocs/forms/Template.php:9
+msgid "Template title"
+msgstr "Titre du modèle"
+
+#: current_version/application/modules/blocs/forms/Template.php:14
+msgid "Duplicate"
+msgstr "Dupliquer"
+
+#: current_version/application/modules/blocs/forms/Template.php:15
+msgid "Duplicate an existing template"
+msgstr "Dupliquer un modèle existant"
+
+#: current_version/application/modules/blocs/forms/Template.php:19
+msgid "Templates"
+msgstr "Modèle de disposition"
+
+#: current_version/application/modules/blocs/forms/Template.php:20
+msgid "Template to duplicate"
+msgstr "Modèle de disposition à dupliquer"
+
+#: current_version/application/modules/blocs/objects/Template.php:32
+msgid "ID MISSING"
+msgstr "ID manquant"
+
+#: current_version/application/modules/blocs/controllers/AjaxController.php:67
+#: current_version/application/modules/blocs/controllers/AjaxController.php:117
+msgid "You are not logged. Please retry this page and log in."
+msgstr "Vous n'êtes pas connecté. Actualisez la page et réessayez."
+
+#: current_version/application/modules/blocs/controllers/AjaxController.php:152
+msgid "You are not logged. Please reload this page and log in."
+msgstr "Vous n'êtes pas connecté. Actualisez la page et réessayez"
+
+#: current_version/application/modules/blocs/controllers/BackController.php:290
+msgid "Block deleted"
+msgstr "Bloc supprimé "
+
+#: current_version/application/modules/blocs/controllers/BackController.php:313
+msgid "Impossible delete template assign at home page"
+msgstr ""
+
+#: current_version/application/modules/blocs/controllers/BackController.php:341
+msgid "Template deleted"
+msgstr "Modèle de disposition supprimé"
+
+#: current_version/application/modules/articles/forms/Article.php:84
+msgid "Activation date"
+msgstr "Date d'activation"
+
+#: current_version/application/modules/articles/forms/Article.php:90
+#, fuzzy
+msgid "Article permanent ?"
+msgstr "Actualité permanente ?"
+
+#: current_version/application/modules/articles/forms/Article.php:91
+#: current_version/application/modules/articles/forms/Article.php:122
+msgid "Check to activate"
+msgstr "Cocher pour activer"
+
+#: current_version/application/modules/articles/forms/Article.php:95
+msgid "Deactivation date"
+msgstr "Date de désactivation"
+
+#: current_version/application/modules/articles/forms/Article.php:111
+msgid "Image"
+msgstr "Image"
+
+#: current_version/application/modules/articles/forms/Article.php:115
+#, fuzzy
+msgid "Brève de votre article"
+msgstr "Brève de votre actualité"
+
+#: current_version/application/modules/articles/forms/Article.php:121
+msgid "Link read more"
+msgstr "Lire la suite"
+
+#: current_version/application/modules/articles/forms/Article.php:131
+#: current_version/application/modules/articles/forms/Article.php:132
+msgid "Save & Quit"
+msgstr "Sauver & quitter"
+
+#: current_version/application/modules/articles/controllers/BackController.php:232
+msgid "Article created"
+msgstr "Article créé"
+
+#: current_version/application/modules/articles/controllers/BackController.php:259
+msgid "Invalid article type"
+msgstr "Type d'article invalide"
+
+#: current_version/application/modules/articles/controllers/BackController.php:262
+msgid "No article type"
+msgstr "Aucun type d'article"
+
+#: current_version/application/modules/articles/controllers/BackController.php:359
+msgid "Article saved"
+msgstr "Article enregistré"
+
+#: current_version/application/modules/articles/controllers/BackController.php:447
+msgid "Article deleted"
+msgstr "Article supprimé"
+
+#: current_version/application/modules/articles/controllers/BackController.php:468
+msgid "MOD_ARTICLES ARTICLE PUBLISH"
+msgstr "Publier l'article"
+
+#: current_version/application/modules/articles/controllers/BackController.php:471
+msgid "MOD_ARTICLES ARTICLE ALREADY PUBLISH"
+msgstr "L'article est déjà publié"
+
+#: current_version/application/modules/articles/controllers/BackController.php:490
+msgid "MOD_ARTICLES ARTICLE UNPUBLISH"
+msgstr "Dépublier l'article"
+
+#: current_version/application/modules/articles/controllers/BackController.php:493
+msgid "MOD_ARTICLES ARTICLE ALREADY UNPUBLISH"
+msgstr "L'article est déjà dépublié"
+
+#: current_version/application/modules/menuV1/models/DbTable/MenuItems.php:386
+msgid "You can't active this item: it's parent is inactive"
+msgstr "Vous ne pouvez pas activer cet élément: Son parent est inactif"
+
+#: current_version/application/modules/menuV1/forms/MenuItemsForm.php:27
+msgid "Open in new window"
+msgstr "Ouvrir dans une nouvelle fenêtre"
+
+#: current_version/application/modules/menuV1/forms/MenuItemsForm.php:40
+msgid "Select the element Type:"
+msgstr "Selectionnez le type de l'élément :"
+
+#: current_version/application/modules/menuV1/forms/MenuItemsForm.php:41
+msgid "New page"
+msgstr "Nouvelle page"
+
+#: current_version/application/modules/menuV1/forms/MenuItemsForm.php:41
+msgid "Link existing page"
+msgstr "Lier une page existante"
+
+#: current_version/application/modules/menuV1/forms/MenuItemsForm.php:41
+msgid "External link"
+msgstr "Lien externe"
+
+#: current_version/application/modules/menuV1/forms/MenuItemsForm.php:91
+msgid "Choose page to link"
+msgstr "Choisir la page à lier"
+
+#: current_version/application/modules/menuV1/forms/MenuItemsForm.php:118
+msgid "Enter external adress to link (without http://)"
+msgstr "Entrer le lien externe (sans http://)"
+
+#: current_version/application/modules/menuV1/forms/MenuItemsForm.php:148
+msgid "hide title"
+msgstr "Masquer le titre"
+
+#: current_version/application/modules/menuV1/forms/MenuItemsForm.php:154
+msgid "Icon"
+msgstr "Icône"
+
+#: current_version/application/modules/menuV1/forms/MenuItemsForm.php:161
+msgid "Subtitle"
+msgstr "Sous-titre"
+
+#: current_version/application/modules/menuV1/forms/MenuItemsForm.php:168
+msgid "Alternative template file"
+msgstr "Autre template"
+
+#: current_version/application/modules/menuV1/forms/MenuItemsForm.php:174
+msgid "Additional css file"
+msgstr "fichier css additionnel"
+
+#: current_version/application/modules/menuV1/forms/MenuItemsForm.php:180
+msgid "CSS class of this menu item"
+msgstr "Classe CSS de l'élément de menu"
+
+#: current_version/application/modules/menuV1/forms/MenuForm.php:29
+msgid "Description"
+msgstr "Description"
+
+#: current_version/application/modules/menuV1/controllers/AjaxController.php:131
+msgid "Unknown error"
+msgstr "Erreur inconnue"
+
+#: current_version/application/modules/menuV1/controllers/BackController.php:111
+msgid "menu created"
+msgstr "Menu créé"
+
+#: current_version/application/modules/menuV1/controllers/BackController.php:166
+msgid "menu saved"
+msgstr "Menu enregistré"
+
+#: current_version/application/modules/menuV1/controllers/BackController.php:325
+#: current_version/application/modules/menuV1/controllers/BackController.php:565
+msgid "menu item created"
+msgstr "Elément de menu créé"
+
+#: current_version/application/modules/menuV1/controllers/BackController.php:675
+msgid "menu deleted"
+msgstr "Menu supprimé"
+
+#: current_version/application/modules/menuV1/controllers/BackController.php:736
+msgid "Invalid method name"
+msgstr "Nom de méthode invalide"
+
+#: current_version/application/modules/categories/models/DbTable/Categories.php:109
+msgid "Missing parameters"
+msgstr "Paramètres Manquants"
+
+#: current_version/application/modules/categories/forms/CategoryForm.php:51
+msgid "No category parent"
+msgstr "Pas de catégorie parent"
+
+#: current_version/application/modules/categories/forms/CategoryForm.php:68
+msgid "ENREGISTRER"
+msgstr "ENREGISTRER"
+
+#: current_version/application/modules/categories/controllers/BackController.php:151
+msgid "Category created"
+msgstr "Catégorie enregistrée"
+
+#: current_version/application/modules/categories/controllers/BackController.php:201
+msgid "Category updated | ps : il manque la maj du parent !!"
+msgstr "Catégorie mise à jour |  ps : il manque la maj du parent !!"
+
+#: current_version/application/modules/categories/controllers/BackController.php:239
+msgid "Category deleted"
+msgstr "Catégorie supprimée"
+
+#: current_version/application/modules/mozaiques/models/DbTable/Areas.php:2
+msgid "There is no data to create an \"area\""
+msgstr "Il n'y a aucune donnée pour créer la zone"
+
+#: current_version/application/modules/mozaiques/models/DbTable/Areas.php:2
+msgid "There is no data to update area"
+msgstr "Il n'y a aucune donnée pour mettre à jour la zone"
+
+#: current_version/application/modules/mozaiques/models/DbTable/Areas.php:2
+msgid "There is no id to update area"
+msgstr "Il n'y a pas d'ID à mettre à jour la zone"
+
+#: current_version/application/modules/mozaiques/models/DbTable/Areas.php:2
+msgid "There is no id to delete area"
+msgstr "Il n'y a pas d'ID à mettre à jour la carte"
+
+#: current_version/application/modules/mozaiques/models/DbTable/Pages.php:2
+#, fuzzy
+msgid "There is no data to create a page"
+msgstr "Il n'y a pas de données à mettre à jour"
+
+#: current_version/application/modules/mozaiques/models/DbTable/Pages.php:2
+#, fuzzy
+msgid "There is no data to update page"
+msgstr "Il n'y a aucune donnée pour mettre à jour la zone"
+
+#: current_version/application/modules/mozaiques/models/DbTable/Pages.php:2
+#, fuzzy
+msgid "There is no id to update page"
+msgstr "Il n'y a pas d'ID à mettre à jour la zone"
+
+#: current_version/application/modules/mozaiques/models/DbTable/Pages.php:2
+#, fuzzy
+msgid "There is no id to delete page"
+msgstr "Il n'y a pas d'ID à mettre à jour la carte"
+
+#: current_version/application/modules/mozaiques/forms/Area.php:21
+msgid "MOD_MOZAIQUES_FORM_AREA-TITLE"
+msgstr "Titre"
+
+#: current_version/application/modules/mozaiques/forms/Area.php:22
+msgid "MOD_MOZAIQUES_FORM_AREA-TITLE-DESC"
+msgstr "Titre de votre zone"
+
+#: current_version/application/modules/mozaiques/forms/Area.php:32
+msgid "MOD_MOZAIQUES_FORM_AREA-LINK-TYPE"
+msgstr "Lien"
+
+#: current_version/application/modules/mozaiques/forms/Area.php:33
+msgid "MOD_MOZAIQUES_FORM_AREA-LINK-TYPE-DESC"
+msgstr "Type du lien"
+
+#: current_version/application/modules/mozaiques/forms/Area.php:34
+msgid "EXISTING PAGE"
+msgstr "Page existante"
+
+#: current_version/application/modules/mozaiques/forms/Area.php:34
+#: current_version/application/modules/mozaiques/forms/Area.php:69
+msgid "EXTERNAL LINK"
+msgstr "Lien externe"
+
+#: current_version/application/modules/mozaiques/forms/Area.php:41
+msgid "CHOOSE PAGE TO LINK"
+msgstr "Choisir la page à lier"
+
+#: current_version/application/modules/mozaiques/forms/Area.php:70
+msgid "(WHITHOUT HTTP://)"
+msgstr "sans \"http://\""
+
+#: current_version/application/modules/mozaiques/controllers/FrontController.php:24
+msgid "PAGE NOT FOUND"
+msgstr "Page introuvable"
+
+#: current_version/application/modules/mozaiques/controllers/BackController.php:30
+msgid "SUBMIT"
+msgstr "Envoyer"
+
+#: current_version/application/modules/mozaiques/controllers/BackController.php:37
+#: current_version/application/modules/mozaiques/controllers/BackController.php:132
+#: current_version/application/modules/mozaiques/controllers/BackController.php:246
+#: current_version/application/modules/mozaiques/controllers/BackController.php:272
+#: current_version/application/modules/mozaiques/controllers/BackController.php:286
+msgid "INSUFFICIENT RIGHTS"
+msgstr "Droits insuffisants"
+
+#: current_version/application/modules/mozaiques/controllers/BackController.php:106
+msgid "MOD_MOZAIQUES PAGE CREATED"
+msgstr "Page créée"
+
+#: current_version/application/modules/mozaiques/controllers/BackController.php:198
+msgid "MOD_MOZAIQUES PAGE UPDATED"
+msgstr "Page modifiée"
+
+#: current_version/application/modules/mozaiques/controllers/BackController.php:266
+msgid "MOD_MOZAIQUES PAGE DELETED"
+msgstr "Page supprimée"
+
+#: current_version/application/modules/mozaiques/controllers/BackController.php:284
+msgid "RIGHTS UPDATED"
+msgstr "Droits mis à jours"
+
+#: current_version/application/modules/mozaiques/lib/Area.php:47
+msgid "UNABLE LOAD CONTENT"
+msgstr "Impossible de charger le contenu"
+
+#: current_version/application/modules/packager/controllers/BackController.php:188
+msgid "packaging had failed"
+msgstr "Erreur lors de la création du paquet"
+
+#: current_version/application/modules/packager/controllers/BackController.php:334
+#, fuzzy, php-format
+msgid "Package %s sucessfully enable"
+msgstr "Le paquet %s a bien été désinstallé"
+
+#: current_version/application/modules/packager/controllers/BackController.php:336
+#: current_version/application/modules/packager/controllers/BackController.php:371
+#, php-format
+msgid "Can't rename file : %s"
+msgstr "Impossible de renommer le fichier : %s"
+
+#: current_version/application/modules/packager/controllers/BackController.php:339
+#, php-format
+msgid "Package %s already enable or _Bootstrap.php not found"
+msgstr ""
+
+#: current_version/application/modules/packager/controllers/BackController.php:342
+#: current_version/application/modules/packager/controllers/BackController.php:380
+#, php-format
+msgid "Package %s don't exist"
+msgstr ""
+
+#: current_version/application/modules/packager/controllers/BackController.php:345
+#: current_version/application/modules/packager/controllers/BackController.php:383
+#, fuzzy, php-format
+msgid "Package type %s don't exist"
+msgstr "Ce type de formulaire de contact n'existe pas"
+
+#: current_version/application/modules/packager/controllers/BackController.php:369
+#, fuzzy, php-format
+msgid "Package %s sucessfully disable"
+msgstr "Le paquet %s a bien été désinstallé"
+
+#: current_version/application/modules/packager/controllers/BackController.php:374
+#, php-format
+msgid "Package %s already disable or Bootstrap.php not found"
+msgstr ""
+
+#: current_version/application/modules/packager/controllers/BackController.php:377
+#, fuzzy, php-format
+msgid "Package %s can't be disabled"
+msgstr "Le paquet %s a bien été désinstallé"
+
+#: current_version/application/modules/packager/controllers/BackController.php:583
+#: current_version/application/modules/packager/controllers/BackController.php:644
+msgid "Install type unsupported"
+msgstr "Type d'installation inconnu..."
+
+#: current_version/application/modules/packager/controllers/BackController.php:657
+msgid "Folder block is not writable"
+msgstr "Le dossier Bloc n'a pas les droits en écriture"
+
+#: current_version/application/modules/packager/controllers/BackController.php:665
+msgid "No files in the package"
+msgstr "Il n'y a aucun fichier dans le package ..."
+
+#: current_version/application/modules/packager/controllers/BackController.php:678
+msgid "Package installed"
+msgstr "Paquet installé"
+
+#: current_version/application/modules/packager/controllers/BackController.php:700
+msgid "unpack package failed"
+msgstr "Erreur lors de la décompression du fichier ..."
+
+#: current_version/application/modules/packager/controllers/BackController.php:732
+#, php-format
+msgid "Package %s sucessfully uninstalled"
+msgstr "Le paquet %s a bien été désinstallé"
+
+#: current_version/application/modules/packager/controllers/BackController.php:736
+#: current_version/application/modules/packager/controllers/BackController.php:762
+#, php-format
+msgid "Enable to delete %s"
+msgstr "Impossible de supprimer %s"
+
+#: current_version/application/modules/packager/controllers/BackController.php:755
+#, fuzzy, php-format
+msgid "Module %s sucessfully uninstalled"
+msgstr "Le paquet %s a bien été désinstallé"
+
+#: current_version/application/modules/packager/controllers/BackController.php:758
+#, fuzzy, php-format
+msgid "Package %s can't be uninstalled"
+msgstr "Le paquet %s a bien été désinstallé"
+
+#: current_version/application/modules/seo/forms/RawurlForm.php:25
+msgid "Page title"
+msgstr "Titre de la page"
+
+#: current_version/application/modules/seo/forms/RawurlForm.php:31
+msgid "Rewrite Url"
+msgstr "Réécriture d'url"
+
+#: current_version/application/modules/seo/forms/RawurlForm.php:37
+msgid "Keywords: (separated by coma)"
+msgstr "Mots clés : (séparés par des virgules)"
+
+#: current_version/application/modules/seo/forms/HomePage.php:24
+msgid "Title of home page"
+msgstr "Titre de la page d'accueil"
+
+#: current_version/application/modules/seo/forms/HomePage.php:29
+msgid "Template"
+msgstr "Template"
+
+#: current_version/application/modules/seo/forms/HomePage.php:30
+msgid "Template of home page"
+msgstr "Modèle de la page d'accueil"
+
+#: current_version/application/modules/seo/forms/HomePage.php:39
+msgid "Diaporama"
+msgstr "Diaporama"
+
+#: current_version/application/modules/seo/forms/HomePage.php:40
+msgid "Diaporama of home page"
+msgstr "Diaporama de la page d'accueil"
+
+#: current_version/application/modules/seo/forms/HomePage.php:49
+#: current_version/application/modules/seo/forms/seoGenericForm.php:28
+msgid "Keywords"
+msgstr "Mots clés"
+
+#: current_version/application/modules/seo/forms/HomePage.php:50
+msgid "Keywords of your home page"
+msgstr "Mots clés de la page d'accueil"
+
+#: current_version/application/modules/seo/forms/HomePage.php:56
+msgid "Description of home page"
+msgstr "Déscription de la page d'accueil"
+
+#: current_version/application/modules/seo/forms/seoGenericForm.php:23
+msgid "Pages Title"
+msgstr "Titre de la page"
+
+#: current_version/application/modules/seo/forms/Page.php:33
+msgid "Séparés par des virgules"
+msgstr ""
+
+#: current_version/application/modules/seo/controllers/AjaxController.php:35
+msgid "This URI already exist"
+msgstr "Cette url existe déjà"
+
+#: current_version/application/modules/seo/controllers/BackController.php:89
+msgid "SEO General settings updated"
+msgstr "Mise à jour de la configuration SEO effectuée avec succés"
+
+#: current_version/application/modules/seo/controllers/BackController.php:107
+msgid "Settings updated"
+msgstr "Paramètres mis à jour"
+
+#: current_version/application/modules/seo/controllers/BackController.php:128
+msgid "Home page settings updated"
+msgstr "Paramètres de votre page d'accueil mis à jour"
+
+#: current_version/application/modules/seo/controllers/BackController.php:136
+msgid "Configuration updated"
+msgstr "Configuration sauvegardée"
+
+#: current_version/application/modules/immo/forms/Login.php:14
+#: current_version/application/modules/immo/forms/NewUser.php:14
+msgid "Enter your email adress"
+msgstr "Entrez votre adresse email"
+
+#: current_version/application/modules/immo/forms/Login.php:19
+msgid "Sign on"
+msgstr "Se connecter"
+
+#: current_version/application/modules/immo/forms/NewUser.php:19
+#: current_version/application/modules/immo/forms/User.php:15
+msgid "Civility"
+msgstr "Civilité"
+
+#: current_version/application/modules/immo/forms/NewUser.php:20
+#: current_version/application/modules/immo/forms/User.php:16
+msgid "Choose your civility"
+msgstr "Choisir votre civilité"
+
+#: current_version/application/modules/immo/forms/NewUser.php:21
+#: current_version/application/modules/immo/forms/User.php:17
+msgid "choose"
+msgstr "Choisir"
+
+#: current_version/application/modules/immo/forms/NewUser.php:25
+#: current_version/application/modules/immo/forms/User.php:21
+msgid "First name"
+msgstr "Prénom"
+
+#: current_version/application/modules/immo/forms/NewUser.php:26
+#: current_version/application/modules/immo/forms/User.php:22
+msgid "Enter your first name"
+msgstr "Entrez votre prénom"
+
+#: current_version/application/modules/immo/forms/NewUser.php:31
+#: current_version/application/modules/immo/forms/User.php:27
+msgid "Last name"
+msgstr "Nom"
+
+#: current_version/application/modules/immo/forms/NewUser.php:32
+#: current_version/application/modules/immo/forms/User.php:28
+msgid "Enter your last name"
+msgstr "Entrez votre nom de famille"
+
+#: current_version/application/modules/immo/forms/NewUser.php:36
+#: current_version/application/modules/immo/forms/User.php:32
+msgid "Phone"
+msgstr "Tél."
+
+#: current_version/application/modules/immo/forms/NewUser.php:37
+#: current_version/application/modules/immo/forms/User.php:33
+msgid "Enter your phone number"
+msgstr "Entrez votre numéro de téléphone"
+
+#: current_version/application/modules/immo/forms/NewUser.php:42
+msgid "Register"
+msgstr "S'inscrire"
+
+#: current_version/application/modules/immo/forms/User.php:38
+msgid "Phone 2"
+msgstr "Tél. 2"
+
+#: current_version/application/modules/immo/forms/User.php:39
+msgid "Other phone number"
+msgstr "Autre numéro de téléphone"
+
+#: current_version/application/modules/immo/forms/User.php:44
+msgid "Adress"
+msgstr "Adresse"
+
+#: current_version/application/modules/immo/forms/User.php:45
+msgid "Enter your adress"
+msgstr "Entrez votre adresse"
+
+#: current_version/application/modules/immo/forms/User.php:49
+msgid "Postal code"
+msgstr "Code Postal"
+
+#: current_version/application/modules/immo/forms/User.php:50
+msgid "Enter your postal code"
+msgstr "Entrez votre code postal"
+
+#: current_version/application/modules/immo/forms/User.php:56
+msgid "Enter your city"
+msgstr "Entrez votre ville"
+
+#: current_version/application/modules/immo/forms/User.php:60
+msgid "Validate"
+msgstr "Valider"
+
+#: current_version/application/modules/immo/forms/Config.php:8
+msgid "Tab 'Send Friend'"
+msgstr "Onglet 'Envoyer à un ami'"
+
+#: current_version/application/modules/immo/forms/Config.php:9
+msgid "Check to activate tab 'Send Friend' on house file"
+msgstr "Cochez pour activer l'onglet 'Envoyer à un ami' sur les fiches immobilier"
+
+#: current_version/application/modules/immo/forms/Config.php:13
+msgid "Tab 'Location'"
+msgstr "Onglet 'Localisation'"
+
+#: current_version/application/modules/immo/forms/Config.php:14
+msgid "Check to activate tab 'Location' on house file"
+msgstr "Cochez pour activer l'onglet 'Localisation' sur les fiches immobilier"
+
+#: current_version/application/modules/immo/forms/Config.php:18
+msgid "Admin email"
+msgstr "Email Admin"
+
+#: current_version/application/modules/immo/forms/Config.php:19
+msgid "Email adress where to send informations"
+msgstr "Adresse email où seront envoyées les informations"
+
+#: current_version/application/modules/immo/forms/Config.php:25
+msgid "From email"
+msgstr "Email d'envoi"
+
+#: current_version/application/modules/immo/forms/Config.php:26
+msgid "Email adress from wich informations are sent to visitors"
+msgstr "Adresse email depuis laquelle les informations sont envoyées aux visiteurs"
+
+#: current_version/application/modules/immo/forms/MailForm.php:9
+msgid "Admin"
+msgstr "Admin"
+
+#: current_version/application/modules/immo/forms/MailForm.php:10
+#, fuzzy
+msgid "Admin email adress"
+msgstr "Email Admin"
+
+#: current_version/application/modules/immo/forms/MailForm.php:16
+msgid "From"
+msgstr "Depuis"
+
+#: current_version/application/modules/immo/forms/MailForm.php:17
+msgid "From email adress"
+msgstr "Depuis quel email"
+
+#: current_version/application/modules/immo/objects/Bien.php:67
+msgid "Invalid key"
+msgstr "Clé invalide"
+
+#: current_version/application/modules/immo/controllers/FrontController.php:268
+msgid "Unknown email or inactive account"
+msgstr "Email inconnu ou compte inactif"
+
+#: current_version/application/modules/immo/controllers/FrontController.php:271
+#: current_version/application/modules/immo/controllers/FrontController.php:361
+msgid "Inactive account"
+msgstr "Compte inactif"
+
+#: current_version/application/modules/immo/controllers/FrontController.php:276
+#: current_version/application/modules/immo/controllers/FrontController.php:363
+msgid "Unknown email"
+msgstr "Email inconnu"
+
+#: current_version/application/modules/immo/controllers/FrontController.php:335
+msgid "This email is already used, please choose another one"
+msgstr "Cet e-mail est déjà utilisé, choisissez-en un autre"
+
+#: current_version/application/modules/immo/controllers/BackController.php:71
+msgid "Update finished"
+msgstr "Mise à jour terminée"
+
+#: current_version/application/modules/immo/controllers/BackController.php:73
+msgid "No update required"
+msgstr "Aucune mise à jour nécessaire"
+
+#: current_version/application/modules/immo/lib/Update.php:134
+msgid "Picture folder does not have write permission : "
+msgstr "Le dossier photos n'a pas les droits en écriture"
+
+#: current_version/application/modules/immo/lib/Update.php:155
+#, fuzzy
+msgid "Cannot move image file : "
+msgstr "Impossible de renommer le fichier : %s"
+
+#: current_version/application/modules/immo/lib/Update.php:221
+msgid "Update in progress"
+msgstr "Mise à jour en cours"
+
+#: current_version/application/modules/immo/lib/Update.php:231
+msgid "XML log file does not have write permission : "
+msgstr "Le fichier de log n'a pas les droits en écriture"
+
+#: current_version/application/modules/immo/lib/Update.php:288
+msgid "Error open file zip"
+msgstr "Erreur en ouvrant le fichier .ZIP"
+
+#: current_version/application/modules/immo/lib/Update.php:295
+msgid "XML file not found"
+msgstr "XML introuvable"
+
+#: current_version/application/modules/immo/lib/Update.php:317
+#, fuzzy
+msgid "Error open XML file"
+msgstr "Votre email"
+
+#: current_version/application/modules/immo/lib/Favoris.php:120
+msgid "You must be loggued to perform this operation"
+msgstr "Vous devez être connecté pour exécuter cette opération"
+
+#: current_version/application/modules/advertising/forms/Campaign.php:21
+msgid "Title of your campaign"
+msgstr "Titre de votre campagne"
+
+#: current_version/application/modules/advertising/forms/Campaign.php:26
+msgid "Limited time period"
+msgstr "Durée limitée"
+
+#: current_version/application/modules/advertising/forms/Campaign.php:32
+msgid "Activation Date"
+msgstr "Date d'activation"
+
+#: current_version/application/modules/advertising/forms/Campaign.php:33
+msgid "Choose activation date"
+msgstr "Choisir la date d'activation"
+
+#: current_version/application/modules/advertising/forms/Campaign.php:38
+msgid "DeActivation Date"
+msgstr "Date de désactivation"
+
+#: current_version/application/modules/advertising/forms/Campaign.php:39
+msgid "Choose deactivation date"
+msgstr "Choisir la date de désactivation"
+
+#: current_version/application/modules/advertising/forms/Advert.php:20
+msgid "Choose your picture"
+msgstr "Choisissez votre image"
+
+#: current_version/application/modules/advertising/forms/Advert.php:25
+msgid "Select your Link Type:"
+msgstr "Selectionnez le type de lien:"
+
+#: current_version/application/modules/advertising/forms/Advert.php:26
+msgid "Choose you link type"
+msgstr "Choisir votre type de lien"
+
+#: current_version/application/modules/advertising/forms/Advert.php:27
+msgid "Internal link"
+msgstr "Lien interne"
+
+#: current_version/application/modules/advertising/forms/Advert.php:48
+#, fuzzy
+msgid "Enter external adress to link"
+msgstr "Entrer le lien externe (sans http://)"
+
+#: current_version/application/modules/advertising/forms/Advert.php:49
+msgid "Without http://"
+msgstr "Sans http://"
+
+#: current_version/application/modules/advertising/forms/Advert.php:57
+msgid "Check the box"
+msgstr "Cocher cette case"
+
+#: current_version/application/modules/advertising/forms/Advert.php:61
+msgid "Weight"
+msgstr "Poids"
+
+#: current_version/application/modules/advertising/forms/Advert.php:62
+msgid "Weight of your advertising"
+msgstr "Poids de votre publicité"
+
+#: current_version/application/modules/advertising/forms/Advert.php:66
+msgid "Add a text above the image"
+msgstr "Ajouter un texte sur l'image"
+
+#: current_version/application/modules/advertising/forms/Advert.php:67
+msgid "Check to add"
+msgstr "Cocher pour ajouter"
+
+#: current_version/application/modules/advertising/objects/Advert.php:16
+msgid "There is no number"
+msgstr "Il n'y a pas de nombre"
+
+#: current_version/application/modules/advertising/objects/Advert.php:22
+#, fuzzy
+msgid "Model is not instantiated"
+msgstr "Le dossier Bloc n'a pas les droits en écriture"
+
+#: current_version/application/modules/advertising/controllers/BackController.php:95
+#, fuzzy
+msgid "Campaign of advert created"
+msgstr "Campagne créé"
+
+#: current_version/application/modules/advertising/controllers/BackController.php:162
+#, fuzzy
+msgid "Campaign of advert saved"
+msgstr "Campagne supprimée"
+
+#: current_version/application/modules/advertising/controllers/BackController.php:243
+#, fuzzy
+msgid "Compaign of advert deleted"
+msgstr "Campagne supprimée"
+
+#: current_version/application/modules/advertising/controllers/BackController.php:266
+msgid "Compaign of advert is enable"
+msgstr ""
+
+#: current_version/application/modules/advertising/controllers/BackController.php:289
+msgid "Compaign of advert is disable"
+msgstr ""
+
+#: current_version/application/modules/jobs/forms/Jobs.php:24
+msgid "Job Title"
+msgstr "Poste"
+
+#: current_version/application/modules/jobs/forms/Jobs.php:40
+msgid "Contract Type"
+msgstr "Type de contrat"
+
+#: current_version/application/modules/jobs/forms/Jobs.php:56
+msgid "Sector"
+msgstr "Secteur géographique"
+
+#: current_version/application/modules/jobs/forms/Jobs.php:72
+msgid "Domain"
+msgstr "Domaine"
+
+#: current_version/application/modules/jobs/forms/Jobs.php:78
+msgid "contact"
+msgstr "Contact"
+
+#: current_version/application/modules/jobs/forms/Jobs.php:85
+msgid "Job Description"
+msgstr "Description du poste"
+
+#: current_version/application/modules/jobs/forms/Apply.php:46
+msgid "FirstName"
+msgstr "Prénom"
+
+#: current_version/application/modules/jobs/forms/Apply.php:64
+msgid "Postal Code"
+msgstr "Code Postal"
+
+#: current_version/application/modules/jobs/forms/Apply.php:81
+msgid "Your e-mail"
+msgstr "Votre email"
+
+#: current_version/application/modules/jobs/forms/Apply.php:102
+msgid "submit"
+msgstr "Valider"
+
+#: current_version/application/modules/jobs/forms/Contact.php:10
+msgid "Adresse de contact"
+msgstr ""
+
+#: current_version/application/modules/jobs/forms/Contact.php:11
+#, fuzzy
+msgid "Candidatures spontanées"
+msgstr "Module: Jobs (candidatures Spontanées)"
+
+#: current_version/application/modules/jobs/forms/Contact.php:16
+msgid "save"
+msgstr "Sauvegarder"
+
+#: current_version/application/modules/jobs/controllers/FrontController.php:190
+msgid "File XML not found"
+msgstr "Fichier XML introuvable"
+
+#: current_version/application/modules/jobs/controllers/FrontController.php:228
+#, fuzzy
+msgid "Missing nodes"
+msgstr "Id manquant"
+
+#: current_version/application/modules/jobs/controllers/FrontController.php:234
+#, fuzzy
+msgid "Missing mail contact"
+msgstr "ID manquant"
+
+#: current_version/application/modules/jobs/controllers/BackController.php:38
+msgid "Email address have been changed"
+msgstr "L'adresse email a été modifiée"
+
+#: current_version/application/modules/jobs/controllers/BackController.php:58
+msgid "Default contact email is empty, unsolicited applications will not be received! "
+msgstr "L'email de contact par défaut est vide, les candidatures spontanées ne seront pas reçues"
+
+#: current_version/application/modules/jobs/controllers/BackController.php:124
+#: current_version/application/modules/jobs/controllers/BackController.php:141
+msgid "new job created"
+msgstr "Nouvelle annonce créée"
+
+#: current_version/application/modules/jobs/controllers/BackController.php:210
+msgid "Job updated"
+msgstr "Annonce mise à jour"
+
+#: current_version/application/modules/jobs/controllers/BackController.php:214
+msgid "Job saved"
+msgstr "Annonce enregistrée !"
+
+#: current_version/application/modules/jobs/controllers/BackController.php:264
+msgid "Job deleted"
+msgstr "Annonce supprimée !"
+
+#: current_version/application/modules/users/forms/LoginForm.php:27
+#: current_version/application/modules/users/forms/PasswordForm.php:16
+msgid "Password"
+msgstr "Mot de passe"
+
+#: current_version/application/modules/users/forms/UserForm.php:45
+msgid "User group"
+msgstr "Groupe utilisateur"
+
+#: current_version/application/modules/users/forms/UserForm.php:50
+msgid "Enable account ?"
+msgstr "Activer le compte ?"
+
+#: current_version/application/modules/users/forms/PasswordForm.php:9
+msgid "Old password"
+msgstr "Ancien mot de passe"
+
+#: current_version/application/modules/users/forms/PasswordForm.php:23
+msgid "Confirm password"
+msgstr "Confirmation du mot de passe"
+
+#: current_version/application/modules/users/controllers/LoginController.php:39
+#: current_version/application/modules/users/controllers/LoginController.php:75
+msgid "wrong email or password"
+msgstr "Email et/ou mot de passe incorrect"
+
+#: current_version/application/modules/users/controllers/LoginController.php:59
+msgid "email & password null"
+msgstr "Vous n'avez renseigné aucun email et mot de passe ..."
+
+#: current_version/application/modules/users/controllers/BackController.php:112
+msgid "User created"
+msgstr "Utilisateur enregistré"
+
+#: current_version/application/modules/users/controllers/BackController.php:137
+msgid "Group created"
+msgstr "Groupe créé"
+
+#: current_version/application/modules/users/controllers/BackController.php:148
+msgid "Create group"
+msgstr "Créer un groupe"
+
+#: current_version/application/modules/users/controllers/BackController.php:177
+msgid "View Access created"
+msgstr "Droits d'accès créés"
+
+#: current_version/application/modules/users/controllers/BackController.php:187
+msgid "Create view-access"
+msgstr "Donnr un droit d'accès en \"mode visualisation\""
+
+#: current_version/application/modules/users/controllers/BackController.php:236
+#: current_version/application/modules/users/controllers/BackController.php:260
+msgid "user saved"
+msgstr "Utilisateur enregistré"
+
+#: current_version/application/modules/users/controllers/BackController.php:254
+msgid "Invalid old password"
+msgstr "Ancien mot de passe invalide"
+
+#: current_version/application/modules/users/controllers/BackController.php:309
+msgid "View Access saved"
+msgstr "\"Mode visualisation\" enregistré"
+
+#: current_version/application/modules/users/controllers/BackController.php:340
+msgid "user deleted"
+msgstr "Utilisateur supprimé "
+
+#: current_version/application/modules/users/controllers/BackController.php:344
+msgid "Are you crazy ? Are you sure to delete yourself ?!"
+msgstr "Etes-vous fou ? Etes-vous sûr de vouloir vous supprimer vous-même ?"
+
+#: current_version/application/modules/users/controllers/BackController.php:356
+#: current_version/application/modules/users/controllers/BackController.php:368
+msgid "group deleted"
+msgstr "Groupe supprimé"
+
+#: current_version/application/modules/users/controllers/BackController.php:381
+#, php-format
+msgid "user %s %s actived"
+msgstr "L'utilisateur %s %s  vient d'être activé "
+
+#: current_version/application/modules/users/controllers/BackController.php:397
+msgid "user desactived"
+msgstr "Utilisateur désactivé "
+
+#: current_version/application/modules/users/lib/Manager.php:34
+msgid "User must have parent group"
+msgstr "L'utilisateur doit avoir un groupe parent"
+
+#: current_version/application/modules/admin/controllers/ConfigController.php:116
+msgid "All content had been erased"
+msgstr "Tout le contenu a été effacé"
+
+#: current_version/application/modules/admin/controllers/ConfigController.php:291
+msgid "Please choose language"
+msgstr "Veuillez choisir une langue"
+
+#: current_version/application/modules/admin/controllers/ConfigController.php:306
+msgid "Language added"
+msgstr "Langue ajoutée"
+
+#: current_version/application/modules/admin/controllers/ConfigController.php:309
+msgid "this language is already existing"
+msgstr "Cette langue existe déjà"
+
+#: current_version/application/modules/admin/controllers/ConfigController.php:315
+msgid "Language id invalid"
+msgstr "L'identifiant choisi est invalide"
+
+#: current_version/application/modules/admin/controllers/ConfigController.php:350
+msgid "Language deleted"
+msgstr "Langue supprimée"
+
+#: current_version/application/modules/admin/controllers/ConfigController.php:413
+msgid "Language template updated"
+msgstr "Template de language mis à jour"
+
+#: current_version/application/modules/admin/controllers/ConfigController.php:437
+#, php-format
+msgid "%s is now the default language"
+msgstr "%s est maintenant la langue par défaut"
+
+#: current_version/application/modules/admin/controllers/ConfigController.php:472
+#, fuzzy
+msgid "Cache deleted successfully"
+msgstr "Base de données mise à jour avec succès"
+
+#: current_version/application/modules/admin/controllers/ConfigController.php:476
+msgid "Error in delete cache"
+msgstr ""
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:33
+msgid "Title of Galerie Photo"
+msgstr "Titre de votre galerie photo"
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:35
+msgid "Title of Diaporama"
+msgstr "Titre de votre diaporama"
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:47
+msgid "Size"
+msgstr "Taille"
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:48
+msgid "width x height (px)"
+msgstr "Largeur x Hauteur (px)"
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:53
+#: current_version/application/modules/galerieImage/forms/Image.php:72
+msgid "Background Color"
+msgstr "Couleur de fond"
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:54
+msgid "Choose Background Color"
+msgstr "Choisissez une image de fond"
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:58
+msgid "Position of the controls"
+msgstr "Position des contrôles"
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:60
+msgid "At top"
+msgstr "En haut"
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:61
+msgid "At bottom"
+msgstr "En bas"
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:66
+msgid "Style of the controls"
+msgstr "Style des contrôles"
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:68
+msgid "Prev/Next"
+msgstr "Préc./Suiv."
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:69
+msgid "Thumbnails"
+msgstr "Miniatures"
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:74
+msgid "Transition style"
+msgstr "Style de transition"
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:82
+msgid "Auto start"
+msgstr "Auto start"
+
+#: current_version/application/modules/galerieImage/forms/Galerie.php:83
+msgid "Check to start automatically the slideshow"
+msgstr "Cocher pour démarrer automatiquement le diaporama"
+
+#: current_version/application/modules/galerieImage/forms/Image.php:14
+msgid "Select your image"
+msgstr "Selectionnez votre image"
+
+#: current_version/application/modules/galerieImage/forms/Image.php:19
+msgid "Add link to the image ?"
+msgstr "Ajouter un lien sur l'image"
+
+#: current_version/application/modules/galerieImage/forms/Image.php:66
+msgid "Image description"
+msgstr "Description de l'image"
+
+#: current_version/application/modules/galerieImage/forms/Image.php:73
+msgid "Background Color of the image"
+msgstr "Couleur de fond de l'image"
+
+#: current_version/application/modules/galerieImage/forms/Image.php:77
+msgid "Permanent image?"
+msgstr "Image permanente ?"
+
+#: current_version/application/modules/galerieImage/forms/Image.php:89
+msgid "Deactivation Date"
+msgstr "Date de désactivation"
+
+#: current_version/application/modules/galerieImage/controllers/BackController.php:138
+msgid "Galerie created"
+msgstr "Galerie créée"
+
+#: current_version/application/modules/galerieImage/controllers/BackController.php:224
+msgid "Galerie saved"
+msgstr "Galerie enregistrée"
+
+#: current_version/application/modules/galerieImage/controllers/BackController.php:342
+msgid "Galerie deleted"
+msgstr "Galerie supprimée"
+
+#: current_version/application/modules/sitemap/controllers/BackController.php:35
+msgid "Sitemap updated"
+msgstr "Plan du site mis à jour"
+
+#: current_version/application/modules/contact/forms/ContactConfiguration.php:18
+msgid "Adresses mails destinataires"
+msgstr ""
+
+#: current_version/application/modules/contact/forms/ContactConfiguration.php:19
+#: current_version/application/modules/contact/forms/ContactConfiguration.php:24
+msgid "Séparé par des points virgules"
+msgstr ""
+
+#: current_version/application/modules/contact/forms/ContactConfiguration.php:23
+msgid "Adresses mails Cci"
+msgstr ""
+
+#: current_version/application/modules/contact/forms/ContactConfiguration.php:28
+msgid "Content"
+msgstr "Contenu"
+
+#: current_version/application/modules/contact/controllers/AjaxController.php:44
+#: current_version/application/modules/contact/controllers/FrontController.php:59
+msgid "No email is configure for this form"
+msgstr "Aucun email n'est configuré pour ce formulaire"
+
+#: current_version/application/modules/contact/controllers/AjaxController.php:83
+#, fuzzy
+msgid "Error send mail"
+msgstr "Votre email"
+
+#: current_version/application/modules/contact/controllers/AjaxController.php:89
+msgid "This form contains errors"
+msgstr "Le formulaire contient des erreurs"
+
+#: current_version/application/modules/contact/controllers/AjaxController.php:92
+msgid "This type form don't available to bloc"
+msgstr ""
+
+#: current_version/application/modules/contact/controllers/AjaxController.php:95
+msgid "This type form don't exist"
+msgstr "Ce type de formulaire de contact n'existe pas"
+
+#: current_version/application/modules/contact/controllers/FrontController.php:21
+msgid "This contact form type doesn't exist"
+msgstr "Ce type de formulaire de contact n'existe pas"
+
+#: current_version/application/modules/contact/controllers/FrontController.php:24
+#, fuzzy
+msgid "This contact form type, xml doesn't exist"
+msgstr "Ce type de formulaire de contact n'existe pas"
+
+#: current_version/application/modules/contact/controllers/FrontController.php:31
+#, fuzzy
+msgid "This contact form type not available to page"
+msgstr "Ce type de formulaire de contact n'existe pas"
+
+#: current_version/application/modules/menu/models/DbTable/Menu.php:28
+#, fuzzy
+msgid "Missing name columns"
+msgstr "Id manquant"
+
+#: current_version/application/modules/menu/forms/Folder.php:29
+msgid "Link first child"
+msgstr "Lien du premier enfant"
+
+#: current_version/application/modules/menu/forms/Folder.php:29
+msgid "No link"
+msgstr "Pas de lien"
+
+#: current_version/application/modules/menu/forms/Item.php:154
+msgid "Class CSS"
+msgstr "Classe CSS"
+
+#: current_version/application/modules/menu/objects/Menu.php:56
+#: current_version/application/modules/menu/objects/Menu.php:320
+#: current_version/application/modules/menu/objects/Item.php:51
+#: current_version/application/modules/menu/objects/Item.php:246
+msgid "ID invalid"
+msgstr "Identifiant invalide"
+
+#: current_version/application/modules/menu/objects/Item.php:67
+msgid "Unable to load content item"
+msgstr "Impossible de charger le contenu de l'élement"
+
+#: current_version/application/modules/menu/controllers/BackController.php:600
+#, fuzzy
+msgid "Missing datas from menu"
+msgstr "Paramètre manquant"
+
+#: current_version/application/modules/menu/controllers/BackController.php:864
+#, fuzzy
+msgid "menu item deleted"
+msgstr "Menu supprimé"
+
+#: current_version/library/CMS/Bloc/Abstract.php:240
+msgid "Template admin don't exist to this bloc"
+msgstr "Le template Admin du bloc n'existe pas"
+
+#: current_version/library/CMS/Bloc/ParentForm.php:22
+msgid "Bloc title"
+msgstr "Titre du bloc"
+
+#: current_version/library/CMS/Bloc/ParentForm.php:27
+msgid "Decorator"
+msgstr "Décorateur"
+
+#: current_version/library/CMS/Bloc/ParentForm.php:28
+msgid "Your bloc design"
+msgstr "Design du bloc"
+
+#: current_version/library/CMS/Bloc/ParentForm.php:30
+msgid "Common"
+msgstr "Commun"
+
+#: current_version/library/CMS/Bloc/ParentForm.php:34
+msgid "Specific"
+msgstr "Spécifique"
+
+#: current_version/library/CMS/Bloc/ParentForm.php:44
+msgid "Theme of your bloc"
+msgstr "Thème de votre bloc"
+
+#: current_version/library/CMS/Bloc/ParentForm.php:77
+msgid "CSS class"
+msgstr "Classe CSS"
+
+#: current_version/library/CMS/Bloc/ParentForm.php:78
+msgid "your bloc class css"
+msgstr "Classe CSS de votre bloc"
+
+#: current_version/library/CMS/Application/Paginator.php:116
+msgid "Paginator route param is missing"
+msgstr ""
+
+#: current_version/library/CMS/Acl/Back.php:73
+msgid "missing parameter"
+msgstr "Paramètre manquant"
+
+#: current_version/library/CMS/Acl/Back.php:124
+msgid "Permission name not match"
+msgstr "Nom de permision sans correspondance"
+
+#: current_version/library/CMS/Acl/Back.php:164
+msgid "Permission name posted not match"
+msgstr "Nom de permision posté sans correspondance"
+
+#: current_version/library/CMS/Acl/Back.php:197
+msgid "Default ACL not exist"
+msgstr "ACL par defaut inexistant"
+
+#: current_version/library/CMS/Acl/User.php:110
+msgid "group 'Membres' doesn't exists."
+msgstr "Le groupe 'Membre' n'existe pas"
+
+#: current_version/library/CMS/Controller/Plugin/LoadSkin.php:137
+msgid "No back skin set or skin not found"
+msgstr ""
+
+#: current_version/library/CMS/Controller/Plugin/LoadSkin.php:151
+msgid "No front skin set or skin not found"
+msgstr ""
+
+#: current_version/library/CMS/Page/Current.php:21
+msgid "Instance of CMS_Page_Object already exist, please call 'getInstance'"
+msgstr "Une instance de CMS_Page_Object existe déjà. Veuillez appeller 'getInstance'."
+
+#: current_version/library/CMS/Form/Element/Slider.php:44
+msgid "An error occurred : incoherent value"
+msgstr "Une erreur s'est produite : valeur incohérente"
+
+#: current_version/library/CMS/Content/FilterForm.php:61
+msgid "Published"
+msgstr "Publié"
+
+#: current_version/library/CMS/Content/FilterForm.php:62
+msgid "Drafted"
+msgstr "Brouillon"
+
+#: current_version/library/CMS/Content/FilterForm.php:93
+msgid "Select category"
+msgstr "Sélectionner la catégorie"
+
+#: current_version/library/CMS/Api/Abstract.php:44
+#, fuzzy
+msgid "Invalid param"
+msgstr "Paramètre invalide"
+
+#: current_version/application/lang/tradTpl.c:1
+msgid "View job"
+msgstr "Voir l'offre"
+
+#: current_version/application/lang/tradTpl.c:2
+#: current_version/application/lang/tradTpl.c:4
+#: current_version/application/lang/tradTpl.c:25
+#: current_version/application/lang/tradTpl.c:27
+#: current_version/application/lang/tradTpl.c:112
+#: current_version/application/lang/tradTpl.c:115
+#: current_version/application/lang/tradTpl.c:184
+#: current_version/application/lang/tradTpl.c:185
+#: current_version/application/lang/tradTpl.c:454
+#: current_version/application/lang/tradTpl.c:580
+msgid "Read more"
+msgstr "Lire la suite"
+
+#: current_version/application/lang/tradTpl.c:3
+msgid "No job to display"
+msgstr "Pas d'annonce à afficher"
+
+#: current_version/application/lang/tradTpl.c:5
+msgid "No news to display"
+msgstr "Pas d'actualité à afficher"
+
+#: current_version/application/lang/tradTpl.c:6
+msgid "Add tab"
+msgstr "Ajouter un onglet"
+
+#: current_version/application/lang/tradTpl.c:8
+#: current_version/application/lang/tradTpl.c:17
+msgid "Tab title"
+msgstr "Titre de l'onglet"
+
+#: current_version/application/lang/tradTpl.c:9
+#: current_version/application/lang/tradTpl.c:18
+msgid "Delete tab"
+msgstr "Supprimer l'onglet"
+
+#: current_version/application/lang/tradTpl.c:10
+#: current_version/application/lang/tradTpl.c:19
+msgid "Add block"
+msgstr "Ajouter un bloc"
+
+#: current_version/application/lang/tradTpl.c:12
+#: current_version/application/lang/tradTpl.c:21
+msgid "Tab CSS class"
+msgstr "Classe CSS de l'onglet"
+
+#: current_version/application/lang/tradTpl.c:13
+#: current_version/application/lang/tradTpl.c:22
+msgid "Associated blocks"
+msgstr "Blocs associés"
+
+#: current_version/application/lang/tradTpl.c:14
+#: current_version/application/lang/tradTpl.c:15
+msgid "Delete block"
+msgstr "Supprimer le bloc"
+
+#: current_version/application/lang/tradTpl.c:23
+msgid "My selection"
+msgstr "Ma sélection"
+
+#: current_version/application/lang/tradTpl.c:24
+msgid "My account"
+msgstr "Mon compte"
+
+#: current_version/application/lang/tradTpl.c:26
+msgid "Date add"
+msgstr "Date d'ajout"
+
+#: current_version/application/lang/tradTpl.c:28
+msgid "No activities to display"
+msgstr "Aucune activité à afficher"
+
+#: current_version/application/lang/tradTpl.c:29
+#, fuzzy
+msgid "Advertising not found"
+msgstr "Permission introuvable"
+
+#: current_version/application/lang/tradTpl.c:30
+msgid "Search"
+msgstr "Recherche"
+
+#: current_version/application/lang/tradTpl.c:31
+msgid "Auto"
+msgstr "Auto"
+
+#: current_version/application/lang/tradTpl.c:32
+msgid "Selectup XML Flux Management"
+msgstr "Gestion du flux Select'up"
+
+#: current_version/application/lang/tradTpl.c:33
+msgid "Selectup XML Flux State"
+msgstr "Etat du flux Selectu'up"
+
+#: current_version/application/lang/tradTpl.c:34
+#: current_version/application/lang/tradTpl.c:390
+msgid "Xml update history (last 20 lines)"
+msgstr "Historique des mises à jour XML (20 dernières lignes)"
+
+#: current_version/application/lang/tradTpl.c:35
+#: current_version/application/lang/tradTpl.c:391
+msgid "Update Database from XML Content"
+msgstr "Mettre à jour la BDD depuis le contenu XML"
+
+#: current_version/application/lang/tradTpl.c:36
+msgid "Selectup Image cache"
+msgstr "Cache images Select'up"
+
+#: current_version/application/lang/tradTpl.c:37
+msgid " images in database and "
+msgstr "images en base de données e"
+
+#: current_version/application/lang/tradTpl.c:38
+msgid "in local cache"
+msgstr "en cache"
+
+#: current_version/application/lang/tradTpl.c:39
+msgid "Images update history (last 20 lines)"
+msgstr "Historique des mises à jour des images (20 dernières lignes)"
+
+#: current_version/application/lang/tradTpl.c:40
+msgid "Update Image Cache from Database"
+msgstr "Mettre à jour le cache des images depuis la base de données"
+
+#: current_version/application/lang/tradTpl.c:41
+msgid "Iframes configuration"
+msgstr "Configuration des iframes"
+
+#: current_version/application/lang/tradTpl.c:42
+msgid "Configure your iframe links"
+msgstr "Configuration des liens des iframes"
+
+#: current_version/application/lang/tradTpl.c:43
+msgid "Car Loans Financing"
+msgstr "Financement "
+
+#: current_version/application/lang/tradTpl.c:44
+msgid "Choose your car loans financing"
+msgstr "Choisissez votre financière"
+
+#: current_version/application/lang/tradTpl.c:45
+msgid "Type :"
+msgstr "Type :"
+
+#: current_version/application/lang/tradTpl.c:46
+msgid "No loans"
+msgstr "Pas de crédit"
+
+#: current_version/application/lang/tradTpl.c:48
+#: current_version/application/lang/tradTpl.c:59
+#: current_version/application/lang/tradTpl.c:107
+#: current_version/application/lang/tradTpl.c:146
+#: current_version/application/lang/tradTpl.c:153
+#: current_version/application/lang/tradTpl.c:168
+#: current_version/application/lang/tradTpl.c:179
+#: current_version/application/lang/tradTpl.c:273
+#: current_version/application/lang/tradTpl.c:298
+#: current_version/application/lang/tradTpl.c:364
+#: current_version/application/lang/tradTpl.c:368
+#: current_version/application/lang/tradTpl.c:382
+#: current_version/application/lang/tradTpl.c:394
+#: current_version/application/lang/tradTpl.c:408
+#: current_version/application/lang/tradTpl.c:447
+#: current_version/application/lang/tradTpl.c:476
+#: current_version/application/lang/tradTpl.c:514
+#: current_version/application/lang/tradTpl.c:521
+#: current_version/application/lang/tradTpl.c:545
+#: current_version/application/lang/tradTpl.c:578
+#: current_version/application/lang/tradTpl.c:591
+#: current_version/application/lang/tradTpl.c:630
+#: current_version/application/lang/tradTpl.c:708
+#: current_version/application/lang/tradTpl.c:716
+msgid "Options"
+msgstr "Options"
+
+#: current_version/application/lang/tradTpl.c:49
+#: current_version/application/lang/tradTpl.c:60
+#: current_version/application/lang/tradTpl.c:108
+#: current_version/application/lang/tradTpl.c:147
+#: current_version/application/lang/tradTpl.c:180
+#: current_version/application/lang/tradTpl.c:383
+#: current_version/application/lang/tradTpl.c:395
+#: current_version/application/lang/tradTpl.c:409
+#: current_version/application/lang/tradTpl.c:631
+msgid "Choose your options"
+msgstr "Choisissez vos options"
+
+#: current_version/application/lang/tradTpl.c:50
+#: current_version/application/lang/tradTpl.c:61
+#: current_version/application/lang/tradTpl.c:109
+#: current_version/application/lang/tradTpl.c:148
+#: current_version/application/lang/tradTpl.c:154
+#: current_version/application/lang/tradTpl.c:169
+#: current_version/application/lang/tradTpl.c:181
+#: current_version/application/lang/tradTpl.c:275
+#: current_version/application/lang/tradTpl.c:299
+#: current_version/application/lang/tradTpl.c:365
+#: current_version/application/lang/tradTpl.c:369
+#: current_version/application/lang/tradTpl.c:384
+#: current_version/application/lang/tradTpl.c:396
+#: current_version/application/lang/tradTpl.c:410
+#: current_version/application/lang/tradTpl.c:448
+#: current_version/application/lang/tradTpl.c:477
+#: current_version/application/lang/tradTpl.c:515
+#: current_version/application/lang/tradTpl.c:522
+#: current_version/application/lang/tradTpl.c:546
+#: current_version/application/lang/tradTpl.c:579
+#: current_version/application/lang/tradTpl.c:592
+#: current_version/application/lang/tradTpl.c:632
+#: current_version/application/lang/tradTpl.c:710
+#: current_version/application/lang/tradTpl.c:717
+msgid "Module Rights"
+msgstr "Module des droits d'utilisation"
+
+#: current_version/application/lang/tradTpl.c:51
+msgid "Forms"
+msgstr "Formulaires"
+
+#: current_version/application/lang/tradTpl.c:52
+msgid "Configuration of your forms"
+msgstr "Configuration de vos formulaires"
+
+#: current_version/application/lang/tradTpl.c:53
+msgid "Form \"contact\""
+msgstr "Formulaire de Contact"
+
+#: current_version/application/lang/tradTpl.c:54
+msgid "Configure the \"contact\" form"
+msgstr "Configurer le formulaire de contact"
+
+#: current_version/application/lang/tradTpl.c:55
+msgid "Form \"Send Friend\""
+msgstr "Formulaire \"Envoyer à un ami\""
+
+#: current_version/application/lang/tradTpl.c:56
+msgid "Configure the \"Send Friend\" form"
+msgstr "Configurer le formulaire \"envoyer à un ami\""
+
+#: current_version/application/lang/tradTpl.c:57
+msgid "Form \"Vehicle Card\""
+msgstr "Formulaire de la fiche véhicule"
+
+#: current_version/application/lang/tradTpl.c:58
+msgid "Configure the \"Card Vehicle\" form"
+msgstr "Configurer le formulaire de la fiche véhicule"
+
+#: current_version/application/lang/tradTpl.c:62
+#: current_version/application/lang/tradTpl.c:70
+msgid "Create new search page"
+msgstr "Créer une nouvelle page de recherche"
+
+#: current_version/application/lang/tradTpl.c:63
+#: current_version/application/lang/tradTpl.c:71
+msgid "Creation of a new search page"
+msgstr "Création d'une nouvelle page de recherche"
+
+#: current_version/application/lang/tradTpl.c:64
+#: current_version/application/lang/tradTpl.c:72
+msgid "Top content"
+msgstr "Contenu haut"
+
+#: current_version/application/lang/tradTpl.c:65
+#: current_version/application/lang/tradTpl.c:73
+msgid "Enter the content of the top of the page"
+msgstr "Entrez le contenu du haut de la page"
+
+#: current_version/application/lang/tradTpl.c:66
+#: current_version/application/lang/tradTpl.c:74
+msgid "Vehicule search"
+msgstr "Recherche de véhicules"
+
+#: current_version/application/lang/tradTpl.c:67
+#: current_version/application/lang/tradTpl.c:75
+msgid "Configure the search"
+msgstr "Configurer la recherche"
+
+#: current_version/application/lang/tradTpl.c:68
+#: current_version/application/lang/tradTpl.c:76
+msgid "Bottom content"
+msgstr "Contenu bas"
+
+#: current_version/application/lang/tradTpl.c:69
+#: current_version/application/lang/tradTpl.c:77
+msgid "Enter the content of the bottom of the page"
+msgstr "Entrez le contenu du bas de la page"
+
+#: current_version/application/lang/tradTpl.c:78
+#: current_version/application/lang/tradTpl.c:80
+#: current_version/application/lang/tradTpl.c:82
+#: current_version/application/lang/tradTpl.c:86
+#: current_version/application/lang/tradTpl.c:88
+#: current_version/application/lang/tradTpl.c:90
+#: current_version/application/lang/tradTpl.c:597
+#: current_version/application/lang/tradTpl.c:599
+#: current_version/application/lang/tradTpl.c:601
+#: current_version/application/lang/tradTpl.c:605
+#: current_version/application/lang/tradTpl.c:607
+#: current_version/application/lang/tradTpl.c:609
+#: current_version/application/lang/tradTpl.c:650
+#: current_version/application/lang/tradTpl.c:652
+#: current_version/application/lang/tradTpl.c:711
+#: current_version/application/lang/tradTpl.c:713
+msgid "Hide this zone"
+msgstr "Cacher cette zone"
+
+#: current_version/application/lang/tradTpl.c:79
+#: current_version/application/lang/tradTpl.c:81
+#: current_version/application/lang/tradTpl.c:83
+#: current_version/application/lang/tradTpl.c:87
+#: current_version/application/lang/tradTpl.c:89
+#: current_version/application/lang/tradTpl.c:91
+#: current_version/application/lang/tradTpl.c:598
+#: current_version/application/lang/tradTpl.c:600
+#: current_version/application/lang/tradTpl.c:602
+#: current_version/application/lang/tradTpl.c:606
+#: current_version/application/lang/tradTpl.c:608
+#: current_version/application/lang/tradTpl.c:610
+#: current_version/application/lang/tradTpl.c:651
+#: current_version/application/lang/tradTpl.c:653
+#: current_version/application/lang/tradTpl.c:712
+#: current_version/application/lang/tradTpl.c:714
+msgid "Show this zone"
+msgstr "Afficher cette zone"
+
+#: current_version/application/lang/tradTpl.c:84
+#: current_version/application/lang/tradTpl.c:92
+#: current_version/application/lang/tradTpl.c:603
+#: current_version/application/lang/tradTpl.c:611
+#, fuzzy
+msgid "Permissions"
+msgstr "Version"
+
+#: current_version/application/lang/tradTpl.c:85
+#: current_version/application/lang/tradTpl.c:93
+#: current_version/application/lang/tradTpl.c:604
+#: current_version/application/lang/tradTpl.c:612
+#, fuzzy
+msgid "Manage permissions"
+msgstr "Gérer les traductions"
+
+#: current_version/application/lang/tradTpl.c:94
+#: current_version/application/lang/tradTpl.c:95
+#: current_version/application/lang/tradTpl.c:96
+#: current_version/application/lang/tradTpl.c:97
+msgid "Page Selectup"
+msgstr "Page Selectup"
+
+#: current_version/application/lang/tradTpl.c:98
+msgid "Add page selectup"
+msgstr "Ajouter une page de pré-recherche"
+
+#: current_version/application/lang/tradTpl.c:99
+msgid "Create a new pre search page selectup"
+msgstr "Créer une nouvelle page de pré-recherche"
+
+#: current_version/application/lang/tradTpl.c:100
+#: current_version/application/lang/tradTpl.c:134
+#: current_version/application/lang/tradTpl.c:421
+#: current_version/application/lang/tradTpl.c:466
+#: current_version/application/lang/tradTpl.c:541
+#: current_version/application/lang/tradTpl.c:561
+#: current_version/application/lang/tradTpl.c:619
+msgid "Add"
+msgstr "Ajouter"
+
+#: current_version/application/lang/tradTpl.c:102
+#: current_version/application/lang/tradTpl.c:139
+#: current_version/application/lang/tradTpl.c:209
+#: current_version/application/lang/tradTpl.c:281
+#: current_version/application/lang/tradTpl.c:425
+#: current_version/application/lang/tradTpl.c:441
+#: current_version/application/lang/tradTpl.c:471
+#: current_version/application/lang/tradTpl.c:564
+#: current_version/application/lang/tradTpl.c:624
+msgid "Actions"
+msgstr "Actions"
+
+#: current_version/application/lang/tradTpl.c:103
+msgid "Are you sure to delete this page ?"
+msgstr "Voulez-vous vraiment effacer cette page ?"
+
+#: current_version/application/lang/tradTpl.c:104
+#: current_version/application/lang/tradTpl.c:143
+#: current_version/application/lang/tradTpl.c:247
+#: current_version/application/lang/tradTpl.c:263
+#: current_version/application/lang/tradTpl.c:265
+#: current_version/application/lang/tradTpl.c:266
+#: current_version/application/lang/tradTpl.c:268
+#: current_version/application/lang/tradTpl.c:270
+#: current_version/application/lang/tradTpl.c:283
+#: current_version/application/lang/tradTpl.c:295
+#: current_version/application/lang/tradTpl.c:380
+#: current_version/application/lang/tradTpl.c:404
+#: current_version/application/lang/tradTpl.c:406
+#: current_version/application/lang/tradTpl.c:428
+#: current_version/application/lang/tradTpl.c:444
+#: current_version/application/lang/tradTpl.c:473
+#: current_version/application/lang/tradTpl.c:495
+#: current_version/application/lang/tradTpl.c:504
+#: current_version/application/lang/tradTpl.c:511
+#: current_version/application/lang/tradTpl.c:566
+#: current_version/application/lang/tradTpl.c:628
+#: current_version/application/lang/tradTpl.c:674
+#: current_version/application/lang/tradTpl.c:691
+#: current_version/application/lang/tradTpl.c:693
+#: current_version/application/lang/tradTpl.c:698
+#: current_version/application/lang/tradTpl.c:700
+#: current_version/application/lang/tradTpl.c:701
+#: current_version/application/lang/tradTpl.c:703
+#: current_version/application/lang/tradTpl.c:705
+msgid "Delete"
+msgstr "Supprimer"
+
+#: current_version/application/lang/tradTpl.c:105
+#: current_version/application/lang/tradTpl.c:144
+#: current_version/application/lang/tradTpl.c:248
+#: current_version/application/lang/tradTpl.c:264
+#: current_version/application/lang/tradTpl.c:269
+#: current_version/application/lang/tradTpl.c:284
+#: current_version/application/lang/tradTpl.c:296
+#: current_version/application/lang/tradTpl.c:333
+#: current_version/application/lang/tradTpl.c:338
+#: current_version/application/lang/tradTpl.c:381
+#: current_version/application/lang/tradTpl.c:405
+#: current_version/application/lang/tradTpl.c:407
+#: current_version/application/lang/tradTpl.c:429
+#: current_version/application/lang/tradTpl.c:432
+#: current_version/application/lang/tradTpl.c:435
+#: current_version/application/lang/tradTpl.c:445
+#: current_version/application/lang/tradTpl.c:474
+#: current_version/application/lang/tradTpl.c:496
+#: current_version/application/lang/tradTpl.c:505
+#: current_version/application/lang/tradTpl.c:512
+#: current_version/application/lang/tradTpl.c:567
+#: current_version/application/lang/tradTpl.c:629
+#: current_version/application/lang/tradTpl.c:675
+#: current_version/application/lang/tradTpl.c:692
+#: current_version/application/lang/tradTpl.c:699
+#: current_version/application/lang/tradTpl.c:704
+msgid "Cancel"
+msgstr "Annuler"
+
+#: current_version/application/lang/tradTpl.c:106
+msgid "No page to display ..."
+msgstr "Pas de page à afficher"
+
+#: current_version/application/lang/tradTpl.c:110
+#: current_version/application/lang/tradTpl.c:113
+msgid "Posted by"
+msgstr "Posté par"
+
+#: current_version/application/lang/tradTpl.c:111
+#: current_version/application/lang/tradTpl.c:114
+msgid "in"
+msgstr "dans"
+
+#: current_version/application/lang/tradTpl.c:116
+#: current_version/application/lang/tradTpl.c:124
+msgid "Create new multi-site document"
+msgstr "Créer une nouvelle page multi-site"
+
+#: current_version/application/lang/tradTpl.c:117
+#: current_version/application/lang/tradTpl.c:125
+msgid "Creation of a new multi-site document"
+msgstr "Création d'une nouvelle page multi-site"
+
+#: current_version/application/lang/tradTpl.c:118
+#: current_version/application/lang/tradTpl.c:595
+msgid "Select a type"
+msgstr "Selectionnez un modèle"
+
+#: current_version/application/lang/tradTpl.c:119
+msgid "Select a type for your new multi-site document"
+msgstr "Selectionnez un modèle pour votre page multi-site"
+
+#: current_version/application/lang/tradTpl.c:120
+msgid "Update a multi-site document"
+msgstr "Mettre à jour une page multi-site"
+
+#: current_version/application/lang/tradTpl.c:121
+msgid "Update a multi-site document from model"
+msgstr "Mettre à jour une page multi-site depuis le modèle"
+
+#: current_version/application/lang/tradTpl.c:122
+msgid "The informations"
+msgstr "Les informations"
+
+#: current_version/application/lang/tradTpl.c:123
+msgid "Update the informations"
+msgstr "Mettre à jour les informations"
+
+#: current_version/application/lang/tradTpl.c:126
+#: current_version/application/lang/tradTpl.c:633
+#: current_version/application/lang/tradTpl.c:635
+msgid "Your future document"
+msgstr "Votre future page"
+
+#: current_version/application/lang/tradTpl.c:127
+#: current_version/application/lang/tradTpl.c:634
+#: current_version/application/lang/tradTpl.c:636
+msgid "Enter the informations"
+msgstr "Entrez les informations"
+
+#: current_version/application/lang/tradTpl.c:128
+msgid "Multi-site documents manager"
+msgstr "Gestion des pages multi-sites"
+
+#: current_version/application/lang/tradTpl.c:129
+msgid "Manage your multi-site documents"
+msgstr "Gerez vos pages multi-sites"
+
+#: current_version/application/lang/tradTpl.c:130
+msgid "List of your multi-site documents"
+msgstr "Liste de vos pages multi-sites"
+
+#: current_version/application/lang/tradTpl.c:131
+msgid "All multi-site documents of your website"
+msgstr "Toutes les pages multi-sites de votre site"
+
+#: current_version/application/lang/tradTpl.c:132
+#: current_version/application/lang/tradTpl.c:617
+msgid "Add document"
+msgstr "Ajouter une page"
+
+#: current_version/application/lang/tradTpl.c:133
+msgid "Create your document"
+msgstr "Créez votre document"
+
+#: current_version/application/lang/tradTpl.c:138
+#: current_version/application/lang/tradTpl.c:207
+msgid "Date"
+msgstr "Date"
+
+#: current_version/application/lang/tradTpl.c:140
+msgid "publish"
+msgstr "Publier"
+
+#: current_version/application/lang/tradTpl.c:142
+#: current_version/application/lang/tradTpl.c:627
+msgid "Are you sure to delete this document ?"
+msgstr "Vous voulez vraiment effacer cette page ?"
+
+#: current_version/application/lang/tradTpl.c:145
+msgid "No documents to display ..."
+msgstr "Pas de pages à afficher"
+
+#: current_version/application/lang/tradTpl.c:149
+#: current_version/application/lang/tradTpl.c:150
+#, fuzzy
+msgid "FavIcon Manager"
+msgstr "Gestion des thèmes"
+
+#: current_version/application/lang/tradTpl.c:151
+#, fuzzy
+msgid "Active Skin"
+msgstr "Actif"
+
+#: current_version/application/lang/tradTpl.c:152
+msgid "Active Sub-Domain"
+msgstr "Sous-domaine actif"
+
+#: current_version/application/lang/tradTpl.c:155
+#: current_version/application/lang/tradTpl.c:156
+#: current_version/application/lang/tradTpl.c:157
+#: current_version/application/lang/tradTpl.c:158
+#: current_version/application/lang/tradTpl.c:526
+msgid "Skins Manager"
+msgstr "Gestion des thèmes"
+
+#: current_version/application/lang/tradTpl.c:160
+msgid "FrontOffice Skin"
+msgstr "Thème FrontOffice"
+
+#: current_version/application/lang/tradTpl.c:161
+msgid "BackOffice Skin"
+msgstr "Thème BackOffice"
+
+#: current_version/application/lang/tradTpl.c:162
+msgid "Supported Devices"
+msgstr "Periphériques supportés"
+
+#: current_version/application/lang/tradTpl.c:163
+#: current_version/application/lang/tradTpl.c:165
+#: current_version/application/lang/tradTpl.c:357
+msgid "Active"
+msgstr "Actif"
+
+#: current_version/application/lang/tradTpl.c:164
+#: current_version/application/lang/tradTpl.c:166
+#: current_version/application/lang/tradTpl.c:493
+msgid "Activate"
+msgstr "Activer"
+
+#: current_version/application/lang/tradTpl.c:167
+msgid "Standard Browser"
+msgstr "Navigateur Standard"
+
+#: current_version/application/lang/tradTpl.c:170
+msgid "Manage your templates"
+msgstr "Gérer vos modèles de disposition"
+
+#: current_version/application/lang/tradTpl.c:171
+msgid "Add, edit and delete your templates and blocs"
+msgstr "Ajouter, éditer et supprimer vos modèles de disposition"
+
+#: current_version/application/lang/tradTpl.c:173
+msgid "Templates management"
+msgstr "Gestion des modèles de disposition"
+
+#: current_version/application/lang/tradTpl.c:174
+msgid "Create new bloc"
+msgstr "Créer un nouveau bloc"
+
+#: current_version/application/lang/tradTpl.c:175
+msgid "List of blocks avaibles"
+msgstr "Liste des blocs disponibles"
+
+#: current_version/application/lang/tradTpl.c:177
+#, fuzzy
+msgid "$layout->content"
+msgstr "Contenu bas"
+
+#: current_version/application/lang/tradTpl.c:178
+msgid "No bloc"
+msgstr "Aucun bloc"
+
+#: current_version/application/lang/tradTpl.c:182
+msgid "Create template"
+msgstr "Créer un nouveau modèle"
+
+#: current_version/application/lang/tradTpl.c:183
+#, fuzzy
+msgid "Informations"
+msgstr "Les informations"
+
+#: current_version/application/lang/tradTpl.c:186
+msgid "MOD_ARTICLES_BACK_CREATE_TITLE1"
+msgstr "Créer un article"
+
+#: current_version/application/lang/tradTpl.c:187
+msgid "MOD_ARTICLES_BACK_CREATE_TITLE1_DESC"
+msgstr "Création d'un nouvel article"
+
+#: current_version/application/lang/tradTpl.c:188
+#: current_version/application/lang/tradTpl.c:196
+msgid "MOD_ARTICLES_BACK_CREATE_ZONE1"
+msgstr "Type"
+
+#: current_version/application/lang/tradTpl.c:189
+#: current_version/application/lang/tradTpl.c:197
+msgid "MOD_ARTICLES_BACK_CREATE_ZONE1_DESC"
+msgstr "Choisissez le type de votre article"
+
+#: current_version/application/lang/tradTpl.c:190
+msgid "MOD_ARTICLES_BACK_EDIT_TITLE1"
+msgstr "Éditer un article"
+
+#: current_version/application/lang/tradTpl.c:191
+msgid "MOD_ARTICLES_BACK_EDIT_TITLE1_DESC"
+msgstr "Éditer un article existant"
+
+#: current_version/application/lang/tradTpl.c:192
+msgid "MOD_ARTICLES_BACK_EDIT_ZONE1"
+msgstr "Informations"
+
+#: current_version/application/lang/tradTpl.c:193
+msgid "MOD_ARTICLES_BACK_EDIT_ZONE1_DESC"
+msgstr "Modifiez les informations de votre article"
+
+#: current_version/application/lang/tradTpl.c:194
+msgid "MOD_ARTICLES_BACK_CREATEDOC_TITLE1"
+msgstr "Créer un article"
+
+#: current_version/application/lang/tradTpl.c:195
+msgid "MOD_ARTICLES_BACK_CREATEDOC_TITLE1_DESC"
+msgstr "Création d'un nouvel article"
+
+#: current_version/application/lang/tradTpl.c:198
+msgid "MOD_ARTICLES_BACK_INDEX_TITLE1"
+msgstr "Mes Articles"
+
+#: current_version/application/lang/tradTpl.c:199
+msgid "MOD_ARTICLES_BACK_INDEX_TITLE1_DESC"
+msgstr "GÉRER MES ARTICLES"
+
+#: current_version/application/lang/tradTpl.c:200
+msgid "MOD_ARTICLES_BACK_INDEX_ZONE1"
+msgstr "Liste de vos articles"
+
+#: current_version/application/lang/tradTpl.c:201
+msgid "MOD_ARTICLES_BACK_INDEX_ZONE1-DESC"
+msgstr "Gérer vos articles"
+
+#: current_version/application/lang/tradTpl.c:202
+msgid "MOD_ARTICLES_BACK_INDEX_BOUTON-ADD_TITLE"
+msgstr "Ajouter un article"
+
+#: current_version/application/lang/tradTpl.c:203
+msgid "MOD_ARTICLES_BACK_INDEX_BOUTON-ADD_TITLE-DESC"
+msgstr "Créer un nouvel article"
+
+#: current_version/application/lang/tradTpl.c:204
+msgid "MOD_ARTICLES_BACK_INDEX_BOUTON-ADD"
+msgstr "Ajouter"
+
+#: current_version/application/lang/tradTpl.c:210
+msgid "MOD_ARTICLES UNPUBLISH THIS ARTICLE"
+msgstr "Dépublier l'article"
+
+#: current_version/application/lang/tradTpl.c:211
+msgid "PUBLISH"
+msgstr "Publié"
+
+#: current_version/application/lang/tradTpl.c:212
+msgid "MOD_ARTICLES PUBLISH THIS ARTICLE"
+msgstr "Publier l'article"
+
+#: current_version/application/lang/tradTpl.c:213
+msgid "DRAFT"
+msgstr "Brouillon"
+
+#: current_version/application/lang/tradTpl.c:214
+msgid "MOD_ARTICLES_BACK_INDEX ARE YOU SUR YOU WANT DELETE ARTICLE ?"
+msgstr "Êtes-vous sûr de vouloir supprimer cet article ?"
+
+#: current_version/application/lang/tradTpl.c:215
+#: current_version/application/lang/tradTpl.c:322
+msgid "DELETE"
+msgstr "Supprimer"
+
+#: current_version/application/lang/tradTpl.c:216
+#: current_version/application/lang/tradTpl.c:323
+msgid "CANCEL"
+msgstr "Annuler"
+
+#: current_version/application/lang/tradTpl.c:217
+msgid "MOD_ARTICLES NO ARTICLE TO DISPLAY"
+msgstr "Aucun article à afficher"
+
+#: current_version/application/lang/tradTpl.c:218
+#: current_version/application/lang/tradTpl.c:325
+#: current_version/application/lang/tradTpl.c:568
+msgid "OPTIONS"
+msgstr "Options"
+
+#: current_version/application/lang/tradTpl.c:219
+#: current_version/application/lang/tradTpl.c:326
+#: current_version/application/lang/tradTpl.c:569
+msgid "CHOOSE OPTIONS"
+msgstr "Choisissez vos options"
+
+#: current_version/application/lang/tradTpl.c:220
+#: current_version/application/lang/tradTpl.c:327
+#: current_version/application/lang/tradTpl.c:570
+msgid "MODULE RIGHTS"
+msgstr "Module des droits d'utilisation"
+
+#: current_version/application/lang/tradTpl.c:221
+#: current_version/application/lang/tradTpl.c:654
+msgid "Add a new Menu Item"
+msgstr "Ajouter un nouvel élément dans le menu"
+
+#: current_version/application/lang/tradTpl.c:222
+#: current_version/application/lang/tradTpl.c:641
+msgid "Edit folder"
+msgstr "Editer le dossier"
+
+#: current_version/application/lang/tradTpl.c:223
+#: current_version/application/lang/tradTpl.c:642
+msgid "Modification of a folder"
+msgstr "Modification d'un dossier"
+
+#: current_version/application/lang/tradTpl.c:224
+msgid "Edit page"
+msgstr "Editer la page"
+
+#: current_version/application/lang/tradTpl.c:225
+msgid "Modification of a page"
+msgstr "Modification d'une page"
+
+#: current_version/application/lang/tradTpl.c:226
+#: current_version/application/lang/tradTpl.c:643
+msgid "Add a new Menu"
+msgstr "Ajouter un nouveau menu"
+
+#: current_version/application/lang/tradTpl.c:227
+#: current_version/application/lang/tradTpl.c:644
+msgid "Creation of a new menu"
+msgstr "Création d'un nouveau menu"
+
+#: current_version/application/lang/tradTpl.c:228
+#: current_version/application/lang/tradTpl.c:290
+#: current_version/application/lang/tradTpl.c:412
+#: current_version/application/lang/tradTpl.c:415
+#: current_version/application/lang/tradTpl.c:457
+#: current_version/application/lang/tradTpl.c:459
+#: current_version/application/lang/tradTpl.c:549
+#: current_version/application/lang/tradTpl.c:552
+#: current_version/application/lang/tradTpl.c:572
+#: current_version/application/lang/tradTpl.c:574
+#: current_version/application/lang/tradTpl.c:645
+#: current_version/application/lang/tradTpl.c:658
+msgid "Définition des informations"
+msgstr "Définition des informations"
+
+#: current_version/application/lang/tradTpl.c:229
+#: current_version/application/lang/tradTpl.c:646
+msgid "Edit a Menu Item"
+msgstr "Editer un élément du menu"
+
+#: current_version/application/lang/tradTpl.c:230
+msgid "Add a new page"
+msgstr "Ajouter une nouvelle page"
+
+#: current_version/application/lang/tradTpl.c:231
+msgid "Creation of a new page"
+msgstr "Création d'une nouvelle page"
+
+#: current_version/application/lang/tradTpl.c:232
+#: current_version/application/lang/tradTpl.c:659
+msgid "Add new menu"
+msgstr "Ajouter un nouveau menu"
+
+#: current_version/application/lang/tradTpl.c:233
+#: current_version/application/lang/tradTpl.c:660
+msgid "Create a new menu"
+msgstr "Créer un nouveau menu"
+
+#: current_version/application/lang/tradTpl.c:235
+#: current_version/application/lang/tradTpl.c:662
+msgid "Collapse All"
+msgstr "Replier tout"
+
+#: current_version/application/lang/tradTpl.c:236
+#: current_version/application/lang/tradTpl.c:663
+msgid "Expend All"
+msgstr "Déplier tout"
+
+#: current_version/application/lang/tradTpl.c:237
+#: current_version/application/lang/tradTpl.c:664
+msgid "Pages of your website"
+msgstr "Pages de votre site"
+
+#: current_version/application/lang/tradTpl.c:238
+#: current_version/application/lang/tradTpl.c:665
+msgid "Add, edit, delete, move"
+msgstr "Ajouter, editer, supprimer, déplacer"
+
+#: current_version/application/lang/tradTpl.c:239
+#: current_version/application/lang/tradTpl.c:240
+#: current_version/application/lang/tradTpl.c:286
+#: current_version/application/lang/tradTpl.c:648
+#: current_version/application/lang/tradTpl.c:666
+#: current_version/application/lang/tradTpl.c:667
+msgid "Add new folder"
+msgstr "Ajouter un nouveau dossier"
+
+#: current_version/application/lang/tradTpl.c:241
+#: current_version/application/lang/tradTpl.c:242
+#: current_version/application/lang/tradTpl.c:668
+#: current_version/application/lang/tradTpl.c:669
+msgid "Add new page"
+msgstr "Ajouter une nouvelle page"
+
+#: current_version/application/lang/tradTpl.c:243
+#: current_version/application/lang/tradTpl.c:244
+#: current_version/application/lang/tradTpl.c:670
+#: current_version/application/lang/tradTpl.c:671
+msgid "Edit this menu"
+msgstr "Editer ce menu"
+
+#: current_version/application/lang/tradTpl.c:245
+#: current_version/application/lang/tradTpl.c:249
+#: current_version/application/lang/tradTpl.c:672
+#: current_version/application/lang/tradTpl.c:676
+msgid "Delete this menu"
+msgstr "Effacer ce menu"
+
+#: current_version/application/lang/tradTpl.c:246
+#: current_version/application/lang/tradTpl.c:673
+msgid "Delete this menu ?"
+msgstr "Effacer ce menu ?"
+
+#: current_version/application/lang/tradTpl.c:250
+#: current_version/application/lang/tradTpl.c:256
+#: current_version/application/lang/tradTpl.c:677
+#: current_version/application/lang/tradTpl.c:683
+msgid "Edit"
+msgstr "Editer"
+
+#: current_version/application/lang/tradTpl.c:251
+#: current_version/application/lang/tradTpl.c:257
+#: current_version/application/lang/tradTpl.c:678
+#: current_version/application/lang/tradTpl.c:684
+msgid "Edit this entry"
+msgstr "Editer cette entrée"
+
+#: current_version/application/lang/tradTpl.c:252
+#: current_version/application/lang/tradTpl.c:254
+#: current_version/application/lang/tradTpl.c:681
+msgid "Insert a sub category into"
+msgstr "Insérer une sous-rubrique dans"
+
+#: current_version/application/lang/tradTpl.c:253
+#: current_version/application/lang/tradTpl.c:680
+msgid "Add a page"
+msgstr "Ajouter une page"
+
+#: current_version/application/lang/tradTpl.c:255
+#: current_version/application/lang/tradTpl.c:682
+msgid "Add a folder"
+msgstr "Ajouter un  dossier"
+
+#: current_version/application/lang/tradTpl.c:258
+#: current_version/application/lang/tradTpl.c:685
+msgid "Edit this page"
+msgstr "Editer cette page"
+
+#: current_version/application/lang/tradTpl.c:259
+#: current_version/application/lang/tradTpl.c:686
+#: current_version/application/lang/tradTpl.c:694
+msgid "Delete this entry"
+msgstr "Supprimer cette page"
+
+#: current_version/application/lang/tradTpl.c:260
+msgid "Your about to delete this entry"
+msgstr "Vous souhaitez supprimer cette page"
+
+#: current_version/application/lang/tradTpl.c:261
+msgid "Delete menu entry only"
+msgstr "Supprimer seulement l'entrée de menu"
+
+#: current_version/application/lang/tradTpl.c:262
+msgid "Delete menu entry and content associated"
+msgstr "Supprimer l'entrée de menu et son contenu associé"
+
+#: current_version/application/lang/tradTpl.c:267
+msgid "Are you sure to delete this item ?"
+msgstr "Voulez-vous vraiment effacer cet élément ?"
+
+#: current_version/application/lang/tradTpl.c:271
+#: current_version/application/lang/tradTpl.c:706
+msgid "Deactive this page"
+msgstr "Désactiver cette page"
+
+#: current_version/application/lang/tradTpl.c:272
+#: current_version/application/lang/tradTpl.c:707
+msgid "Active this page"
+msgstr "Activer cette page"
+
+#: current_version/application/lang/tradTpl.c:274
+#: current_version/application/lang/tradTpl.c:709
+msgid "Set your options"
+msgstr "Régler vos options"
+
+#: current_version/application/lang/tradTpl.c:276
+msgid "Items in Menu"
+msgstr "Elements dans le menu"
+
+#: current_version/application/lang/tradTpl.c:277
+msgid "Label"
+msgstr "Label"
+
+#: current_version/application/lang/tradTpl.c:280
+msgid "Link"
+msgstr "Lien"
+
+#: current_version/application/lang/tradTpl.c:282
+msgid "Delete this item ?"
+msgstr "Effacer cette élément ?"
+
+#: current_version/application/lang/tradTpl.c:285
+#: current_version/application/lang/tradTpl.c:655
+msgid "Add a new item in this menu"
+msgstr "Ajouter un nouvel élémént dans ce menu"
+
+#: current_version/application/lang/tradTpl.c:287
+#: current_version/application/lang/tradTpl.c:649
+msgid "Creation of a new folder"
+msgstr "Création d'un nouveau dossier"
+
+#: current_version/application/lang/tradTpl.c:288
+#: current_version/application/lang/tradTpl.c:656
+msgid "Edit menu"
+msgstr "Editer le menu"
+
+#: current_version/application/lang/tradTpl.c:289
+#: current_version/application/lang/tradTpl.c:657
+msgid "Modification of a menu"
+msgstr "Modification d'un menu"
+
+#: current_version/application/lang/tradTpl.c:291
+msgid "Update category"
+msgstr "Mettre à jour la catégorie"
+
+#: current_version/application/lang/tradTpl.c:292
+msgid "Categories manager"
+msgstr "Gestionnaire des catégories"
+
+#: current_version/application/lang/tradTpl.c:293
+msgid "Are you sure to delete this category ?"
+msgstr "Vous voulez vraiment effacer cette catégorie ?"
+
+#: current_version/application/lang/tradTpl.c:294
+msgid "Any document in this category will be move into uncategorized category"
+msgstr "Toutes les pages de cette catégorie seront déplacées dans la catégorie \"non classée\""
+
+#: current_version/application/lang/tradTpl.c:297
+#: current_version/application/lang/tradTpl.c:497
+#: current_version/application/lang/tradTpl.c:506
+#: current_version/application/lang/tradTpl.c:513
+msgid "Add new"
+msgstr "Ajouter nouveau"
+
+#: current_version/application/lang/tradTpl.c:300
+msgid "MOD_MOZAIQUES_BACK_CREATE_TITLE1"
+msgstr "Créer une mozaïque"
+
+#: current_version/application/lang/tradTpl.c:301
+msgid "MOD_MOZAIQUES_BACK_CREATE_TITLE1_DESC"
+msgstr "Créer une mozaïque avec zone"
+
+#: current_version/application/lang/tradTpl.c:302
+msgid "MOD_MOZAIQUES_BACK_CREATE_ZONE1"
+msgstr "Informations"
+
+#: current_version/application/lang/tradTpl.c:303
+msgid "MOD_MOZAIQUES_BACK_CREATE_ZONE1_DESC"
+msgstr "Entrez les informations de votre mozaïque"
+
+#: current_version/application/lang/tradTpl.c:304
+msgid "MOD_MOZAIQUES_BACK_CREATE_BTN-ADDZONE"
+msgstr "Ajouter une zone"
+
+#: current_version/application/lang/tradTpl.c:305
+#: current_version/application/lang/tradTpl.c:311
+msgid "MOD_MOZAIQUES_BACK_EDIT EDIT ZONE"
+msgstr "Informations de votre zone"
+
+#: current_version/application/lang/tradTpl.c:306
+msgid "MOD_MOZAIQUES_BACK_EDIT_TITLE1"
+msgstr "Éditer la mozaïque"
+
+#: current_version/application/lang/tradTpl.c:307
+msgid "MOD_MOZAIQUES_BACK_EDIT_TITLE1_DESC"
+msgstr "ÉDITION DE VOTRE MOZAÏQUE"
+
+#: current_version/application/lang/tradTpl.c:308
+msgid "MOD_MOZAIQUES_BACK_EDIT_ZONE1"
+msgstr "Informations"
+
+#: current_version/application/lang/tradTpl.c:309
+msgid "MOD_MOZAIQUES_BACK_EDIT_ZONE1_DESC"
+msgstr "Entrez les informations de votre mozaïque"
+
+#: current_version/application/lang/tradTpl.c:310
+msgid "MOD_MOZAIQUES_BACK_EDIT_BTN-ADDZONE"
+msgstr "Ajouter une zone"
+
+#: current_version/application/lang/tradTpl.c:312
+msgid "MOD_MOZAIQUES_BACK_INDEX_TITLE1"
+msgstr "Mes mozaïques"
+
+#: current_version/application/lang/tradTpl.c:313
+msgid "MOD_MOZAIQUES_BACK_INDEX_TITLE1_DESC"
+msgstr "GÉRER MES MOZAÏQUES"
+
+#: current_version/application/lang/tradTpl.c:314
+msgid "MOD_MOZAIQUES_BACK_INDEX_ZONE1"
+msgstr "Liste de vos mozaïques"
+
+#: current_version/application/lang/tradTpl.c:315
+msgid "MOD_MOZAIQUES_BACK_INDEX_ZONE1-DESC"
+msgstr "Gérer vos mozaïques"
+
+#: current_version/application/lang/tradTpl.c:316
+msgid "MOD_MOZAIQUES_BACK_INDEX_BOUTON-ADD_TITLE"
+msgstr "Ajouter une mozaïque"
+
+#: current_version/application/lang/tradTpl.c:317
+msgid "MOD_MOZAIQUES_BACK_INDEX_BOUTON-ADD_TITLE-DESC"
+msgstr "Créer une nouvelle mozaïque"
+
+#: current_version/application/lang/tradTpl.c:318
+msgid "MOD_MOZAIQUES_BACK_INDEX_BOUTON-ADD"
+msgstr "Ajouter"
+
+#: current_version/application/lang/tradTpl.c:320
+msgid "ACTIONS"
+msgstr "Actions"
+
+#: current_version/application/lang/tradTpl.c:321
+msgid "MOD_MOZAIQUES_BACK_INDEX ARE YOU SUR YOU WANT DELETE PAGE ?"
+msgstr "Êtes-vous sûr de vouloir supprimer cette mozaïque ?"
+
+#: current_version/application/lang/tradTpl.c:324
+msgid "MOD_MOZAIQUES NO PAGE TO DISPLAY"
+msgstr "Aucune mozaïque à afficher"
+
+#: current_version/application/lang/tradTpl.c:328
+msgid "Warning: Active instances of this package had been found!"
+msgstr "Attention : Des instances de ce paquet sont en cours d'utilisation sur le site"
+
+#: current_version/application/lang/tradTpl.c:329
+msgid "Instance Name"
+msgstr "Nom de l'instance"
+
+#: current_version/application/lang/tradTpl.c:330
+msgid "Confirm suppression of this package?"
+msgstr "Confirmer la suppression du paquet ?"
+
+#: current_version/application/lang/tradTpl.c:331
+msgid "Removing this package will also remove associated instances!"
+msgstr "Supprimer ce paquet supprimera aussi toutes les instances en cours d'utilisation"
+
+#: current_version/application/lang/tradTpl.c:334
+msgid "Packages"
+msgstr "Paquets"
+
+#: current_version/application/lang/tradTpl.c:335
+msgid "Warning, installing this package will overwrite the following files:"
+msgstr "Avertissement : Mettre à jour ce paquet ecrasera les fichiers suivants :"
+
+#: current_version/application/lang/tradTpl.c:336
+msgid "already exists"
+msgstr "Existe déjà"
+
+#: current_version/application/lang/tradTpl.c:337
+msgid "Continue and overwrite existing files"
+msgstr "Continuer et écraser les fichiers existants"
+
+#: current_version/application/lang/tradTpl.c:339
+#: current_version/application/lang/tradTpl.c:340
+msgid "Module List"
+msgstr "Liste de Modules"
+
+#: current_version/application/lang/tradTpl.c:342
+#: current_version/application/lang/tradTpl.c:351
+#: current_version/application/lang/tradTpl.c:358
+msgid "Version"
+msgstr "Version"
+
+#: current_version/application/lang/tradTpl.c:343
+msgid "Activate / Deactivate"
+msgstr "Activation / Désactivation"
+
+#: current_version/application/lang/tradTpl.c:344
+#: current_version/application/lang/tradTpl.c:346
+#: current_version/application/lang/tradTpl.c:352
+#: current_version/application/lang/tradTpl.c:353
+#: current_version/application/lang/tradTpl.c:359
+#: current_version/application/lang/tradTpl.c:360
+msgid "Uninstall"
+msgstr "Désinstaller"
+
+#: current_version/application/lang/tradTpl.c:345
+#: current_version/application/lang/tradTpl.c:347
+msgid "Impossible"
+msgstr ""
+
+#: current_version/application/lang/tradTpl.c:348
+#: current_version/application/lang/tradTpl.c:349
+msgid "Bloc List"
+msgstr "Liste des blocs"
+
+#: current_version/application/lang/tradTpl.c:354
+#: current_version/application/lang/tradTpl.c:355
+msgid "Plugin List"
+msgstr "Liste des plugins"
+
+#: current_version/application/lang/tradTpl.c:361
+msgid "Update Plugins Config"
+msgstr "Mettre à jour la configuration des plugins"
+
+#: current_version/application/lang/tradTpl.c:362
+#: current_version/application/lang/tradTpl.c:363
+msgid "Install a new Package"
+msgstr "Installer un nouveau paquet"
+
+#: current_version/application/lang/tradTpl.c:366
+#: current_version/application/lang/tradTpl.c:367
+msgid "Social Accounts"
+msgstr "Liens vers réseaux sociaux"
+
+#: current_version/application/lang/tradTpl.c:370
+#: current_version/application/lang/tradTpl.c:378
+#: current_version/application/lang/tradTpl.c:403
+#, fuzzy
+msgid "Action"
+msgstr "Actions"
+
+#: current_version/application/lang/tradTpl.c:371
+msgid "Alerts Immo"
+msgstr "Alertes immobilières"
+
+#: current_version/application/lang/tradTpl.c:372
+#: current_version/application/lang/tradTpl.c:398
+msgid "All alerts immo"
+msgstr "Toutes les alertes immobilières"
+
+#: current_version/application/lang/tradTpl.c:373
+msgid "Members"
+msgstr "Membres"
+
+#: current_version/application/lang/tradTpl.c:374
+msgid "List of members"
+msgstr "Liste des membres"
+
+#: current_version/application/lang/tradTpl.c:375
+#: current_version/application/lang/tradTpl.c:488
+msgid "Fullname"
+msgstr "Nom complet"
+
+#: current_version/application/lang/tradTpl.c:377
+msgid "Tel"
+msgstr "Tel"
+
+#: current_version/application/lang/tradTpl.c:379
+msgid "Are you sure to delete this member ?"
+msgstr "Etes-vous sûr de vouloir supprimer ce membre ?"
+
+#: current_version/application/lang/tradTpl.c:385
+msgid "Member edit"
+msgstr "Édition d'un membre"
+
+#: current_version/application/lang/tradTpl.c:386
+msgid "Edit member informations"
+msgstr "Édition des imformations d'un membre"
+
+#: current_version/application/lang/tradTpl.c:387
+msgid "House module"
+msgstr "Module Immobilier"
+
+#: current_version/application/lang/tradTpl.c:388
+msgid "House XML Flux Management"
+msgstr "Gestion du flux immobilier"
+
+#: current_version/application/lang/tradTpl.c:389
+msgid "House XML Flux State"
+msgstr "Etat du flux immobilier"
+
+#: current_version/application/lang/tradTpl.c:392
+#, fuzzy
+msgid "Configuration"
+msgstr "Configuration sauvegardée"
+
+#: current_version/application/lang/tradTpl.c:393
+msgid "Configure house module"
+msgstr "Configuration du module Immobilier"
+
+#: current_version/application/lang/tradTpl.c:397
+msgid "BDD Immo"
+msgstr ""
+
+#: current_version/application/lang/tradTpl.c:399
+msgid "Villes / Quartiers"
+msgstr ""
+
+#: current_version/application/lang/tradTpl.c:400
+msgid "Gestion des villes et de leurs quartiers"
+msgstr ""
+
+#: current_version/application/lang/tradTpl.c:401
+#, fuzzy
+msgid "Ville"
+msgstr "Fichier"
+
+#: current_version/application/lang/tradTpl.c:402
+msgid "Quartier"
+msgstr ""
+
+#: current_version/application/lang/tradTpl.c:411
+#: current_version/application/lang/tradTpl.c:414
+msgid "Create an campaign"
+msgstr "Créer une campagne"
+
+#: current_version/application/lang/tradTpl.c:413
+#: current_version/application/lang/tradTpl.c:416
+msgid "Add advert"
+msgstr "Ajouter un publicité"
+
+#: current_version/application/lang/tradTpl.c:417
+#, fuzzy
+msgid "Liste des campagnes de pub"
+msgstr "Liste des diaporamas"
+
+#: current_version/application/lang/tradTpl.c:418
+msgid "Advertisements"
+msgstr "Publicités "
+
+#: current_version/application/lang/tradTpl.c:419
+msgid "Add an advert"
+msgstr "Ajouter un publicité"
+
+#: current_version/application/lang/tradTpl.c:420
+msgid "Create your advert"
+msgstr "Créer votre publicité"
+
+#: current_version/application/lang/tradTpl.c:426
+#: current_version/application/lang/tradTpl.c:442
+msgid "Permanent"
+msgstr "Permanente"
+
+#: current_version/application/lang/tradTpl.c:427
+msgid "Are you sure to delete this advert ?"
+msgstr "Voulez-vous vraiment effacer cette publicité ?"
+
+#: current_version/application/lang/tradTpl.c:430
+msgid "Are you sure to disable this campaign ?"
+msgstr "Vous voulez vraiment désactiver cette campagne ?"
+
+#: current_version/application/lang/tradTpl.c:431
+msgid "Disable"
+msgstr "Inactif"
+
+#: current_version/application/lang/tradTpl.c:433
+msgid "Are you sure to enable this campaign ?"
+msgstr "Voulez-vous activer cette campagne ?"
+
+#: current_version/application/lang/tradTpl.c:434
+msgid "Enable"
+msgstr "Activer"
+
+#: current_version/application/lang/tradTpl.c:436
+msgid "No actived advertising to display ..."
+msgstr "Pas de publicités activées à afficher..."
+
+#: current_version/application/lang/tradTpl.c:437
+msgid "Archived adverts"
+msgstr "Publicités archivées"
+
+#: current_version/application/lang/tradTpl.c:443
+msgid "Are you sure to delete this advertising ?"
+msgstr "Voulez-vous vraiment effacer cette publicité ?"
+
+#: current_version/application/lang/tradTpl.c:446
+msgid "No archived advert to display ..."
+msgstr "Pas de publicités archivées à afficher..."
+
+#: current_version/application/lang/tradTpl.c:449
+#: current_version/application/lang/tradTpl.c:451
+#: current_version/application/lang/tradTpl.c:455
+msgid "Apply for this job"
+msgstr "Postuler à cette offre"
+
+#: current_version/application/lang/tradTpl.c:450
+msgid "Unsolicited job application"
+msgstr "Candidature Spontanée"
+
+#: current_version/application/lang/tradTpl.c:452
+#: current_version/application/lang/tradTpl.c:637
+msgid "Mail succesfully send"
+msgstr "Email envoyé avec succés"
+
+#: current_version/application/lang/tradTpl.c:453
+#: current_version/application/lang/tradTpl.c:638
+msgid "Mail error send"
+msgstr "Envoie de l'email échoué"
+
+#: current_version/application/lang/tradTpl.c:456
+#: current_version/application/lang/tradTpl.c:464
+msgid "Add a new job"
+msgstr "Ajouter une nouvelle annonce"
+
+#: current_version/application/lang/tradTpl.c:458
+msgid "Edit job offer"
+msgstr "Editer cette annonce"
+
+#: current_version/application/lang/tradTpl.c:460
+#: current_version/application/lang/tradTpl.c:463
+msgid "Jobs Management"
+msgstr "Gestion des annonces emplois"
+
+#: current_version/application/lang/tradTpl.c:461
+#: current_version/application/lang/tradTpl.c:462
+#, fuzzy
+msgid "Configuration du destinataire pour les annonces"
+msgstr "Configuration des destinataires pour les formulaires"
+
+#: current_version/application/lang/tradTpl.c:465
+msgid "Create your job"
+msgstr "Créez votre annonce"
+
+#: current_version/application/lang/tradTpl.c:467
+msgid "Reference"
+msgstr "Référence"
+
+#: current_version/application/lang/tradTpl.c:468
+msgid "Job"
+msgstr "Emplois"
+
+#: current_version/application/lang/tradTpl.c:470
+#: current_version/application/lang/tradTpl.c:639
+msgid "Contact"
+msgstr "Contact"
+
+#: current_version/application/lang/tradTpl.c:472
+msgid "Are you sure to delete this job ?"
+msgstr "Voulez-vous vraiment supprimer cette annonce ?"
+
+#: current_version/application/lang/tradTpl.c:475
+msgid "No job to display ..."
+msgstr "Pas d'offre d'emploi à pourvoir pour le moment"
+
+#: current_version/application/lang/tradTpl.c:478
+msgid "Edit View-Access"
+msgstr "Editer les droits de consultation"
+
+#: current_version/application/lang/tradTpl.c:479
+msgid "Create new group"
+msgstr "Créer un nouveau groupe"
+
+#: current_version/application/lang/tradTpl.c:480
+#: current_version/application/lang/tradTpl.c:481
+msgid "Edit existing user"
+msgstr "Editer un utilisateur existant"
+
+#: current_version/application/lang/tradTpl.c:483
+msgid "Edit user password"
+msgstr "Edition du mot de passe utilisateur"
+
+#: current_version/application/lang/tradTpl.c:484
+#: current_version/application/lang/tradTpl.c:485
+#: current_version/application/lang/tradTpl.c:486
+#: current_version/application/lang/tradTpl.c:487
+#: current_version/application/lang/tradTpl.c:524
+msgid "Users Manager"
+msgstr "Gestion des utilisateurs"
+
+#: current_version/application/lang/tradTpl.c:490
+msgid "Group"
+msgstr "Groupe"
+
+#: current_version/application/lang/tradTpl.c:492
+msgid "Deactivate"
+msgstr "Désactivater"
+
+#: current_version/application/lang/tradTpl.c:494
+msgid "Are you sure to delete this user ?"
+msgstr "Etes-vous sûr de vouloir effacer cet utilisateur ?"
+
+#: current_version/application/lang/tradTpl.c:498
+#: current_version/application/lang/tradTpl.c:499
+msgid "Groups Manager"
+msgstr "Gestion des Groupes"
+
+#: current_version/application/lang/tradTpl.c:501
+msgid "Are you sure to delete this group ?"
+msgstr "Etes-vous sûr de vouloir effacer ce groupe ?"
+
+#: current_version/application/lang/tradTpl.c:502
+msgid "Children groups will not be delete"
+msgstr "Les groupes enfants ne seront pas effacés"
+
+#: current_version/application/lang/tradTpl.c:503
+msgid "All users in this group will be move in Public group"
+msgstr "Tous les utilisateurs de ce groupe seront déplacés dans le groupe public"
+
+#: current_version/application/lang/tradTpl.c:507
+#: current_version/application/lang/tradTpl.c:508
+msgid "View-Access Manager"
+msgstr "Gestion des View-access"
+
+#: current_version/application/lang/tradTpl.c:510
+msgid "Are you sure to delete this view-access ?"
+msgstr "Etes-vous sûr de vouloir effacer ce view-access ?"
+
+#: current_version/application/lang/tradTpl.c:516
+msgid "Create new view access"
+msgstr "Créer un droit de consultation"
+
+#: current_version/application/lang/tradTpl.c:517
+msgid "Create new user"
+msgstr "Créer un nouvel utilisateur"
+
+#: current_version/application/lang/tradTpl.c:518
+#: current_version/application/lang/tradTpl.c:519
+#: current_version/application/lang/tradTpl.c:575
+#: current_version/application/lang/tradTpl.c:576
+msgid "Sitemap Configuration"
+msgstr "Configuration du Plan de site"
+
+#: current_version/application/lang/tradTpl.c:520
+#: current_version/application/lang/tradTpl.c:577
+msgid " Check the pages you want to hide from the sitemap"
+msgstr "Cocher les pages que vous voulez masquer sur le plan du site"
+
+#: current_version/application/lang/tradTpl.c:523
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: current_version/application/lang/tradTpl.c:525
+msgid "Blocks Manager"
+msgstr "Gestion des blocs"
+
+#: current_version/application/lang/tradTpl.c:527
+#: current_version/application/lang/tradTpl.c:529
+msgid "Reset all contents"
+msgstr "Effacer tout le contenu"
+
+#: current_version/application/lang/tradTpl.c:528
+msgid "Warning: You're about to erase everything!"
+msgstr "Avertissement : Vous êtes sur le point de tout effacer !"
+
+#: current_version/application/lang/tradTpl.c:530
+msgid "Reset resource"
+msgstr "Effacer le contenu du dossier de ressource"
+
+#: current_version/application/lang/tradTpl.c:531
+msgid "Reset database"
+msgstr "Effacer la base de données"
+
+#: current_version/application/lang/tradTpl.c:532
+msgid "Edit site configuration"
+msgstr "Editer la configuration du site"
+
+#: current_version/application/lang/tradTpl.c:533
+#: current_version/application/lang/tradTpl.c:534
+msgid "Manage translations"
+msgstr "Gérer les traductions"
+
+#: current_version/application/lang/tradTpl.c:535
+msgid "Default language"
+msgstr "Langue par défaut"
+
+#: current_version/application/lang/tradTpl.c:536
+msgid "make default language"
+msgstr "En faire la langue par défaut"
+
+#: current_version/application/lang/tradTpl.c:537
+msgid "Translation files missing ..."
+msgstr "Fichiers de traduction manquants"
+
+#: current_version/application/lang/tradTpl.c:538
+msgid "Translation files ok"
+msgstr "Fichiers de traduction ok"
+
+#: current_version/application/lang/tradTpl.c:539
+msgid "delete"
+msgstr "Supprimer"
+
+#: current_version/application/lang/tradTpl.c:540
+msgid "Choose language"
+msgstr "Choisir une langue"
+
+#: current_version/application/lang/tradTpl.c:542
+msgid "Update language file"
+msgstr "Mettre à jour le fichier de Langue"
+
+#: current_version/application/lang/tradTpl.c:543
+msgid "Delete cache"
+msgstr "Supprimer le cache"
+
+#: current_version/application/lang/tradTpl.c:544
+msgid "Reset all content"
+msgstr "Effacer tout le contenu"
+
+#: current_version/application/lang/tradTpl.c:547
+#: current_version/application/lang/tradTpl.c:550
+msgid "Create a diaporama"
+msgstr "Créer un diaporama"
+
+#: current_version/application/lang/tradTpl.c:548
+#: current_version/application/lang/tradTpl.c:551
+#: current_version/application/lang/tradTpl.c:571
+msgid "Create a GaleriePhoto"
+msgstr "Créer une galerie photo"
+
+#: current_version/application/lang/tradTpl.c:553
+msgid "Liste des diaporamas"
+msgstr "Liste des diaporamas"
+
+#: current_version/application/lang/tradTpl.c:554
+#, fuzzy
+msgid "Liste des galerie photo"
+msgstr "Liste des diaporamas"
+
+#: current_version/application/lang/tradTpl.c:555
+msgid "Diaporamas"
+msgstr "Diaporamas"
+
+#: current_version/application/lang/tradTpl.c:556
+msgid "Galerie Photo"
+msgstr ""
+
+#: current_version/application/lang/tradTpl.c:557
+msgid "Add a new diaporama"
+msgstr "Ajouter un diaporama"
+
+#: current_version/application/lang/tradTpl.c:558
+msgid "Add a new galerie photo"
+msgstr "Ajouter une nouvelle gallerie photo"
+
+#: current_version/application/lang/tradTpl.c:559
+msgid "Create your diaporama"
+msgstr "Créez votre diaporama"
+
+#: current_version/application/lang/tradTpl.c:560
+msgid "Create your galerie photo"
+msgstr "Créez votre galerie photo"
+
+#: current_version/application/lang/tradTpl.c:563
+#, fuzzy
+msgid "Number of images"
+msgstr "Nombre d'offre"
+
+#: current_version/application/lang/tradTpl.c:565
+msgid "Are you sure to delete this diaporama ?"
+msgstr "Êtes vous sûr de vouloir supprimer ce diaporama ?"
+
+#: current_version/application/lang/tradTpl.c:573
+#, fuzzy
+msgid "Edit a GaleriePhoto"
+msgstr "Créer une galerie photo"
+
+#: current_version/application/lang/tradTpl.c:581
+msgid "No results for this search"
+msgstr "Aucun résultat pour cette recherche"
+
+#: current_version/application/lang/tradTpl.c:582
+#: current_version/application/lang/tradTpl.c:583
+msgid "Build Search Engine"
+msgstr "Construire le moteur de recherche"
+
+#: current_version/application/lang/tradTpl.c:584
+#: current_version/application/lang/tradTpl.c:585
+#: current_version/application/lang/tradTpl.c:588
+#: current_version/application/lang/tradTpl.c:589
+msgid "Search Engine Status"
+msgstr "Etat du moteur de recherche"
+
+#: current_version/application/lang/tradTpl.c:586
+msgid "Back"
+msgstr "Retour"
+
+#: current_version/application/lang/tradTpl.c:587
+msgid "Search Engine"
+msgstr "Moteur de recherche"
+
+#: current_version/application/lang/tradTpl.c:590
+msgid "Rebuild"
+msgstr "Reconstruire"
+
+#: current_version/application/lang/tradTpl.c:593
+msgid "Create new document"
+msgstr "Créer une nouvelle page"
+
+#: current_version/application/lang/tradTpl.c:594
+msgid "Creation of a new document"
+msgstr "Création d'une nouvelle page"
+
+#: current_version/application/lang/tradTpl.c:596
+msgid "Select a type for your new document"
+msgstr "Selectionnez un modèle pour votre page"
+
+#: current_version/application/lang/tradTpl.c:613
+msgid "My pages"
+msgstr "Mes pages"
+
+#: current_version/application/lang/tradTpl.c:614
+msgid "Manage my pages"
+msgstr "Gérer mes pages"
+
+#: current_version/application/lang/tradTpl.c:615
+msgid "List of your documents"
+msgstr "Liste de vos pages"
+
+#: current_version/application/lang/tradTpl.c:616
+msgid "All documents of your website"
+msgstr "Toutes les pages de votre site"
+
+#: current_version/application/lang/tradTpl.c:618
+msgid "Create a new document"
+msgstr "Créer une nouvelle page"
+
+#: current_version/application/lang/tradTpl.c:621
+#, fuzzy
+msgid "Creation"
+msgstr "Créer"
+
+#: current_version/application/lang/tradTpl.c:622
+#, fuzzy
+msgid "Last update"
+msgstr "Dernière mise à jour"
+
+#: current_version/application/lang/tradTpl.c:640
+msgid "Configuration des destinataires pour les formulaires"
+msgstr "Configuration des destinataires pour les formulaires"
+
+#: current_version/application/lang/tradTpl.c:647
+#, fuzzy
+msgid "Edit item in this menu"
+msgstr "Editer ce menu"
+
+#: current_version/application/lang/tradTpl.c:679
+msgid "Insert a new page into"
+msgstr "Ajouter une nouvelle page dans"
+
+#: current_version/application/lang/tradTpl.c:687
+msgid "Are you sure you want to delete this folder ?"
+msgstr "Êtes-vous sûr de vouloir supprimer ce dossier ?"
+
+#: current_version/application/lang/tradTpl.c:688
+msgid "Delete folder only"
+msgstr "Supprimer seulement le dossier"
+
+#: current_version/application/lang/tradTpl.c:689
+msgid "Delete folder and his items"
+msgstr "Supprimer le dossier et ses élements"
+
+#: current_version/application/lang/tradTpl.c:690
+msgid "Delete folder, his items and their content"
+msgstr "Supprimer le dossier, ses élements et leur contenu"
+
+#: current_version/application/lang/tradTpl.c:695
+#: current_version/application/lang/tradTpl.c:702
+msgid "Are you sure you want to delete this item ?"
+msgstr "Êtes-vous sûr de vouloir supprimer cet élement ?"
+
+#: current_version/application/lang/tradTpl.c:696
+msgid "Delete item only"
+msgstr "Supprimer l'élement seulement"
+
+#: current_version/application/lang/tradTpl.c:697
+msgid "Delete item and his content"
+msgstr "Supprimer l'élement et son contenu"
+
+#: current_version/application/lang/tradTpl.c:715
+#, fuzzy
+msgid "Statistiques de votre site"
+msgstr "Optimisation de votre visibilité"
+
+#~ msgid "Content does not exist"
+#~ msgstr "Ce contenu n'existe pas"
+
+#~ msgid "Removed from Homepage"
+#~ msgstr "Supprimé de l apage d'accueil"
+
+#, fuzzy
+#~ msgid "Template & Diaporama Page"
+#~ msgstr "Créer un diaporama"
+
+#~ msgid "Edit search page Selectup"
+#~ msgstr "Editer la page de recherche"
+
+#, fuzzy
+#~ msgid "Modification of a search page"
+#~ msgstr "Modification d'une page"
+
+#~ msgid "No alert to display ..."
+#~ msgstr "Aucune alerte à afficher"
+
+#~ msgid "No user to display ..."
+#~ msgstr "Aucun utilisateur à afficher"
+
+#~ msgid "Are you sure to disable this diaporama ?"
+#~ msgstr "Êtes vous sûr de vouloir désactiver ce diaporama ?"
+
+#~ msgid "Update a document"
+#~ msgstr "Mettre à jour une page"
+
+#~ msgid "Update a document from model"
+#~ msgstr "Mettre à jour une page depuis le modèle"
+
+#~ msgid "published"
+#~ msgstr "Publié"
+
+#~ msgid "drafted"
+#~ msgstr "Brouillon"
+
+#~ msgid "No document to display ..."
+#~ msgstr "Pas de pages à afficher ..."
+
+#~ msgid "Site Title"
+#~ msgstr "Titre du site"
+
+#~ msgid "Optimisation de votre visibilité"
+#~ msgstr "Optimisation de votre visibilité"
+
+#, fuzzy
+#~ msgid "Activé"
+#~ msgstr "Actif"
+
+#~ msgid "is homepage ?"
+#~ msgstr "Mettre en page d'accueil ?"
+
+#~ msgid "Parameter missing"
+#~ msgstr "Paramètre manquant"
+
+#~ msgid "Retype Password"
+#~ msgstr "Entrez à nouveau votre mot de passe"
+
+#~ msgid "First Name"
+#~ msgstr "Prénom"
+
+#~ msgid "Are you crazy ? sure you want to deactive yourself ?!"
+#~ msgstr ""
+#~ "Etes-vous fou ? Etes-vous sûr de vouloir vous désactiver vous-même ?"
+
+#~ msgid "Update History"
+#~ msgstr "Historique des mises à jour"
+
+#~ msgid "House Image cache"
+#~ msgstr "Cache des images immobilières"
+
+#~ msgid "No instance of CMS_Page_Object to return, please call 'get' before"
+#~ msgstr ""
+#~ "Pas d'instance de CMS_Page_Object à retourner, veuillez d'abord appeller "
+#~ "'get'."
+
+#, fuzzy
+#~ msgid "Color of bloc"
+#~ msgstr "Choisir le type de bloc"
+
+#, fuzzy
+#~ msgid "Show faces ?"
+#~ msgstr "Afficher l'année :"
+
+#~ msgid "Show profile photos"
+#~ msgstr "Afficher les photos de profil"
+
+#~ msgid "One or more error occurred"
+#~ msgstr "Une erreur est survenue"
+
+#, fuzzy
+#~ msgid "Connect"
+#~ msgstr "Contenu"
+
+#~ msgid "Search block configuration"
+#~ msgstr "Configuration du module de recherche"
+
+#~ msgid "Input selector :"
+#~ msgstr "Sélection des champs :"
+
+#~ msgid "Show bodywork :"
+#~ msgstr "Afficher la carrosserie :"
+
+#~ msgid "Principal"
+#~ msgstr "Principal"
+
+#~ msgid "Advanced"
+#~ msgstr "Avancé"
+
+#~ msgid "Show brand :"
+#~ msgstr "Afficher la marque :"
+
+#~ msgid "Show model :"
+#~ msgstr "Afficher le modèle :"
+
+#~ msgid "Show version :"
+#~ msgstr "Afficher la version :"
+
+#~ msgid "Show town :"
+#~ msgstr "Afficher la ville :"
+
+#~ msgid "Show color :"
+#~ msgstr "Afficher la couleur :"
+
+#~ msgid "Show energy :"
+#~ msgstr "Afficher l'énergie :"
+
+#~ msgid "Show budget :"
+#~ msgstr "Afficher le budget :"
+
+#~ msgid "Show km :"
+#~ msgstr "Afficher les km :"
+
+#~ msgid "Show years :"
+#~ msgstr "Afficher l'année :"
+
+#~ msgid "Edit password user"
+#~ msgstr "Editer le mot de passe utilisateur"
+
+#, fuzzy
+#~ msgid "Image permanent ?"
+#~ msgstr "Actualité permanente ?"
+
+#, fuzzy
+#~ msgid "Description de l'image"
+#~ msgstr "Description"
+
+#~ msgid "Swf Width"
+#~ msgstr "Largeur du Flash"
+
+#~ msgid "Swf Height"
+#~ msgstr "Hauteur du Flash"
+
+#~ msgid "Swf File"
+#~ msgstr "Fichier Flash"
+
+#~ msgid "The swf link"
+#~ msgstr "Chemin "
+
+#~ msgid "Search block configuration saved"
+#~ msgstr "Configuration du bloc de recherche sauvegardée"
+
+#~ msgid "Width of diaporama"
+#~ msgstr "Largeur du diaporama"
+
+#, fuzzy
+#~ msgid "Choose menu"
+#~ msgstr "Choisir une langue"
+
+#~ msgid "Choose folder"
+#~ msgstr "Choisissez un dossier"
+
+#, fuzzy
+#~ msgid "Check to active"
+#~ msgstr "Cocher pour activer"
+
+#~ msgid "Choose level display menu"
+#~ msgstr "Choisissez d'afficher le menu jusqu'à quel niveau"
+
+#~ msgid "Bloc Type"
+#~ msgstr "Type de bloc"
+
+#~ msgid "PlaceHolder"
+#~ msgstr "Emplacement"
+
+#~ msgid "Language"
+#~ msgstr "Langue"
+
+#~ msgid "All"
+#~ msgstr "Tous"
+
+#~ msgid "All pages"
+#~ msgstr "Toutes les pages"
+
+#~ msgid "List of pages selected below"
+#~ msgstr "Liste des pages selectionnées ci-dessous"
+
+#~ msgid "block saved"
+#~ msgstr "Bloc enregistré "
+
+#~ msgid "block moved up"
+#~ msgstr "Bloc deplacé vers le haut"
+
+#~ msgid "block moved down"
+#~ msgstr "Bloc déplacé vers le bas"
+
+#~ msgid "block published"
+#~ msgstr "Le bloc est désormais activé "
+
+#~ msgid "block unpublished"
+#~ msgstr "Le bloc est désormais désactivé"
+
+#~ msgid "Title of your news"
+#~ msgstr "Titre de votre actualité"
+
+#~ msgid "Activate new ?"
+#~ msgstr "Activer l'actualité ?"
+
+#~ msgid "Actualité permanente ?"
+#~ msgstr "Actualité permanente ?"
+
+#~ msgid "Choose your image"
+#~ msgstr "Choisissez votre image"
+
+#~ msgid "Brève de votre actualité"
+#~ msgstr "Brève de votre actualité"
+
+#~ msgid "News created"
+#~ msgstr "Actualité créé"
+
+#~ msgid "News saved"
+#~ msgstr "Actualité enregistrée"
+
+#~ msgid "News deleted"
+#~ msgstr "Actualité supprimée"
+
+#~ msgid "News moved up"
+#~ msgstr "Actualité deplacée vers le haut"
+
+#~ msgid "News moved down"
+#~ msgstr "Actualité déplacée vers la bas"
+
+#~ msgid "News enabled"
+#~ msgstr "Actualité en ligne"
+
+#~ msgid "News disabled"
+#~ msgstr "Actualité inactive"
+
+#~ msgid "There is no data to update galeriePhoto"
+#~ msgstr "Il n'y a pas de données à mettre à jour la gallerie"
+
+#~ msgid "There is no id to update galeriePhoto"
+#~ msgstr "Il n'y a pas d'ID pour mettre à jour la gallerie"
+
+#~ msgid "There is no id to delete map"
+#~ msgstr "Il n'y a pas d'ID pour supprimer la map"
+
+#, fuzzy
+#~ msgid "Titre de votre galerie"
+#~ msgstr "Brève de votre actualité"
+
+#, fuzzy
+#~ msgid "Description de votre galerie"
+#~ msgstr "Description"
+
+#, fuzzy
+#~ msgid "Couleur de fond de l'image"
+#~ msgstr "Description"
+
+#~ msgid "Id missing"
+#~ msgstr "ID manquant"
+
+#~ msgid "Site Title (use # to add line break)"
+#~ msgstr "Titre du site (utiliser # pour ajouter un saut de ligne)"
+
+#~ msgid "This rewrite is already used"
+#~ msgstr "La réécriture existe déjà"
+
+#~ msgid "Advert saved"
+#~ msgstr "Publicité enregistrée"
+
+#~ msgid "Diaporama deleted"
+#~ msgstr "Diaporama effacé"
+
+#~ msgid "Diaporama saved"
+#~ msgstr "Diaporama sauvegardé"
+
+#~ msgid "Group parent"
+#~ msgstr "Groupe parent"
+
+#~ msgid "Create user"
+#~ msgstr "Créer un utilisateur"
+
+#~ msgid "Update user"
+#~ msgstr "Utilisateur mis à jour"
+
+#~ msgid "Formulaire"
+#~ msgstr "Formulaire"
+
+#~ msgid "Bloc manager"
+#~ msgstr "Gestionnaire des blocs"
+
+#~ msgid "Bloc"
+#~ msgstr "Bloc"
+
+#~ msgid "status"
+#~ msgstr "Statut"
+
+#~ msgid "Lang"
+#~ msgstr "Langue"
+
+#~ msgid "CSS Variant"
+#~ msgstr "Variante CSS"
+
+#~ msgid "All Language"
+#~ msgstr "Toutes les langues"
+
+#~ msgid "Blocs in unsupported Placeholder"
+#~ msgstr "Cet emplacement ne peut pas contenir ce bloc"
+
+#~ msgid "Create a news"
+#~ msgstr "Créer une Actualité"
+
+#~ msgid "Edit a news"
+#~ msgstr "Editer une actualité"
+
+#~ msgid "Brocasted news"
+#~ msgstr "Actualités publiées"
+
+#~ msgid "Add news"
+#~ msgstr "Ajouter une Actualité"
+
+#~ msgid "Create your news"
+#~ msgstr "Créer une Actualité"
+
+#~ msgid "News display order on the front"
+#~ msgstr "Ordre d'affichage des actus sur le site"
+
+#~ msgid "Are you sure to delete this news ?"
+#~ msgstr "Vous voulez vraiment effacer cette Actualité ?"
+
+#~ msgid "No archived news to display ..."
+#~ msgstr "Pas d'actualité archivée à afficher..."
+
+#, fuzzy
+#~ msgid "Are you sure to delete this galerie photo ?"
+#~ msgstr "Voulez-vous vraiment effacer cette publicité ?"
+
+#~ msgid "Editer le référencement de "
+#~ msgstr "Editer le référencement de "
+
+#~ msgid "Edition"
+#~ msgstr "Edition"
+
+#~ msgid "Raw Url"
+#~ msgstr "Url brute"
+
+#~ msgid "Create an advert"
+#~ msgstr "Créer une publicité"
+
+#~ msgid "Edit an advert"
+#~ msgstr "Editer une publicité"
+
+#~ msgid "Liste pubs"
+#~ msgstr "Liste des publicités"
+
+#~ msgid "Are you sure to disable this advert ?"
+#~ msgstr "Voulez-vous vraiment désactiver cette publicité ?"
+
+#~ msgid "Application succesfully send"
+#~ msgstr "Email envoyé avec succés"
+
+#~ msgid "MOD_ARTICLES FRONT NEWS DISPLAY ORDER"
+#~ msgstr "Ordre d'affichage des articles sur le site"
+
+#~ msgid "MOD_ARTICLES FRONT NEWS DISPLAY ORDER DESC"
+#~ msgstr "Sélectionner l'ordre d'affichage"
+
+#~ msgid "DATE"
+#~ msgstr "Date"
+
+#~ msgid "POSITION"
+#~ msgstr "Position"
+
+#~ msgid "SAVE"
+#~ msgstr "Sauvegarder"
+
+#, fuzzy
+#~ msgid "Update article from model"
+#~ msgstr "Mettre à jour une page depuis le modèle"
+
+#~ msgid "Publication Date"
+#~ msgstr "Date de publication"
+
+#, fuzzy
+#~ msgid "There is no data to update map"
+#~ msgstr "Il n'y a pas de données à mettre à jour"
+
+#, fuzzy
+#~ msgid "There is no id to update map"
+#~ msgstr "Il n'y a pas d'ID à mettre à jour"
+
+#, fuzzy
+#~ msgid "There is no data to update practician"
+#~ msgstr "Il n'y a pas de données à mettre à jour"
+
+#, fuzzy
+#~ msgid "There is no id to update practician"
+#~ msgstr "Il n'y a pas d'ID à mettre à jour"
+
+#, fuzzy
+#~ msgid "There is no data to create map"
+#~ msgstr "Il n'y a pas de données à mettre à jour"
+
+#~ msgid "Country"
+#~ msgstr "Pays"
+
+#~ msgid "city"
+#~ msgstr "Ville"
+
+#~ msgid "Postcode"
+#~ msgstr "Code Postal"
+
+#~ msgid "Address 1"
+#~ msgstr "Adresse 1"
+
+#~ msgid "Address 2"
+#~ msgstr "Adresse 2"
+
+#~ msgid "You are not not logged in."
+#~ msgstr "Vous n'êtes pas connecté"
+
+#~ msgid "There is an error in your form."
+#~ msgstr "Il y a une erreur dans le formulaire"
+
+#~ msgid "Map updated"
+#~ msgstr "Carte mise à jour"
+
+#~ msgid "Map deleted"
+#~ msgstr "Carte supprimée"
+
+#~ msgid "Enable to open"
+#~ msgstr "Permettre l'ouverture"
+
+#~ msgid "File is empty"
+#~ msgstr "Le fichier est vide"
+
+#, fuzzy
+#~ msgid "My articles"
+#~ msgstr "Mes pages"
+
+#, fuzzy
+#~ msgid "Manage my articles"
+#~ msgstr "Gérer mes pages"
+
+#, fuzzy
+#~ msgid "All articles of your website"
+#~ msgstr "Toutes les pages de votre site"
+
+#, fuzzy
+#~ msgid "Add article"
+#~ msgstr "Ajouter un  dossier"
+
+#, fuzzy
+#~ msgid "Create a new article"
+#~ msgstr "Créer un nouveau menu"
+
+#~ msgid "Selectup Flux Configuration"
+#~ msgstr "Configuration du flux Selectup"
+
+#~ msgid "Selectup Flux Admin"
+#~ msgstr "Admin du flux selectup"
+
+#, fuzzy
+#~ msgid "Create new map"
+#~ msgstr "Créer un nouveau groupe"
+
+#, fuzzy
+#~ msgid "Creation of a new map"
+#~ msgstr "Création d'une nouvelle page"
+
+#, fuzzy
+#~ msgid "Enter the content of the map"
+#~ msgstr "Editer le nom du menu"
+
+#, fuzzy
+#~ msgid "Edit map"
+#~ msgstr "Editer la page"
+
+#, fuzzy
+#~ msgid "Edition of an existing map"
+#~ msgstr "Editer un utilisateur existant"
+
+#, fuzzy
+#~ msgid "Medimaps"
+#~ msgstr "Editer la page"
+
+#, fuzzy
+#~ msgid "Administration"
+#~ msgstr "Administration XML Selectup"
+
+#, fuzzy
+#~ msgid "Les distributeurs par defaut de votre site"
+#~ msgstr "Toutes les pages de votre site"
+
+#, fuzzy
+#~ msgid "No distributor to display ..."
+#~ msgstr "Pas de pages à afficher ..."
+
+#~ msgid "Please choose your method"
+#~ msgstr "Veuillez choisir votre méthode"
+
+#~ msgid "Reinstall from install.sql"
+#~ msgstr "Réinstaller depuis le script install.sql"
+
+#~ msgid "Really Delete All Contents ?"
+#~ msgstr "Etes-vous sûr de vouloir effacer tout le contenu ?"
+
+#~ msgid "NOT LOGGED IN"
+#~ msgstr "Vous n'êtes pas connecté"
+
+#~ msgid "FORM ERROR"
+#~ msgstr "Erreur dans le formulaire"
+
+#, fuzzy
+#~ msgid "All maps of your website"
+#~ msgstr "Toutes les pages de votre site"
+
+#, fuzzy
+#~ msgid "Are you sure to delete this map ?"
+#~ msgstr "Voulez-vous vraiment effacer cet élément ?"
+
+#, fuzzy
+#~ msgid "No maps to display ..."
+#~ msgstr "Pas de page à afficher"
+
+#, fuzzy
+#~ msgid "List of your distributeurs"
+#~ msgstr "Liste de vos pages"
+
+#, fuzzy
+#~ msgid "Practicians"
+#~ msgstr "Principal"
+
+#, fuzzy
+#~ msgid "Medimaps administration"
+#~ msgstr "Administration XML Selectup"
+
+#, fuzzy
+#~ msgid "List of your Practicians"
+#~ msgstr "Liste de vos pages"
+
+#, fuzzy
+#~ msgid "All practicians of your website"
+#~ msgstr "Toutes les pages de votre site"
+
+#~ msgid "Read more..."
+#~ msgstr "Lire la suite ..."
+
+#, fuzzy
+#~ msgid "Enter informations of the page"
+#~ msgstr "Entrez les informations"
+
+#~ msgid "Warning, you viewing the content of site"
+#~ msgstr "Attention, vous avez selectionné le contenu de"
+
+#~ msgid "VOTRE SITE"
+#~ msgstr "VOTRE SITE"
+
+#~ msgid "AIDE"
+#~ msgstr "AIDE"
+
+#~ msgid "DECONNEXION"
+#~ msgstr "DECONNEXION"
+
+#~ msgid "Admin connection"
+#~ msgstr "Connexion à l'administration"
+
+#~ msgid "FrontOffice"
+#~ msgstr "Votre Site"
+
+#~ msgid "Logout"
+#~ msgstr "Déconnexion"
+
+#~ msgid "Welcome"
+#~ msgstr "Bienvenue"
+
+#~ msgid "Static pages manager"
+#~ msgstr "Gestion des pages"
+
+#~ msgid "Menus Manager"
+#~ msgstr "Gestion des menus"
+
+#~ msgid "Placeholder"
+#~ msgstr "Emplacement"
+
+#~ msgid "Model page to create"
+#~ msgstr "Modèle de page à créer"
+
+#~ msgid "Click on the model type to create your new page."
+#~ msgstr "Choisissez un modèle de page "
+
+#~ msgid "Documents manager"
+#~ msgstr "Gestion des pages"
+
+#~ msgid "Move by Drag&Drop this entry"
+#~ msgstr "Déplacer cette page par Drag&Drop"
+
+#~ msgid "Edit entry"
+#~ msgstr "Editer la page"
+
+#~ msgid "Name of this entry"
+#~ msgstr "Nom de la page"
+
+#~ msgid "Only delete the menu entry"
+#~ msgstr "Supprimer seulement du menu en conservant la page"
+
+#~ msgid "Delete Everything"
+#~ msgstr "Tout supprimer"
+
+#~ msgid "Website content management"
+#~ msgstr "Gestion du contenu de votre site"
+
+#~ msgid "Add a new entry as root in"
+#~ msgstr "Ajouter une page à la racine du site"
+
+#~ msgid "Erase this menu"
+#~ msgstr "Effacer ce menu ?"
+
+#~ msgid "Install a new package"
+#~ msgstr "Installer un nouveau paquet"
+
+#~ msgid "Set"
+#~ msgstr "Actif"
+
+#~ msgid "Pages manager"
+#~ msgstr "Gestionnaire de pages"
+
+#~ msgid "Content of your search page"
+#~ msgstr "Contenu de votre page de recherche"
+
+#~ msgid "Selectup Flux"
+#~ msgstr "Flux Selectup"
+
+#~ msgid "SMTP changed"
+#~ msgstr "SMTP Mis à jour"
+
+#~ msgid "Your campaign title"
+#~ msgstr "Titre de votre campagne"
+
+#~ msgid "Campaign of Limited time period"
+#~ msgstr "Campagne à durée limitée"
+
+#~ msgid "Add another one"
+#~ msgstr "Ajouter une autre"
+
+#~ msgid "Add specific information"
+#~ msgstr "Ajouter des infos spécifiques"
+
+#~ msgid "LastName"
+#~ msgstr "Nom de famille"
+
+#~ msgid "this email is not available..."
+#~ msgstr "Cette adresse mail n'est pas disponible..."
+
+#~ msgid "Last Name"
+#~ msgstr "Nom de famille"
+
+#~ msgid "Could not find user to update"
+#~ msgstr "Impossible de trouver l'utilisateur à mettre à jour"
+
+#~ msgid "Could not find user to delete"
+#~ msgstr "Impossible de trouver l'utilisateur à supprimer"
+
+#~ msgid "Selectup XML Update:"
+#~ msgstr "Mise à jour XML Selectup"
+
+#~ msgid "Image information"
+#~ msgstr "Information de l'image"
+
+#~ msgid "Select document type to create :"
+#~ msgstr "Selectionnez le type de document à créer :"
+
+#~ msgid "Add a new item as root in"
+#~ msgstr "Ajouter une nouvelle rubrique à la racine du"
+
+#~ msgid "Campaign Title"
+#~ msgstr "Titre de la campagne"
+
+#~ msgid "type"
+#~ msgstr "type"
+
+#~ msgid "Add your new menu"
+#~ msgstr "Ajouter un nouveau menu"
+
+#~ msgid "Pages List"
+#~ msgstr "Liste des pages"
+
+#~ msgid "Seo general config"
+#~ msgstr "Référencement de votre site"
+
+#~ msgid "url"
+#~ msgstr "URL"
+
+#~ msgid "View access level"
+#~ msgstr "Niveau View access"
+
+#~ msgid "Your diaporama title"
+#~ msgstr "Titre de votre diaporama"
+
+#~ msgid "document not available"
+#~ msgstr "document non disponible"
+
+#~ msgid "Error: Invalid document"
+#~ msgstr "Erreur: Type de document invalide"
+
+#~ msgid "Rubrique"
+#~ msgstr "Rubrique"
+
+#~ msgid ""
+#~ "In the aim to choose the order of your news in front, select an order "
+#~ msgstr "Selectionnez l'ordre d'affichage des actus sur le site"
+
+#~ msgid "Id"
+#~ msgstr "Identifiant"
+
+#~ msgid "Not a member yet ?"
+#~ msgstr "Pas encore membre ?"
+
+#~ msgid "Register now and get started."
+#~ msgstr "Enregistrez-vous maintenant"
+
+#~ msgid "Register for an account"
+#~ msgstr "Se créer un compte"
+
+#~ msgid "Sign in to your account."
+#~ msgstr "Connectez-vous à votre compte"
+
+#~ msgid "Message sent from your siteweb "
+#~ msgstr "Message envoyé depuis votre site"
+
+#~ msgid "Link a page from this website"
+#~ msgstr "Lier une page du site"
+
+#~ msgid "unpublish"
+#~ msgstr "Non publié"
+
+#~ msgid "No parent"
+#~ msgstr "Pas de parent"
+
+#~ msgid "Could not find user group to update"
+#~ msgstr "Impossible de trouver le groupe d'utilisateur à mettre à jour"
+
+#~ msgid "Users, groups & view levels"
+#~ msgstr "Utilisateurs groupes & view levels"
+
+#~ msgid "which groups are allowed to see this block ?"
+#~ msgstr "Quels groupes sont autorisés à voir ce bloc ?"
+
+#~ msgid "block created"
+#~ msgstr "Le bloc a bien été créé"
+
+#~ msgid "which groups are allowed to read this page ?"
+#~ msgstr "Quels groupes sont autorisés à lire cette page ?"
+
+#~ msgid "which groups are allowed to edit this page ?"
+#~ msgstr "Quels groupes sont autorisés à éditer cette page ?"
+
+#~ msgid "%1 comment"
+
+#~ msgid_plural "%1 comments"
+#~ msgstr[0] "%1 commentaire"
+#~ msgstr[1] "%1 commentaires"
+
+#~ msgid "Home"
+#~ msgstr "Accueil"
+
+#~ msgid "Login"
+#~ msgstr "Connexion"
+
+#~ msgid "Feeds"
+#~ msgstr "Flux"
+
+#~ msgid "Admin access"
+#~ msgstr "Accès admin"
+
+#~ msgid "Static Pages"
+#~ msgstr "Pages statiques"
+
+#~ msgid "Users"
+#~ msgstr "Utilisateurs"
+
+#~ msgid "Skins"
+#~ msgstr "Thèmes"
+
+#~ msgid "%s test"
+
+#~ msgid_plural "%s tests"
+#~ msgstr[0] "il y a %s test"
+#~ msgstr[1] "il y a %s tests"
+
+#~ msgid "comments"
+#~ msgstr "commentaires"
+
+#~ msgid "%1 comments"
+#~ msgstr "%1 commentaires"

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Popup</name>
+	<type>Bloc_Popup_Popup</type>
+	<version>0.1</version>
+	<color>#EFC931</color>
+</bloc>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	
+	<config>
+		<name>search</name>
+		<version>0.0</version>
+		<type>Module</type>
+		<description>Search</description>
+		<uninstallable>true</uninstallable>
+		<deactivable>true</deactivable>
+		
+		<lang>
+			<translatable>true</translatable>
+			<frontFiles>
+				<file src="/controllers/FrontController.php" />
+				<folder src="/views/front/" />
+			</frontFiles>
+		</lang>
+	</config>
+	
+	<routes>
+	
+		<search_back type="Zend_Controller_Router_Route">
+			<route>administration/search/:action</route>
+			<defaults>
+				<module>search</module>
+				<controller>back</controller>
+				<action>index</action>
+				<_isAdmin>true</_isAdmin>
+			</defaults>
+		</search_back>
+		
+		<search_query_back type="Zend_Controller_Router_Route">
+			<route>administration/search_query/:query/:page</route>
+			<defaults>
+				<module>search</module>
+				<controller>back</controller>
+				<action>search</action>
+				<query></query>
+				<page>1</page>
+				<_isAdmin>true</_isAdmin>
+			</defaults>
+		</search_query_back>
+		
+		<search type="Zend_Controller_Router_Route">
+			<route>search/:query/:page</route>
+			<defaults>
+				<module>search</module>
+				<controller>front</controller>
+				<action>search</action>
+				<query></query>
+				<page>1</page>
+			</defaults>
+		</search>
+		
+		
+	</routes>
+</module>

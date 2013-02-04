@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Advertising</name>
+	<type>Bloc_Advertisingv2_Advertising</type>
+	<version>0.1</version>
+	<color>#ffc660</color>
+</bloc>

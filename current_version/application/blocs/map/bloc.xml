@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Carte</name>
+	<type>Bloc_Map_Main</type>
+	<version>0.1</version>
+	<color>#005BCC</color>
+</bloc>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Menu</name>
+	<type>Bloc_Menu_Menu</type>
+	<version>0.1</version>
+	<color>#DBBB4C</color>
+</bloc>

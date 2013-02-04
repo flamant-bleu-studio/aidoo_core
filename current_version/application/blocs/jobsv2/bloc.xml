@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Jobs</name>
+	<type>Bloc_Jobsv2_Jobs</type>
+	<version>0.1</version>
+	<color>#6073ff</color>
+</bloc>

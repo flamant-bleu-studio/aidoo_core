@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+
+	<config>
+		<name>advertising</name>
+		<version>0.0</version>
+		<type>Module</type>
+		<description>Advertising</description>
+		<uninstallable>true</uninstallable>
+		<deactivable>true</deactivable>
+		
+		<lang>
+			<translatable>true</translatable>
+			<frontFiles>
+				<file src="/controllers/FrontController.php" />
+				<folder src="/views/front/" />
+			</frontFiles>
+		</lang>
+	</config>
+	
+	<routes>
+		<advertising_back type="Zend_Controller_Router_Route">
+			<route>administration/advertising/:action/:id</route>
+			<defaults>
+				<module>advertising</module>
+				<controller>back</controller>
+				<action>index</action>
+				<id>0</id>
+				<_isAdmin>true</_isAdmin>
+			</defaults>
+		</advertising_back>
+		
+	</routes>
+</module>

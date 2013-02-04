@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Login</name>
+	<type>Bloc_Loginv2_Login</type>
+	<version>0.1</version>
+	<color>#9b60ff</color>
+</bloc>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Onglet</name>
+	<type>Bloc_Ongletv2_Onglet</type>
+	<version>0.1</version>
+	<color>#EFC931</color>
+</bloc>

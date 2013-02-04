@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+
+	<config>
+		<name>documents</name>
+		<version>0.0</version>
+		<type>Module</type>
+		<description>Documents</description>
+		<uninstallable>false</uninstallable>
+		<deactivable>false</deactivable>
+		<lang>
+			<translatable>true</translatable>
+			<frontFiles>
+				<file src="/controllers/FrontController.php" />
+			</frontFiles>
+		</lang>
+	</config>
+	
+	<routes>
+	
+		<doc type="Zend_Controller_Router_Route">
+			<route>docs/:action/:id</route>
+			<defaults>
+				<action>index</action>
+				<controller>front</controller>
+				<module>documents</module>
+				<id>0</id>
+			</defaults>
+		</doc>
+		
+		<documents_back type="Zend_Controller_Router_Route">
+			<route>administration/docs/:action/:id</route>
+			<defaults>
+				<module>documents</module>
+				<controller>back</controller>
+				<action>index</action>
+				<id>0</id>
+				<_isAdmin>true</_isAdmin>
+				<page>1</page>
+			</defaults>
+            <chains>
+	            <page type="Zend_Controller_Router_Route_Regex">
+		            <route>/page-([0-9]*)</route>
+		            <map>
+						<page>1</page>
+					</map>
+	            </page>
+            </chains>
+			
+		</documents_back>
+	
+	</routes>
+</module>

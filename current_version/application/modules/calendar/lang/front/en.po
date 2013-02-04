@@ -1,0 +1,176 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-10 10:17+0200\n"
+"PO-Revision-Date: 2012-09-10 10:23+0100\n"
+"Last-Translator: Louis Samson <l.samson@flamant-bleu.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /var/CMS/current_version/application/modules/articles/controllers/FrontController.php:134
+#: /var/CMS/current_version/application/modules/articles/controllers/FrontController.php:140
+#: /var/CMS/current_version/application/modules/articles/controllers/FrontController.php:144
+msgid "Page not found"
+msgstr "Page not found"
+
+#: /var/CMS/current_version/application/modules/articles/controllers/MiddleController.php:102
+msgid "Successful creation of the article. This article must be validated."
+msgstr "Successful creation of the article. This article must be validated."
+
+#: /var/CMS/current_version/application/modules/articles/controllers/MiddleController.php:122
+msgid "You are not the owner of this article"
+msgstr "You are not the owner of this article"
+
+#: /var/CMS/current_version/application/modules/articles/controllers/MiddleController.php:164
+msgid "Article updated"
+msgstr "Article updated"
+
+#: /var/CMS/current_version/application/modules/articles/controllers/MiddleController.php:172
+msgid "Page object has not been updated because it was not found"
+msgstr "Page object has not been updated because it was not found"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:25
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:13
+msgid "Status"
+msgstr "Status"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:26
+msgid "Drafted"
+msgstr "Drafted"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:26
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:16
+msgid "Published"
+msgstr "Published"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:43
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:53
+msgid "Others"
+msgstr "Others"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:59
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:11
+msgid "Categories"
+msgstr "Categories"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:69
+msgid "Access"
+msgstr "Access"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:77
+msgid "Activation date"
+msgstr "Activation date"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:83
+msgid "Article permanent ?"
+msgstr "Article permanent ?"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:84
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:120
+msgid "Check to activate"
+msgstr "Check to activate"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:88
+msgid "Deactivation date"
+msgstr "Deactivation date"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:96
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:10
+msgid "Title"
+msgstr "Title"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:108
+msgid "Image"
+msgstr "Image"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:112
+msgid "Headline"
+msgstr "Headline"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:119
+msgid "Link read more"
+msgstr "Link read more"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:127
+msgid "Show comments"
+msgstr "Show comments"
+
+#: /var/CMS/current_version/application/modules/articles/forms/Article.php:128
+msgid "Display facebook comments in article"
+msgstr "Display facebook comments in article"
+
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:1
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:7
+msgid "comment"
+msgstr "comment"
+
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:2
+msgid "Back"
+msgstr "Back"
+
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:3
+msgid "Written by"
+msgstr "Written by"
+
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:4
+msgid "No item to display"
+msgstr "No item to display"
+
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:5
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:8
+msgid "Read more"
+msgstr "Read more"
+
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:6
+msgid "No items"
+msgstr "No items"
+
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:9
+msgid "No news to display"
+msgstr "No news to display"
+
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:12
+msgid "Last update"
+msgstr "Last update"
+
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:14
+msgid "Actions"
+msgstr "Actions"
+
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:15
+msgid "Pending validation"
+msgstr "Pending validation"
+
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:17
+msgid "Edit"
+msgstr "Edit"
+
+#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:18
+msgid "View"
+msgstr "View"
+
+#~ msgid "Save"
+#~ msgstr "Sauvegarder"
+
+#~ msgid "Save & Quit"
+#~ msgstr "Sauvegarder & Quitter"
+
+#, fuzzy
+#~ msgid "Read moresdfsdfsfki"
+#~ msgstr "En lire plus"
+
+#, fuzzy
+#~ msgid "Read moreuh"
+#~ msgstr "En lire plus"
+
+#~ msgid "Brief of your article"
+#~ msgstr "Brève de votre article"

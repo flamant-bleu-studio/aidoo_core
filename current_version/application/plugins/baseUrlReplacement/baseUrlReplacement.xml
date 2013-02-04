@@ -1,0 +1,10 @@
+<install>
+	<type>Plugin</type>
+	<version>0.1</version>
+	<name>baseUrlReplacement</name>
+	<description>No base url in database !</description>
+	<files>
+		<filename>baseUrlReplacement.php</filename>
+	</files>
+	
+</install>

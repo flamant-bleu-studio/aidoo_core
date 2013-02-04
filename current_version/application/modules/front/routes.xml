@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	
+	<config>
+		<name>front</name>
+		<version>0.0</version>
+		<type>Module</type>
+		<description>front</description>
+		<uninstallable>false</uninstallable>
+		<deactivable>false</deactivable>
+	</config>
+
+	<routes>
+
+		<front_login type="Zend_Controller_Router_Route_Static">
+			<route>login/</route>
+			<defaults>
+				<module>users</module>
+				<controller>login</controller>
+				<action>loginfront</action>
+			</defaults>
+		</front_login>	
+
+		<front_logout type="Zend_Controller_Router_Route_Static">
+			<route>logout/</route>
+			<defaults>
+				<module>users</module>
+				<controller>login</controller>
+				<action>logoutfront</action>
+			</defaults>
+		</front_logout>
+	</routes>
+</module>

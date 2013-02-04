@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	
+	<config>
+		<name>jobs</name>
+		<version>0.0</version>
+		<type>Module</type>
+		<description>Job</description>
+		<uninstallable>true</uninstallable>
+		<deactivable>true</deactivable>
+		
+		<lang>
+			<translatable>true</translatable>
+			<frontFiles>
+				<file src="/controllers/FrontController.php" />
+				<folder src="/views/front/" />
+			</frontFiles>
+		</lang>
+		
+	</config>
+	
+	<routes>
+	
+		<jobs type="Zend_Controller_Router_Route">
+			<route>jobs/:action/:id</route>
+			<defaults>
+				<action>index</action>
+				<controller>front</controller>
+				<module>jobs</module>
+				<id>0</id>
+			</defaults>
+		</jobs>
+		
+		<jobs_back type="Zend_Controller_Router_Route">
+			<route>administration/jobs/:action/:id</route>
+			<defaults>
+				<module>jobs</module>
+				<controller>back</controller>
+				<action>index</action>
+				<id>0</id>
+				<_isAdmin>true</_isAdmin>
+				<page>1</page>
+			</defaults>
+
+			
+		</jobs_back>
+	
+	</routes>
+</module>

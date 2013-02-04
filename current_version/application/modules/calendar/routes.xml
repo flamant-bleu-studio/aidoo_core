@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+
+	<config>
+		<name>calendar</name>
+		<version>1.0</version>
+		<type>Module</type>
+		<description>Calendar</description>
+		<uninstallable>true</uninstallable>
+		<deactivable>true</deactivable>
+		<lang>
+			<translatable>true</translatable>
+		</lang>
+	</config>
+	
+	<routes>
+		
+		<calendar_back type="Zend_Controller_Router_Route">
+			<route>administration/calendar/:action/:id</route>
+			<defaults>
+				<module>calendar</module>
+				<controller>back</controller>
+				<action>index</action>
+				<id>0</id>
+				<_isAdmin>true</_isAdmin>
+			</defaults>
+		</calendar_back>		
+		
+		<calendar type="Zend_Controller_Router_Route">
+			<route>calendar/:action/:id</route>
+			<defaults>
+				<module>calendar</module>
+				<controller>front</controller>
+				<action>index</action>
+				<id>0</id>
+			</defaults>
+		</calendar>
+		
+	</routes>
+</module>

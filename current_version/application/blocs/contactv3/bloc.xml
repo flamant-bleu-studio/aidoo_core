@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Contact New</name>
+	<type>Bloc_Contactv3_Contact</type>
+	<version>0.1</version>
+	<color>#85B271</color>
+</bloc>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Contenu Flash</name>
+	<type>Bloc_FlashContentv2_FlashContent</type>
+	<version>0.1</version>
+	<color>#9E9E9E</color>
+</bloc>

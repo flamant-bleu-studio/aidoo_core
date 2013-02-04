@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<candidature_type>
+	<name>default</name>
+	<description>Formulaire de candidature spontanée</description>
+
+	<nodes>
+		<enctype>multipart/form-data</enctype>
+		<elements>
+			<nom>
+				<type>text</type>
+				<options>
+					<label>Nom : </label>
+					<description>Votre nom</description>
+					<width>100</width>
+					<required>true</required>
+				</options>
+			</nom>
+			
+			<prenom>
+				<type>text</type>
+				<options>
+					<label>Prénom : </label>
+					<description>Votre prénom</description>
+					<width>100</width>
+				</options>
+			</prenom>
+			
+			<adresse>
+				<type>textarea</type>
+				<options>
+					<label>Adresse : </label>
+					<description>Votre adresse</description>
+					<cols>25</cols>
+					<rows>2</rows>
+				</options>
+			</adresse>
+			
+			<code_postal>
+				<type>text</type>
+				<options>
+					<label>Code postal : </label>
+					<description>Code postal</description>
+					<lenght>4</lenght>
+				</options>
+			</code_postal>
+			
+			<ville>
+				<type>text</type>
+				<options>
+					<label>Ville : </label>
+					<description>Ville</description>
+				</options>
+			</ville>
+			
+			<telephone>
+				<type>text</type>
+				<options>
+					<label>Téléphone : </label>
+					<description>Votre téléphone</description>
+					<width>20</width>
+					<validators>
+						<phone>
+							<validator>phone</validator>
+						</phone>
+					</validators>
+				</options>
+			</telephone>
+			
+			<email>
+				<type>text</type>
+				<options>
+					<label>Email : </label>
+					<description>Votre email</description>
+					<width>100</width>
+					<required>true</required>
+					<validators>
+						<email>
+							<validator>EmailAddress</validator>
+						</email>
+					</validators>
+				</options>
+			</email>
+			
+			<cv>
+				<type>file</type>
+				<options>
+					<label>CV : </label>
+					<description>Votre CV</description>
+				</options>
+			</cv>
+			
+			<message>
+				<type>textarea</type>
+				<options>
+					<label>Message : </label>
+					<description>Votre message</description>
+					<cols>25</cols>
+					<rows>10</rows>
+					<required>true</required>
+				</options>
+			</message>
+			
+		</elements>
+	</nodes>
+
+</candidature_type>

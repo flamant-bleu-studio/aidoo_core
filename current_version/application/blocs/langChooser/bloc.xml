@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Langue Chooser</name>
+	<type>Bloc_LangChooser_Main</type>
+	<version>0.1</version>
+	<color>#7960ff</color>
+	<lang>
+		<translatable>true</translatable>
+		<frontFiles>
+			<file src="/front.tpl" />
+		</frontFiles>
+	</lang>
+</bloc>

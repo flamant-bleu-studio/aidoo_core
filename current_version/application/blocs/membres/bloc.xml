@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Membres</name>
+	<type>Bloc_Membres_Main</type>
+	<lang>
+		<translatable>true</translatable>
+		<frontFiles>
+			<file src="/front.tpl" />
+		</frontFiles>
+	</lang>
+	<version>0.1</version>
+	<color>#ffe960</color>
+</bloc>

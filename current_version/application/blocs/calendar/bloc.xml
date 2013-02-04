@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Calendar</name>
+	<type>Bloc_Calendar_Main</type>
+	<lang>
+		<translatable>true</translatable>
+		<frontFiles>
+			<file src="/front.tpl" />
+		</frontFiles>
+	</lang>
+	<version>1.0</version>
+	<color>#ffe960</color>
+</bloc>

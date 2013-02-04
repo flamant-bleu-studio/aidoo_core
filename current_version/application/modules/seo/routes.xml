@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	
+	<config>
+		<name>seo</name>
+		<version>0.0</version>
+		<type>Module</type>
+		<description>SEO</description>
+		<uninstallable>false</uninstallable>
+		<deactivable>false</deactivable>
+		
+		<lang>
+			<translatable>true</translatable>
+		</lang>
+	</config>
+
+	<routes>
+	
+		<seo_back type="Zend_Controller_Router_Route">
+			<route>administration/seo/:action/:id</route>
+			<defaults>
+				<module>seo</module>
+				<controller>back</controller>
+				<action>index</action>
+				<id>0</id>
+				<_isAdmin>true</_isAdmin>
+			</defaults>
+		</seo_back>
+		
+		<seo_ajax type="Zend_Controller_Router_Route">
+			<route>ajax/seo/:action</route>
+			<defaults>
+				<module>seo</module>
+				<controller>ajax</controller>
+				<action>index</action>
+				<_isAjax>true</_isAjax>
+			</defaults>
+		</seo_ajax>
+		
+	</routes>
+</module>

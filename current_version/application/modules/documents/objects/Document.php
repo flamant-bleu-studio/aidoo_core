@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * CMS Aïdoo
+ *
+ * Copyright (C) 2013  Flamant Bleu Studio
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ */
+
+class Documents_Object_Document extends CMS_Object_MultiLangEntityWithNodes
+{
+	protected static $object_name = "Documents_Object_Document";
+	
+	public $id_document;
+	
+	public $title;
+	public $type;
+	public $template;
+	public $author;
+	public $status;
+	public $access;
+	
+	/*
+	 * protected pour le LazyLoading
+	 */
+	protected $nodes;
+	
+	public $date_add;
+	public $date_upd;
+	
+	protected static $_model;
+	protected static $_modelClass = "Documents_Model_DbTable_Documents";
+	
+	protected static $_nodes = array(
+		"nodes" => array(
+			"modelClass" 	=> "Documents_Model_DbTable_Nodes"
+		)
+	);
+	
+	const STATUS_PUBLISH = 1; 	// Publié
+	const STATUS_DRAFT	 = 0;	// Brouillon
+}

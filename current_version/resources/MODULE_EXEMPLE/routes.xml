@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	
+	<config>
+		<name>{exemple}</name>
+		<version>0.0</version>
+		<type>Module</type>
+		<description>{Exemple}</description>
+		<uninstallable>false</uninstallable>
+		<deactivable>true</deactivable>
+		
+		<lang>
+			<translatable>true</translatable>
+			<frontFiles>
+				<file src="/controllers/FrontController.php" />
+				<folder src="/views/front/" />
+				<file src="/forms/{Exemple}.php"></file>
+			</frontFiles>
+		</lang>
+	</config>
+	
+	<routes>
+	
+		<exempleXML type="Zend_Controller_Router_Route">
+			<route>{exemple}/:action/:id/:page</route>
+			<defaults>
+				<action>index</action>
+				<controller>front</controller>
+				<module>{exemple}</module>
+				<id>0</id>
+				<page>1</page>
+			</defaults>
+		</exempleXML>		
+		
+		<exempleXML_back type="Zend_Controller_Router_Route">
+			<route>administration/{exemple}/:action/:id</route>
+			<defaults>
+				<module>{exemple}</module>
+				<controller>back</controller>
+				<action>index</action>
+				<id>0</id>
+				<_isAdmin>true</_isAdmin>
+			</defaults>
+		</exempleXML_back>
+		
+	</routes>
+</module>

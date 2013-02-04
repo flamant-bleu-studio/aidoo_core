@@ -1,0 +1,10 @@
+<install>
+	<type>Plugin</type>
+	<version>0.1</version>
+	<name>moderateWords</name>
+	<description>Elimine tous les gros mots</description>
+	<files>
+		<filename>moderateWords.php</filename>
+	</files>
+		
+</install>

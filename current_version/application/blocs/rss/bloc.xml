@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Rss</name>
+	<type>Bloc_Rss_Rss</type>
+	<version>0.1</version>
+	<color>#F89400</color>
+</bloc>

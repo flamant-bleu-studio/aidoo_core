@@ -1,0 +1,1034 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cms Aïdoo V0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-11-04 13:04+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Simon Cadec <scadec@flamant-bleu.com>\n"
+"Language-Team: Simon Cadec\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED KINGDOM\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _t;gettext;ngettext:1,2;plural:1,2\n"
+"Plural-Forms: nplurals=2; plural=n>1\n"
+"X-Poedit-Basepath: /var/www/cms_core/\n"
+"X-Poedit-SearchPath-0: application\n"
+"X-Poedit-SearchPath-1: tmp\n"
+
+#: application/modules/blocManager/forms/configForm.php:84
+msgid "All"
+msgstr ""
+
+#: application/modules/blocManager/forms/configForm.php:109
+msgid "Display this bloc in"
+msgstr ""
+
+#: application/modules/blocManager/controllers/BackController.php:98
+msgid "Submit"
+msgstr ""
+
+#: application/modules/blocManager/controllers/BackController.php:104
+#: application/modules/blocManager/controllers/BackController.php:166
+#: application/modules/blocManager/controllers/BackController.php:264
+#: application/modules/blocManager/controllers/BackController.php:341
+msgid "Insufficient rights"
+msgstr ""
+
+#: application/modules/blocManager/controllers/BackController.php:148
+#: application/modules/blocManager/controllers/BackController.php:239
+msgid "invalid form"
+msgstr "Error in form ..."
+
+#: application/modules/blocManager/controllers/BackController.php:234
+msgid "block saved"
+msgstr "Block saved !"
+
+#: application/modules/blocManager/controllers/BackController.php:277
+msgid "block moved up"
+msgstr "block moved up"
+
+#: application/modules/blocManager/controllers/BackController.php:290
+msgid "block moved down"
+msgstr "block moved down"
+
+#: application/modules/blocManager/controllers/BackController.php:301
+msgid "block published"
+msgstr "Block is now publish"
+
+#: application/modules/blocManager/controllers/BackController.php:313
+msgid "block unpublished"
+msgstr "Block is now unpublish"
+
+#: application/modules/blocManager/controllers/BackController.php:327
+msgid "block deleted"
+msgstr "Block deleted !"
+
+#: application/modules/blocManager/controllers/BackController.php:339
+msgid "Rights updated"
+msgstr ""
+
+#: application/modules/skins/controllers/BackController.php:113
+msgid "front skin changed"
+msgstr "Front skin has been changed"
+
+#: application/modules/skins/controllers/BackController.php:157
+msgid "back skin changed"
+msgstr "Back skin has been changed"
+
+#: application/modules/front/controllers/FrontController.php:31
+msgid "Page not found"
+msgstr ""
+
+#: application/modules/categories/models/DbTable/Categories.php:71
+#: application/modules/categories/models/DbTable/Categories.php:118
+#: application/modules/categories/models/DbTable/Categories.php:149
+#: application/modules/categories/models/DbTable/Categories.php:178
+msgid "Missing parameter"
+msgstr ""
+
+#: application/modules/categories/models/DbTable/Categories.php:88
+msgid "Missing parameters"
+msgstr ""
+
+#: application/modules/categories/forms/CategoryForm.php:51
+msgid "No category parent"
+msgstr ""
+
+#: application/modules/categories/controllers/BackController.php:110
+#, fuzzy
+msgid "Category created"
+msgstr "User saved !"
+
+#: application/modules/categories/controllers/BackController.php:160
+msgid "Category updated | ps : il manque la maj du parent !!"
+msgstr ""
+
+#: application/modules/categories/controllers/BackController.php:198
+#, fuzzy
+msgid "Category deleted"
+msgstr "User deleted !"
+
+#: application/modules/packager/controllers/BackController.php:160
+msgid "packaging had failed"
+msgstr "packaging had failed"
+
+#: application/modules/packager/controllers/BackController.php:398
+#: application/modules/packager/controllers/BackController.php:459
+msgid "Install type unsupported"
+msgstr "Install type unsupported ..."
+
+#: application/modules/packager/controllers/BackController.php:473
+msgid "Folder block is not writable"
+msgstr "Folder block is not writable ..."
+
+#: application/modules/packager/controllers/BackController.php:481
+msgid "No files in the package"
+msgstr "No files in this package"
+
+#: application/modules/packager/controllers/BackController.php:494
+#, fuzzy
+msgid "Package installed"
+msgstr "Package List"
+
+#: application/modules/packager/controllers/BackController.php:516
+msgid "unpack package failed"
+msgstr "Unpack package failed ..."
+
+#: application/modules/packager/controllers/BackController.php:533
+#, fuzzy, php-format
+msgid "Package %s sucessfully uninstalled"
+msgstr "Bloc %s sucessfully uninstalled"
+
+#: application/modules/packager/controllers/BackController.php:537
+#, fuzzy, php-format
+msgid "Enable to delete %s"
+msgstr "Block deleted !"
+
+#: application/modules/users/models/DbTable/UserGroup.php:23
+#: application/modules/users/models/DbTable/UserGroup.php:44
+#: application/modules/users/models/DbTable/UserGroup.php:63
+msgid "Parameter missing"
+msgstr ""
+
+#: application/modules/users/models/DbTable/UserGroup.php:55
+msgid "Could not find user group to update"
+msgstr ""
+
+#: application/modules/users/models/DbTable/Users.php:41
+msgid "Could not find user to update"
+msgstr ""
+
+#: application/modules/users/models/DbTable/Users.php:100
+msgid "Could not find user to delete"
+msgstr ""
+
+#: application/modules/users/forms/GroupForm.php:31
+msgid "Group parent"
+msgstr ""
+
+#: application/modules/users/controllers/LoginController.php:39
+#: application/modules/users/controllers/LoginController.php:74
+msgid "wrong email or password"
+msgstr "Email and/or password are null"
+
+#: application/modules/users/controllers/LoginController.php:58
+msgid "email & password null"
+msgstr "There are no email and password"
+
+#: application/modules/users/controllers/BackController.php:98
+#, fuzzy
+msgid "User created"
+msgstr "User saved !"
+
+#: application/modules/users/controllers/BackController.php:108
+msgid "Create user"
+msgstr ""
+
+#: application/modules/users/controllers/BackController.php:123
+#, fuzzy
+msgid "Group created"
+msgstr "User saved !"
+
+#: application/modules/users/controllers/BackController.php:134
+msgid "Create group"
+msgstr ""
+
+#: application/modules/users/controllers/BackController.php:163
+msgid "View Access created"
+msgstr ""
+
+#: application/modules/users/controllers/BackController.php:173
+msgid "Create view-access"
+msgstr ""
+
+#: application/modules/users/controllers/BackController.php:194
+msgid "user saved"
+msgstr "User saved !"
+
+#: application/modules/users/controllers/BackController.php:206
+msgid "Update user"
+msgstr ""
+
+#: application/modules/users/controllers/BackController.php:239
+msgid "View Access saved"
+msgstr ""
+
+#: application/modules/users/controllers/BackController.php:258
+msgid "Update"
+msgstr ""
+
+#: application/modules/users/controllers/BackController.php:271
+msgid "user deleted"
+msgstr "User deleted !"
+
+#: application/modules/users/controllers/BackController.php:275
+msgid "Are you crazy ? Are you sure to delete yourself ?!"
+msgstr ""
+
+#: application/modules/users/controllers/BackController.php:287
+#: application/modules/users/controllers/BackController.php:299
+#, fuzzy
+msgid "group deleted"
+msgstr "User deleted !"
+
+#: application/modules/users/controllers/BackController.php:312
+#, php-format
+msgid "user %s %s actived"
+msgstr "user %s %s is now active !"
+
+#: application/modules/users/controllers/BackController.php:328
+msgid "user desactived"
+msgstr "User deactived !"
+
+#: application/modules/users/controllers/BackController.php:332
+msgid "Are you crazy ? sure you want to deactive yourself ?!"
+msgstr ""
+
+#: application/modules/users/lib/Manager.php:21
+#: application/modules/users/lib/Manager.php:35
+msgid "User must have parent group"
+msgstr ""
+
+#: application/modules/admin/controllers/ConfigController.php:115
+msgid "All content had been erased"
+msgstr ""
+
+#: application/modules/admin/controllers/ConfigController.php:135
+msgid "Enable to open"
+msgstr ""
+
+#: application/modules/admin/controllers/ConfigController.php:140
+msgid "File is empty"
+msgstr ""
+
+#: application/modules/admin/controllers/ConfigController.php:307
+msgid "Please choose language"
+msgstr "Please choose language"
+
+#: application/modules/admin/controllers/ConfigController.php:322
+msgid "Language added"
+msgstr "Language added"
+
+#: application/modules/admin/controllers/ConfigController.php:325
+#, fuzzy
+msgid "this language is already existing"
+msgstr "this language is already active"
+
+#: application/modules/admin/controllers/ConfigController.php:331
+#, fuzzy
+msgid "Language id invalid"
+msgstr "Language deleted"
+
+#: application/modules/admin/controllers/ConfigController.php:366
+msgid "Language deleted"
+msgstr "Language deleted"
+
+#: application/modules/admin/controllers/ConfigController.php:471
+#, php-format
+msgid "%s is now the default language"
+msgstr "%s is now the default language"
+
+#: application/modules/sitemap/controllers/BackController.php:35
+msgid "Sitemap updated"
+msgstr ""
+
+#: application/modules/documents/controllers/FrontController.php:32
+#: application/modules/documents/controllers/BackController.php:222
+msgid "Invalid document type"
+msgstr ""
+
+#: application/modules/documents/controllers/BackController.php:87
+msgid "New document is now in homepage"
+msgstr ""
+
+#: application/modules/documents/controllers/BackController.php:193
+#, fuzzy
+msgid "Document created"
+msgstr "User saved !"
+
+#: application/modules/documents/controllers/BackController.php:203
+msgid "Create"
+msgstr ""
+
+#: application/modules/documents/controllers/BackController.php:228
+msgid "No document type"
+msgstr ""
+
+#: application/modules/documents/controllers/BackController.php:314
+#, fuzzy
+msgid "Document saved"
+msgstr "User saved !"
+
+#: application/modules/documents/controllers/BackController.php:367
+#, fuzzy
+msgid "Document deleted"
+msgstr "User deleted !"
+
+#: application/modules/documents/controllers/BackController.php:461
+#, php-format
+msgid "unknown param '%s' in this document type XML"
+msgstr ""
+
+#: application/modules/contact/models/DbTable/ContactConfiguration.php:23
+#: application/modules/contact/models/DbTable/Contact.php:23
+msgid "There is no data"
+msgstr ""
+
+#: application/modules/contact/controllers/FrontController.php:146
+msgid "Formulaire envoyé"
+msgstr ""
+
+#: application/modules/menu/forms/menuitemsForm.php:60
+msgid "Icon"
+msgstr ""
+
+#: application/modules/menu/forms/menuitemsForm.php:75
+msgid "Link a page from this website"
+msgstr ""
+
+#: application/modules/menu/forms/menuitemsForm.php:118
+msgid "No parent"
+msgstr ""
+
+#: application/modules/menu/controllers/BackController.php:143
+#, fuzzy
+msgid "menu created"
+msgstr "User saved !"
+
+#: application/modules/menu/controllers/BackController.php:262
+#, fuzzy
+msgid "menu item created"
+msgstr "User saved !"
+
+#: application/modules/menu/controllers/BackController.php:299
+#, fuzzy
+msgid "menu deleted"
+msgstr "User deleted !"
+
+#: application/modules/menu/controllers/BackController.php:355
+#, fuzzy
+msgid "menu saved"
+msgstr "User saved !"
+
+#: tmp/parse_tpl.c:1
+#: tmp/parse_tpl.c:8
+msgid "Not a member yet ?"
+msgstr "Not a member yet ?"
+
+#: tmp/parse_tpl.c:2
+#: tmp/parse_tpl.c:9
+msgid "Register now and get started."
+msgstr "Register now and get started."
+
+#: tmp/parse_tpl.c:3
+#: tmp/parse_tpl.c:10
+msgid "Register for an account"
+msgstr "Register for an account"
+
+#: tmp/parse_tpl.c:4
+#: tmp/parse_tpl.c:11
+msgid "Sign in to your account."
+msgstr "Sign in to your account."
+
+#: tmp/parse_tpl.c:5
+#: tmp/parse_tpl.c:12
+msgid "Password"
+msgstr "Password"
+
+#: tmp/parse_tpl.c:6
+#: tmp/parse_tpl.c:13
+msgid "Sign in"
+msgstr "Sign in"
+
+#: tmp/parse_tpl.c:7
+#: tmp/parse_tpl.c:14
+msgid "Forgot your password ?"
+msgstr "Forgot your password ?"
+
+#: tmp/parse_tpl.c:15
+msgid "Welcome"
+msgstr "Welcome"
+
+#: tmp/parse_tpl.c:16
+msgid "Logout"
+msgstr "Logout"
+
+#: tmp/parse_tpl.c:17
+msgid "Bloc"
+msgstr "Bloc"
+
+#: tmp/parse_tpl.c:18
+#: tmp/parse_tpl.c:35
+#: tmp/parse_tpl.c:174
+#: tmp/parse_tpl.c:190
+msgid "Title"
+msgstr "Title"
+
+#: tmp/parse_tpl.c:19
+msgid "status"
+msgstr ""
+
+#: tmp/parse_tpl.c:20
+#: tmp/parse_tpl.c:37
+#: tmp/parse_tpl.c:188
+#: tmp/parse_tpl.c:200
+msgid "Type"
+msgstr ""
+
+#: tmp/parse_tpl.c:21
+#: tmp/parse_tpl.c:38
+msgid "Lang"
+msgstr "Lang"
+
+#: tmp/parse_tpl.c:22
+#: tmp/parse_tpl.c:39
+msgid "Show Title"
+msgstr "Show Title"
+
+#: tmp/parse_tpl.c:23
+#: tmp/parse_tpl.c:40
+msgid "CSS Variant"
+msgstr ""
+
+#: tmp/parse_tpl.c:24
+#: tmp/parse_tpl.c:41
+msgid "Template"
+msgstr ""
+
+#: tmp/parse_tpl.c:25
+#: tmp/parse_tpl.c:42
+#: tmp/parse_tpl.c:201
+msgid "Access"
+msgstr "Access"
+
+#: tmp/parse_tpl.c:26
+#: tmp/parse_tpl.c:43
+#: tmp/parse_tpl.c:192
+#: tmp/parse_tpl.c:203
+#, fuzzy
+msgid "Actions"
+msgstr "Active"
+
+#: tmp/parse_tpl.c:27
+#: tmp/parse_tpl.c:44
+msgid "All Language"
+msgstr "All Language"
+
+#: tmp/parse_tpl.c:28
+#: tmp/parse_tpl.c:45
+#, fuzzy
+msgid "yes"
+msgstr "Yes"
+
+#: tmp/parse_tpl.c:29
+#: tmp/parse_tpl.c:46
+msgid "no"
+msgstr ""
+
+#: tmp/parse_tpl.c:30
+#: tmp/parse_tpl.c:47
+msgid "Delete this bloc ?"
+msgstr ""
+
+#: tmp/parse_tpl.c:31
+#: tmp/parse_tpl.c:48
+#: tmp/parse_tpl.c:69
+#: tmp/parse_tpl.c:115
+#: tmp/parse_tpl.c:123
+#: tmp/parse_tpl.c:129
+#: tmp/parse_tpl.c:151
+#: tmp/parse_tpl.c:178
+#: tmp/parse_tpl.c:194
+#: tmp/parse_tpl.c:205
+#, fuzzy
+msgid "Delete"
+msgstr "delete"
+
+#: tmp/parse_tpl.c:32
+#: tmp/parse_tpl.c:49
+#: tmp/parse_tpl.c:70
+#: tmp/parse_tpl.c:84
+#: tmp/parse_tpl.c:88
+#: tmp/parse_tpl.c:116
+#: tmp/parse_tpl.c:124
+#: tmp/parse_tpl.c:130
+#: tmp/parse_tpl.c:152
+#: tmp/parse_tpl.c:179
+#: tmp/parse_tpl.c:195
+#: tmp/parse_tpl.c:206
+msgid "Cancel"
+msgstr "Cancel"
+
+#: tmp/parse_tpl.c:33
+msgid "Blocs in unsupported Placeholder"
+msgstr ""
+
+#: tmp/parse_tpl.c:34
+msgid "PlaceHolder"
+msgstr ""
+
+#: tmp/parse_tpl.c:36
+#: tmp/parse_tpl.c:111
+msgid "Status"
+msgstr ""
+
+#: tmp/parse_tpl.c:50
+msgid "Create a new block"
+msgstr ""
+
+#: tmp/parse_tpl.c:51
+#: tmp/parse_tpl.c:62
+#: tmp/parse_tpl.c:65
+#: tmp/parse_tpl.c:72
+#: tmp/parse_tpl.c:78
+#: tmp/parse_tpl.c:106
+#: tmp/parse_tpl.c:132
+#: tmp/parse_tpl.c:154
+#: tmp/parse_tpl.c:157
+#: tmp/parse_tpl.c:161
+#: tmp/parse_tpl.c:164
+#: tmp/parse_tpl.c:181
+#: tmp/parse_tpl.c:197
+msgid "Options"
+msgstr ""
+
+#: tmp/parse_tpl.c:52
+#: tmp/parse_tpl.c:135
+msgid "Skins Manager"
+msgstr "Skins Manager"
+
+#: tmp/parse_tpl.c:53
+#: tmp/parse_tpl.c:90
+#: tmp/parse_tpl.c:95
+#: tmp/parse_tpl.c:100
+#: tmp/parse_tpl.c:119
+#: tmp/parse_tpl.c:127
+msgid "Name"
+msgstr "Name"
+
+#: tmp/parse_tpl.c:54
+msgid "FrontOffice Skin"
+msgstr "FrontOffice Skin"
+
+#: tmp/parse_tpl.c:55
+msgid "BackOffice Skin"
+msgstr "BackOffice Skin"
+
+#: tmp/parse_tpl.c:56
+msgid "Supported Devices"
+msgstr ""
+
+#: tmp/parse_tpl.c:57
+#: tmp/parse_tpl.c:59
+msgid "Active"
+msgstr "Active"
+
+#: tmp/parse_tpl.c:58
+#: tmp/parse_tpl.c:60
+#: tmp/parse_tpl.c:113
+msgid "Activate"
+msgstr "Activate"
+
+#: tmp/parse_tpl.c:61
+msgid "Standard Browser"
+msgstr ""
+
+#: tmp/parse_tpl.c:63
+#: tmp/parse_tpl.c:73
+#: tmp/parse_tpl.c:75
+#, fuzzy
+msgid "Selectup Flux Configuration"
+msgstr "Site Configuration"
+
+#: tmp/parse_tpl.c:64
+msgid "Selectup Flux Admin"
+msgstr ""
+
+#: tmp/parse_tpl.c:66
+#, fuzzy
+msgid "Pages manager"
+msgstr "Static pages manager"
+
+#: tmp/parse_tpl.c:67
+msgid "Are you sure to delete this category ?"
+msgstr ""
+
+#: tmp/parse_tpl.c:68
+msgid "Any document in this category will be move into uncategorized category"
+msgstr ""
+
+#: tmp/parse_tpl.c:71
+#: tmp/parse_tpl.c:117
+#: tmp/parse_tpl.c:125
+#: tmp/parse_tpl.c:131
+#: tmp/parse_tpl.c:180
+#: tmp/parse_tpl.c:196
+msgid "Add new"
+msgstr "Add new"
+
+#: tmp/parse_tpl.c:74
+msgid "Selectup XML Update:"
+msgstr ""
+
+#: tmp/parse_tpl.c:76
+msgid "Selectup XML Administration"
+msgstr ""
+
+#: tmp/parse_tpl.c:77
+msgid "Update Database from XML Content"
+msgstr ""
+
+#: tmp/parse_tpl.c:79
+msgid "Warning: Active instances of this package had been found!"
+msgstr "Warning: Active instances of this package had been found!"
+
+#: tmp/parse_tpl.c:80
+msgid "Instance Name"
+msgstr "Instance Name"
+
+#: tmp/parse_tpl.c:81
+msgid "Confirm suppression of this package?"
+msgstr "Confirm suppression of this package?"
+
+#: tmp/parse_tpl.c:82
+msgid "Removing this package will also remove associated instances!"
+msgstr "Removing this package will also remove associated instances!"
+
+#: tmp/parse_tpl.c:83
+msgid "Yes"
+msgstr "Yes"
+
+#: tmp/parse_tpl.c:85
+msgid "Warning, installing this package will overwrite the following files:"
+msgstr ""
+
+#: tmp/parse_tpl.c:86
+msgid "already exists"
+msgstr ""
+
+#: tmp/parse_tpl.c:87
+msgid "Continue and overwrite existing files"
+msgstr ""
+
+#: tmp/parse_tpl.c:89
+#, fuzzy
+msgid "Bloc List"
+msgstr "Blocks list"
+
+#: tmp/parse_tpl.c:91
+#: tmp/parse_tpl.c:96
+#: tmp/parse_tpl.c:101
+msgid "Version"
+msgstr "Version"
+
+#: tmp/parse_tpl.c:92
+#: tmp/parse_tpl.c:93
+#: tmp/parse_tpl.c:97
+#: tmp/parse_tpl.c:98
+#: tmp/parse_tpl.c:102
+#: tmp/parse_tpl.c:103
+msgid "Uninstall"
+msgstr "Uninstall"
+
+#: tmp/parse_tpl.c:94
+#, fuzzy
+msgid "Plugin List"
+msgstr "Package List"
+
+#: tmp/parse_tpl.c:99
+msgid "Module List"
+msgstr ""
+
+#: tmp/parse_tpl.c:104
+msgid "Install a new Package"
+msgstr "Install a new Package"
+
+#: tmp/parse_tpl.c:105
+msgid "Install a new package"
+msgstr "Install a new package"
+
+#: tmp/parse_tpl.c:107
+#: tmp/parse_tpl.c:134
+msgid "Users Manager"
+msgstr "Users Manager"
+
+#: tmp/parse_tpl.c:108
+msgid "Fullname"
+msgstr ""
+
+#: tmp/parse_tpl.c:109
+msgid "Email"
+msgstr ""
+
+#: tmp/parse_tpl.c:110
+msgid "Group"
+msgstr ""
+
+#: tmp/parse_tpl.c:112
+msgid "Deactivate"
+msgstr "Deactivate"
+
+#: tmp/parse_tpl.c:114
+msgid "Are you sure to delete this user ?"
+msgstr ""
+
+#: tmp/parse_tpl.c:118
+#, fuzzy
+msgid "Groups Manager"
+msgstr "Users Manager"
+
+#: tmp/parse_tpl.c:120
+msgid "Are you sure to delete this group ?"
+msgstr ""
+
+#: tmp/parse_tpl.c:121
+msgid "Children groups will not be delete"
+msgstr ""
+
+#: tmp/parse_tpl.c:122
+msgid "All users in this group will be move in Public group"
+msgstr ""
+
+#: tmp/parse_tpl.c:126
+#, fuzzy
+msgid "View-Access Manager"
+msgstr "Skins Manager"
+
+#: tmp/parse_tpl.c:128
+msgid "Are you sure to delete this view-access ?"
+msgstr ""
+
+#: tmp/parse_tpl.c:133
+msgid "Static pages manager"
+msgstr "Static pages manager"
+
+#: tmp/parse_tpl.c:136
+#, fuzzy
+msgid "Menus Manager"
+msgstr "Skins Manager"
+
+#: tmp/parse_tpl.c:137
+msgid "Blocks Manager"
+msgstr "Blocks Manager"
+
+#: tmp/parse_tpl.c:138
+msgid "Warning: You're about to erase everything!"
+msgstr ""
+
+#: tmp/parse_tpl.c:139
+#, fuzzy
+msgid "Please choose your method"
+msgstr "Please choose language"
+
+#: tmp/parse_tpl.c:140
+msgid "Clear Database"
+msgstr ""
+
+#: tmp/parse_tpl.c:141
+msgid "Reinstall from install.sql"
+msgstr ""
+
+#: tmp/parse_tpl.c:142
+msgid "Default language"
+msgstr "Default language"
+
+#: tmp/parse_tpl.c:143
+msgid "make default language"
+msgstr "make default language"
+
+#: tmp/parse_tpl.c:144
+msgid "Translation files missing ..."
+msgstr "Translation files missing ..."
+
+#: tmp/parse_tpl.c:145
+msgid "Translation files ok"
+msgstr "Translation files ok"
+
+#: tmp/parse_tpl.c:146
+msgid "delete"
+msgstr "delete"
+
+#: tmp/parse_tpl.c:147
+msgid "Choose language"
+msgstr "Choose language"
+
+#: tmp/parse_tpl.c:148
+msgid "Add"
+msgstr "Add"
+
+#: tmp/parse_tpl.c:149
+#, fuzzy
+msgid "Update language file"
+msgstr "Default language"
+
+#: tmp/parse_tpl.c:150
+msgid "Really Delete All Contents ?"
+msgstr ""
+
+#: tmp/parse_tpl.c:153
+msgid "Reset all content"
+msgstr ""
+
+#: tmp/parse_tpl.c:155
+#, fuzzy
+msgid "Sitemap Configuration"
+msgstr "Site Configuration"
+
+#: tmp/parse_tpl.c:156
+msgid " Check the pages you want to hide from the sitemap"
+msgstr ""
+
+#: tmp/parse_tpl.c:158
+#, fuzzy
+msgid "Read more..."
+msgstr "Read more"
+
+#: tmp/parse_tpl.c:159
+#: tmp/parse_tpl.c:162
+msgid "Search Engine Status"
+msgstr ""
+
+#: tmp/parse_tpl.c:160
+#, fuzzy
+msgid "Back"
+msgstr "Blocks"
+
+#: tmp/parse_tpl.c:163
+msgid "Rebuild"
+msgstr ""
+
+#: tmp/parse_tpl.c:165
+#: tmp/parse_tpl.c:168
+msgid "Posted by"
+msgstr "Posted by"
+
+#: tmp/parse_tpl.c:166
+#: tmp/parse_tpl.c:169
+msgid "in"
+msgstr "in"
+
+#: tmp/parse_tpl.c:167
+#: tmp/parse_tpl.c:170
+msgid "Read more"
+msgstr "Read more"
+
+#: tmp/parse_tpl.c:171
+msgid "Select document type to create :"
+msgstr ""
+
+#: tmp/parse_tpl.c:172
+msgid "Next"
+msgstr ""
+
+#: tmp/parse_tpl.c:173
+#, fuzzy
+msgid "Documents manager"
+msgstr "Blocks Manager"
+
+#: tmp/parse_tpl.c:175
+msgid "Category"
+msgstr ""
+
+#: tmp/parse_tpl.c:176
+msgid "is homepage ?"
+msgstr ""
+
+#: tmp/parse_tpl.c:177
+msgid "Are you sure to delete this document ?"
+msgstr ""
+
+#: tmp/parse_tpl.c:182
+msgid "Configuration du formulaire de contact"
+msgstr ""
+
+#: tmp/parse_tpl.c:183
+msgid " Valeurs à renseigner :"
+msgstr ""
+
+#: tmp/parse_tpl.c:184
+msgid "Add a new Menu Item"
+msgstr ""
+
+#: tmp/parse_tpl.c:185
+#, fuzzy
+msgid "Add a new Menu"
+msgstr "Add new"
+
+#: tmp/parse_tpl.c:186
+msgid "Edit a Menu Item"
+msgstr ""
+
+#: tmp/parse_tpl.c:187
+msgid "Menus List"
+msgstr ""
+
+#: tmp/parse_tpl.c:189
+msgid "ID"
+msgstr ""
+
+#: tmp/parse_tpl.c:191
+msgid "Description"
+msgstr ""
+
+#: tmp/parse_tpl.c:193
+msgid "Delete this menu ?"
+msgstr ""
+
+#: tmp/parse_tpl.c:198
+msgid "Items in Menu"
+msgstr ""
+
+#: tmp/parse_tpl.c:199
+msgid "Label"
+msgstr ""
+
+#: tmp/parse_tpl.c:202
+#, fuzzy
+msgid "Link"
+msgstr "in"
+
+#: tmp/parse_tpl.c:204
+msgid "Delete this item ?"
+msgstr ""
+
+#: tmp/parse_tpl.c:207
+msgid "Add a new item in this menu"
+msgstr ""
+
+#~ msgid "which groups are allowed to see this block ?"
+#~ msgstr "which groups are allowed to see this block ?"
+
+#~ msgid "block created"
+#~ msgstr "Block created"
+
+#~ msgid "Bloc installed"
+#~ msgstr "Block succefuly installed !"
+
+#~ msgid "Enable to delete %s sucessfully uninstalled"
+#~ msgstr "Enable to delete %s sucessfully uninstalled"
+
+#~ msgid "Language %"
+#~ msgstr "Language %"
+
+#~ msgid "which groups are allowed to read this page ?"
+#~ msgstr "which groups are allowed to read this page ?"
+
+#~ msgid "which groups are allowed to edit this page ?"
+#~ msgstr "which groups are allowed to edit this page ?"
+
+#~ msgid "page created"
+#~ msgstr "page created !"
+
+#~ msgid "page saved"
+#~ msgstr "Page saved !"
+
+#~ msgid "page deleted"
+#~ msgstr "Page created !"
+
+#~ msgid "%1 comment"
+
+#~ msgid_plural "%1 comments"
+#~ msgstr[0] "%1 comment"
+#~ msgstr[1] "%1 comments"
+
+#~ msgid "Home"
+#~ msgstr "Home"
+
+#~ msgid "Login"
+#~ msgstr "Login"
+
+#~ msgid "Feeds"
+#~ msgstr "Feeds"
+
+#~ msgid "Admin access"
+#~ msgstr "Admin access"
+
+#~ msgid "Static Pages"
+#~ msgstr "Static Pages"
+
+#~ msgid "Users"
+#~ msgstr "Users"
+
+#~ msgid "Skins"
+#~ msgstr "Skins"
+
+#~ msgid "Firstname"
+#~ msgstr "Firstname"
+
+#~ msgid "Lastname"
+#~ msgstr "Lastname"
+
+#~ msgid "comment"
+
+#~ msgid_plural "comments"
+#~ msgstr[0] "comment"
+#~ msgstr[1] "comments"
+
+#~ msgid "comments"
+#~ msgstr "comments"
+
+#~ msgid "%1 comments"
+#~ msgstr "%1 comments"

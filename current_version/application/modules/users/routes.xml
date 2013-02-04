@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	
+	<config>
+		<name>users</name>
+		<version>0.0</version>
+		<type>Module</type>
+		<description>Users</description>
+		<uninstallable>false</uninstallable>
+		<deactivable>false</deactivable>
+		<lang>
+			<translatable>true</translatable>
+			<frontFiles>
+				<file src="/controllers/FrontController.php" />
+				<folder src="/views/front" />
+				<file src="/forms/Login.php" />
+				<file src="/forms/Register.php" />
+				<file src="/forms/Edit.php" />
+				<file src="/forms/ForgotPassword.php" />
+				<file src="/forms/PasswordForm.php" />
+			</frontFiles>
+		</lang>
+	</config>
+
+	<routes>
+	
+		<users_back type="Zend_Controller_Router_Route">
+			<route>/administration/users/:action/:id</route>
+			<defaults>
+				<module>users</module>
+				<controller>back</controller>
+				<action>index</action>
+				<id>0</id>
+				<_isAdmin>true</_isAdmin>
+			</defaults>
+		</users_back>
+		
+		<users type="Zend_Controller_Router_Route">
+			<route>/users/:action/:page</route>
+			<defaults>
+				<module>users</module>
+				<controller>front</controller>
+				<action>index</action>
+				<page>0</page>
+			</defaults>
+		</users>
+	
+		
+		<users_api type="Zend_Controller_Router_Route">
+			<route>/administration/users/api/:controller/:action/:token</route>
+			<defaults>
+				<module>users</module>
+				<controller></controller>
+				<action>index</action>
+				<token></token>
+				<_isAdmin>true</_isAdmin>
+			</defaults>
+		</users_api>
+		
+		<users_middle type="Zend_Controller_Router_Route">
+			<route>/users_middle/:action</route>
+			<defaults>
+				<module>users</module>
+				<controller>middle</controller>
+				<action>index</action>
+			</defaults>
+		</users_middle>
+		
+	</routes>
+</module>

@@ -1,0 +1,19 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-03 14:20+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Louis Samson <l.samson@flamant-bleu.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /var/CMS/current_version/application/modules/faq/controllers/FrontController.php:26
+msgid "Page not found"
+msgstr ""
+
+#~ msgid "No items"
+#~ msgstr "Aucun élement"

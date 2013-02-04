@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Facebook</name>
+	<type>Bloc_Facebookv2_Facebook</type>
+	<version>0.1</version>
+	<color>#254B82</color>
+</bloc>

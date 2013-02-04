@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bloc>
+	<name>Diaporama</name>
+	<type>Bloc_Diaporama_Main</type>
+	<version>0.1</version>
+	<color>#6096ff</color>
+</bloc>

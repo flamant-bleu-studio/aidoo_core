@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	
+	<config>
+		<name>articles</name>
+		<version>0.0</version>
+		<type>Module</type>
+		<description>Articles</description>
+		<uninstallable>false</uninstallable>
+		<deactivable>false</deactivable>
+		
+		<lang>
+			<translatable>true</translatable>
+			<frontFiles>
+				<file src="/controllers/FrontController.php" />
+				<file src="/controllers/MiddleController.php" />
+				<folder src="/views/front/" />
+				<folder src="/views/middle/" />
+				<file src="/forms/Article.php"></file>
+			</frontFiles>
+		</lang>
+	</config>
+	
+	<routes>
+	
+		<articles type="Zend_Controller_Router_Route">
+			<route>articles/:action/:id/:page</route>
+			<defaults>
+				<action>index</action>
+				<controller>front</controller>
+				<module>articles</module>
+				<id>0</id>
+				<page>1</page>
+			</defaults>
+		</articles>		
+		
+		<articles_back type="Zend_Controller_Router_Route">
+			<route>administration/articles/:action/:id</route>
+			<defaults>
+				<module>articles</module>
+				<controller>back</controller>
+				<action>index</action>
+				<id>0</id>
+				<_isAdmin>true</_isAdmin>
+			</defaults>
+		</articles_back>
+		
+		<articles_middle type="Zend_Controller_Router_Route">
+			<route>articles_middle/:action/:id</route>
+			<defaults>
+				<module>articles</module>
+				<controller>middle</controller>
+				<action>index</action>
+				<id>0</id>
+				<_isMiddle>true</_isMiddle>
+			</defaults>
+		</articles_middle>
+	</routes>
+</module>
