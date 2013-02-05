@@ -42,7 +42,7 @@ abstract class  CMS_Controller_Action extends Zend_Controller_Action
 		$ajaxContext->addActionContext('error', 'json')->setSuffix('json', '')->initContext();
 				
 		/* Generation de la clef de sécurité pour le JSON AJAX */
-		if (isset($_SESSION['ajax_apiKey_expire']) && $_SESSION['ajax_apiKey_expire'] <= time()) {
+		if (!isset($_SESSION['ajax_apiKey_expire']) || isset($_SESSION['ajax_apiKey_expire']) && $_SESSION['ajax_apiKey_expire'] <= time()) {
 			$ajax_apiKey = CMS_Application_Tools::generateApiKey();
 			$_SESSION['ajax_apiKey'] = $ajax_apiKey;
 			$_SESSION['ajax_apiKey_expire'] = time() + (15 * 60);
