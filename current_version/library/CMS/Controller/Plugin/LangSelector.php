@@ -75,7 +75,7 @@ class CMS_Controller_Plugin_LangSelector extends CMS_Controller_Plugin_Abstract_
 		}catch(Exception $e){
 
 			/**
-			 * @todo La gestion des erreurs dans ce plugin n'est pas bien faite
+			 * @todo Gestion des erreurs dans les plugins à faire !
 			 */
 			die($e->getMessage());
 			
