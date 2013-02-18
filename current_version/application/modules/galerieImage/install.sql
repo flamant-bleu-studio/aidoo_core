@@ -35,8 +35,10 @@ CREATE TABLE `1_galeries_images` (
   `isPermanent` tinyint(1) NOT NULL,
   `date_start` datetime DEFAULT NULL,
   `date_end` datetime DEFAULT NULL,
-  `path` varchar(254) CHARACTER SET utf8 NOT NULL,
-  `path_thumb` varchar(254) CHARACTER SET utf8 NOT NULL,
+  `path` varchar(254) NOT NULL,
+  `path_thumb` varchar(254) NOT NULL,
+  `path2` varchar(254) DEFAULT NULL,
+  `path_thumb2` varchar(254) DEFAULT NULL,
   `bg_color` varchar(7) CHARACTER SET utf8 DEFAULT NULL,
   `datas` text CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
