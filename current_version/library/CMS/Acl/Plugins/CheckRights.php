@@ -56,7 +56,7 @@ class CMS_Acl_Plugins_CheckRights extends Zend_Controller_Plugin_Abstract {
             $request->setControllerName('error');
             $request->setActionName('error');
 
-            define("ERROR_FROM_PLUGIN", true);
+            defined('ERROR_FROM_PLUGIN') || define('ERROR_FROM_PLUGIN', true);
             
             // Set up the error handler
             $error = new Zend_Controller_Plugin_ErrorHandler();

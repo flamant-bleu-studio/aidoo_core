@@ -27,6 +27,8 @@ class CMS_Form_Element_ImageSelect extends Zend_Form_Element
 	
     public function __construct($field_name, $attributes = null) {
     	
+    	$this->_options = new stdClass();
+    	
         if($attributes["disable_preview"] === true)
         	$this->_options->disable_preview = true;
         

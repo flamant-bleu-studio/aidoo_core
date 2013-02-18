@@ -35,6 +35,7 @@ abstract class CMS_Object_MultiLangEntityWithNodes extends CMS_Object_MultiLangE
 		
 		// Formatage si multi ou mono langue
 		if($return){
+			$this->{$property} = new stdClass();
 			foreach($return as $r){
 				if($this->_id_lang && is_array($r["value"]))
     				$this->{$property}->$r["name"] = $r["value"][$this->_id_lang];

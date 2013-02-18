@@ -239,7 +239,7 @@ class CMS_Controller_Plugin_ProcessSEO extends CMS_Controller_Plugin_Abstract_Ab
 		}
 	}	
 	
-	public function postDispatch($request) {
+	public function postDispatch(Zend_Controller_Request_Abstract $request) {
 				
 		$page = CMS_Page_Current::getInstance($request->getRequestUri());
 		
