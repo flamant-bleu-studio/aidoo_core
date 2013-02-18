@@ -10,6 +10,7 @@ CREATE TABLE `1_menu` (
   `link` varchar(254) CHARACTER SET latin1 DEFAULT NULL,
   `image` varchar(150) DEFAULT NULL,
   `hidetitle` tinyint(1) NOT NULL DEFAULT '0',
+  `loadAjax` tinyint(1) NOT NULL DEFAULT '0',
   `access` int(11) NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `tblank` tinyint(1) NOT NULL DEFAULT '0',
