@@ -141,7 +141,7 @@ class CMS_Controller_Plugin_LoadSkin extends Zend_Controller_plugin_Abstract {
         	$this->skinUrl  = ADMIN_URL . $this->skinName;
         	
 			if(!$this->skinName || !file_exists($this->skinPath))
-	        	throw new Exception(_t('No back skin set or skin not found'));		
+	        	throw new Exception('Back office skin not found');		
 
         	if($this->_isAdmin)
         		$layoutFile = "back";
@@ -155,7 +155,7 @@ class CMS_Controller_Plugin_LoadSkin extends Zend_Controller_plugin_Abstract {
 	    	$this->skinUrl = '/skins/' . $this->skinName;
 	    	
         	if(!$this->skinName || !file_exists($this->skinPath))
-        		throw new Exception(_t('No front skin set or skin not found'));
+        		throw new Exception('Front office skin not found');
         	
         	// Detection et configuration des versions Mobile et Tablette
         	$mobileConfig = json_decode($this->_config->get('mobileConfig'), true);
@@ -351,6 +351,11 @@ class CMS_Controller_Plugin_LoadSkin extends Zend_Controller_plugin_Abstract {
     
     public function throwException($e)
     {
+    	/**
+    	 * @todo Gestion des erreurs dans les plugins à faire !
+    	 */
+    	die($e->getMessage());
+    	
     	$this->_request->setModuleName('front');
         $this->_request->setControllerName('error');
         $this->_request->setActionName('error');
