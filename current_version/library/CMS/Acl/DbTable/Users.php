@@ -25,7 +25,7 @@ class CMS_Acl_DbTable_Users {
 	public function authenticate ($gid, $email)
 	{	
 		$db = Zend_Registry::get('db');
-	    $results = $db->query("SELECT id FROM users WHERE isActive = 1 AND `group` = ? AND email = ?", array($gid, $email));
+	    $results = $db->query("SELECT id FROM " . DB_TABLE_PREFIX . "users WHERE isActive = 1 AND `group` = ? AND email = ?", array($gid, $email));
 	    
 		return $results->fetch(Zend_Db::FETCH_OBJ);
 	}

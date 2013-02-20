@@ -30,7 +30,7 @@ class Users_Model_DbTable_Group {
 		$db = Zend_Registry::get('db');
 		
 	    $results = $db->query("SELECT id, name
-								FROM user_groups
+								FROM " . DB_TABLE_PREFIX . "user_groups
 								WHERE name = ?", array($group_name));
 	    
 		return $results->fetch(Zend_Db::FETCH_OBJ);
@@ -43,7 +43,7 @@ class Users_Model_DbTable_Group {
 				
 		$db = Zend_Registry::get('db');
 	    $results = $db->query("SELECT id, name 
-								FROM user_groups
+								FROM " . DB_TABLE_PREFIX . "user_groups
 								WHERE id = ?", array($group_id));
 	    
 		return $results->fetch(Zend_Db::FETCH_OBJ);
@@ -53,7 +53,7 @@ class Users_Model_DbTable_Group {
 	{
 		$db = Zend_Registry::get('db');
 	    $results = $db->query("SELECT node.name, node.id AS id, (COUNT(parent.name) - 1) AS level
-								FROM user_groups AS node, user_groups AS parent
+								FROM " . DB_TABLE_PREFIX . "user_groups AS node, " . DB_TABLE_PREFIX . "user_groups AS parent
 								WHERE node.lft BETWEEN parent.lft AND parent.rgt
 								GROUP BY node.name
 								ORDER BY node.lft");
@@ -70,7 +70,7 @@ class Users_Model_DbTable_Group {
 		
 		$db = Zend_Registry::get('db');
 	    $results = $db->query("	SELECT node.id
-								FROM user_groups AS node, user_groups AS parent
+								FROM " . DB_TABLE_PREFIX . "user_groups AS node, " . DB_TABLE_PREFIX . "user_groups AS parent
 								WHERE node.lft BETWEEN parent.lft AND parent.rgt
 								AND parent.id = ?", array($parent_id));
 	    
@@ -91,10 +91,10 @@ class Users_Model_DbTable_Group {
 
 		try {
 			
-			$db->query("SELECT @myLeft := lft FROM user_groups WHERE id = ?", $parent_id);
-		    $db->query("UPDATE user_groups SET rgt = rgt + 2 WHERE rgt > @myLeft");
-		    $db->query("UPDATE user_groups SET lft = lft + 2 WHERE lft > @myLeft");
-		    $db->query("INSERT INTO user_groups (lft, rgt, name) VALUES (@myLeft + 1, @myLeft + 2, ?)", array($datas['name']));
+			$db->query("SELECT @myLeft := lft FROM " . DB_TABLE_PREFIX . "user_groups WHERE id = ?", $parent_id);
+		    $db->query("UPDATE " . DB_TABLE_PREFIX . "user_groups SET rgt = rgt + 2 WHERE rgt > @myLeft");
+		    $db->query("UPDATE " . DB_TABLE_PREFIX . "user_groups SET lft = lft + 2 WHERE lft > @myLeft");
+		    $db->query("INSERT INTO " . DB_TABLE_PREFIX . "user_groups (lft, rgt, name) VALUES (@myLeft + 1, @myLeft + 2, ?)", array($datas['name']));
 
 		    $db->commit();
 		    
@@ -120,12 +120,12 @@ class Users_Model_DbTable_Group {
 
 		try {
 
-			$db->query("SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft +1 FROM user_groups WHERE id = ?", $id);
-			$db->query("DELETE FROM user_groups WHERE lft = @myLeft");
+			$db->query("SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft +1 FROM " . DB_TABLE_PREFIX . "user_groups WHERE id = ?", $id);
+			$db->query("DELETE FROM " . DB_TABLE_PREFIX . "user_groups WHERE lft = @myLeft");
 			
-		 	$db->query("UPDATE user_groups SET rgt = rgt - 1, lft = lft - 1 WHERE lft BETWEEN @myLeft AND @myRight");
-		    $db->query("UPDATE user_groups SET rgt = rgt - 2 WHERE rgt > @myRight");
-		    $db->query("UPDATE user_groups SET lft = lft - 2 WHERE lft > @myRight");
+		 	$db->query("UPDATE " . DB_TABLE_PREFIX . "user_groups SET rgt = rgt - 1, lft = lft - 1 WHERE lft BETWEEN @myLeft AND @myRight");
+		    $db->query("UPDATE " . DB_TABLE_PREFIX . "user_groups SET rgt = rgt - 2 WHERE rgt > @myRight");
+		    $db->query("UPDATE " . DB_TABLE_PREFIX . "user_groups SET lft = lft - 2 WHERE lft > @myRight");
 	
 		    $db->commit();
 		    
@@ -149,10 +149,10 @@ class Users_Model_DbTable_Group {
 
 		try {
 
-			$db->query("SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft +1 FROM user_groups WHERE id = ?", $id);
-			$db->query("DELETE FROM user_groups WHERE lft BETWEEN @myLeft AND @myRight");
-		    $db->query("UPDATE user_groups SET rgt = rgt - @myWidth WHERE rgt > @myRight");
-		    $db->query("UPDATE user_groups SET lft = lft - @myWidth WHERE lft > @myRight");
+			$db->query("SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft +1 FROM " . DB_TABLE_PREFIX . "user_groups WHERE id = ?", $id);
+			$db->query("DELETE FROM " . DB_TABLE_PREFIX . "user_groups WHERE lft BETWEEN @myLeft AND @myRight");
+		    $db->query("UPDATE " . DB_TABLE_PREFIX . "user_groups SET rgt = rgt - @myWidth WHERE rgt > @myRight");
+		    $db->query("UPDATE " . DB_TABLE_PREFIX . "user_groups SET lft = lft - @myWidth WHERE lft > @myRight");
 	
 		    $db->commit();
 		    

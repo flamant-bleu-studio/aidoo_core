@@ -74,6 +74,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     	// Récupération du fichier de configuration
     	$config = Zend_Registry::get('config');
     	
+    	define('DB_TABLE_PREFIX', $config->database->params->table_prefix);
+    	
     	// Création de la connexion à la bdd
 		$db = Zend_Db::factory($config->database->adapter, $config->database->params);
 		$db->query("SET NAMES UTF8");

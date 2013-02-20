@@ -71,7 +71,7 @@ class CMS_Acl_User {
 			
 			$adapter = new Zend_Auth_Adapter_DbTable();
 			
-	        $adapter->setTableName('users')
+	        $adapter->setTableName(DB_TABLE_PREFIX . 'users')
 	        			
 	        		->setIdentityColumn('email')
 	      			->setCredentialColumn('password')

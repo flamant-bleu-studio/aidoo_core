@@ -241,7 +241,7 @@ class CMS_Acl_Back {
 			
 			$db = Zend_Registry::get('db');
 		    $results = $db->query("SELECT rights
-									FROM ".$multi_site_prefix."permissions
+									FROM " . DB_TABLE_PREFIX . $multi_site_prefix."permissions
 									WHERE name = ?", array($resourceName));
 		    
 		    $result = $results->fetch();
@@ -277,14 +277,14 @@ class CMS_Acl_Back {
 		global $multi_site_prefix;
 		
 		$db = Zend_Registry::get('db');
-	    $db->query("DELETE FROM ".$multi_site_prefix."permissions WHERE name = ?", array($name));
+	    $db->query("DELETE FROM " . DB_TABLE_PREFIX . $multi_site_prefix."permissions WHERE name = ?", array($name));
 	}
 	private function updatePermissions($resource_name, $privileges)
 	{
 		global $multi_site_prefix;
 		
 		$db = Zend_Registry::get('db');
-	    $db->query("UPDATE ".$multi_site_prefix."permissions SET rights = ? WHERE name = ?", array($privileges, $resource_name));
+	    $db->query("UPDATE " . DB_TABLE_PREFIX . $multi_site_prefix."permissions SET rights = ? WHERE name = ?", array($privileges, $resource_name));
 	    
 	    unset($this->_cacheAcl[$resource_name]);
 	}
@@ -293,7 +293,7 @@ class CMS_Acl_Back {
 		global $multi_site_prefix;
 		
 		$db = Zend_Registry::get('db');
-	    $db->query("INSERT INTO ".$multi_site_prefix."permissions (name, rights) VALUES (?, ?)", array($resource_name, $privileges));
+	    $db->query("INSERT INTO " . DB_TABLE_PREFIX . $multi_site_prefix."permissions (name, rights) VALUES (?, ?)", array($resource_name, $privileges));
 	}
 
 }

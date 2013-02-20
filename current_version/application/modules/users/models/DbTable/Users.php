@@ -20,14 +20,14 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class Users_Model_DbTable_Users  extends Zend_Db_Table_Abstract {   
+class Users_Model_DbTable_Users  extends CMS_Db_Table_Abstract {   
 
 	
 	// New ***
 	
 	public function get($filters = null)
 	{
-		$sql 	= "SELECT id FROM users";
+		$sql 	= "SELECT id FROM " . DB_TABLE_PREFIX . "users";
 		$params = array();
 		
 		if ($filters){
@@ -45,7 +45,7 @@ class Users_Model_DbTable_Users  extends Zend_Db_Table_Abstract {
 	
 	public function getNext($id, $where) {
 		
-		$sql = "SELECT MIN(id) FROM users";
+		$sql = "SELECT MIN(id) FROM " . DB_TABLE_PREFIX . "users";
 		
 		$params 	= array();
 			
@@ -64,7 +64,7 @@ class Users_Model_DbTable_Users  extends Zend_Db_Table_Abstract {
 	
 	public function getPrev($id, $where) {
 		
-		$sql = "SELECT MAX(id) FROM users";
+		$sql = "SELECT MAX(id) FROM " . DB_TABLE_PREFIX . "users";
 		
 		$params 	= array();
 			
@@ -144,7 +144,7 @@ class Users_Model_DbTable_Users  extends Zend_Db_Table_Abstract {
 		$id = (int)$id;
 		
 	    $inserted = $this->getAdapter()->insert(
-			"users",
+			DB_TABLE_PREFIX . "users",
 			array( 	
 				'id_facebook'	=> $datas['id_facebook'],
 				'group'			=> $datas['group'],
@@ -172,7 +172,7 @@ class Users_Model_DbTable_Users  extends Zend_Db_Table_Abstract {
 		$id = (int)$id;
 
 	    $updated = $this->getAdapter()->update(
-			"users",
+			DB_TABLE_PREFIX . "users",
 			array( 	
 				'id_facebook'	=> $datas['id_facebook'],
 				'group'			=> $datas['group'],
@@ -203,7 +203,7 @@ class Users_Model_DbTable_Users  extends Zend_Db_Table_Abstract {
 
 		$db = Zend_Registry::get('db');
 	    $updated = $db->update(
-			"users",
+			DB_TABLE_PREFIX . "users",
 			array( 	
 				'password' 	=> sha1($password)
 			),
@@ -222,7 +222,7 @@ class Users_Model_DbTable_Users  extends Zend_Db_Table_Abstract {
 	{
 				
 		$db = Zend_Registry::get('db');
-	    $results = $db->query("SELECT id FROM users");
+	    $results = $db->query("SELECT id FROM " . DB_TABLE_PREFIX . "users");
 	    
 	    $results = $results->fetchAll(Zend_DB::FETCH_COLUMN);
 	    
@@ -244,7 +244,7 @@ class Users_Model_DbTable_Users  extends Zend_Db_Table_Abstract {
 	public function count($filters)
 	{
 		
-		$sql 	= "SELECT count(id) FROM users";
+		$sql 	= "SELECT count(id) FROM " . DB_TABLE_PREFIX . "users";
 		$params = array();
 		
 		if ($filters){
@@ -263,7 +263,7 @@ class Users_Model_DbTable_Users  extends Zend_Db_Table_Abstract {
 	public function getUser($id = null){
 		
 		$db = Zend_Registry::get('db');
-	    $results = $db->query("SELECT * FROM users WHERE id = ?", array($id));
+	    $results = $db->query("SELECT * FROM " . DB_TABLE_PREFIX . "users WHERE id = ?", array($id));
 	    
 	    $result = $results->fetch(Zend_DB::FETCH_OBJ);
 
@@ -280,7 +280,7 @@ class Users_Model_DbTable_Users  extends Zend_Db_Table_Abstract {
 	{
 		$db = Zend_Registry::get('db');
 
-	    $results = $db->query("SELECT * FROM users WHERE email = ?", array($email));
+	    $results = $db->query("SELECT * FROM " . DB_TABLE_PREFIX . "users WHERE email = ?", array($email));
 	    $result = $results->fetch(Zend_DB::FETCH_OBJ);
 	    return $result;
 	}
@@ -294,14 +294,14 @@ class Users_Model_DbTable_Users  extends Zend_Db_Table_Abstract {
 
 		// Suppression
 		$db = Zend_Registry::get('db');
-		$db->delete("users",'id = '. $id );
+		$db->delete(DB_TABLE_PREFIX . "users",'id = '. $id );
 	}
 
 	public function getPassword($id)
 	{
 		$db = Zend_Registry::get('db');
 		
-	    $results = $db->query("SELECT password FROM users WHERE id = ?", array($id));
+	    $results = $db->query("SELECT password FROM " . DB_TABLE_PREFIX . "users WHERE id = ?", array($id));
 	    $result = $results->fetch(Zend_DB::FETCH_OBJ);
 	    return $result;
 	}

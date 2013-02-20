@@ -28,7 +28,7 @@ class CMS_Acl_DbTable_ViewAccess {
 		
 		$db = Zend_Registry::get('db');
 	    $results = $db->query("SELECT id, name, groups
-								FROM ".$multi_site_prefix."view_access");
+								FROM " . DB_TABLE_PREFIX . $multi_site_prefix."view_access");
 	    
 		return $results->fetchAll(Zend_Db::FETCH_OBJ);
 	}
@@ -44,7 +44,7 @@ class CMS_Acl_DbTable_ViewAccess {
 		
 		$db = Zend_Registry::get('db');
 	    $results = $db->query("SELECT id, name, groups
-								FROM ".$multi_site_prefix."view_access
+								FROM " . DB_TABLE_PREFIX . $multi_site_prefix."view_access
 								WHERE id = ?", array($id));
 	    
 	    $viewAccess = $results->fetch(Zend_Db::FETCH_OBJ);
@@ -62,7 +62,7 @@ class CMS_Acl_DbTable_ViewAccess {
 		
 		$db = Zend_Registry::get('db');
 		
-	    $db->insert($multi_site_prefix.'view_access', array(
+	    $db->insert(DB_TABLE_PREFIX . $multi_site_prefix.'view_access', array(
 	    	"name" 		=> $name,
 	    	"groups" 	=> json_encode($datas)
 	    ));
@@ -81,7 +81,7 @@ class CMS_Acl_DbTable_ViewAccess {
 		$db = Zend_Registry::get('db');
 		
 	    $db->update(
-	    	$multi_site_prefix.'view_access', 
+	    	DB_TABLE_PREFIX . $multi_site_prefix.'view_access', 
 	    	array(
 		    	"name" 		=> $name,
 		    	"groups" 	=> json_encode($datas)
@@ -101,7 +101,7 @@ class CMS_Acl_DbTable_ViewAccess {
 		$id = (int) $id;
 		
 		$db = Zend_Registry::get('db');
-	    $db->delete($multi_site_prefix."view_access", "id = ".$id);
+	    $db->delete(DB_TABLE_PREFIX . $multi_site_prefix."view_access", "id = ".$id);
 
 	}
 }

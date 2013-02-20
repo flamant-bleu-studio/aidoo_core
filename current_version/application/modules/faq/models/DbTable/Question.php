@@ -38,7 +38,7 @@ class Faq_Model_DbTable_Question extends CMS_Model_MultiLang
 	 */
 	public function getLastOrder(){
 		// Requete de suppression multi-table
-		$sql = "SELECT IFNULL(MAX(question_order), 0) + 1  FROM 1_faq_items";
+		$sql = "SELECT IFNULL(MAX(question_order), 0) + 1  FROM " . DB_TABLE_PREFIX . "1_faq_items";
 		
 		$return = $this->getAdapter()->fetchOne($sql);
 				

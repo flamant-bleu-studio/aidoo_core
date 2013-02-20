@@ -36,7 +36,7 @@ class Jobs_Model_DbTable_Jobs extends CMS_Model_MonoLang {
 		if (!in_array($crit, $availableCrits))
 			return array();
 		
-		$sql = "SELECT DISTINCT(".$crit.") FROM 1_jobs";
+		$sql = "SELECT DISTINCT(".$crit.") FROM " . DB_TABLE_PREFIX . "1_jobs";
 		
 		$return = $this->getAdapter()->fetchAll($sql, array(), PDO::FETCH_COLUMN);
 		

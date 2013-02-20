@@ -25,11 +25,13 @@ class CMS_Db_Table_Abstract extends Zend_Db_Table_Abstract
      protected function _setupTableName()
      {
          parent::_setupTableName();
-
+         
          if(!isset($this->_isNotPrefixed) || !$this->_isNotPrefixed){
 	         global $multi_site_prefix;
 	         $this->_name = $multi_site_prefix . $this->_name;
          }
+         
+         $this->_name = DB_TABLE_PREFIX . $this->_name;
 
      }
      

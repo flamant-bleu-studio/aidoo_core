@@ -35,7 +35,7 @@ class CMS_Application_Hit {
 		global $multi_site_prefix;
 		
 		$db = Zend_Registry::get('db');
-	    $results = $db->query("SELECT hits FROM ".$multi_site_prefix."hits WHERE type = ? AND cle = ?", array($type, $cle));
+	    $results = $db->query("SELECT hits FROM " . DB_TABLE_PREFIX . $multi_site_prefix."hits WHERE type = ? AND cle = ?", array($type, $cle));
 
 	    $hit = $results->fetch(Zend_Db::FETCH_COLUMN);
 	    
@@ -59,7 +59,7 @@ class CMS_Application_Hit {
 		global $multi_site_prefix;
 		
 		$db = Zend_Registry::get('db');
-		$db->update($multi_site_prefix."hits", array('hits' => '0'), array('type = "'.$type.'"', 'cle = "'.$cle.'"'));
+		$db->update(DB_TABLE_PREFIX . $multi_site_prefix."hits", array('hits' => '0'), array('type = "'.$type.'"', 'cle = "'.$cle.'"'));
 
 	}
 	
@@ -74,10 +74,10 @@ class CMS_Application_Hit {
 		global $multi_site_prefix;
 		
 		$db = Zend_Registry::get('db');
-		$nb = $db->update($multi_site_prefix."hits", array('hits' => new Zend_Db_Expr('hits+1')), array('type = "'.$type.'"', 'cle = "'.$cle.'"'));
+		$nb = $db->update(DB_TABLE_PREFIX . $multi_site_prefix."hits", array('hits' => new Zend_Db_Expr('hits+1')), array('type = "'.$type.'"', 'cle = "'.$cle.'"'));
 		
 		if($nb < 1)
-			$db->insert($multi_site_prefix."hits", array('type' => $type, 'cle' => $cle, 'hits' => 1));
+			$db->insert(DB_TABLE_PREFIX . $multi_site_prefix."hits", array('type' => $type, 'cle' => $cle, 'hits' => 1));
 	}
 	
 	/**
@@ -91,7 +91,7 @@ class CMS_Application_Hit {
 		global $multi_site_prefix;
 		
 		$db = Zend_Registry::get('db');
-		$db->query("UPDATE ".$multi_site_prefix."hits SET hits = hits-1 WHERE type = ? AND cle = ?", array($type, $cle));
+		$db->query("UPDATE " . DB_TABLE_PREFIX . $multi_site_prefix."hits SET hits = hits-1 WHERE type = ? AND cle = ?", array($type, $cle));
 	}
 	
 	/**
@@ -112,7 +112,7 @@ class CMS_Application_Hit {
 			$count = 10;
 		
 		$db = Zend_Registry::get('db');
-	    $results = $db->query("SELECT type, cle, hits FROM ".$multi_site_prefix."hits WHERE type = ? ORDER BY hits DESC LIMIT 0, ".$count, array($type));
+	    $results = $db->query("SELECT type, cle, hits FROM " . DB_TABLE_PREFIX . $multi_site_prefix."hits WHERE type = ? ORDER BY hits DESC LIMIT 0, ".$count, array($type));
 
 	    $hits = $results->fetchAll();
 	    
