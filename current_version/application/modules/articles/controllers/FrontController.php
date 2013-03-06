@@ -146,6 +146,8 @@ class Articles_FrontController extends CMS_Controller_Action
 			$this->_helper->viewRenderer->setRender('cat-grid');
 		}
 		
+		$this->view->category = $cat;
+		
 		$this->view->size = ((isset($this->_options['imageFormat'])) ? $this->_options['imageFormat'] : '');
 	}
 	
