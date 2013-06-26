@@ -17,6 +17,28 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
+{function name=addControls}
+	{if $galerie->controls_style == "0"}
+		<div id="gallerie_action">
+			<input id="previous_gallerie" type="image" src="{$baseUrl}{$skinUrl}/images/slideshow/prev.png" value="" /> 
+			<input id="start_gallerie" type="image" src="{$baseUrl}{$skinUrl}/images/slideshow/play.png" value="" {if $galerie->autostart}style="display:none;"{/if} />
+			<input id="stop_gallerie" type="image" src="{$baseUrl}{$skinUrl}/images/slideshow/pause.png" value="" {if !$galerie->autostart}style="display:none;"{/if} /> 
+			<input id="next_gallerie" type="image" src="{$baseUrl}{$skinUrl}/images/slideshow/next.png" value="" />
+		</div>
+	{else if $galerie->controls_style == "1"}
+		<div id="gallerie_thumbs"><ul>
+			{foreach from=$galerie->nodes key=key item=image}
+				<li>
+					<a href="#"><img src="{$image->path_thumb}" style="width:50px;"/></a>
+				</li>
+			{/foreach}
+		</ul>
+		<div class="clear"></div>
+		</div>
+	{/if}
+{/function}
+
+
 {if $galerie->transition == "fade"}
 	{appendFile src="/lib/slideShow/jquery.slideShowMaison.js" type="js"}
 {else if $galerie->transition == "slide"}
@@ -53,27 +75,6 @@
 {/if}
 
 </div>
-
-{function name=addControls}
-	{if $galerie->controls_style == "0"}
-		<div id="gallerie_action">
-			<input id="previous_gallerie" type="image" src="{$baseUrl}{$skinUrl}/images/slideshow/prev.png" value="" /> 
-			<input id="start_gallerie" type="image" src="{$baseUrl}{$skinUrl}/images/slideshow/play.png" value="" {if $galerie->autostart}style="display:none;"{/if} />
-			<input id="stop_gallerie" type="image" src="{$baseUrl}{$skinUrl}/images/slideshow/pause.png" value="" {if !$galerie->autostart}style="display:none;"{/if} /> 
-			<input id="next_gallerie" type="image" src="{$baseUrl}{$skinUrl}/images/slideshow/next.png" value="" />
-		</div>
-	{else if $galerie->controls_style == "1"}
-		<div id="gallerie_thumbs"><ul>
-			{foreach from=$galerie->nodes key=key item=image}
-				<li>
-					<a href="#"><img src="{$image->path_thumb}" style="width:50px;"/></a>
-				</li>
-			{/foreach}
-		</ul>
-		<div class="clear"></div>
-		</div>
-	{/if}
-{/function}
 
 {if $galerie->nodes[1] && $galerie->controls_position == "bottom"}
 	{call name=addControls autostart=$galerie->autostart}

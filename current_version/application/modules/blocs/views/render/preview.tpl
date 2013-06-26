@@ -17,6 +17,45 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
+{function name=generatePreviewTemplate}
+	<div class="preview_template" id="template_{if $id == '0'}0{else}{$template->id_template}{/if}">
+		<table width="50%" cellspacing="0" cellpadding="0">
+			<tr>
+				<th>{t}Left column{/t}</th>
+				<th>{t}Right column{/t}</th>
+			</tr>
+			
+			<tr>
+				<td>
+					{if $sidebar[$template->id_template]["sideleft1"]}
+						<ul>
+							{foreach name=blocs from=$sidebar[$template->id_template]["sideleft1"] item=item}
+								<li>{$blocs[$item]->designation}</li>
+							{/foreach}
+						</ul>
+					{else}
+						Aucun bloc
+					{/if}
+				</td>
+				<td>
+					{if $sidebar[$template->id_template]["sideright1"]}
+						<ul>
+							{foreach name=blocs from=$sidebar[$template->id_template]["sideright1"] item=item}
+								<li>{$blocs[$item]->designation}</li>
+							{/foreach}
+						</ul>
+					{else}
+						Aucun bloc
+					{/if}
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="clear"></div>
+{/function}
+
+
 <!-- Gérer les droits d'accès à cette page ! -->
 
 <div id="parent_select_diaporama" class="form_line">
@@ -59,45 +98,6 @@
 	{/foreach}
 	
 </div>
-
-{function name=generatePreviewTemplate}
-	<div class="preview_template" id="template_{if $id == '0'}0{else}{$template->id_template}{/if}">
-		<table width="50%" cellspacing="0" cellpadding="0">
-			<tr>
-				<th>{t}Left column{/t}</th>
-				<th>{t}Right column{/t}</th>
-			</tr>
-			
-			<tr>
-				<td>
-					{if $sidebar[$template->id_template]["sideleft1"]}
-						<ul>
-							{foreach name=blocs from=$sidebar[$template->id_template]["sideleft1"] item=item}
-								<li>{$blocs[$item]->designation}</li>
-							{/foreach}
-						</ul>
-					{else}
-						Aucun bloc
-					{/if}
-				</td>
-				<td>
-					{if $sidebar[$template->id_template]["sideright1"]}
-						<ul>
-							{foreach name=blocs from=$sidebar[$template->id_template]["sideright1"] item=item}
-								<li>{$blocs[$item]->designation}</li>
-							{/foreach}
-						</ul>
-					{else}
-						Aucun bloc
-					{/if}
-				</td>
-			</tr>
-		</table>
-	</div>
-	
-	<div class="clear"></div>
-{/function}
-
 
 {literal}
 <script type="text/javascript">

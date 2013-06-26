@@ -72,7 +72,7 @@ class Bootstrap_classic extends Bootstrap
 		// Initialisation de smarty
 		$view = new CMS_Smarty_Smarty($config->smarty);
 		
-		$viewhelper = new Zend_Controller_Action_Helper_ViewRenderer($view);
+		$viewhelper = new CMS_Controller_ActionHelper_ViewRenderer($view);
 		$viewhelper->setViewSuffix('tpl');
 		
 		Zend_Controller_Action_HelperBroker::addHelper($viewhelper);
@@ -80,7 +80,8 @@ class Bootstrap_classic extends Bootstrap
 		$zend_layout = Zend_Layout::startMvc(array(
 		    'view' 				=> $view,
 			'viewSuffix' 		=> 'tpl',
-			'InflectorTarget' 	=>':script.:suffix'
+			'InflectorTarget' 	=>':script.:suffix',
+			'pluginClass'		=> 'CMS_Layout_Controller_Plugin_Layout'
 		));
 		
 		$view->layout = $zend_layout;

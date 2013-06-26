@@ -22,11 +22,11 @@
 
 class CMS_Smarty_Plugins_Block {
  
-	public static function dynamic($param, $content, &$smarty) {
+	public static function dynamic($param, $content, Smarty_Internal_Template $smarty, &$repeat) {
     	return $content;
 	}
 	
-	public static function t($params, $text, &$smarty, &$repeat)
+	public static function t($params, $text, Smarty_Internal_Template $smarty, &$repeat)
 	{		
 		$text = stripslashes($text);
 		
@@ -74,7 +74,7 @@ class CMS_Smarty_Plugins_Block {
 		return $text;
 	}
 	
-	public static function appendScript($params, $text, &$smarty, &$repeat)
+	public static function appendScript($params, $text, Smarty_Internal_Template $smarty, &$repeat)
 	{		
 		$text = stripslashes($text);
 		
