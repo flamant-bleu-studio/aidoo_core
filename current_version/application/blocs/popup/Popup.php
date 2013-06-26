@@ -27,24 +27,16 @@ class Bloc_Popup_Popup extends CMS_Bloc_Abstract implements CMS_Bloc_Interface {
 	public $timeValid;
 	
 	protected $_adminFormClass = "Bloc_Popup_AdminForm";
-	
-	protected static $_translatableFields = array();
+
+	protected static $_translatableFields = array("text");
+	protected static $_searchableFields = array("text");
 	
 	public function runtimeFront($view){
-		
-		if( $this->displayOnce ) {
-			$nameCookie = "showPopup".$this->id;
-			
-			if( isset($_COOKIE[$nameCookie]) ) {
-				$this->noRenderBloc = true;
-			}
-			
-			$view->nameCookie = $nameCookie;
-		}
-		
-		
-		$view->timeValid  = $this->timeValid;
-		$view->text = $this->text;
+		$view->nameCookie 	= "showPopup".$this->id_item;
+		$view->timeValid  	= $this->timeValid;
+		$view->text 		= $this->text;
+		$view->id 		= $this->id_item;
+		$view->displayOnce 	= $this->displayOnce;
 	}
 	
 	public function save($post){

@@ -29,6 +29,7 @@ class Bloc_Popup_AdminForm extends CMS_Bloc_ParentForm
 		$item = new CMS_Form_Element_TinyMCE("text");
 		$item->setRequired(true);
 		$item->setLabel(_t("Your text"));
+		$item->setTranslatable(true);
 		$this->addElement($item);
 		
 		$item = new Zend_Form_Element_Checkbox("displayOnce");
