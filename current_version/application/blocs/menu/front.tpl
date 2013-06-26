@@ -17,14 +17,6 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
-{assign var='counterFunction' value=0} <!-- var level current (default : 0) -->
-
-<div id="menu-{$idMenu}-bloc-{$id}" class="{if $desactiveDeroulant}fixe{else}deroule{/if} {if $align == 0}horizontal{else}vertical{/if}">
-{if $items|@count > 0}
-	{call name=generateUlLi liste=$items}
-{/if}
-</div>
-
 {function name=generateUlLi}
 	
 	{$counterFunction=$counterFunction+1} <!-- up current level -->
@@ -106,6 +98,14 @@
 	
 {/function}
 
+
+{assign var='counterFunction' value=0} <!-- var level current (default : 0) -->
+
+<div id="menu-{$idMenu}-bloc-{$id}" class="{if $desactiveDeroulant}fixe{else}deroule{/if} {if $align == 0}horizontal{else}vertical{/if}">
+{if $items|@count > 0}
+	{call name=generateUlLi liste=$items}
+{/if}
+</div>
 
 {if !$desactiveDeroulant}
 {literal}

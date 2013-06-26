@@ -17,6 +17,26 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
+{function name=display_items}
+	<ul>
+		{foreach from=$items item=item}
+			{if !in_array($item->id, $itemsToExclude)}
+				<li>
+					{if !in_array($item->id_menu, $itemsToExclude)}
+						<a href="{$item->getLink()}">{$item->label}</a>
+					{/if}
+					{if $item->children}
+						<ul>
+							{call name=display_items items=$item->children}
+						</ul>
+					{/if}
+				</li>
+			{/if}
+		{/foreach}
+	</ul>
+{/function}
+
+
 <div class="document">
 	<h1>Plan du site</h1>
 	<div id="sitemap" class="document_content">		
@@ -37,21 +57,3 @@
 
 </div>
 
-{function name=display_items}
-	<ul>
-		{foreach from=$items item=item}
-			{if !in_array($item->id, $itemsToExclude)}
-				<li>
-					{if !in_array($item->id_menu, $itemsToExclude)}
-						<a href="{$item->getLink()}">{$item->label}</a>
-					{/if}
-					{if $item->children}
-						<ul>
-							{call name=display_items items=$item->children}
-						</ul>
-					{/if}
-				</li>
-			{/if}
-		{/foreach}
-	</ul>
-{/function}

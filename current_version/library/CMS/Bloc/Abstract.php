@@ -32,8 +32,9 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 	public $templateFront;
 	
 	protected $type;
-	protected $noRenderBloc = false; /* true : Désactive le render front du bloc */
-	
+	protected $noRenderBloc  = false; /* true : Désactive le render front du bloc */
+	protected $cacheLifeTime = 3600; 
+
 	private $nameBloc;
 	
 	protected static $_model;
@@ -327,40 +328,54 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 	
 	final public function renderFront()
 	{		
-		/** Instance Smarty **/
+
+		if( $this->noRenderBloc !== false)
+			return "";
+
+		/* Instance Smarty */
 		$view = Zend_Layout::getMvcInstance()->getView();
+		$smarty = $view->getEngine();
 		
-		/** Var To VIEW **/
+		
+		/* Variables de vue */
 		$view->id			= $this->id_item;
 		$view->titleBloc 	= $this->title;
-		
-		$classCSS = $this->classCss;
-		$classCSS .= ($this->theme) ? " ".$this->theme : null;
-		$view->classCssBloc = $classCSS;
-		
+		$view->classCssBloc = $this->classCss . (($this->theme) ? ' ' . $this->theme : '');;
 		$view->nameBloc 	= $this->getNameBloc();
-
-		/** Call Runtime Front Bloc **/
-		$this->runtimeFront($view);
 		
-		if( $this->noRenderBloc === false)
-		{		
-			/** Template Front **/
-			$path = APPLICATION_PATH . '/blocs/' . $this->getNameBloc() . '/';
-			$override = PUBLIC_PATH . '/skins/'.SKIN_NAME.'/core_features/tpls_override/blocs/templates/'.$this->getNameBloc().'/';
-			$view->initViewAndOverride($path, $override, $this->templateFront);
-			$view->contentBloc = $view->renderByViewName($this->templateFront);
-			
-			/** Decorator **/
-			$path = PUBLIC_PATH . '/skins/'.SKIN_NAME.'/core_features/tpls_override/blocs/decorators/';
-			$override = PUBLIC_PATH . '/skins/'.SKIN_NAME.'/core_features/tpls_override/blocs/decorators/'.$this->getNameBloc().'/';
-			$view->initViewAndOverride($path, $override, $this->decorator);
-				
-			/** Return **/
-			return $view->contentBloc = $view->renderByViewName($this->decorator);;
+		/* Réglage du cache */
+		$smarty->cache_id   	= 'bloc-' . $this->id_item . '-' . CURRENT_LANG_CODE;
+		$smarty->compile_id 	= 'bloc-' . $this->id_item . '-' . CURRENT_LANG_CODE;
+		$smarty->cache_lifetime	= (int) $this->cacheLifeTime;
+		
+		// Le cache du bloc est disponible ?
+		$isCached = $smarty->isCached(PUBLIC_PATH . '/skins/'.SKIN_NAME.'/core_features/tpls_override/blocs/decorators/' .$this->decorator. '.tpl');
+		
+		// Appel du runtime PHP uniquement si cache désactivé ou expiré
+		if ($this->cacheLifeTime === 0 || !$isCached) {
+			$this->runtimeFront($view);	
 		}
-		else
-			return "";
+		
+		// Définition du chemin des vues et surcharge + initialisation
+		$path = APPLICATION_PATH . '/blocs/' . $this->getNameBloc() . '/';
+		$override = PUBLIC_PATH . '/skins/'.SKIN_NAME.'/core_features/tpls_override/blocs/templates/'.$this->getNameBloc().'/';
+		$view->initViewAndOverride($path, $override, $this->templateFront);
+			
+		// render HTML placé dans une variable de vue
+		$view->contentBloc = $view->renderByViewName($this->templateFront);
+			
+		// Définition du chemin des décorateurs et surcharge + initialisation
+		$path = PUBLIC_PATH . '/skins/'.SKIN_NAME.'/core_features/tpls_override/blocs/decorators/';
+		$override = PUBLIC_PATH . '/skins/'.SKIN_NAME.'/core_features/tpls_override/blocs/decorators/'.$this->getNameBloc().'/';
+		$view->initViewAndOverride($path, $override, $this->decorator);
+		
+		// render HTML du bloc entier
+		$html = $view->renderByViewName($this->decorator);
+		
+		$smarty->cache_lifetime = 3600;
+		
+		return $html;
+
 	}
 	
 	final protected function getDecorators()

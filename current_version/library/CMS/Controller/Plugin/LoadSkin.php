@@ -107,11 +107,7 @@ class CMS_Controller_Plugin_LoadSkin extends Zend_Controller_plugin_Abstract {
     }
     
 	public function postDispatch(Zend_Controller_Request_Abstract $request)
-    {
-		//$this->_view->AppendTinyMCE		= $this->_processLayout->getTinyMCE();
-        //$this->_view->AppendImageManager 	= $this->_processLayout->getImageManager();
-        //$this->_view->AppendFileManager 	= $this->_processLayout->getFileManager();
-        
+    { 
    		 if(!$this->_isAdmin && !$this->_isLoggin && !$this->_isAjax && !$this->_isError || defined("NOTFOUND")){
     		$this->processBlocs();
 //         	$this->processGoogleAnalytics();
@@ -124,10 +120,10 @@ class CMS_Controller_Plugin_LoadSkin extends Zend_Controller_plugin_Abstract {
     
     public function initSmarty(Zend_Controller_Request_Abstract $request)
     {
-		$id = $request->getParam('id');
-        $id = (($id == 0) ? '' : '-'.$id);
-        $smarty = $this->_view->getEngine();
-		$smarty->compile_id = $this->_moduleName.'-'.$this->_controllerName.'-'.$this->_actionName.$id;
+		//$id = $request->getParam('id');
+        //$id = (($id == 0) ? '' : '-'.$id);
+        //$smarty = $this->_view->getEngine();
+		//$smarty->compile_id = $this->_moduleName.'-'.$this->_controllerName.'-'.$this->_actionName.$id;
     }
     
 	public function processSkin()
@@ -147,6 +143,9 @@ class CMS_Controller_Plugin_LoadSkin extends Zend_Controller_plugin_Abstract {
         		$layoutFile = "back";
         	else
         		$layoutFile = "login_back";
+        	
+        	// Regénération permanente des vues en back office
+        	Zend_Layout::getMvcInstance()->getView()->getEngine()->cache_lifetime = 0;
         }
         else 
         { 

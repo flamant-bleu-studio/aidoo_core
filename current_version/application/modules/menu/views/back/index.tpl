@@ -17,101 +17,6 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
-<div class="content_titre">
-	<h1>Gestion du menu</h1>
-	<div>Gérer votre menu</div>
-</div>
-
-<div class="zone">
-
-	{if $backAcl->hasPermission("mod_menu", "create")}
-		<div class="zone_titre">
-			<h2>{t}Add new menu{/t}</h2>
-			<div>{t}Create a new menu{/t}</div>
-		</div>
-	{/if}
-	
-	
-	{if $backAcl->hasPermission("mod_menu", "create")}
-		<a href='{routeShort action="add-menu"}' class="btn btn-success"><i class="icon-plus icon-white"></i> {t}Create new menu{/t}</a>
-	{/if}
-	<div class="mutiple_btn pull-right">
-		<a href="#" title="{t}Collapse All{/t}" class="btn closeallmenu show_tooltip" ><i class="icon-resize-small"></i></a>
-		<a href="#" title="{t}Expend All{/t}" class="btn openallmenu show_tooltip" ><i class="icon-resize-full"></i></a>
-	</div>
-	<div class="clearfix"></div>
-</div>
-
-{if $menus}
-<div class="zone">		
-
-	<div class="zone_titre">
-		<h2>{t}Pages of your website{/t}</h2>
-		<div>Glissez-déposez pour réordonner les élements entre-eux</div>
-	</div>
-
-	{foreach from=$menus item=entry_menu name=menu}
-		
-		<div class="menu_list">
-			<div class="mutiple_btn pull-right">
-				<a class="btn btn-success fancybox" href="{routeShort action="add-folder" id=$entry_menu->id_menu}">
-					<i class="icon-folder-open icon-white"></i> {t}Add new folder{/t}
-				</a>
-				
-				{if $backAcl->hasPermission("mod_menu-menu-"|cat:$entry_menu->id_menu, "insert")}
-				<a class="btn btn-success fancybox" href="{routeShort action="add-item" id=$entry_menu->id_menu}">
-					<i class="icon-file icon-white"></i> {t}Add new page{/t}
-				</a>
-				{/if}
-				
-				{if $backAcl->hasPermission("mod_menu-menu-"|cat:$entry_menu->id_menu, "edit")}
-				<a class="btn btn-primary show_tooltip" href="{routeShort action="edit-menu" id=$entry_menu->id_menu}" title='{t}Edit menu{/t} "{$entry_menu->label}"'>
-					<i class="icon-pencil icon-white"></i>
-				</a>
-				{/if}
-				
-				{if $backAcl->hasPermission("mod_menu-menu-"|cat:$entry_menu->id_menu, "delete")}
-				<a class="btn btn-danger show_tooltip" href="{routeShort action="delete-menu" id=$entry_menu->id_menu}" title='{t}Delete menu{/t} "{$entry_menu->label}"' onClick="confirmDelete(this.href, '<h1>{t}Delete this menu ?{/t}</h1>', '{t}Delete{/t}', '{t}Cancel{/t}');return false;">
-					<i class="icon-trash icon-white"></i>
-				</a>
-				{/if}
-			</div>
-			<img style="margin-left: 10px;" src="{$baseUrl}{$skinUrl}/js/dndList/icone_menu.jpg" class="left" />
-			
-			<div class="left btn_label" style="margin-top: 7px; text-align: left;">
-				<div class="ligne1">{$entry_menu->label}</div>
-				<div class="gris">{$entry_menu->subtitle}</div>
-			</div>
-			
-			<ul id="menu_{$entry_menu->id_menu}" class="dndList">
-				{call name=display_items items=$entry_menu->items}
-			</ul>
-			
-			<script type="text/javascript">
-				$(document).ready(function() {	
-					name = "#menu_{$entry_menu->id_menu}";
-					{literal}
-					
-					$(name).dndList({
-						onDropInterline : function(opt){
-							move_to_next_sibling_menu_node(opt.src, opt.dst);
-						},
-						onDropElement : function(opt){
-							update_parent_menu_node(opt.src, opt.dst);
-						}
-					});
-					
-					{/literal}
-				});
-			</script>
-			<div class="clearfix"></div>
-		</div>
-		
-	{/foreach}
-	<div class="clearfix"></div>
-	
-</div>
-
 {function name=display_items}
 	
 	{foreach from=$items item=entry_item name=item}
@@ -233,6 +138,103 @@
 	{/foreach}
 	
 {/function}
+
+
+<div class="content_titre">
+	<h1>Gestion du menu</h1>
+	<div>Gérer votre menu</div>
+</div>
+
+<div class="zone">
+
+	{if $backAcl->hasPermission("mod_menu", "create")}
+		<div class="zone_titre">
+			<h2>{t}Add new menu{/t}</h2>
+			<div>{t}Create a new menu{/t}</div>
+		</div>
+	{/if}
+	
+	
+	{if $backAcl->hasPermission("mod_menu", "create")}
+		<a href='{routeShort action="add-menu"}' class="btn btn-success"><i class="icon-plus icon-white"></i> {t}Create new menu{/t}</a>
+	{/if}
+	<div class="mutiple_btn pull-right">
+		<a href="#" title="{t}Collapse All{/t}" class="btn closeallmenu show_tooltip" ><i class="icon-resize-small"></i></a>
+		<a href="#" title="{t}Expend All{/t}" class="btn openallmenu show_tooltip" ><i class="icon-resize-full"></i></a>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+{if $menus}
+<div class="zone">		
+
+	<div class="zone_titre">
+		<h2>{t}Pages of your website{/t}</h2>
+		<div>Glissez-déposez pour réordonner les élements entre-eux</div>
+	</div>
+
+	{foreach from=$menus item=entry_menu name=menu}
+		
+		<div class="menu_list">
+			<div class="mutiple_btn pull-right">
+				<a class="btn btn-success fancybox" href="{routeShort action="add-folder" id=$entry_menu->id_menu}">
+					<i class="icon-folder-open icon-white"></i> {t}Add new folder{/t}
+				</a>
+				
+				{if $backAcl->hasPermission("mod_menu-menu-"|cat:$entry_menu->id_menu, "insert")}
+				<a class="btn btn-success fancybox" href="{routeShort action="add-item" id=$entry_menu->id_menu}">
+					<i class="icon-file icon-white"></i> {t}Add new page{/t}
+				</a>
+				{/if}
+				
+				{if $backAcl->hasPermission("mod_menu-menu-"|cat:$entry_menu->id_menu, "edit")}
+				<a class="btn btn-primary show_tooltip" href="{routeShort action="edit-menu" id=$entry_menu->id_menu}" title='{t}Edit menu{/t} "{$entry_menu->label}"'>
+					<i class="icon-pencil icon-white"></i>
+				</a>
+				{/if}
+				
+				{if $backAcl->hasPermission("mod_menu-menu-"|cat:$entry_menu->id_menu, "delete")}
+				<a class="btn btn-danger show_tooltip" href="{routeShort action="delete-menu" id=$entry_menu->id_menu}" title='{t}Delete menu{/t} "{$entry_menu->label}"' onClick="confirmDelete(this.href, '<h1>{t}Delete this menu ?{/t}</h1>', '{t}Delete{/t}', '{t}Cancel{/t}');return false;">
+					<i class="icon-trash icon-white"></i>
+				</a>
+				{/if}
+			</div>
+			<img style="margin-left: 10px;" src="{$baseUrl}{$skinUrl}/js/dndList/icone_menu.jpg" class="left" />
+			
+			<div class="left btn_label" style="margin-top: 7px; text-align: left;">
+				<div class="ligne1">{$entry_menu->label}</div>
+				<div class="gris">{$entry_menu->subtitle}</div>
+			</div>
+			
+			<ul id="menu_{$entry_menu->id_menu}" class="dndList">
+				{call name=display_items items=$entry_menu->items}
+			</ul>
+			
+			<script type="text/javascript">
+				$(document).ready(function() {	
+					name = "#menu_{$entry_menu->id_menu}";
+					{literal}
+					
+					$(name).dndList({
+						onDropInterline : function(opt){
+							move_to_next_sibling_menu_node(opt.src, opt.dst);
+						},
+						onDropElement : function(opt){
+							update_parent_menu_node(opt.src, opt.dst);
+						}
+					});
+					
+					{/literal}
+				});
+			</script>
+			<div class="clearfix"></div>
+		</div>
+		
+	{/foreach}
+	<div class="clearfix"></div>
+	
+</div>
+
 {/if}
 
 {if $backAcl->hasPermission("mod_menu", "manage")}

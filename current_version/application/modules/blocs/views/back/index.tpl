@@ -17,6 +17,25 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
+{function name=generateBloc}
+	{foreach from=$datas item=id}
+
+		<div class="template_item {$blocs[$id]->getType()} index-{$typeIndex[$blocs[$id]->getType()]}" title="{$blocs[$id]->designation}" id="bloc-{counter}" realid="{$id}">
+		{$blocs[$id]->designation}
+ 		
+		{if $backAcl->hasPermission("mod_bloc-{$id}", "edit")}
+		<a href="{routeShort action="edit" id="{$id}"}" class="editBloc"></a>
+		{/if}
+		
+		{if $backAcl->hasPermission("mod_bloc", "editTemplates")}
+		<a href="#" class="deleteBloc"></a>
+		{/if}
+
+		</div>
+	{/foreach}
+{/function}
+
+
 <div class="content_titre">
 	<h1>{t}Manage your templates{/t}</h1>
 	<div>{t}Add, edit et delete your templates and blocs{/t}</div>
@@ -252,23 +271,6 @@
 		</div>
 	</div>
 </div>	
-{function name=generateBloc}
-	{foreach from=$datas item=id}
-
-		<div class="template_item {$blocs[$id]->getType()} index-{$typeIndex[$blocs[$id]->getType()]}" title="{$blocs[$id]->designation}" id="bloc-{counter}" realid="{$id}">
-		{$blocs[$id]->designation}
- 		
-		{if $backAcl->hasPermission("mod_bloc-{$id}", "edit")}
-		<a href="{routeShort action="edit" id="{$id}"}" class="editBloc"></a>
-		{/if}
-		
-		{if $backAcl->hasPermission("mod_bloc", "editTemplates")}
-		<a href="#" class="deleteBloc"></a>
-		{/if}
-
-		</div>
-	{/foreach}
-{/function}
 
 {if $backAcl->hasPermission("mod_bloc", "manage")}
 	<div class="content_titre">

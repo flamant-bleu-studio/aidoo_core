@@ -33,6 +33,7 @@ class Bloc_Menu_Menu extends CMS_Bloc_Abstract implements CMS_Bloc_Interface {
 	static $_align = array("0" => "Horizontal", "1" => "Vertical");
 	
 	protected $_adminFormClass = "Bloc_Menu_AdminForm";
+	protected $cacheLifeTime   = 0;
 	
 	private $_activeID = array();
 	
