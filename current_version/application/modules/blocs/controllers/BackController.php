@@ -27,13 +27,13 @@ class Blocs_BackController extends CMS_Controller_Action
 		$model = new Blocs_Model_DbTable_Items();
 		$model->migrationBlocsMultiLang();
 		
-		die("finish");
+		die('finish');
 	}
 	
     public function indexAction()
     {
     	$backAcl = CMS_Acl_Back::getInstance();
-    	if($backAcl->hasPermission("mod_bloc", "view")) {
+    	if($backAcl->hasPermission('mod_bloc', 'view')) {
 			$this->view->backAcl = $backAcl;
 
 			// Récupération des templates
@@ -85,7 +85,7 @@ class Blocs_BackController extends CMS_Controller_Action
 									$t->setItemsPosition($itemsPos);
 									$t->save();
 									
-									_warning("Le bloc ".$id." n'existait plus et a donc été supprimé des templates l'utilisant...");
+									_warning('Le bloc '.$id.' n\'existait plus et a donc été supprimé des templates l\'utilisant...');
 									continue;
 								}
 								
@@ -149,7 +149,7 @@ class Blocs_BackController extends CMS_Controller_Action
 			}
 
 			foreach($retour as &$blocsLst){
-				usort($blocsLst, "sortByTitle");
+				usort($blocsLst, 'sortByTitle');
 			}
 			
 			// Trie des types de blocs
@@ -181,11 +181,9 @@ class Blocs_BackController extends CMS_Controller_Action
 			$config = CMS_Application_Config::getInstance();
 			$mobileConf = @json_decode($config->get('mobileConfig'), true);
 			
-			if(is_array($mobileConf) && !empty($mobileConf)){
-				if($mobileConf['mobile'])
-					$this->view->mobileEnabled = true;
-				if($mobileConf['tablet'])
-					$this->view->tabletEnabled = true;
+			if(is_array($mobileConf) && !empty($mobileConf)) {
+					$this->view->mobileEnabled = ($mobileConf['mobile']) ? true : false;
+					$this->view->tabletEnabled = ($mobileConf['tablet']) ? true : false;
 			}
 			
 			$newForm = new Blocs_Form_New();
@@ -193,7 +191,7 @@ class Blocs_BackController extends CMS_Controller_Action
 			$this->view->formNew = $newForm;
 			
 			
-			$formTemplate = new Blocs_Form_Template(array("id" => "formTemplate"));
+			$formTemplate = new Blocs_Form_Template(array('id' => 'formTemplate'));
 			$item = $formTemplate->getElement('select_template_duplicate');
 			$templates = Blocs_Object_Template::get();
 			foreach($templates as &$t) { $item->addMultiOption($t->id_template, $t->title); }
@@ -201,11 +199,11 @@ class Blocs_BackController extends CMS_Controller_Action
 			
 			
 			
-			if($backAcl->hasPermission("mod_bloc", "manage"))
+			if($backAcl->hasPermission('mod_bloc', 'manage'))
 			{
-				$formAcl = new CMS_Acl_Form_BackAclForm("mod_bloc");
+				$formAcl = new CMS_Acl_Form_BackAclForm('mod_bloc');
 				$formAcl->setAction(BASE_URL.$this->_helper->route->short('updateAcl'));
-				$formAcl->addSubmit(_t("Submit"));
+				$formAcl->addSubmit(_t('Submit'));
 				
 		    	$this->view->formAcl = $formAcl;
 			}
@@ -216,7 +214,7 @@ class Blocs_BackController extends CMS_Controller_Action
 		}
 		else
 		{
-			_error(_t("Insufficient rights"));
+			_error(_t('Insufficient rights'));
 			return $this->_redirect($this->_helper->route->full('admin'));
 		}
     	
@@ -225,7 +223,7 @@ class Blocs_BackController extends CMS_Controller_Action
     public function createAction()
     {
 		$backAcl = CMS_Acl_Back::getInstance();
-		if ($backAcl->hasPermission("mod_bloc", "createBlocs"))
+		if ($backAcl->hasPermission('mod_bloc', 'createBlocs'))
 		{
 	    	$this->view->backAcl = $backAcl;
 		
@@ -240,7 +238,7 @@ class Blocs_BackController extends CMS_Controller_Action
 				$form = $bloc->getAdminForm();
 				
 				// Si données valides
-				if($_POST["from"] == "bloc_form" && $form->isValid($_POST))
+				if(isset($_POST['from']) && $_POST['from'] == 'bloc_form' && $form->isValid($_POST))
 				{
 	
 					// Appel de la methode d'enregistrement
@@ -248,37 +246,37 @@ class Blocs_BackController extends CMS_Controller_Action
 					
 					/** Permissions **/
 					if($_POST['ACL'])
-		            	$backAcl->addPermissionsFromAclForm("mod_bloc-".$id, $_POST['ACL']);
+		            	$backAcl->addPermissionsFromAclForm('mod_bloc-'.$id, $_POST['ACL']);
 					else 
-						$backAcl->addPermissionsFromDefaultAcl("mod_bloc-".$id, "mod_bloc-default");
+						$backAcl->addPermissionsFromDefaultAcl('mod_bloc-'.$id, 'mod_bloc-default');
 					
 					if ($_POST['submitandquit'])
-						return $this->_redirect($this->_helper->route->short("index"));
+						return $this->_redirect($this->_helper->route->short('index'));
 						
-		            return $this->_redirect($this->_helper->route->short("edit", array('id'=>$id)));
+		            return $this->_redirect($this->_helper->route->short('edit', array('id'=>$id)));
 				}
 					
-				$form->setAction($this->_helper->route->short('create', array("id" => $type)));
+				$form->setAction($this->_helper->route->short('create', array('id' => $type)));
 				
 				$this->view->form = $form;
 				$this->view->blocAdmin = $bloc->renderAdmin();
 			}
 			else 
 			{
-				throw new Zend_Exception("Ce type de bloc n'existe pas");
+				throw new Zend_Exception('Ce type de bloc n\'existe pas');
 			}
 			
 			// Affichage du gestionnaire de permission si droit de manage
-			if($backAcl->hasPermission("mod_bloc-default", "manage"))
+			if($backAcl->hasPermission('mod_bloc-default', 'manage'))
 			{
-				$formAcl = new CMS_Acl_Form_BackAclForm("mod_bloc-default");
-				$form->addSubForm($formAcl, "permissions");
+				$formAcl = new CMS_Acl_Form_BackAclForm('mod_bloc-default');
+				$form->addSubForm($formAcl, 'permissions');
 				$this->view->formAcl = $formAcl;
 			}
 		}
 		else
 		{
-			_error(_t("Insufficient rights"));
+			_error(_t('Insufficient rights'));
 			return $this->_redirect($this->_helper->route->full('admin'));
 		}
     }
@@ -288,47 +286,47 @@ class Blocs_BackController extends CMS_Controller_Action
     	$id = (int)$this->_request->getParam('id');
     	
 		$backAcl = CMS_Acl_Back::getInstance();
-		if ($backAcl->hasPermission("mod_bloc-".$id, "edit"))
+		if ($backAcl->hasPermission('mod_bloc-'.$id, 'edit'))
 		{
 	    	$this->view->backAcl = $backAcl;
 		
 			// Instanciation du bloc
-			$bloc = CMS_Bloc_Abstract::getBlocInstance($id, "all");
+			$bloc = CMS_Bloc_Abstract::getBlocInstance($id, 'all');
 			
 			// Récupération de son formulaire
 			$form = $bloc->getAdminForm();
 			
 			// Si données valides
-			if(isset($_POST["from"]) && $_POST["from"] == "bloc_form" && $form->isValid($_POST))
+			if(isset($_POST['from']) && $_POST['from'] == 'bloc_form' && $form->isValid($_POST))
 			{
 				// Appelle de la methode d'enregistrement
 				$bloc->save($form->getValues());
 				
-				$backAcl->updatePermissionsFromAclForm("mod_bloc-".$id, $_POST['ACL']);
+				$backAcl->updatePermissionsFromAclForm('mod_bloc-'.$id, $_POST['ACL']);
 				
 				if ($_POST['submitandquit'])
-					return $this->_redirect($this->_helper->route->short("index"));
+					return $this->_redirect($this->_helper->route->short('index'));
 
-	            return $this->_redirect($this->_helper->route->short("edit", array('id'=>$id)));
+	            return $this->_redirect($this->_helper->route->short('edit', array('id'=>$id)));
 			}
 			
-			$form->setAction($this->_helper->route->short('edit', array("id" => $id)));
+			$form->setAction($this->_helper->route->short('edit', array('id' => $id)));
 			$form->populate($bloc->toArray());
 			
 			$this->view->form = $form;
 			$this->view->blocAdmin = $bloc->renderAdmin();
 			
 			// Affichage du gestionnaire de permission si droit de manage
-			if($backAcl->hasPermission("mod_bloc-".$id, "manage"))
+			if($backAcl->hasPermission('mod_bloc-'.$id, 'manage'))
 			{
-				$formAcl = new CMS_Acl_Form_BackAclForm("mod_bloc-".$id);
-				$form->addSubForm($formAcl, "permissions");
+				$formAcl = new CMS_Acl_Form_BackAclForm('mod_bloc-'.$id);
+				$form->addSubForm($formAcl, 'permissions');
 				$this->view->formAcl = $formAcl;
 			} 
 		}
 		else
 		{
-			_error(_t("Insufficient rights"));
+			_error(_t('Insufficient rights'));
 			return $this->_redirect($this->_helper->route->full('admin'));
 		}
     }
@@ -341,13 +339,13 @@ class Blocs_BackController extends CMS_Controller_Action
 			throw new Zend_Exception(_t('Id is missing'));
 			
 		$backAcl = CMS_Acl_Back::getInstance();
-		if ($backAcl->hasPermission("mod_bloc-".$id, "delete"))
+		if ($backAcl->hasPermission('mod_bloc-'.$id, 'delete'))
 		{
 			// Suppression du bloc
 			CMS_Bloc_Abstract::deleteFromPrimaryKey($id);
 
 			// Suppression permissions
-			$backAcl->deletePermissions("mod_bloc-".$id);
+			$backAcl->deletePermissions('mod_bloc-'.$id);
 
 			// On vide les template du bloc supprimé
 			$templates = Blocs_Object_Template::get();
@@ -376,7 +374,7 @@ class Blocs_BackController extends CMS_Controller_Action
 		}
 		else
 		{
-			_error(_t("Insufficient rights"));
+			_error(_t('Insufficient rights'));
 			return $this->_redirect($this->_helper->route->full('admin'));
 		}
     }
@@ -393,10 +391,10 @@ class Blocs_BackController extends CMS_Controller_Action
 		$idTemplate_homePage = $home->template;
 		
 		if( $idTemplate_homePage == $id)
-			throw new Zend_Exception(_t("Unable to delete home template"));
+			throw new Zend_Exception(_t('Unable to delete home template'));
 		
 		$backAcl = CMS_Acl_Back::getInstance();
-		if ($backAcl->hasPermission("mod_bloc", "deleteTemplates"))
+		if ($backAcl->hasPermission('mod_bloc', 'deleteTemplates'))
 		{
 			$tpl = new Blocs_Object_Template($id);
 			$tpl->delete();
@@ -404,7 +402,7 @@ class Blocs_BackController extends CMS_Controller_Action
 			CMS_Page_PersistentObject::setDefaultTplByTplID($id);
 			
 	
-			$types = CMS_Page_Type::get(array("default_tpl" => $id));
+			$types = CMS_Page_Type::get(array('default_tpl' => $id));
 			if( count($types) > 0 )
 			{
 				foreach ($types as $type)
@@ -420,7 +418,7 @@ class Blocs_BackController extends CMS_Controller_Action
 		}
 		else
 		{
-			_error(_t("Insufficient rights"));
+			_error(_t('Insufficient rights'));
 			return $this->_redirect($this->_helper->route->full('admin'));
 		}
     }
@@ -435,7 +433,7 @@ class Blocs_BackController extends CMS_Controller_Action
     	
     	$template 	= new Blocs_Object_Template($id);
     	$form 		= new Blocs_Form_TemplateOptions();
-    	$form->setAction($this->_helper->route->short('edit-template-option', array("id" => $id)));
+    	$form->setAction($this->_helper->route->short('edit-template-option', array('id' => $id)));
     	$this->view->form = $form;
     	
     	if ($this->_request->isPost()) {
@@ -476,10 +474,10 @@ class Blocs_BackController extends CMS_Controller_Action
 		if($this->getRequest()->isPost()) 
 		{
 			$backAcl = CMS_Acl_Back::getInstance();
-			if($backAcl->updatePermissionsFromAclForm("mod_bloc", $_POST['ACL']))
-				_message(_t("Rights updated"));
+			if($backAcl->updatePermissionsFromAclForm('mod_bloc', $_POST['ACL']))
+				_message(_t('Rights updated'));
 			else 
-				_error(_t("Insufficient rights"));
+				_error(_t('Insufficient rights'));
 		}
 		return $this->_redirect( $this->_helper->route->short('index'));
 	}    

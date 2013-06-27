@@ -25,7 +25,7 @@ abstract class CMS_Object_MultiLangEntityWithNodes extends CMS_Object_MultiLangE
 	protected function loadNodesContent($property) {
 		
 		// Instanciation du modèle des Nodes + stockage en attribut static
-		if(!(static::$_nodes[$property]["model"] instanceof static::$_nodes[$property]["modelClass"])) {
+		if(!isset(static::$_nodes[$property]["model"]) || !(static::$_nodes[$property]["model"] instanceof static::$_nodes[$property]["modelClass"])) {
 			static::$_nodes[$property]["model"] = new static::$_nodes[$property]["modelClass"]();
 		}
 		

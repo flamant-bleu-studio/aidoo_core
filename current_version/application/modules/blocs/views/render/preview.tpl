@@ -18,7 +18,7 @@
 *}
 
 {function name=generatePreviewTemplate}
-	<div class="preview_template" id="template_{if $id == '0'}0{else}{$template->id_template}{/if}">
+	<div class="preview_template" id="template_{if isset($id) && $id == '0'}0{else}{$template->id_template}{/if}">
 		<table width="50%" cellspacing="0" cellpadding="0">
 			<tr>
 				<th>{t}Left column{/t}</th>

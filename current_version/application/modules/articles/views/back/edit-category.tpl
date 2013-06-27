@@ -39,7 +39,7 @@
 		{$form->fb_comments_number_show}
 		
 		
-		{if $backAcl->hasPermission("mod_categories-"|cat:$id, "manage")}
+		{if $backAcl->hasPermission("mod_categories-"|cat:$id_categorie, "manage")}
 		<div class="zone_titre">
 			<h2>{t}Manage rights{/t}</h2>
 		</div>

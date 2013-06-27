@@ -57,7 +57,7 @@ class CMS_Form_Helper_FormImageSelect extends Zend_View_Helper_FormElement {
 			function '.$name.'SetImage(file){
         
 		document.getElementById("'.$name.'").value = file.url;';
-				if(!$attribs["disable_preview"]){
+				if(!isset($attribs["disable_preview"]) || !$attribs["disable_preview"]){
 					$html .= 'document.getElementById("'.$name.'_preview").src = file.url;
 					document.getElementById("'.$name.'SelectImg").style.display = "inline";';
 				}
@@ -65,7 +65,9 @@ class CMS_Form_Helper_FormImageSelect extends Zend_View_Helper_FormElement {
 			}
 			function '.$name.'CancelImage(){
 				document.getElementById("'.$name.'").value = "";';
-    			if(!$attribs["disable_preview"]){$html .= 'document.getElementById("'.$name.'_preview").src = "";';}
+    			if(!isset($attribs["disable_preview"]) || !$attribs["disable_preview"]){
+    				$html .= 'document.getElementById("'.$name.'_preview").src = "";';
+    			}
 				$html .= 'document.getElementById("'.$name.'SelectImg").style.display = "none";
     		}
 		</script>

@@ -43,7 +43,7 @@ class CMS_Form_Decorator_Checkbox extends CMS_Form_Decorator_Standard {
         $name 			= $element->getName();
 		
         	
-        $output = '<div class="form_line'.$class.'" id="form_'.$name.'">'
+        $output = '<div class="form_line" id="form_'.$name.'">'
 		        	. '<div class="form_text_checkbox">'
 			        	. $label
 		            . '</div>'

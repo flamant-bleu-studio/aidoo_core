@@ -30,9 +30,7 @@ class CMS_TinyMCE_Forms_FileSelect extends Zend_Form_Element
         if($attributes["extensions"])
         	$this->_options->extensions = $attributes["extensions"];
 		
-		Zend_Layout::getMvcInstance()->getView()->addHelperPath('CMS/TinyMCE/ViewHelpers/', 'CMS_TinyMCE_ViewHelpers_');
-		$processLayout = CMS_Application_ProcessLayout::getInstance();
-		$processLayout->appendFileManager();
+		CMS_Application_ProcessLayout::getInstance()->appendJsFile(COMMON_LIB_PATH.'/lib/tiny_mce/plugins/filemanager/js/mcfilemanager.js');
 		
         parent::__construct($field_name, $attributes);
     }

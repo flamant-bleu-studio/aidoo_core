@@ -30,19 +30,10 @@ class CMS_Application_ProcessLayout {
 	private $_jsFiles;
 	private $_jsScripts;
 	private $_jsScriptsBottom;
-	
 	private $_cssFiles;
 	private $_cssScripts;
-	
 	private $_jQueries;
-	
-	private $_tinyMCE;
-    
-	private $_imageManager;
-	private $_fileManager;
-	
 	private $_head;
-	
 	private $_nameCache;
 	
 	/**
@@ -77,6 +68,9 @@ class CMS_Application_ProcessLayout {
 	}
 	
 	public function getHTMLJQueryLibs(){
+		
+		$output = "";
+		
 		
 		foreach ($this->_jQueries as $jquery) 
 		{
@@ -114,39 +108,32 @@ class CMS_Application_ProcessLayout {
 		
 		return $output;
 	}
-	public function getHtmlCssScripts(){
+	public function getHtmlCssScripts()
+	{
+		if(defined('CACHE_CSS_JS') && CACHE_CSS_JS === true || empty($this->_cssScripts))
+			return;
+
+		$output = '<style type="text/css">';
 		
-		if(!empty($this->_cssScripts))
-		{
-			if( !(defined('CACHE_CSS_JS') && (CACHE_CSS_JS)) )
-			{
-				$output = '<style type="text/css">';
-				
-				foreach ($this->_cssScripts as $stylesheet)
-				{
-					$output .= $stylesheet['script'];
-				}
-				
-				$output .= '</style>';
-			}
-			
-			return $output;
+		foreach ($this->_cssScripts as $stylesheet) {
+			$output .= $stylesheet['script'];
 		}
+		
+		$output .= '</style>';
+		
+		return $output;
 	}
 	
 	public function getHtmlJsFiles(){
 
 		$output = "";
 		
-		foreach ($this->_jsFiles as $script) 
-		{
-			if($script['external'])
-			{
+		foreach ($this->_jsFiles as $script)  {
+			if (isset($script['external'])) {
 				$baseUrl = null;
 				$output .= "<script type='text/javascript' src='".$baseUrl.$script['src']."'></script>\n";
 			}
-			else
-			{
+			else {
 				if( !(defined('CACHE_CSS_JS') && (CACHE_CSS_JS)) || !$script['cache'] )
 				{
 					$baseUrl = $this->baseUrl;
@@ -157,150 +144,47 @@ class CMS_Application_ProcessLayout {
 		
 		return $output;
 	}
-	public function getHtmlJsScripts(){
+	public function getHtmlJsScripts()
+	{
+		if(defined('CACHE_CSS_JS') && CACHE_CSS_JS === true || empty($this->_jsScripts))
+			return;
 		
-		if(!empty($this->_jsScripts))
-		{
-			if( !(defined('CACHE_CSS_JS') && (CACHE_CSS_JS)) )
-			{
-				$output = "<script type='text/javascript'>\n";
-				$output .= "$(document).ready(function() {\n";
-				
-				foreach ($this->_jsScripts as $script) 
-				{
-					$output .= $script['script']."\n";
-				}
-				$output .= "});\n";
-				$output .= "</script>\n";
-			}
+		$output = "<script type='text/javascript'>\n";
+		$output .= "$(document).ready(function() {\n";
+		
+		foreach ($this->_jsScripts as $script) {
+			$output .= $script['script']."\n";
 		}
+		
+		$output .= "});\n";
+		$output .= "</script>\n";
 		
 		return $output;
 	}
 	
-	public function getHTMLJsScriptsBottom(){
-		
-		if(!empty($this->_jsScriptsBottom))
-		{
+	public function getHTMLJsScriptsBottom()
+	{
+		if(empty($this->_jsScriptsBottom))
+			return;
 
-			$output = "<script type='text/javascript'>\n";
-			
-			foreach ($this->_jsScriptsBottom as $script) 
-			{
-				$output .= $script['script']."\n";
-			}
-			
-			$output .= "</script>\n";
+		$output = "<script type='text/javascript'>\n";
+		
+		foreach ($this->_jsScriptsBottom as $script) {
+			$output .= $script['script']."\n";
 		}
+		
+		$output .= "</script>\n";
 		
 		return $output;
 	}
 
-	public function getHeadContent(){
+	public function getHeadContent() {
 	
 		if(!empty($this->_head))
 			return implode(" ", $this->_head);
 	
 		return null;
 	}
-	
-	public function getTinyMCE(){
-
-		if($this->_tinyMCE)
-		{
-			$baseUrl = Zend_Layout::getMvcInstance()->getView()->baseUrl();
-			$lang_id = CMS_Application_Config::getInstance()->getActiveLang();
-			
-			$config = CMS_Application_Config::getInstance();
-	    	$skinFront = $config->get("skinfront");
-    		$skinUrl = $baseUrl.'/skins/' . $skinFront;
-			
-			$output = '
-	<script type="text/javascript" src="'.COMMON_LIB_PATH.'/lib/tiny_mce/tiny_mce.js"></script>
-
-	<script language="javascript">
-		$(document).ready(function(){
-
-		tinyMCE.init({
-           	height: "250px", // Set size height (fix small size if display:none;)
-           	
-			// General options
-			mode : "specific_textareas",
-			editor_selector : "mceEditor",
-	
-			language : "'.$lang_id.'",
-	
-			file_browser_callback : "mcimagemanager",
-			
-			theme : "advanced",
-			skin : "o2k7",
-			skin_variant : "silver",
-			plugins : "style,table,advhr,advimage,advlink,inlinepopups,media,searchreplace,contextmenu,paste,visualchars,advlist,autosave,filemanager,imagemanager",
-			// Theme options
-			theme_advanced_buttons1 : "code,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,fontselect,fontsizeselect",
-			theme_advanced_buttons2 : "forecolor,backcolor,|,bullist,numlist,|,outdent,indent,|,link,unlink,anchor,cleanup,|,cut,copy,paste,pastetext,pasteword,|,search,replace,|,undo,redo",
-			theme_advanced_buttons3 : "insertimage,image,media,charmap,advhr,|,sub,sup,|,hr,removeformat,visualaid,|,tablecontrols",
-			theme_advanced_toolbar_location : "top",
-			theme_advanced_toolbar_align : "left",
-			theme_advanced_statusbar_location : "bottom",
-			
-			theme_advanced_resizing : true,
-			theme_advanced_resize_horizontal : false,
-			
-			theme_advanced_font_sizes : "xx-small=8px,x-small=10px,small=12px,medium=14px,large=18px,x-large=24px,xx-large=36px",
-	
-			// Drop lists for link/image/media/template dialogs
-			//template_external_list_url : "tiny_mce/lists/template_list.js",
-			external_link_list_url : "'.$baseUrl.'/ajax/seo/getexternallistlink",
-			//external_image_list_url : "'.$baseUrl.'/lib/tiny_mce/lists/image_list.js",
-			media_external_list_url : "'.$baseUrl.'/lib/tiny_mce/lists/media_list.js",
-	
-			content_css : "'.$baseUrl.'/lib/resetcss/reset.min.css,'.$skinUrl.'/css/content.css",
-			
-			// Style formats
-			
-			';
-			
-			if(defined("TINYMCE_STYLES")){
-				$output .= 'style_formats : '.TINYMCE_STYLES.',';
-			}
-			
-			$output .= '
-			//verify_html : false,
-	        //forced_root_block : "",
-	        //cleanup : false,
-			//apply_source_formatting : false,
-			accessibility_warnings : false,
-			//extended_valid_elements : "iframe[src|width|height|name|align],link[rel|type|href],script[language|type|src]",
-    		relative_urls : false
-		});
-
-		
-		});
-	</script>
-
-			';
-			
-			return $output;
-		}
-	}
-/*	public function getImageManager(){
-
-		if($this->_imageManager)
-		{
-			$baseUrl = Zend_Layout::getMvcInstance()->getView()->baseUrl();
-			return '<script type="text/javascript" src="'.$baseUrl.'/lib/tiny_mce/plugins/imagemanager/js/mcimagemanager.js"></script>';
-		}
-	}
-	
-	public function getFileManager(){
-
-		if($this->_fileManager)
-		{
-			$baseUrl = Zend_Layout::getMvcInstance()->getView()->baseUrl();
-			return '<script type="text/javascript" src="'.$baseUrl.'/lib/tiny_mce/plugins/filemanager/js/mcfilemanager.js"></script>';
-		}
-	}*/
 	
 	public function appendJQuery($href, $cache = false, $mode='linked'){
 		
@@ -372,20 +256,6 @@ class CMS_Application_ProcessLayout {
 		array_push($this->_head, $content);
 	}
 
-	public function appendTinyMCE()
-	{
-		$this->_tinyMCE = true;
-	}
-    
-	public function appendImageManager()
-	{
-		$this->_imageManager = true;
-	}
-	public function appendFileManager()
-	{
-		$this->_fileManager = true;
-	}
-	
 	/** Retourne le cache **/
 	public function getCacheCssJs()
 	{

@@ -79,26 +79,12 @@ class CMS_Smarty_Plugins_FunctionNocache {
 		return "";
 	}
 	
-	public static function formatDate($params, $content){
-
-		$date = $params['date'];
-		unset($params['date']);
+	public static function formatDate($params, Smarty_Internal_Template $smarty)
+	{	
+		$date 	= (isset($params['date'])) 		? $params['date'] 	: date('Y-m-d H:i:s');
+		$locale = (isset($params['locale'])) 	? $params['locale'] : CMS_Application_Config::getInstance()->getActiveLang();
+		$format = (isset($params['format'])) 	? $params['format'] : 'EEE F HH:mm';
 		
-		$locale = $params['locale'];
-		unset($params['locale']);
-		
-		$format = $params['format'];
-		unset($params['format']);
-		
-		if(!$date)
-			$date = date('Y-m-d H:i:s');
-			
-		if(!$locale)
-			$locale = CMS_Application_Config::getInstance()->getActiveLang();
-			
-		if(!$format)
-			$format = 'EEE F HH:mm';
-
 		$formatDate = new Zend_Date($date, 'yyyy-MM-dd hh:mm:ss', $locale);
 
 		return $formatDate->toString($format);

@@ -41,8 +41,6 @@ class CMS_TinyMCE_Forms_ImageSelect extends Zend_Form_Element
         
 		Zend_Layout::getMvcInstance()->getView()->addHelperPath('CMS/TinyMCE/ViewHelpers/', 'CMS_TinyMCE_ViewHelpers_');
 		CMS_Application_ProcessLayout::getInstance()->appendJsFile(COMMON_LIB_PATH . '/lib/tiny_mce/tiny_mce.js');
-		/*$processLayout = CMS_Application_ProcessLayout::getInstance();
-		$processLayout->appendImageManager();*/
 		
         parent::__construct($field_name, $attributes);
     }

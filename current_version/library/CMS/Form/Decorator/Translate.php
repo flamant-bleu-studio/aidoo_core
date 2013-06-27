@@ -38,37 +38,33 @@ class CMS_Form_Decorator_Translate extends Zend_Form_Decorator_Abstract implemen
         $placement = $this->getPlacement();
         $errors    = $this->buildErrors();
         $desc      = $this->buildDescription();
+        $class     = '';
+        $label	   = '';
         
-        if(($element->getType() == "Zend_Form_Element_Submit"))
-        {
-        	$class = " submit";
-        }
+        if ($element->getType() == 'Zend_Form_Element_Submit')
+        	$class = ' submit';
         else
-        {
         	$label = $this->buildLabel();
-        }
         
-        if(($element->getType() == "Zend_Form_Element_File"))
-        {
+        if ($element->getType() == 'Zend_Form_Element_File')
         	$content = '';	
-        }
         
         $name = $element->getName();
 		
-        $isTranslatable = (method_exists($element, "isTranslatable") && $element->isTranslatable() == true) ? true : false ;
+        $isTranslatable = (method_exists($element, 'isTranslatable') && $element->isTranslatable() == true) ? true : false ;
         
         $config = CMS_Application_Config::getInstance();
-       	$langs = json_decode($config->get("availableFrontLang"), true);
+       	$langs = json_decode($config->get('availableFrontLang'), true);
 		$countLangs = count($langs); // Nombre de langue active
        	
-        $output = '<div class="form_line'.$class.'" id="form_'.$name.'">'
+        $output = '<div class="form_line' . $class . '" id="form_' . $name . '">'
 	        		. '<div class="form_text">'
 		                . $label
 		                . $desc
 	                . '</div>'
 	                . '<div class="form_elem">'; 
 	                
-	                $classInput 		= $element->getAttrib("class");
+	                $classInput 		= $element->getAttrib('class');
 	                $classValidation 	= $this->buildValidationClass();
 	                
 	                if($isTranslatable){

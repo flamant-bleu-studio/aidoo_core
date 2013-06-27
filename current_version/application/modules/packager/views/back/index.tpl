@@ -22,7 +22,7 @@
 	<div>{t}Manage packages{/t}</div>
 </div>
 
-{if $existingFiles != null}
+{if isset($existingFiles) && $existingFiles != null}
 	<h3>{t}Warning, installing this package will overwrite the following files:{/t}</h3>
 	
 	{foreach from=$existingFiles item=item}
@@ -65,7 +65,7 @@
 						<td>{$item.name}</td>
 						<td>{$item.version}</td>
 						<td>{$item.locationPath} {$item.type}</td>
-						<td>{$item.description}</td>
+						<td>{if isset($item.description)}{$item.description}{/if}</td>
 						<td>
 							{if (isset($item.deactivable)) && ($item.deactivable == "true")}
 								<a href="{routeShort action="load-unload-module" id=$item.name type=$item.type}" data-name="{$item.name}" class="changeStatModule btn btn-mini {if $item.load}btn-danger{else}btn-success{/if}" data-original-title="{if $item.load}{t}Disable{/t}{else}{t}Enable{/t}{/if}">
@@ -113,7 +113,7 @@
 							<td>{$item.name}</td>
 							<td>{$item.version}</td>
 							<td>{$item.type}</td>
-							<td>{$item.description}</td>
+							<td>{if isset($item.description)}{$item.description}{/if}</td>
 							<td>
 								<a href="#" data-name="{$item.name}" class="changeStatBloc btn btn-mini {if $item.load}btn-danger{else}btn-success{/if}" data-original-title="{if $item.load}{t}Disable{/t}{else}{t}Enable{/t}{/if}">
 									<i class="icon-off icon-white"></i>
@@ -158,7 +158,7 @@
 							
 							<td>{$item.version}</td>
 							<td>{$item.type}</td>
-							<td>{$item.description}</td>
+							<td>{if isset($item.description)}{$item.description}{/if}</td>
 							<td>
 								<a href="{routeShort action="editplugin" id=$item.file type=$item.type}" class="changeStatPlugin btn btn-mini {if $item.active}btn-danger{else}btn-success{/if}" data-type="{$item.type}" data-name="{$item.name}" data-original-title="{if $item.active}{t}Disable{/t}{else}{t}Enable{/t}{/if}">
 									<i class="icon-off icon-white"></i>

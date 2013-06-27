@@ -73,7 +73,10 @@ class Blocs_Object_Template extends CMS_Object_MonoLangEntity
 	
 		$pos = $this->getItemsPosition();
 		
-		return $pos[$template_type][$placeholder];
+		if(isset($pos[$template_type][$placeholder]))
+			return $pos[$template_type][$placeholder];
+		else
+			return null;
 	}
 	
 	public function setItemsPosition($itemsPosition = null) {

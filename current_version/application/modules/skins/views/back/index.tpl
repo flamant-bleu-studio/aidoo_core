@@ -37,7 +37,6 @@
 				<th><a href="#" class="desc">ScreenShot</a></th>
 				<th><a href="#">{t}FrontOffice Skin{/t}</a></th>
 				<th><a href="#">{t}BackOffice Skin{/t}</a></th>
-				<th><a href="#">{t}Supported Devices{/t}</a></th>
 			</tr>
 
 			{if $skins != null}
@@ -73,23 +72,11 @@
 								{/if}
 								</span>
 							{/if}
-							</td>
-							
-							<td>
-								<span>
-								[{t}Standard Browser{/t}]
-								{foreach from=$skin.handsets.handset item=set}
-								[{$set.subskin}]
-								{/foreach}
-								</span>
-							</td>
-							
-							
+							</td>	
 						</tr>
 					
 					 {/foreach}
-				
-			
+
 			{else}
 						<tr class='second'>
 							<td colspan="6" style="text-align: center;">{t}You do not have any skin yet. Click Add !{/t}</td>
