@@ -78,6 +78,9 @@ class CMS_Application_ProcessLayout {
 	
 	public function getHTMLJQueryLibs(){
 		
+		$output = "";
+		
+		
 		foreach ($this->_jQueries as $jquery) 
 		{
 			if( !(defined('CACHE_CSS_JS') && (CACHE_CSS_JS)) || !$jquery['cache'])
@@ -138,15 +141,12 @@ class CMS_Application_ProcessLayout {
 
 		$output = "";
 		
-		foreach ($this->_jsFiles as $script) 
-		{
-			if($script['external'])
-			{
+		foreach ($this->_jsFiles as $script)  {
+			if (isset($script['external'])) {
 				$baseUrl = null;
 				$output .= "<script type='text/javascript' src='".$baseUrl.$script['src']."'></script>\n";
 			}
-			else
-			{
+			else {
 				if( !(defined('CACHE_CSS_JS') && (CACHE_CSS_JS)) || !$script['cache'] )
 				{
 					$baseUrl = $this->baseUrl;
@@ -179,6 +179,7 @@ class CMS_Application_ProcessLayout {
 	}
 	
 	public function getHTMLJsScriptsBottom(){
+		$output = '';
 		
 		if(!empty($this->_jsScriptsBottom))
 		{

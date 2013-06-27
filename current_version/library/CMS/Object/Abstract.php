@@ -89,9 +89,12 @@ abstract class CMS_Object_Abstract {
 	 * @param mixed $limit limite les résultats
 	 * @param mixed $id_lang null => langue courante; int => langue précisée; "all" => toutes les langues (impossible de filtrer les résultats)
 	 */
-	public static function get($where = array(), $order = null, $limit = null, $id_lang = CURRENT_LANG_ID)
+	public static function get($where = array(), $order = null, $limit = null, $id_lang = null)
 	{
 		self::_getModel();
+		
+		if($id_lang == null)
+			$id_lang = CURRENT_LANG_ID;
 		
 		if($id_lang == "all")
 			$id_lang = null;
