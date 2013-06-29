@@ -452,4 +452,22 @@ class Admin_ConfigController extends CMS_Controller_Action
 			return $this->_redirect($this->_helper->route->full('admin'));
 		}
     }
+    
+    public function clearCacheTplAction()
+    {
+    	$backAcl = CMS_Acl_Back::getInstance();
+    
+    	if(!$backAcl->hasPermission("admin", "manage")) {
+    		_error(_t("Insufficient rights"));
+    		return $this->_redirect($this->_helper->route->full('admin'));
+    	}
+    		
+    	$smarty = Zend_Layout::getMvcInstance()->getView()->getEngine();
+    	$smarty->clearCache();
+    	
+    	_message(_t("Cache deleted successfully"));
+    		    			
+    	return $this->_redirect( $this->_helper->route->short('index'));
+
+    }
 }

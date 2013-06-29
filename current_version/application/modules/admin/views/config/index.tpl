@@ -68,7 +68,7 @@
 		
 		<div class="form_submit">
 			<button class="btn btn-success add" id="add-size"><i class="icon-plus icon-white"></i> {t}Add new size{/t}</button>		
-			<button class="btn btn-primary">{t}Submit{/t}</button>
+			<button class="btn btn-primary">{t}Save{/t}</button>
 			<a href='{routeShort action="regenerate-pictures"}' class="btn btn-danger right" onClick="confirmDelete(this.href, '<h1>{t}Are you sure you want to regenerate images ?{/t}</h1><br/><span style=\'color: red;\'>{t}This action may take several minutes.{/t}</span>', '{t}Yes{/t}', '{t}No{/t}');return false;""><i class="icon-repeat icon-white"></i>  {t}Regenerate pictures{/t}</a>
 		</div>
 	</form>
@@ -82,7 +82,7 @@
 		{$mobileForm->mobile}
 		{$mobileForm->tablet}
 		<div class="form_submit">
-			<button class="btn btn-primary">{t}Submit{/t}</button>
+			<button class="btn btn-primary">{t}Save{/t}</button>
 		</div>
 	</form>
 	
@@ -128,18 +128,18 @@
 		</div>
 		
 		<div class="form_submit">
-			<button class="btn btn-primary">{t}Submit{/t}</button>
+			<button class="btn btn-primary">{t}Save{/t}</button>
 		</div>
 	</form>
 	
 	<div class="zone_titre">
 		<h2>{t}Caches{/t}</h2>
-		<div>{t}Manage front caches{/t}</div>
 	</div>	
 
-	<a href='{routeShort action="deletecache"}' class="btn btn-warning btn-large">{t}Regenerate front cache{/t} (cache.js + cache.css)</a>
-
+	<a href='{routeShort action="deletecache"}' class="btn btn-primary btn-large">{t}Clear CSS & Javascript cache{/t}</a>
+	<a href='{routeShort action="clear-cache-tpl"}' class="btn btn-primary btn-large">{t}Clear templates cache{/t} </a>
 	<br /><br />
+	
 	<div class="zone_titre">
 		<h2>{t}Contents{/t}</h2>
 		<div>{t}Manage site contents{/t}</div>
