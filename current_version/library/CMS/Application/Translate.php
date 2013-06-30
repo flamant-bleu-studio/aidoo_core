@@ -493,19 +493,17 @@ class CMS_Application_Translate {
 				if($config["lang"]['translatable'] != 'true')
 					continue;
 				
-				foreach($langs as $id => $code){
-					if(!file_exists($modulePath."/lang/back/".$code.".php")){
+				foreach ($langs as $id => $code) {
+					if (!file_exists($modulePath."/lang/back/".$code.".php")){
 						$missingTranslateFiles[$fileInfo->getFilename()][] = $code;
 					}
-					else{
-						
+					else {
 						$tempArray = include $modulePath."/lang/back/".$code.".php";
 						
-						if(!is_array($translateArray[$code]))
+						if(!isset($translateArray[$code]) || !is_array($translateArray[$code]))
 							$translateArray[$code] = array();
 							
 						$translateArray[$code] = array_merge($translateArray[$code], $tempArray);
-						
 					}
 				}
 				

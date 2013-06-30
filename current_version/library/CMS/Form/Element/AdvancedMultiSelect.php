@@ -25,24 +25,16 @@ class CMS_Form_Element_AdvancedMultiSelect extends Zend_Form_Element_Multiselect
 	public $helper = 'formAdvancedMultiSelect';
 	private $_options;
 	
-	public function __construct($field_name, $attributes = null, $options = null) {
+	public function __construct($field_name, $attributes = array(), $options = null) {
 	
 		Zend_Layout::getMvcInstance()->getView()->addHelperPath('CMS/Form/Helper/', 'CMS_Form_Helper_');
 		
-		$attributes["params"]["no_results_text"] = 
-			isset($options["no_results_text"]) 
-				? $options["no_results_text"] 
-				: _t("No results matched");
+		$attributes['params']['no_results_text'] 	= isset($options['no_results_text']) ? $options['no_results_text'] : _t('No results matched'); 
+		$attributes['params']['placeholder'] 		= isset($options['placeholder']) ? $options['placeholder'] : _t('Choose');
 				
-		$attributes["params"]["placeholder"] = 
-			isset($options["placeholder"]) 
-				? $options["placeholder"] 
-				: _t("Choose");
-				
-				
-		$attributes['data-placeholder'] = $attributes["params"]["placeholder"];
+		$attributes['data-placeholder'] = $attributes['params']['placeholder'];
 		
-		$this->_options = $attributes["params"];
+		$this->_options = $attributes['params'];
     	
 		parent::__construct($field_name, $attributes);
 	}
@@ -51,13 +43,13 @@ class CMS_Form_Element_AdvancedMultiSelect extends Zend_Form_Element_Multiselect
     {
 		$processLayout = CMS_Application_ProcessLayout::getInstance();
 		
-		$processLayout->appendJsFile(COMMON_LIB_PATH."/lib/chosen/chosen.jquery.min.js");
-    	$processLayout->appendCssFile(COMMON_LIB_PATH."/lib/chosen/chosen.css");
+		$processLayout->appendJsFile(COMMON_LIB_PATH.'/lib/chosen/chosen.jquery.min.js');
+    	$processLayout->appendCssFile(COMMON_LIB_PATH.'/lib/chosen/chosen.css');
     	
     	$processLayout->appendJsScript("
     		
     		$('#".$this->_name."').chosen({
-    			no_results_text: '" . $this->options["params"]["no_results_text"] . "'
+    			no_results_text: '" . $this->_options['no_results_text'] . "'
     		});
     		
     	");

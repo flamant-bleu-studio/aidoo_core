@@ -30,30 +30,18 @@ class CMS_Form_Element_AdvancedSelect extends Zend_Form_Element_Select
 	
 		Zend_Layout::getMvcInstance()->getView()->addHelperPath('CMS/Form/Helper/', 'CMS_Form_Helper_');
 		
-		$attributes["params"]["text_no_results_match"] = 
-			isset($options["text_no_results_match"]) 
-				? $options["text_no_results_match"] 
-				: _t("No results matched");
+		$attributes['params']['text_no_results_match'] 	= isset($options['text_no_results_match']) ? $options['text_no_results_match'] : _t('No results matched');
+		$attributes['params']['allow_single_deselect'] 	= (isset($options['allow_single_deselect']) && $options['allow_single_deselect'] === true) ? true	: false;
+		$attributes['params']['placeholder'] 			= isset($options['placeholder']) ? $options['placeholder'] : _t('Choose');
+				
+		$attributes['data-placeholder'] = $attributes['params']['placeholder'];
 		
-		$attributes["params"]["allow_single_deselect"] = 
-			(isset($options["allow_single_deselect"]) && $options["allow_single_deselect"] === true)
-				? true
-				: false;
-				
-		$attributes["params"]["placeholder"] = 
-			isset($options["placeholder"]) 
-				? $options["placeholder"] 
-				: _t("Choose");
-				
-				
-		$attributes['data-placeholder'] = $attributes["params"]["placeholder"];
-		
-		$this->_options = $attributes["params"];
+		$this->_options = $attributes['params'];
     	
 		$this->_isTranslatable = false;
 		
-		if($options["translatable"])
-		$this->setTranslatable($options["translatable"]);
+		if($options['translatable'])
+		$this->setTranslatable($options['translatable']);
 		
 		parent::__construct($field_name, $attributes);
 	}
@@ -62,14 +50,14 @@ class CMS_Form_Element_AdvancedSelect extends Zend_Form_Element_Select
     {
 		$processLayout = CMS_Application_ProcessLayout::getInstance();
 		
-		$processLayout->appendJsFile(COMMON_LIB_PATH."/lib/chosen/chosen.jquery.min.js");
-    	$processLayout->appendCssFile(COMMON_LIB_PATH."/lib/chosen/chosen.css");
+		$processLayout->appendJsFile(COMMON_LIB_PATH.'/lib/chosen/chosen.jquery.min.js');
+    	$processLayout->appendCssFile(COMMON_LIB_PATH.'/lib/chosen/chosen.css');
     	
     	$processLayout->appendJsScript("
     		
     		$('#".$this->_name."').chosen({
-    			no_results_text: '" . $this->options["params"]["text_no_results_match"] . "',
-    			allow_single_deselect: '" . $this->options["params"]["allow_single_deselect"] . "'
+    			no_results_text: '" . $this->_options["text_no_results_match"] . "',
+    			allow_single_deselect: '" . $this->_options["allow_single_deselect"] . "'
     		});
     		
     	");

@@ -25,10 +25,10 @@ class CMS_Form_Helper_FormText extends Zend_View_Helper_FormText
 	
 	public function formText($name, $value = null, $attribs = null)
 	{
-		$prefix = $attribs["options"]["prefix"];
-		$suffix = $attribs["options"]["suffix"];
+		$prefix = (isset($attribs["options"]["prefix"])) ? $attribs["options"]["prefix"] : null;
+		$suffix = (isset($attribs["options"]["suffix"])) ? $attribs["options"]["suffix"] : null;
 		
-		$beforeInput 	= '';
+		$beforeInput 		= '';
 		$afterInput 		= '';
 		$input 				= parent::formText($name, $value, $attribs);
 		
@@ -36,11 +36,11 @@ class CMS_Form_Helper_FormText extends Zend_View_Helper_FormText
 			$beforeInput 	.= '<div class="input-prepend input-append">';
 			$beforeInput 	.= $prefix ? '<span class="add-on">'.$prefix.'</span>' : '';
 			
-			$afterInput 		.= $suffix ? '<span class="add-on">'.$suffix.'</span>' : '';
+			$afterInput 	.= $suffix ? '<span class="add-on">'.$suffix.'</span>' : '';
 			$afterInput		.= '</div>';
 		} 
 		
-		$html = $beforeInput.$input.$afterInput;
+		$html = $beforeInput . $input . $afterInput;
 		
 		return $html;
 	}

@@ -31,7 +31,7 @@
 
 {literal}<script type="text/javascript">var datasPubEdit = false;</script>{/literal}
 
-<form action='{$formCampaign->getAction()}' method="post" id="{$formCampaign->getId()}"> 
+<form action='{$formCampaign->getAction()}' method="post" id="{$formCampaign->getId()}" class="form_reclame"> 
 	<div class="zone">
 		<div class="zone_titre">
 			<h2>{t}Définition des informations{/t} <span class="helper"></span></h2>

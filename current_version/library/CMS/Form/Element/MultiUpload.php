@@ -77,8 +77,8 @@ class CMS_Form_Element_MultiUpload extends Zend_Form_Element_Text
 		if(is_string($this->_options["allowedExtensions"]))
 			$this->_options["allowedExtensions"] = explode(',', $this->_options["allowedExtensions"]);
 		
-		$this->_options["autoUpload"] = ($this->_options["autoUpload"] === true || $this->_options["autoUpload"] == 'true') ? true : false;
-		$this->_options["adminOnly"] = ($this->_options["adminOnly"] === true || $this->_options["adminOnly"] == 'true') ? true : false;
+		$this->_options["autoUpload"] 	= (isset($this->_options["autoUpload"]) && ($this->_options["autoUpload"] === true || $this->_options["autoUpload"] == 'true')) ? true : false;
+		$this->_options["adminOnly"] 	= (isset($this->_options["adminOnly"]) && ($this->_options["adminOnly"] === true || $this->_options["adminOnly"] == 'true')) ? true : false;
 		
 		// Session pour que le controller d'upload puisse récupérer les options
 		$session = new Zend_Session_Namespace("multiUpload-".$this->getName());

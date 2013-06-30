@@ -34,7 +34,7 @@
 			<td class="group_name">&nbsp;{$g->level}{$g->name}&nbsp;</td>
 			{foreach from=$formAcl->modes key=name item=m}
 			{assign var='test' value="_"|cat:$g->id}
-			<td><input type="checkbox" name="ACL[{$name}-{$g->id}]" id="{$name}-{$g->id}" class="aclCheckbox {$name}-{$g->parent}" {if $m[$test] == 1} checked{/if} /></td>
+			<td><input type="checkbox" name="ACL[{$name}-{$g->id}]" id="{$name}-{$g->id}" class="aclCheckbox {$name}-{$g->parent}" {if isset($m[$test]) && $m[$test] == 1} checked{/if} /></td>
 			{/foreach}
 		</tr>
 		{/foreach}

@@ -22,11 +22,6 @@
 
 class Advertising_Form_Campaign extends CMS_Form_Default
 {
-	public function __construct()
-	{
-		parent::__construct($options);
-	}
-	
 	public function init()
 	{
 		$datas = new Zend_Form_Element_Hidden("datas");

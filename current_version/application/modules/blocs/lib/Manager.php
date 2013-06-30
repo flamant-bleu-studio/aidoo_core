@@ -79,21 +79,18 @@ class Blocs_Lib_Manager {
 		$sidebar = array();
 		$placeholders = array("sideleft1", "sideright1");
 		
-		if( count($templates) > 0 )
-		{ 
-			foreach ($templates as $template)
-			{
+		if ( count($templates) > 0 ) { 
+			foreach ($templates as $template) {
 				$sidebar[$template->id_template]["sideleft1"] = array();
 				$sidebar[$template->id_template]["sideright1"] = array();
 				
 				$templatesToSelect[$template->id_template] = "- ".$template->title;
 				
 				$item_position = $template->getItemsPosition();
+				$item_position = $item_position['classic'];
 				
-				if( $item_position && count($item_position) > 0 )
-				{
-					foreach ($item_position as $placeholder => $items)
-					{
+				if ($item_position && count($item_position) > 0) {
+					foreach ($item_position as $placeholder => $items) {
 						if( in_array($placeholder, $placeholders) )
 							$sidebar[$template->id_template][$placeholder] = $items;
 					}
@@ -102,7 +99,7 @@ class Blocs_Lib_Manager {
 		}
 		
 		/** Template Default **/
-		$sidebar[0] = $sidebar[$defaultTemplate[0]->id];
+		$sidebar[0] = $sidebar[$defaultTemplate[0]->id_template];
 		
 		/** Diaporamas **/
 		$diaporamas = GalerieImage_Object_Galerie::get(array("type" => GalerieImage_Object_Galerie::TYPE_DIAPORAMA));
@@ -125,7 +122,7 @@ class Blocs_Lib_Manager {
 		$view->sidebar = $sidebar;
 		$view->activeTemplateId = $activeTemplateId;
 		$view->activeDiaporamaId = $activeDiaporamaId;
-		
+
 		/** Create render **/
 		$render = $view->render("/render/preview.tpl");
 		
