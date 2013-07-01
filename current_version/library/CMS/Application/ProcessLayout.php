@@ -181,10 +181,12 @@ class CMS_Application_ProcessLayout {
 	
 	public function getHTMLJsScriptsBottom(){
 		
+		$output = "";
+		
 		if(!empty($this->_jsScriptsBottom))
 		{
 
-			$output = "<script type='text/javascript'>\n";
+			$output .= "<script type='text/javascript'>\n";
 			
 			foreach ($this->_jsScriptsBottom as $script) 
 			{
