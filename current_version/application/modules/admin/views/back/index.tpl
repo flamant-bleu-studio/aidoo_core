@@ -190,24 +190,5 @@
 			</div>
 			
 		</div>
-		
-		{if $eseler == 1 || $emarket == true}
-		<div class="zone">
-			<div class="zone_titre">
-				<h2>Suivi contacts</h2>
-				<div>Quantifiez les prospects générés par le site</div>
-			</div>
-			{if $eseler == 1}	
-			<div id="eseller" class="contact">
-				<a class="orange">Vos contacts ont-ils été suivis ?</a>
-			</div>
-			{/if}
-			{if $emarket == true}
-			<div id="emarket" class="contact">
-				<a class="orange">Créez des campagnes emailings</a>
-			</div>
-			{/if}
-		</div>
-		{/if}
 	</div>
 </div>
