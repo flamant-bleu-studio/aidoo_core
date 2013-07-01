@@ -177,62 +177,65 @@
 			<div class="row-fluid">
 				<div id="template" class="span8">
 					
-					<div id="t_header1" class="droppable">
+					<div id="t_header1" class="droppable horizontal">
 						{if $templates[0]->getPlaceholder("classic", "header1")}
 							{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "header1")} 
 						{/if}
 						<div class="drop_zone"></div>
 					</div>
 					
-					<div id="t_header2" class="droppable">
+					<div id="t_header2" class="droppable horizontal">
 						{if $templates[0]->getPlaceholder("classic", "header2")}
 							{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "header2")} 
 						{/if}
 						<div class="drop_zone"></div>
 					</div>
 		
-					<div id="t_middle">
+					<div id="t_middle" class="horizontal">
 		
-						<div id="t_sideleft1" class="droppable">
+						<div id="t_sideleft1" class="droppable vertical">
 							{if $templates[0]->getPlaceholder("classic", "sideleft1")}
 								{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "sideleft1")} 
 							{/if}
 							<div class="drop_zone"></div>
 						</div>
 		
-						<div id="t_center">
-							<div id="t_contenttop" class="droppable">
+						<div id="t_center" class="vertical">
+							<div id="t_contenttop" class="droppable horizontal">
 								{if $templates[0]->getPlaceholder("classic", "contenttop")}
 									{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "contenttop")} 
 								{/if}
 								<div class="drop_zone"></div>
 							</div>
-							<div id="t_contentleft" class="droppable">
-								{if $templates[0]->getPlaceholder("classic", "contentleft")}
-									{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "contentleft")} 
-								{/if}
-								<div class="drop_zone"></div>
-							</div>
-							<div id="t_contentmore" class="droppable">
 							
-								{if $templates[0]->getPlaceholder("classic", "contentmore")}
-									{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "contentmore")} 
-								{/if}
-								<div class="drop_zone"></div>
-								
-								<div class="info_ph">
-									Ne pas mettre de blocs ici pour un modèle de disposition déstiné à une page avec contenu.
+							<div id="t_content" class="horizontal">
+								<div id="t_contentleft" class="droppable vertical">
+									{if $templates[0]->getPlaceholder("classic", "contentleft")}
+										{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "contentleft")} 
+									{/if}
+									<div class="drop_zone"></div>
 								</div>
-				
+								<div id="t_contentmore" class="droppable">
+								
+									{if $templates[0]->getPlaceholder("classic", "contentmore")}
+										{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "contentmore")} 
+									{/if}
+									<div class="drop_zone"></div>
+									
+									<div class="info_ph">
+										<!-- Ne pas mettre de blocs ici pour un modèle de disposition déstiné à une page avec contenu. -->TEST
+									</div>
+					
+								</div>
+								<div id="t_contentright" class="droppable vertical nomarge">
+									{if $templates[0]->getPlaceholder("classic", "contentright")}
+										{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "contentright")} 
+									{/if}
+									<div class="drop_zone"></div>
+								</div>
 							</div>
-							<div id="t_contentright" class="droppable">
-								{if $templates[0]->getPlaceholder("classic", "contentright")}
-									{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "contentright")} 
-								{/if}
-								<div class="drop_zone"></div>
-							</div>
-							<div class="clearfix"></div>
-							<div id="t_contentbottom" class="droppable">
+							
+							<div id="t_contentbottom" class="droppable horizontal nomarge">
 								{if $templates[0]->getPlaceholder("classic", "contentbottom")}
 									{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "contentbottom")} 
 								{/if}
@@ -240,24 +243,23 @@
 							</div>
 						</div>
 						
-						<div id="t_sideright1" class="droppable">
+						<div id="t_sideright1" class="droppable vertical nomarge">
 							{if $templates[0]->getPlaceholder("classic", "sideright1")}
 								{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "sideright1")} 
 							{/if}
 							<div class="drop_zone"></div>
 						</div>
 						
-						<div class="clearfix"></div>
 					</div>
 		
-					<div id="t_footer1" class="droppable">
+					<div id="t_footer1" class="droppable horizontal">
 							{if $templates[0]->getPlaceholder("classic", "footer1")}
 								{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "footer1")} 
 							{/if}
 							<div class="drop_zone"></div>
 						</div>
 							
-					<div id="t_footer2" class="droppable">
+					<div id="t_footer2" class="droppable horizontal nomarge">
 							{if $templates[0]->getPlaceholder("classic", "footer2")}
 								{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "footer2")} 
 							{/if}
