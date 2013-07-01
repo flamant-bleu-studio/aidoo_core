@@ -63,6 +63,10 @@ class Admin_BackController extends Zend_Controller_Action
 				if(!$accountId)
 					$this->view->account = false;
 				else{
+					/**
+					 * @todo Revoir ce code ;)
+					 */
+					
 					$this->view->account = true;
 					$this->view->site = $profileSet->getTitle();	  
 					
@@ -75,6 +79,7 @@ class Admin_BackController extends Zend_Controller_Action
 					"sec" => 1);
 					
 					$result = "";
+					$time = 0;
 					
 					foreach($tabTemps as $uniteTemps => $nombreSecondesDansUnite) {
 						$$uniteTemps = floor($time/$nombreSecondesDansUnite);
@@ -83,10 +88,7 @@ class Admin_BackController extends Zend_Controller_Action
 						if($$uniteTemps > 0 || !empty($result))
 							$result .= $$uniteTemps." $uniteTemps ";
 					}
-	
-					$this->view->flot_data_visits = $tStats['flot_data_visits'];
-					$this->view->flot_data_views = $tStats['flot_data_views'];
-			
+					
 					$this->view->visits = $ga->getVisits();
 					$this->view->pageviews = $ga->getPageViews();
 					$this->view->pageviewsPerVisit = number_format( $ga->getPageviewsPerVisit(), 2);
@@ -94,8 +96,6 @@ class Admin_BackController extends Zend_Controller_Action
 					
 					$this->view->start = $ga->getPageViews();
 					$this->view->end = $ga->getPageViews();
-					$this->view->month = $month;
-					$this->view->year = $year;
 					
 					$this->view->bounceVisit = number_format( $ga->getVisitBounceRate(), 2);
 					$this->view->newsVisit = $ga->getNewVisits();
