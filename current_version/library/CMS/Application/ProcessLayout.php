@@ -137,7 +137,7 @@ class CMS_Application_ProcessLayout {
 		
 		foreach ($this->_jsFiles as $script) 
 		{
-			if($script['external'])
+			if(isset($script['external']))
 			{
 				$baseUrl = null;
 				$output .= "<script type='text/javascript' src='".$baseUrl.$script['src']."'></script>\n";
@@ -156,11 +156,13 @@ class CMS_Application_ProcessLayout {
 	}
 	public function getHtmlJsScripts(){
 		
+		$output = "";
+		
 		if(!empty($this->_jsScripts))
 		{
 			if( !(defined('CACHE_CSS_JS') && (CACHE_CSS_JS)) )
 			{
-				$output = "<script type='text/javascript'>\n";
+				$output .= "<script type='text/javascript'>\n";
 				$output .= "$(document).ready(function() {\n";
 				
 				foreach ($this->_jsScripts as $script) 
