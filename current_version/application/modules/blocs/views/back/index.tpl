@@ -153,13 +153,13 @@
 	
 			<div class="btn-toolbar actions_tpl">
 		
-				{if $mobileEnabled || $tabletEnable}
+				{if !empty($mobileEnabled) || !empty($tabletEnable)}
 					<div id="typeSelect" class="btn-group" data-toggle="buttons-radio">
 						<button value="classic" class="btn active">{t}Classic{/t}</button>
-						{if $mobileEnabled} 
+						{if !empty($mobileEnabled)} 
 							<button value="mobile" class="btn">{t}Mobile{/t}</button>
 						{/if}
-						{if $tabletEnabled}
+						{if !empty($tabletEnabled)}
 							<button value="tablet" class="btn">{t}Touchpad{/t}</button>
 						{/if}
 					</div>
