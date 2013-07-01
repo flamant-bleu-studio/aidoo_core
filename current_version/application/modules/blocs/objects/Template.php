@@ -38,7 +38,7 @@ class Blocs_Object_Template extends CMS_Object_MonoLangEntity
 	
 	protected $items_position;
 	
-	protected static $_placeholdersAvailable = array("header1", "header2", "sideleft1", "sideright1", "contenttop", "contentleft", "contentmore", "contentright", "contentbottom", "footer1", "footer2");
+	protected static $_placeholdersAvailable = array("header1", "header2", "header3", "sideleft1", "sideright1", "contenttop", "contentleft", "contentmore", "contentright", "contentbottom", "footer1", "footer2", "footer3");
 	
 	protected static $_modelClass = "Blocs_Model_DbTable_Templates";
 	protected static $_model;

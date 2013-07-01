@@ -20,18 +20,29 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class Users_FrontController extends CMS_Controller_Action {
-
+class Users_FrontController extends CMS_Controller_Action
+{
+	private $config;
+	
+	public function init()
+	{
+		parent::init();
+		
+		$config = CMS_Application_Config::getInstance();
+		$this->config = json_decode($config->get('mod_users-options'), true);
+	}
+	
 	/**
 	 * Logout user
 	 */
 	public function logoutAction() {
+		
 		$user_id = Zend_Registry::get('user')->id;
 		
 		$user = reset(Users_Object_User::get(array("id" => $user_id)));
 		
-		// Si utilisateur facebook
-		if( $user->id_facebook ) {
+		// Facebook User
+		if ($user->id_facebook) {
 			$facebook = new CMS_Facebook_Facebook(array(
 				'appId'  => FACEBOOK_APPID,
 				'secret' => FACEBOOK_SECRET,
@@ -46,7 +57,7 @@ class Users_FrontController extends CMS_Controller_Action {
 		
 		Zend_Auth::getInstance()->clearIdentity();
 		
-		return $this->_redirect('http://'.$_SERVER['SERVER_NAME'].BASE_URL);
+		return $this->_redirect($this->_helper->route->full('users', array('action' => 'login')));
 	}
 	
 	/**
@@ -54,57 +65,73 @@ class Users_FrontController extends CMS_Controller_Action {
 	 */
 	public function loginAction() {
 		
-		if( !defined('CMS_MIDDLE_USER_GROUPE') || !defined('CMS_MIDDLE_INDEX') ) {
+		if( !defined('CMS_MIDDLE_USER_GROUPE') || empty($this->config['pageMiddleOffice']) ) {
 			throw new Exception(_t('Page not found'), 404);
 		}
 		
+		$urlMiddleOffice = CMS_Page_PersistentObject::getPageFromID($this->config['pageMiddleOffice'])->getUrl();
+		
 		$auth = Zend_Auth::getInstance();
 		
-		if($auth->hasIdentity()) {
+		if ($auth->hasIdentity()) {
 			$user_id = Zend_Registry::get('user')->id;
 			$user = reset(Users_Object_User::get(array("id" => $user_id)));
 			
 			if( !empty($user->metas->mustEditProfil) )
 				$this->_redirect($this->_helper->route->full("users_middle", array('action' => 'edit-profil')));
 			else 
-				$this->_redirect(CMS_MIDDLE_INDEX);
+				$this->_redirect($urlMiddleOffice);
 		}
 		
-		/*
-		 * Form
+		$typeLogin = $this->config['typeLogin'];
+		
+		/**
+		 * Login
 		 */
-		$loginForm = new Users_Form_Login();
+		$loginForm = new Users_Form_Login(array('typeLogin' => $typeLogin));
 		$loginForm->setAction($this->_helper->route->short("login"));
 		
-		$formInscription = new Users_Form_Register();
-		$formInscription->setAction($this->_helper->route->short("login"));
-		
-		/*
-		 * Post
-		 */
-		if($this->getRequest()->isPost()) {
-			
-			if($_POST["type"] == "login") {
-				if($loginForm->isValid($_POST)) {
-					if( CMS_Acl_User::login($loginForm->getValue("email"), $loginForm->getValue("password")) ) {
-						$this->_redirect($this->_helper->route->short("login"));
-					}
-					else {
-						_error(_t('The email address or password is incorrect'));
-						$this->_redirect($this->_helper->route->short("login"));
-					}
+		if($this->getRequest()->isPost() && $_POST['type'] == 'login') {
+			if($loginForm->isValid($_POST)) {
+				
+				if ($typeLogin == CMS_Acl_User::TYPE_LOGIN_MAIL_PASSWORD) {
+					$validLogin = CMS_Acl_User::login($loginForm->getValue("email"), $loginForm->getValue("password"));
+				}
+				else if ($typeLogin == CMS_Acl_User::TYPE_LOGIN_MAIL_ONLY) {
+					$validLogin = CMS_Acl_User::login($loginForm->getValue("email"), null, CMS_Acl_User::TYPE_LOGIN_MAIL_ONLY);
+				}
+				
+				if ($validLogin === true) {
+					$this->_redirect($this->_helper->route->short("login"));
 				}
 				else {
-					$loginForm->populate($_POST);
+					_error(_t('The email address or password is incorrect'));
+					$this->_redirect($this->_helper->route->short("login"));
 				}
 			}
-			else if($_POST["type"] == "register"){
-
-				if($formInscription->isValid($_POST)) {
-					$users = Users_Object_User::get(array("email" => $formInscription->getValue("email")));
-
-					if( !$users ) {
-						// Save user
+			else {
+				$loginForm->populate($_POST);
+			}
+		}
+		
+		/**
+		 * Inscription
+		 */
+		$formInscription = new Users_Form_Register(array('typeLogin' => $typeLogin));
+		$formInscription->setAction($this->_helper->route->short("login"));
+		
+		if($this->getRequest()->isPost() && $_POST['type'] == 'register') {
+			if ($formInscription->isValid($_POST)) {
+				
+				$users = Users_Object_User::get(array("email" => $formInscription->getValue("email")));
+				
+				if( $users ) {
+					$formInscription->getElement("email")->addError(_t('This email address is already used'));
+					$formInscription->populate($_POST);	
+				}
+				else {
+					if ($typeLogin == CMS_Acl_User::TYPE_LOGIN_MAIL_PASSWORD) {
+						
 						$user = new Users_Object_User();
 						$user->username 	= $formInscription->getValue("username");
 						$user->email 		= $formInscription->getValue("email");
@@ -127,29 +154,39 @@ class Users_FrontController extends CMS_Controller_Action {
 						
 						$config = CMS_Application_Config::getInstance();
 						$opts = json_decode($config->get('mod_users-options'), true);
-								
-						if($opts['mailAdminNewAccount'])
-								$this->notifyAdmin($user, $opts['emailNotify']);
-
 						
+						if($opts['mailAdminNewAccount'])
+							$this->notifyAdmin($user, $opts['emailNotify']);
+		
 						_message(_t('Account created successfully')."<br />".
 								 _t('An activation email has been sent to you, please follow instructions to confirm your account'));
+					}
+					else if ($typeLogin == CMS_Acl_User::TYPE_LOGIN_MAIL_ONLY) {
 						
-						return $this->_redirect($this->_helper->route->short("login"));
+						$user = new Users_Object_User();
+						$user->email 		= $formInscription->getValue("email");
+						$user->password 	= md5(time());
+						$user->firstname 	= $formInscription->getValue("firstname");
+						$user->lastname 	= $formInscription->getValue("lastname");
+						$user->isActive 	= true;
+						$user->isConfirm 	= true;
+						$user->setGroup(CMS_MIDDLE_USER_GROUPE);
+						
+						$user_id = $user->save();
+						
+						_message(_t('Account created successfully'));
 					}
-					else {
-						$formInscription->getElement("email")->addError(_t('This email address is already used'));
-						$formInscription->populate($_POST);
-					}
+					
+					return $this->_redirect($this->_helper->route->short("login"));
 				}
-				else {
-					$formInscription->populate($_POST);
-				}
+			}
+			else {
+				$formInscription->populate($_POST);
 			}
 		}
 		
 		/*
-		 * API Facebook
+		 * Facebook
 		 */
 		$facebook = new CMS_Facebook_Facebook(array(
 			'appId'  => FACEBOOK_APPID,
@@ -200,6 +237,8 @@ class Users_FrontController extends CMS_Controller_Action {
 			"scope" => "email",
 			"redirect_uri" => "http://".$_SERVER['SERVER_NAME'].BASE_URL.$this->_helper->route->full("users", array("action" => "login"))."/")
 		);
+		
+		$this->view->typeLogin = $typeLogin;
 	}
 	
 	/**
@@ -366,13 +405,13 @@ class Users_FrontController extends CMS_Controller_Action {
 	 */
 	public function forgotPasswordAction() {
 		
-		if( !defined('CMS_MIDDLE_INDEX') )
+		if( empty($this->config['pageMiddleOffice']) )
 			throw new Exception(_t('Page not found'), 404);
 		
 		$auth = Zend_Auth::getInstance();
 		
 		if($auth->hasIdentity())
-			return $this->_redirect(CMS_MIDDLE_INDEX);
+			return $this->_redirect($this->config['pageMiddleOffice']);
 		
 		$form = new Users_Form_ForgotPassword();
 		$form->setAction($this->_helper->route->short("forgot-password"));
@@ -404,13 +443,13 @@ class Users_FrontController extends CMS_Controller_Action {
 	 */
 	public function forgotPasswordConfirmAction() {
 		
-		if( !defined('CMS_MIDDLE_INDEX') )
+		if( empty($this->config['pageMiddleOffice']) )
 			throw new Exception(_t('Page not found'), 404);
 		
 		$auth = Zend_Auth::getInstance();
 		
 		if($auth->hasIdentity())
-			return $this->_redirect(CMS_MIDDLE_INDEX);
+			return $this->_redirect($this->config['pageMiddleOffice']);
 		
 		$code = $this->getRequest()->getParam('page');
 		

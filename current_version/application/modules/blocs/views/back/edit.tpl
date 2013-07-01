@@ -36,8 +36,9 @@
 			{$form->title}
 			
 			{$form->decorator}
+			{$form->templateFront}
 			{$form->theme}
-			{$form->classCss}	
+			{$form->classCss}
 				
 			{$blocAdmin}
 			<div class="clearfix"></div>

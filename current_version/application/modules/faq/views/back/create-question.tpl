@@ -25,14 +25,12 @@
 <div class="zone">
 		<form id="{$form->getId()}" enctype="multipart/form-data" action="{$form->getAction()}" method="post">
 	
-		<div class="zone">
-		
-			{$form->question}
-				
-			{$form->answer}
+		{$form->question}
 			
-		</div>
-
+		{$form->answer}
+		
+		<div class="clearfix"></div>
+		
 		{formButtons}
 	</form>
 </div>

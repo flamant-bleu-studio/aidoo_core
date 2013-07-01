@@ -93,7 +93,72 @@ class CMS_Smarty_Plugins_Block {
 		}
 
 	}
+	
+	function AssetCss($params, $content, &$smarty, &$repeat)
+	{
+		if (!$repeat) {
+			
+			if (APPLICATION_ENV == 'development' || (defined('CMS_CACHE_ASSET') && CMS_CACHE_ASSET === false))
+				return $content;
 
+			if (!file_exists(PUBLIC_PATH.BASE_URL.SKIN_URL.'/cache/min.css')) {
+				$minified = "";
+				
+				if(preg_match_all('@href="([^"]+)"@', $content, $matches, PREG_OFFSET_CAPTURE)) {
+					require_once 'Minify/CSS.php';
+					
+					foreach($matches[1] as $i => $m) {
+						if (file_exists(PUBLIC_PATH.BASE_URL.$m[0])) {
+							$minified .= Minify_CSS::minify(file_get_contents(PUBLIC_PATH.BASE_URL.$m[0]), array(
+								'currentDir' => PUBLIC_PATH.BASE_URL.$m[0].'/../',
+								'preserveComments' => false,
+							))."\n";
+						}
+						else if (file_exists(CMS_PATH.'/..'.$m[0])) {
+							$minified .= Minify_CSS::minify(file_get_contents(CMS_PATH.'/..'.$m[0]), array(
+								'currentDir' => CMS_PATH.'/..'.$m[0].'/../',
+								'preserveComments' => false,
+							))."\n";
+						}
+					}
+				}
+				
+				file_put_contents(PUBLIC_PATH.BASE_URL.SKIN_URL.'/cache/min.css', $minified);
+			}
+			
+			return '<link rel="stylesheet" href="'.BASE_URL.SKIN_URL.'/cache/min.css" type="text/css" />';
+		}
+	}
+	
+	function AssetJs($params, $content, &$smarty, &$repeat)
+	{
+		if (!$repeat) {
+			
+			if (APPLICATION_ENV == 'development' || (defined('CMS_CACHE_ASSET') && CMS_CACHE_ASSET === false))
+				return $content;
+			
+			if (!file_exists(PUBLIC_PATH.BASE_URL.SKIN_URL.'/cache/min.js')) {
+				$minified = "";
+				
+				if(preg_match_all('@src="([^"]+)"@', $content, $matches, PREG_OFFSET_CAPTURE)) {
+					require_once 'JShrink.php';
+					
+					foreach($matches[1] as $i => $m){
+						if (file_exists(PUBLIC_PATH.BASE_URL.$m[0])) {
+							$minified .= JShrink::minify(file_get_contents(PUBLIC_PATH.BASE_URL.$m[0]), array('flaggedComments' => false))."\n";
+						}
+						else if (file_exists(CMS_PATH.'/..'.$m[0])) {
+							$minified .= JShrink::minify(file_get_contents(CMS_PATH.'/..'.$m[0]), array('flaggedComments' => false))."\n";
+						}
+					}
+				}
+				
+				file_put_contents(PUBLIC_PATH.BASE_URL.SKIN_URL.'/cache/min.js', $minified);
+			}
+			
+			return '<script type="text/javascript" src="'.BASE_URL.SKIN_URL.'/cache/min.js"></script>';
+		}
+	}
 }
 
 function strarg($str)

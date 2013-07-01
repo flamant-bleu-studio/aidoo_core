@@ -27,6 +27,11 @@ $hooks = CMS_Application_Hook::getInstance();
  */
 function ApiCreateDocument($tab)
 {
+	$backAcl = CMS_Acl_Back::getInstance();
+	if (!$backAcl->hasPermission('mod_documents', 'create')) {
+		return $tab;
+	}
+	
 	$helper = Zend_Controller_Action_HelperBroker::getStaticHelper('Route');
 
 	$typesPath = PUBLIC_PATH.'/skins/'.SKIN_FRONT.'/core_features/content_types/documents';

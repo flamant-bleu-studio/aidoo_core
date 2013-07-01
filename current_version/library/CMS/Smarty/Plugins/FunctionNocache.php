@@ -175,11 +175,6 @@ class CMS_Smarty_Plugins_FunctionNocache {
 		return $processLayout->getHTMLJsScriptsBottom();
 	}
 	
-	public static function AppendCacheCssJs() {
-		$processLayout	= CMS_Application_ProcessLayout::getInstance();
-		return $processLayout->getCacheCssJs();
-	}
-	
 	public static function AppendHeadContent() {
 		$processLayout	= CMS_Application_ProcessLayout::getInstance();
 		return $processLayout->getHeadContent();

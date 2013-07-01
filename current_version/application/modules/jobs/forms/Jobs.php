@@ -47,8 +47,8 @@ class Jobs_Form_Jobs extends CMS_Form_Default
 		$this->addElement($item);
 		
 		$item = $this->createElement('text', 'contact');
-		$item->setLabel('Email de contact');
-		$item->addValidator(new Zend_Validate_EmailAddress());
+		$item->setLabel('Emails de contact');
+		$item->setDescription('(Séparés par des ;)');
 		$item->setRequired(true);
 		$this->addElement($item);
 		

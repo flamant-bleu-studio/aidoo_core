@@ -39,5 +39,15 @@ class Faq_Form_Faq extends CMS_Form_Default
 		$item->setLabel(_t('Access'));
 		$item->setRequired(TRUE);
 		$this->addElement($item);
+		
+		$intro = new CMS_Form_Element_TinyMCE('intro');
+		$intro->setLabel(_t("Top content"));
+		$intro->setTranslatable(true);
+		$this->addElement($intro);
+		
+		$intro = new CMS_Form_Element_TinyMCE('outro');
+		$intro->setLabel(_t("Bottom content"));
+		$intro->setTranslatable(true);
+		$this->addElement($intro);
 	}
 }

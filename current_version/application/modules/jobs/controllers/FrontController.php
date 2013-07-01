@@ -153,28 +153,25 @@ class Jobs_FrontController extends Zend_Controller_Action
 						$at = $mail->createAttachment($cv);
 						$at->filename = basename($form->cv->getFileName());
 					}
-						    
-					$config = CMS_Application_Config::getInstance();
-					// Destinaire (recuperé depuis l'annonce ou config general si candidatures spontanées) 
-					if ($job->contact)
-						$destinataire = $job->contact;
-					else
-					{
-						$formConfig = json_decode($config->get("contactEmail"));
-						$destinataire = $formConfig->mod_jobs_contact;
-					}
-	
+					
+					$destinataires = explode(';', $job->contact);
+					
 					// Génération du html
 					$content = $view->renderInnerTpl("email.tpl");
 					// Remise du chemin des templates d'origines
 					$view->setScriptPath($path);
-	
-					$mail->setBodyHtml($content)
+					
+					$mail = $mail->setBodyHtml($content)
 					->setFrom($datas['email'], $datas['firstName'].' '.$datas['lastName'])
-					->addTo($destinataire, $destinataire)
-					->setSubject("Candidature poste: ". $datas['object'])
-					->send();
-	
+					->setSubject("Candidature poste: ". $datas['object']);
+					
+					foreach ($destinataires as $destinataire) {
+						if (!empty($destinataire))
+							$mail->addTo($destinataire, $destinataire);
+					}
+					
+					$mail->send();
+					
 					unlink($form->cv->getFileName());
 					
 					$this->view->sentOk = true;
@@ -240,14 +237,18 @@ class Jobs_FrontController extends Zend_Controller_Action
 		    		throw new Zend_Exception(_t("Missing nodes"));
 		    	
 		    	$config = json_decode(CMS_Application_Config::getInstance()->get("contactEmail"), true);
-		       	$mail_contact = $config["mod_jobs_contact"];
+		       	$mail_contact = explode(';', $config["mod_jobs_contact"]);
 		    	
-		       	if( !$mail_contact )
+		       	if( empty($mail_contact) )
 		       		throw new Zend_Exception(_t("Missing mail contact"));
-				       	
+				
 				/** Config Mail **/
 		        $mail = new Zend_Mail('UTF-8');
-			    $mail->addTo($mail_contact, $mail_contact);
+		        
+				foreach ($mail_contact as $destinataire) {
+					if (!empty($destinataire))
+						$mail->addTo($destinataire, $destinataire);
+				}
 			    
 		    	/** Generate content email **/
 		        $mailContent = $view->renderInnerTpl("email.tpl");

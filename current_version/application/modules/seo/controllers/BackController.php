@@ -221,7 +221,7 @@ class seo_BackController extends CMS_Controller_Action
 		$this->_helper->layout()->setLayout('lightbox');
 		
 		$form = new Seo_Form_Page();
-		$page = new CMS_Page_PersistentObject($id, 'all');
+		$page = new CMS_Page_PersistentObject((int)$id, 'all');
 		
 		if($this->getRequest()->isPost()) {
 			if($form->isValid($_POST)){

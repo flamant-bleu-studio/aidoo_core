@@ -31,11 +31,16 @@ class CMS_Acl_Plugins_CheckRights extends Zend_Controller_Plugin_Abstract {
   			$_SESSION['lasturl'] = str_replace(Zend_Layout::getMvcInstance()->getView()->baseUrl(),'',$_SERVER['REQUEST_URI']);
 			
 			$redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');
+			$route = Zend_Controller_Action_HelperBroker::getStaticHelper('route');
 			
-			if($request->getParam('_isAdmin') == true)
+			if ($request->getParam('_isAdmin') == true)
 				$link_to_redirect = "/administration/login/";
-			else if($request->getParam('_isMiddle') == true)
-				$link_to_redirect = CMS_MIDDLE_LOGIN_PAGE;
+			else if ($request->getParam('_isMiddle') == true && !defined('CMS_LOGIN_PAGE'))
+				$link_to_redirect = $route->full('users', array('action' => 'login'));
+			else if ($request->getParam('_isMiddle') == true && defined('CMS_LOGIN_PAGE')) {
+				$options = json_decode(CMS_LOGIN_PAGE, true);
+				$link_to_redirect = $route->full($options['route'], array('action' => $options['action']));
+			}
 			
 			$redirector->gotoUrl($link_to_redirect);
 		}

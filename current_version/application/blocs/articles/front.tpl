@@ -62,7 +62,7 @@
 		</ul>
 		
 		{if $datas.showArchive}
-			<a href="{routeFull route="articles" action="cat" id=$datas.category}" class="linkArchives">{$datas.textArchive}</a><div class="clear"></div>
+			<a href="{routeFull route="articles" action="cat" id=$datas.category[0]}" class="linkArchives">{$datas.textArchive}</a><div class="clear"></div>
 		{/if}
 	
 	{else}

@@ -28,33 +28,26 @@ class Bloc_Advertisingv2_Advertising extends CMS_Bloc_Abstract  implements CMS_B
 	
 	protected static $_translatableFields = array();
 	
-	public function runtimeFront($view){		
+	public function runtimeFront($view) {
 		
-		try
-		{
-		
+		try {
 			$campaign = new Advertising_Object_Campaign((int)$this->campaign);
 			
-			if ($campaign)
-			{
-				$now		= time();
+			if ($campaign) {
+				$now = time();
 				
-				if( $campaign->enable )
-				{
-					if ( (!$campaign->limited) || ((strtotime($campaign->date_start)<$now)&&((strtotime($campaign->date_end)>$now))) )
-					{
+				if ($campaign->enable) {
+					if ((!$campaign->limited) || ((strtotime($campaign->date_start)<$now) && ((strtotime($campaign->date_end)>$now)))) {
 						$items = array();
+						
 						foreach ($campaign->nodes as $advert)
-						{
 							$items[] = json_decode($advert->datas,true);
-						}
 						
 						$item = Advertising_Lib_Manager::findRandomWeighted($items);
 						
-						if( $item["type_link"] == 0 )
-						{
+						if (isset($item["type_link"]) && $item["type_link"] == 0) {
 							$page = CMS_Page_Object::getOne(array('url_system' => $item["page_link"]));
-
+							
 							if($page)
 								$item["page_link"] = $page->getUrl();
 							else
@@ -66,14 +59,13 @@ class Bloc_Advertisingv2_Advertising extends CMS_Bloc_Abstract  implements CMS_B
 			
 			$view->advert = $item;
 		}
-		catch (Exception $exc)
-		{
+		catch (Exception $exc) {
 			$view->error = 1;
 		}
 		
 	}
 	
-	public function save($post){
+	public function save($post) {
 		
 		$this->campaign = $post["campaign"];
 		

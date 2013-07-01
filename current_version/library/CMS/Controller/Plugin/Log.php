@@ -62,15 +62,16 @@ class CMS_Controller_Plugin_Log extends Zend_Controller_plugin_Abstract
 			// Configuration d'envoit d'email
 			if ($logConfig['log_mail']) {
 				
-				$mail = new Zend_Mail('UTF-8');
-				$mail->setFrom('log@flamant-bleu.com')
-		     		 ->addTo($logConfig['log_mail_to']);
+				$mail = new Zend_Mail();
 		     	
 		     	$configMail = array(
 					'writerName' => 'Mail',
 					'writerParams' => array(
 						'mail' => $mail,
-						'subjectPrependText' => $_SERVER['SERVER_NAME']
+						'charset' => 'UTF-8',
+						'from' => 'no-reply-log@flamant-bleu.com',
+						'to' => explode(';', $logConfig['log_mail_to']),
+						'subject' => $_SERVER['SERVER_NAME'] . ' - Une erreur s\'est produite'
 					)
 		     	);
 		     	

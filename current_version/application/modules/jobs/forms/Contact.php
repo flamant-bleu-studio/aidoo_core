@@ -27,9 +27,8 @@ class Jobs_Form_Contact extends CMS_Form_Default
 	{
 		$item = new Zend_Form_Element_Text("mod_jobs_contact");
 		$item->setRequired(true);
-		$item->setLabel(_t("Adresse de contact"));
-		$item->setDescription(_t("Candidatures spontanées"));
-		$item->addValidator(new Zend_Validate_EmailAddress());
+		$item->setLabel(_t("Adresses de contact"));
+		$item->setDescription(_t("Candidatures spontanées (Séparés par des ;)"));
 		$this->addElement($item);
 		
 		$item = new Zend_Form_Element_Submit("save");

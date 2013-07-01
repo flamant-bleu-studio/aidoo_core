@@ -426,18 +426,14 @@ class Admin_ConfigController extends CMS_Controller_Action
     public function deletecacheAction()
     {
     	$backAcl = CMS_Acl_Back::getInstance();
-
-		if($backAcl->hasPermission("admin", "manage"))
+		
+		if ($backAcl->hasPermission("admin", "manage"))
 		{
 			$config = CMS_Application_Config::getInstance();
 			$defaultSkinFront = $config->get("skinfront");
-        	
-	        $pathSkin = PUBLIC_PATH.'/skins/'.$defaultSkinFront;
-	        
-	        if( file_exists($pathSkin.'/cache.css') && unlink($pathSkin.'/cache.css') )
-	        {
-	        	if( file_exists($pathSkin.'/cache.js') && unlink($pathSkin.'/cache.js') )
-		        {
+			
+	        if (file_exists(PUBLIC_PATH.BASE_URL.'/skins/'.$defaultSkinFront.'/cache/min.css') && unlink(PUBLIC_PATH.BASE_URL.'/skins/'.$defaultSkinFront.'/cache/min.css')) {
+	        	if (file_exists(PUBLIC_PATH.BASE_URL.'/skins/'.$defaultSkinFront.'/cache/min.js') && unlink(PUBLIC_PATH.BASE_URL.'/skins/'.$defaultSkinFront.'/cache/min.js')) {
 		        	_message(_t("Cache deleted successfully"));
 		        }
 	        }

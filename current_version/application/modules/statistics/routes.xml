@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+
+	<config>
+		<name>statistics</name>
+		<version>0.0</version>
+		<type>Module</type>
+		<description>Statistics</description>
+		<uninstallable>true</uninstallable>
+		<deactivable>true</deactivable>
+	</config>
+	
+	<routes>
+	
+		<statistics type="Zend_Controller_Router_Route">
+			<route>statistics/</route>
+			<defaults>
+				<action>index</action>
+				<controller>front</controller>
+				<module>statistics</module>
+			</defaults>
+		</statistics>
+		
+		<statistics_back type="Zend_Controller_Router_Route">
+			<route>administration/statistics/</route>
+			<defaults>
+				<module>statistics</module>
+				<controller>back</controller>
+				<action>index</action>
+				<_isAdmin>true</_isAdmin>
+				<page>1</page>
+			</defaults>
+
+			
+		</statistics_back>
+	
+	</routes>
+</module>

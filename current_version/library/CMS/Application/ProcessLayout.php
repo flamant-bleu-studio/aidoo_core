@@ -20,9 +20,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-require_once 'CMS/Minify/Css.php';
-require_once 'CMS/Minify/Js.php';
-
 class CMS_Application_ProcessLayout {
 	
 	private static $_instance;
@@ -30,10 +27,19 @@ class CMS_Application_ProcessLayout {
 	private $_jsFiles;
 	private $_jsScripts;
 	private $_jsScriptsBottom;
+	
 	private $_cssFiles;
 	private $_cssScripts;
+	
 	private $_jQueries;
+	
+	private $_tinyMCE;
+    
+	private $_imageManager;
+	private $_fileManager;
+	
 	private $_head;
+	
 	private $_nameCache;
 	
 	/**
@@ -67,9 +73,9 @@ class CMS_Application_ProcessLayout {
 		$this->baseUrl = Zend_Layout::getMvcInstance()->getView()->baseUrl();
 	}
 	
-	public function getHTMLJQueryLibs()
-	{
-		$output = "";
+	public function getHTMLJQueryLibs(){
+		
+		$output = '';
 		
 		foreach ($this->_jQueries as $jquery) 
 		{
@@ -107,32 +113,39 @@ class CMS_Application_ProcessLayout {
 		
 		return $output;
 	}
-	public function getHtmlCssScripts()
-	{
-		if(defined('CACHE_CSS_JS') && CACHE_CSS_JS === true || empty($this->_cssScripts))
-			return;
-
-		$output = '<style type="text/css">';
+	public function getHtmlCssScripts(){
 		
-		foreach ($this->_cssScripts as $stylesheet) {
-			$output .= $stylesheet['script'];
+		if(!empty($this->_cssScripts))
+		{
+			if( !(defined('CACHE_CSS_JS') && (CACHE_CSS_JS)) )
+			{
+				$output = '<style type="text/css">';
+				
+				foreach ($this->_cssScripts as $stylesheet)
+				{
+					$output .= $stylesheet['script'];
+				}
+				
+				$output .= '</style>';
+			}
+			
+			return $output;
 		}
-		
-		$output .= '</style>';
-		
-		return $output;
 	}
 	
 	public function getHtmlJsFiles(){
 
 		$output = "";
 		
-		foreach ($this->_jsFiles as $script)  {
-			if (isset($script['external'])) {
+		foreach ($this->_jsFiles as $script) 
+		{
+			if(isset($script['external']))
+			{
 				$baseUrl = null;
 				$output .= "<script type='text/javascript' src='".$baseUrl.$script['src']."'></script>\n";
 			}
-			else {
+			else
+			{
 				if( !(defined('CACHE_CSS_JS') && (CACHE_CSS_JS)) || !$script['cache'] )
 				{
 					$baseUrl = $this->baseUrl;
@@ -143,36 +156,45 @@ class CMS_Application_ProcessLayout {
 		
 		return $output;
 	}
-	public function getHtmlJsScripts()
-	{
-		if(defined('CACHE_CSS_JS') && CACHE_CSS_JS === true || empty($this->_jsScripts))
-			return;
+	public function getHtmlJsScripts(){
 		
-		$output = "<script type='text/javascript'>\n";
-		$output .= "$(document).ready(function() {\n";
+		$output = "";
 		
-		foreach ($this->_jsScripts as $script) {
-			$output .= $script['script']."\n";
+		if(!empty($this->_jsScripts))
+		{
+			if( !(defined('CACHE_CSS_JS') && (CACHE_CSS_JS)) )
+			{
+				$output .= "<script type='text/javascript'>\n";
+				$output .= "$(document).ready(function() {\n";
+				
+				foreach ($this->_jsScripts as $script) 
+				{
+					$output .= $script['script']."\n";
+				}
+				$output .= "});\n";
+				$output .= "</script>\n";
+			}
 		}
-		
-		$output .= "});\n";
-		$output .= "</script>\n";
 		
 		return $output;
 	}
 	
-	public function getHTMLJsScriptsBottom()
-	{
-		if(empty($this->_jsScriptsBottom))
-			return;
+	public function getHTMLJsScriptsBottom(){
+		
+		$output = "";
+		
+		if(!empty($this->_jsScriptsBottom))
+		{
 
-		$output = "<script type='text/javascript'>\n";
-		
-		foreach ($this->_jsScriptsBottom as $script) {
-			$output .= $script['script']."\n";
+			$output .= "<script type='text/javascript'>\n";
+			
+			foreach ($this->_jsScriptsBottom as $script) 
+			{
+				$output .= $script['script']."\n";
+			}
+			
+			$output .= "</script>\n";
 		}
-		
-		$output .= "</script>\n";
 		
 		return $output;
 	}
@@ -184,6 +206,104 @@ class CMS_Application_ProcessLayout {
 	
 		return null;
 	}
+	
+	public function getTinyMCE(){
+
+		if($this->_tinyMCE)
+		{
+			$baseUrl = Zend_Layout::getMvcInstance()->getView()->baseUrl();
+			$lang_id = CMS_Application_Config::getInstance()->getActiveLang();
+			
+			$config = CMS_Application_Config::getInstance();
+	    	$skinFront = $config->get("skinfront");
+    		$skinUrl = $baseUrl.'/skins/' . $skinFront;
+			
+			$output = '
+	<script type="text/javascript" src="'.COMMON_LIB_PATH.'/lib/tiny_mce/tiny_mce.js"></script>
+
+	<script language="javascript">
+		$(document).ready(function(){
+
+		tinyMCE.init({
+           	height: "250px", // Set size height (fix small size if display:none;)
+           	
+			// General options
+			mode : "specific_textareas",
+			editor_selector : "mceEditor",
+	
+			language : "'.$lang_id.'",
+	
+			file_browser_callback : "mcimagemanager",
+			
+			theme : "advanced",
+			skin : "o2k7",
+			skin_variant : "silver",
+			plugins : "style,table,advhr,advimage,advlink,inlinepopups,media,searchreplace,contextmenu,paste,visualchars,advlist,autosave,filemanager,imagemanager",
+			// Theme options
+			theme_advanced_buttons1 : "code,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,fontselect,fontsizeselect",
+			theme_advanced_buttons2 : "forecolor,backcolor,|,bullist,numlist,|,outdent,indent,|,link,unlink,anchor,cleanup,|,cut,copy,paste,pastetext,pasteword,|,search,replace,|,undo,redo",
+			theme_advanced_buttons3 : "insertimage,image,media,charmap,advhr,|,sub,sup,|,hr,removeformat,visualaid,|,tablecontrols",
+			theme_advanced_toolbar_location : "top",
+			theme_advanced_toolbar_align : "left",
+			theme_advanced_statusbar_location : "bottom",
+			
+			theme_advanced_resizing : true,
+			theme_advanced_resize_horizontal : false,
+			
+			theme_advanced_font_sizes : "xx-small=8px,x-small=10px,small=12px,medium=14px,large=18px,x-large=24px,xx-large=36px",
+	
+			// Drop lists for link/image/media/template dialogs
+			//template_external_list_url : "tiny_mce/lists/template_list.js",
+			external_link_list_url : "'.$baseUrl.'/ajax/seo/getexternallistlink",
+			//external_image_list_url : "'.$baseUrl.'/lib/tiny_mce/lists/image_list.js",
+			media_external_list_url : "'.$baseUrl.'/lib/tiny_mce/lists/media_list.js",
+	
+			content_css : "'.$baseUrl.'/lib/resetcss/reset.min.css,'.$skinUrl.'/css/content.css",
+			
+			// Style formats
+			
+			';
+			
+			if(defined("TINYMCE_STYLES")){
+				$output .= 'style_formats : '.TINYMCE_STYLES.',';
+			}
+			
+			$output .= '
+			//verify_html : false,
+	        //forced_root_block : "",
+	        //cleanup : false,
+			//apply_source_formatting : false,
+			accessibility_warnings : false,
+			//extended_valid_elements : "iframe[src|width|height|name|align],link[rel|type|href],script[language|type|src]",
+    		relative_urls : false
+		});
+
+		
+		});
+	</script>
+
+			';
+			
+			return $output;
+		}
+	}
+/*	public function getImageManager(){
+
+		if($this->_imageManager)
+		{
+			$baseUrl = Zend_Layout::getMvcInstance()->getView()->baseUrl();
+			return '<script type="text/javascript" src="'.$baseUrl.'/lib/tiny_mce/plugins/imagemanager/js/mcimagemanager.js"></script>';
+		}
+	}
+	
+	public function getFileManager(){
+
+		if($this->_fileManager)
+		{
+			$baseUrl = Zend_Layout::getMvcInstance()->getView()->baseUrl();
+			return '<script type="text/javascript" src="'.$baseUrl.'/lib/tiny_mce/plugins/filemanager/js/mcfilemanager.js"></script>';
+		}
+	}*/
 	
 	public function appendJQuery($href, $cache = false, $mode='linked'){
 		
@@ -255,211 +375,17 @@ class CMS_Application_ProcessLayout {
 		array_push($this->_head, $content);
 	}
 
-	/** Retourne le cache **/
-	public function getCacheCssJs()
+	public function appendTinyMCE()
 	{
-		$this->_nameCache = array('css' => '/cache.css', 'js' => '/cache.js');
-		if( (defined('CACHE_CSS_JS') && (CACHE_CSS_JS)) ) // Cache activé 
-		{
-			if( $this->cacheExist() ) // Cache existe
-			{
-				if( defined('CACHE_CSS_JS_GENERATE') )
-				{
-					if ( CACHE_CSS_JS_GENERATE == 'force' ) // Force à re-générer le cache
-					{
-						$this->createCache();
-					}
-					else if( CACHE_CSS_JS_GENERATE == 'date' ) // Vérification de la validité du cache
-					{
-						if( ($this->lastDateModifCss() > filemtime(PUBLIC_PATH.SKIN_URL.$this->_nameCache['css'])) ) // Cache Css pas a jour
-						{
-							$this->createCache('css');
-						}
-						if( ($this->lastDateModifJs() > filemtime(PUBLIC_PATH.SKIN_URL.$this->_nameCache['js'])) ) // Cache Js pas a jour
-						{
-							$this->createCache('js');
-						}
-					}
-				}
-			}
-			else // Le cache n'existe pas
-			{
-				$this->createCache();
-			}
-			
-			$cache = "<script type='text/javascript' src='".BASE_URL.SKIN_URL.$this->_nameCache['js'].'?id='.filemtime(PUBLIC_PATH.SKIN_URL.$this->_nameCache['js'])."'></script>\n";
-			$cache .= "<link rel='stylesheet' type='text/css' href='".BASE_URL.SKIN_URL.$this->_nameCache['css'].'?id='.filemtime(PUBLIC_PATH.SKIN_URL.$this->_nameCache['css'])."'/>";
-		}
-		return (isset($cache) ? $cache : '');
+		$this->_tinyMCE = true;
 	}
-	
-	/** Retourne si le cache existe ou non **/
-	private function cacheExist()
+    
+	public function appendImageManager()
 	{
-		if(is_array($this->_nameCache))
-		{
-			foreach ($this->_nameCache as $file)
-			{
-				if(!file_exists(PUBLIC_PATH.SKIN_URL.$file))
-					return false;
-			}
-		}
-		else 
-			return false;
-
-		return true;
+		$this->_imageManager = true;
 	}
-	
-	/** Retourne la date la plus récente de dèrnière modification des fichiers CSS **/
-	private function lastDateModifCss()
+	public function appendFileManager()
 	{
-		$lastDate = 0;
-		
-		foreach ($this->_cssFiles as $file)
-		{
-			if(file_exists(PUBLIC_PATH.$file['src']) && $file['cache'])
-			{
-				$tempDate = filemtime(PUBLIC_PATH.$file['src']);
-				if($tempDate > $lastDate)
-					$lastDate = $tempDate;
-			}
-		}
-		
-		return $lastDate;
+		$this->_fileManager = true;
 	}
-	/** Retourne la date la plus récente de dèrnière modification des fichiers JS **/
-	private function lastDateModifJs()
-	{
-		$lastDate = 0;
-		
-		foreach ($this->_jQueries as $file)
-		{
-			if(file_exists(PUBLIC_PATH.$file['href']) && $file['cache'])
-			{
-				if(!$file['mode']=='inline')
-				{
-					$tempDate = filemtime(PUBLIC_PATH.$file['href']);
-					if($tempDate > $lastDate)
-						$lastDate = $tempDate;
-				}
-			}
-		}
-
-		foreach ($this->_jsFiles as $file)
-		{
-			if(file_exists(PUBLIC_PATH.$file['src']))
-			{
-				if(!$file['external'])
-				{
-					$tempDate = filemtime(PUBLIC_PATH.$file['src']);
-					if($tempDate > $lastDate)
-						$lastDate = $tempDate;
-				}
-			}
-		}
-		
-		return $lastDate;
-	}
-	
-	/** Création du nouveau cache **/
-	private function createCache($type = null)
-	{
-		if( ($type == null) || ($type == 'css') )
-			$temp_cache_css = $this->getCacheCss();
-		if( ($type == null) || ($type == 'js') )
-			$temp_cache_js 	= $this->getCacheJs();
-		
-		if( ($type == null) || ($type == 'css') )
-			file_put_contents(PUBLIC_PATH.SKIN_URL.$this->_nameCache['css'], $temp_cache_css);
-		if( ($type == null) || ($type == 'js') )
-			file_put_contents(PUBLIC_PATH.SKIN_URL.$this->_nameCache['js'], $temp_cache_js);
-	}
-	
-	/** Retourne l'url correct pour les images dans les css **/
-	private function url($line, $file)
-	{
-		preg_match('/(url\(\'|url\("|url\()([a-zA-Z-\/\\\._]*)(\'\)|"\)|\))/', $line, $matches);
-
-		if(isset($matches[2]))
-		{
-			//echo $line.' => ';
-			$temp_array = explode('/', $file);
-			$temp = str_replace(array_pop($temp_array), '', $file); // retire le nom du fichier
-			$line = str_replace($matches[2], '../..'.$temp.$matches[2], $line); // remplace le lien
-			//echo $line.'<br/><br/>';
-		}
-		return $line;
-	}
-	
-	/** Retourne le nouveau cache CSS **/
-	private function getCacheCss()
-	{
-		/** css / récupération **/
-		foreach ($this->_cssFiles as $css)
-		{
-			if(file_exists(PUBLIC_PATH.$css['src']) && $css['cache'])
-			{
-				//$cache_temp_css .= file_get_contents(PUBLIC_PATH.$file['src'], false);
-				
-				$file = new SplFileObject(PUBLIC_PATH.$css['src']);
-				while (!$file->eof())
-				{
-    				$line = $file->fgets();
-					$line = $this->url($line, $css['src']);
-					$cache_temp_css .= $line;
-				}
-			}
-		}
-
-		foreach ($this->_cssScripts as $stylesheet)
-		{
-			if(!empty($stylesheet['script']))
-				$cache_temp_css .= $stylesheet['script'];
-		}
-		
-		/** css / minimisation **/
-		if( defined('CACHE_CSS_JS_MINI') && (CACHE_CSS_JS_MINI) ) // Minimisation activé
-		{
-			$cache_temp_css = CMS_Minify_Css::minify($cache_temp_css);
-		}
-		
-		return $cache_temp_css;
-	}
-	/** Retourne le nouevau cache JS **/
-	private function getCacheJs()
-	{
-		/** js / récupération **/
-		foreach ($this->_jQueries as $file)
-		{
-			if(file_exists(PUBLIC_PATH.$file['href']) && $file['cache'])
-			{
-				if( !($file['mode'] == 'inline') )
-					$cache_temp_js .= file_get_contents(PUBLIC_PATH.$file['href'], false) ."\n";
-			}
-		}
-		
-		foreach ($this->_jsFiles as $file)
-		{
-			if(file_exists(PUBLIC_PATH.$file['src']) && $file['cache'])
-			{
-				if(!$file['external'])
-					$cache_temp_js .= file_get_contents(PUBLIC_PATH.$file['src'], false)."\n";
-			}
-		}
-		
-		foreach ($this->_jsScripts as $script)
-		{
-			if(!empty($script['script']))
-				$cache_temp_js .= "$(document).ready(function() {".$script['script']."});\n";
-		}
-		
-		/** js / minimisation **/
-		if( defined('CACHE_CSS_JS_MINI') && (CACHE_CSS_JS_MINI) ) // Minimisation activé
-		{
-			$cache_temp_js = CMS_Minify_Js::minify($cache_temp_js);
-		}
-		
-		return $cache_temp_js;
-	}
-	
 }

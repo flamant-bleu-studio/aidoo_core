@@ -24,21 +24,44 @@ class Users_Form_Login extends CMS_Form_Default
 {
 	public function init() {
 		
-		$item = new Zend_Form_Element_Text("email");
-		$item->setRequired(true);
-		$item->setLabel(_t("Email"));
-		$item->setDescription(_t("Enter your email adress"));
-		$item->addValidator(new Zend_Validate_EmailAddress());
+		$typeLogin = $this->getAttrib('typeLogin');
+		
+		$item = new Zend_Form_Element_Hidden('type');
+		$item->setValue('login');
 		$this->addElement($item);
 		
-		$item = new Zend_Form_Element_Password("password");
-		$item->setLabel(_t('Password'));
-		$item->setRequired(true);
-		$this->addElement($item);
-		
-		$item = new Zend_Form_Element_Submit("submit");
-		$item->setValue(_t("Login"));
-		$this->addElement($item);
-		
+		if ($typeLogin == CMS_Acl_User::TYPE_LOGIN_MAIL_PASSWORD) {
+			
+			$item = new Zend_Form_Element_Text("email");
+			$item->setRequired(true);
+			$item->setLabel(_t("Email"));
+			$item->setDescription(_t("Enter your email adress"));
+			$item->addValidator(new Zend_Validate_EmailAddress());
+			$this->addElement($item);
+			
+			$item = new Zend_Form_Element_Password("password");
+			$item->setLabel(_t('Password'));
+			$item->setRequired(true);
+			$this->addElement($item);
+			
+			$item = new Zend_Form_Element_Submit("submit");
+			$item->setValue(_t("Login"));
+			$this->addElement($item);
+			
+		}
+		else if ($typeLogin == CMS_Acl_User::TYPE_LOGIN_MAIL_ONLY) {
+			
+			$item = new Zend_Form_Element_Text("email");
+			$item->setRequired(true);
+			$item->setLabel(_t("Email"));
+			$item->setDescription(_t("Enter your email adress"));
+			$item->addValidator(new Zend_Validate_EmailAddress());
+			$this->addElement($item);
+			
+			$item = new Zend_Form_Element_Submit("submit");
+			$item->setValue(_t("Login"));
+			$this->addElement($item);
+			
+		}
 	}
 }

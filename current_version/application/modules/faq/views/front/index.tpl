@@ -18,7 +18,11 @@
 *}
 
 <div class="faq">
-	{*<h1>{$faqs->title}</h1>*}
+	
+	{if $faqs->intro}
+		<div class="intro">{$faqs->intro}</div>
+	{/if}
+	
 	{if $faqs->nodes}
 		<div id="faq">
 		{foreach $faqs->nodes as $faq}
@@ -30,6 +34,10 @@
 		</div>
 	{else}
 		Aucune question/réponse ...
+	{/if}
+	
+	{if $faqs->outro}
+		<div class="outro">{$faqs->outro}</div>
 	{/if}
 	
 </div>

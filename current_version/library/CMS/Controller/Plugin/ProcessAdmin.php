@@ -69,7 +69,7 @@ class CMS_Controller_Plugin_ProcessAdmin extends CMS_Controller_Plugin_Abstract_
         			}
         		}
         	}
-        	else if(isset($value2['moduleName']) && $value2['moduleName'] == $moduleName && isset($value2['controllerName']) && $value2['controllerName'] == $controllerName && isset($value2['routeName']) && $value2['routeName'] == $currentRouteName) {
+        	else if(isset($value['moduleName']) && $value['moduleName'] == $moduleName && isset($value['controllerName']) && $value['controllerName'] == $controllerName && isset($value['routeName']) && $value['routeName'] == $currentRouteName) {
         		$activeMenu = $key;
         		$titleSubMenu = "";
         	}

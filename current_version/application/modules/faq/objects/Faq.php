@@ -25,6 +25,8 @@ class Faq_Object_Faq extends CMS_Object_MultiLangEntityWithNodes2
 	public $id_faq;
 	public $title;
 	public $access;
+	public $intro;
+	public $outro;
 	
 	protected $nodes;
 	
@@ -35,8 +37,8 @@ class Faq_Object_Faq extends CMS_Object_MultiLangEntityWithNodes2
 		'nodes' => array( 
 			'className' 			=> 'Faq_Object_Question',
 			'foreignKey' 			=> 'parent_id',
+			'primaryKeyNode' 		=> 'id_faq_item',
 			'defaultNodesOrder'  	=> 'question_order'
 		)
 	);
-
 }
