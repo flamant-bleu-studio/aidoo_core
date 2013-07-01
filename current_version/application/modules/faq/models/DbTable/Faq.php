@@ -27,6 +27,6 @@ class Faq_Model_DbTable_Faq extends CMS_Model_MultiLang
 
 	protected $_primaryKey 			= "id_faq";
 	protected $_values 				= array("access");
-	protected $_translatedValues 	= array("title");
+	protected $_translatedValues 	= array("title", "intro", "outro");
 	
 }

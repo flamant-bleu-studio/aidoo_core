@@ -43,7 +43,7 @@ class Front_ErrorController extends CMS_Controller_Action
                 break;
         }
         
-        CMS_Log::err($errors->exception->getMessage() . ' - ' . $errors->exception);
+        CMS_Log::err("http://".$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]." \n" . $errors->exception->getMessage() . "\n" . $errors->exception);
         
         // conditionally display exceptions
         if ($this->getInvokeArg('displayExceptions') == true)

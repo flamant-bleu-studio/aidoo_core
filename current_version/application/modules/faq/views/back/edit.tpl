@@ -48,8 +48,8 @@
 			{foreach from=$faq->nodes item=v}
 		 
 			<tr id={$v->id_faq_item}>
-				 <td>{$v->question}</td>
-				 <td>{$v->answer}</td>
+				 <td>{$v->question[$smarty.const.CURRENT_LANG_ID]}</td>
+				 <td>{$v->answer[$smarty.const.CURRENT_LANG_ID]}</td>
 				 <td>			 
 					{if $backAcl->hasPermission("mod_faq-"|cat:$faq->id_faq, "edit")}
 						<a title='{t}Edit{/t}' class="edit btn btn-primary btn-mini fancybox" href="{routeShort action="edit-question" id=$v->id_faq_item}"><i class="icon-pencil icon-white"></i></a>
@@ -68,6 +68,21 @@
 			{/if}
 		</tbody>
 	</table>
+	
+	<div class="zone_titre">
+		<h2>{t}Configuration{/t}</h2>
+		<div>{t}Update FAQ{/t}</div>
+	</div>
+	
+	<form method="POST" id="{$form->getId()}">
+	{$form->title}
+	{$form->intro}
+	{$form->outro}
+	{$form->access}
+	
+	{formButtons}
+	
+	</form>
 	
 	{if $backAcl->hasPermission("mod_faq-"|cat:$faq->id, "manage")}
 	<div class="content_titre">

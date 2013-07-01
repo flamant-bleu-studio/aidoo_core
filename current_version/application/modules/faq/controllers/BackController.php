@@ -67,6 +67,8 @@ class Faq_BackController extends CMS_Controller_Action
 				
 				$faq->title 	= $form->getValue('title');
 				$faq->access 	= $form->getValue('access');
+				$faq->intro 	= $form->getValue('intro');
+				$faq->outro 	= $form->getValue('outro');
 				
 				$id = $faq->save();
 				
@@ -117,9 +119,34 @@ class Faq_BackController extends CMS_Controller_Action
 		}
 		
 		// Récupération des faqs
-		$faq = new Faq_Object_Faq($id);
-		
+		$faq = new Faq_Object_Faq($id, 'all');
 		$this->view->faq = $faq;
+		
+		$faq->nodes; // Patch save
+		
+		$form = new Faq_Form_Faq();
+		if($this->getRequest()->isPost()) {
+			if($form->isValid($_POST)) {
+				$faq->title 	= $form->getValue('title');
+				$faq->access 	= $form->getValue('access');
+				$faq->intro 	= $form->getValue('intro');
+				$faq->outro 	= $form->getValue('outro');
+				
+				$faq->save();
+				
+				_message(_t("FAQ updated"));
+				
+				if ($_POST['submitandquit'])
+					return $this->_redirect($this->_helper->route->short('index'));
+				
+				return $this->_redirect($this->_helper->route->short('edit', array('id' => $id)));
+			}
+		}
+		else {
+			$form->populate($faq->toArray());
+		}
+		
+		$this->view->form = $form;
 		
 		if($backAcl->hasPermission("mod_faq-".$id, "manage"))
 		{
@@ -184,9 +211,10 @@ class Faq_BackController extends CMS_Controller_Action
 	
 				$question->question 	= $form->getValue('question');
 				$question->answer 		= $form->getValue('answer');
+
 				$question->parent_id 	= $faqId;
 	
-				$question->save();
+				$question_id = $question->save();
 	
 				_message(_t('Faq created'));
 	

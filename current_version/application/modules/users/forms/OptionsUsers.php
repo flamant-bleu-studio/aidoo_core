@@ -46,7 +46,7 @@ class Users_Form_OptionsUsers extends CMS_Form_Default {
 		$this->addElement($item);
 		
 		$groups = Users_Lib_Manager::getAllGroups();
-
+		
 		$item = new CMS_Form_Element_AdvancedMultiSelect('groupFrontList');
 		$item->setLabel(_t('Which groups appear in the front list'));
 		
@@ -56,6 +56,31 @@ class Users_Form_OptionsUsers extends CMS_Form_Default {
 			if($group->name != "Public")
 				$item->addMultiOption($group->id, $group->name);
 		
+		$this->addElement($item);
+		
+		$item = new Zend_Form_Element_Select('typeLogin');
+		$item->setLabel(_t('Type of login'));
+		
+		$item->addMultiOptions(array(
+			CMS_Acl_User::TYPE_LOGIN_MAIL_PASSWORD => _t('Email + Password'),
+			CMS_Acl_User::TYPE_LOGIN_MAIL_ONLY => _t('Mail only')
+		));
+		$this->addElement($item);
+		
+		$item = new Zend_Form_Element_Select('pageMiddleOffice');
+		$item->setLabel(_t('Home page middle office'));
+		
+		$_pages = CMS_Page_PersistentObject::get();
+		$pages = array();
+		
+		if ($_pages) {
+			foreach ($_pages as $page) {
+				if (!empty($page->title[CURRENT_LANG_ID]) && !empty($page->type))
+					$pages[$page->id_page] = $page->title[CURRENT_LANG_ID] . ($page->type ? ' - ' . $page->type : '');
+			}
+		}
+		
+		$item->addMultiOptions($pages);
 		$this->addElement($item);
 	}
 }

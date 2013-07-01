@@ -29,71 +29,99 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	
+	{* Twitter Button *}
+	<script>
+	!function(d,s,id){
+		var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){
+				js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
+			}
+		}(document,"script","twitter-wjs");
+	</script>
 	
-	<div class="list_article" id="cat_{$category->id_categorie}">
-	
-		<h2>{$category->title}</h2>
-		
-		<div class="desc-category">{$category->description}</div>
-		
+	<div class="list_article" id="rub_{$category->id_categorie}">
 		{foreach from=$articles key=key item=item}
-			<div class="article">
+		<div class='article {cycle values="articlePair,articleImpair"}'>
+ 			
+			{if $item->readmore == 1}
+				<a class="read_more" href="{routeShort action="view" id=$item->id_article}" title="Consulter {$item->title}">
+			{/if}
+			
+				<h2 class="title">{$item->title}</h2>
 				
+			{if $item->readmore == 1}
+				</a>
+			{/if}
+			
+			<div class="date_article">
+				{formatDate format="EEE F à HH:mm" date=$item->date_start}
+				{if $authors[$item->author]}
+					par <a href="{routeFull route="users" action="view" page=$item->author}">{$authors[$item->author]->getPublicName()}</a>
+				{/if}
+			</div>
+			
+			{if $item->readmore == 1}
+			<a href="{routeShort action="view" id=$item->id_article}" title="Consulter {$item->title}">
+			{/if}
+			{if $item->image}
 				<div class="image">
-					{if $item->readmore == 1}<a href="{routeShort action="view" id=$item->id_article}" title="{$item->title}">{/if}
+					<img src="{image folder='articles' name=$item->image size=$size}" />
+				</div>
+			{/if}
+			{if $item->readmore == 1}
+			</a>
+			{/if}
+			
+			{if $item->readmore == 1}
+			<a href="{routeShort action="view" id=$item->id_article}" title="Consulter {$item->title}">
+			{/if}
+				<div class="chapeau">{$item->chapeau}</div>
+			{if $item->readmore == 1}
+			</a>
+			{/if}
+			
+			<div style="clear:both;"></div>
+			
+			<div class="footer_article">
+
+				<div class="categories">
+					{foreach from=$item->categories item=cat}
+						<a href="{routeShort action="cat" id=$cat->id_categorie}">{$cat->title}</a>
+					{/foreach}
 					
-						{if $item->image}
-							<img src="{image folder='articles' name=$item->image size=$size}" />
-						{else}
-							<img src="{$baseUrl}{$skinUrl}/images/no-img.png" />
-						{/if}
-						
-					{if $item->readmore == 1}</a>{/if}
 				</div>
 				
-					
-					
-				<div class="content">
-					
-					{if $item->readmore == 1}
-						<h3><a href="{routeShort action="view" id=$item->id_article}" title="{$item->title}">{$item->title}</a></h3>
-					{else}
-						<h3>{$item->title}</h3>
-					{/if}
-					
-					
-					<div class="chapeau">{$item->chapeau}</div>
-					
+				{if $fb_comments_number_show && $item->readmore == 1}
+					<div class="nb_com_fb">
+						<a href="{routeShort action="view" id=$item->id_article}#article_comments">
+						<fb:comments-count href="http://{$smarty.server.SERVER_NAME}/articles/view/{$item->id_article}" /></fb:comments-count> {t}comment{/t}(s)</a>
+					</div>
+				{/if}
+				
+				{if $item->readmore == 1}
 					<div class="read_more">
 						<a title="Lire la suite" href="{routeShort action="view" id=$item->id_article}">{t}Read more{/t}</a>
 					</div>
-					
-					<div class="categories">
-						{foreach from=$item->categories item=cat}
-							<a href="{routeShort action="cat" id=$cat->id_categorie}">{$cat->title}</a>
-						{/foreach}
-					</div>
-					
-					{if $authors[$item->author]}
-						<div class="author">par <a href="{routeFull route="users" action="view" page=$item->author}">{$authors[$item->author]->getPublicName()}</a></div>
-					{/if}
-					
-					{if $fb_comments_number_show && $item->readmore == 1}
-						<div class="nb_com_fb">
-							<a href="{routeShort action="view" id=$item->id_article}#article_comments">
-							<fb:comments-count href="http://{$smarty.server.SERVER_NAME}/articles/view/{$item->id_article}" /></fb:comments-count> {t}comment{/t}(s)</a>
-						</div>
-					{/if}
-	
-				</div>
 				
+					<div class="share">
+						<a href="https://twitter.com/share" class="twitter-share-button"
+							data-url="http://{$smarty.server.SERVER_NAME}/articles/view/{$item->id_article}"></a>							
+					</div>
+					<div class="share">
+						<div class="fb-like" data-href="http://{$smarty.server.SERVER_NAME}/articles/view/{$item->id_article}" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+					</div>
+				{/if}
+
+				<div class="clear"></div>	
 			</div>
+			
+			<div class="clear"></div>
+		</div>
 		{/foreach}
 	</div>
 	
 	<div class="paginator_list_articles">{$pagination}</div>
 {else}
-	<p>{t}No news to display{/t}</p>
+	<h3>{t}No news to display{/t}</h3>
 {/if}
 
 <script type="text/javascript">

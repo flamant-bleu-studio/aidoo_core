@@ -17,6 +17,11 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
+<div class="content_titre">
+	<h1>{t}Manage your templates{/t}</h1>
+	<div>{t}Add, edit et delete your templates and blocs{/t}</div>
+</div>
+
 {function name=generateBloc}
 	{foreach from=$datas item=id}
 
@@ -34,12 +39,6 @@
 		</div>
 	{/foreach}
 {/function}
-
-
-<div class="content_titre">
-	<h1>{t}Manage your templates{/t}</h1>
-	<div>{t}Add, edit et delete your templates and blocs{/t}</div>
-</div>
 
 <div class="zone">
 
@@ -251,18 +250,25 @@
 					</div>
 		
 					<div id="t_footer1" class="droppable">
-							{if $templates[0]->getPlaceholder("classic", "footer1")}
-								{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "footer1")} 
-							{/if}
-							<div class="drop_zone"></div>
-						</div>
+						{if $templates[0]->getPlaceholder("classic", "footer1")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "footer1")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
 							
 					<div id="t_footer2" class="droppable">
-							{if $templates[0]->getPlaceholder("classic", "footer2")}
-								{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "footer2")} 
-							{/if}
-							<div class="drop_zone"></div>
-						</div>
+						{if $templates[0]->getPlaceholder("classic", "footer2")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "footer2")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
+					
+					<div id="t_footer3" class="droppable">
+						{if $templates[0]->getPlaceholder("classic", "footer3")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "footer3")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
 		
 				</div>
 			</div>

@@ -33,7 +33,7 @@ class Faq_Form_Question extends CMS_Form_Default {
 		$faq->setTranslatable(true);
 		$this->addElement($faq);
 		
-		$faq = new CMS_Form_Element_Textarea('answer');
+		$faq = new CMS_Form_Element_TinyMCE('answer');
 		$faq->setLabel(_t("Answer"));
 		$faq->setRequired(true);
 		$faq->setTranslatable(true);

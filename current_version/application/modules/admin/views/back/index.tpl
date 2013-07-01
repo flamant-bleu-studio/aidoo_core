@@ -161,10 +161,24 @@
 				<h2>Statistiques Google Analytics</h2>
 				<div>Visualisez vos statistiques</div>
 			</div>
+			{if $account}
 			
-			{if !isset($account) && !isset($errorAuthAnalytics)}
+			<div id="stats" style="margin-top:10px;">
+				<b>Statistiques sur un mois :</b>
+				
+				<ul>
+					<li>{$visits} visites</li>
+					<li>{$pageviews} pages vues</li>
+					<li>{$pageviewsPerVisit} pages / visites</li>
+					<li>{$timeOnSite} temps / visite</li>
+					<li>{$bounceVisit} % Taux de rebond</li>
+					<li>{$newsVisit} % Nouvelles visites</li>
+				</ul>
+			</div>
+			
+			{else if !$account && !$errorAuthAnalytics}
 				Configurez vos identifiants Google Analytics <a href="{routeFull route='seo_back'}">ici</a>
-			{elseif !isset($account) && isset($errorAuthAnalytics)}
+			{elseif !$account && $errorAuthAnalytics}
 				Erreur lors de l'authentification : Vérifier votre compte Google et vos identifiants <a class="orange" href="{routeFull route='seo_back'}">ici</a><br /><br />
 				Détails :<br />
 				{$errorAuthAnalytics}
@@ -176,5 +190,24 @@
 			</div>
 			
 		</div>
+		
+		{if $eseler == 1 || $emarket == true}
+		<div class="zone">
+			<div class="zone_titre">
+				<h2>Suivi contacts</h2>
+				<div>Quantifiez les prospects générés par le site</div>
+			</div>
+			{if $eseler == 1}	
+			<div id="eseller" class="contact">
+				<a class="orange">Vos contacts ont-ils été suivis ?</a>
+			</div>
+			{/if}
+			{if $emarket == true}
+			<div id="emarket" class="contact">
+				<a class="orange">Créez des campagnes emailings</a>
+			</div>
+			{/if}
+		</div>
+		{/if}
 	</div>
 </div>

@@ -43,6 +43,11 @@ $hooks->add('Back_Main_Menu_Generate', 'appendGalerieImageTabMenu', 150);
 
 	function ApiCreateGalerieImage($tab)
 	{
+		$backAcl = CMS_Acl_Back::getInstance();
+		if (!$backAcl->hasPermission('mod_galeriePhoto', 'create')) {
+			return $tab;
+		}
+		
 		$tab["galerieImage"] = array(
 			"name" => "Galerie image",
 			"api_name" => "GalerieImage_Lib_Api"

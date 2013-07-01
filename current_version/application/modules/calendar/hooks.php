@@ -24,7 +24,10 @@ $hooks = CMS_Application_Hook::getInstance();
 
 function appendCalendarTabMenu($tabs)
 {
-	$tabs['siteLife']['children'][] = array("title" => "Agenda", "routeName" => "calendar_back",  "moduleName" => "calendar", "controllerName" => "back");
+	$backAcl = CMS_Acl_Back::getInstance();
+	if($backAcl->hasPermission("mod_calendar", "view"))
+		$tabs['siteLife']['children'][] = array("title" => "Agenda", "routeName" => "calendar_back",  "moduleName" => "calendar", "controllerName" => "back");
+	
 	return $tabs;
 }
 

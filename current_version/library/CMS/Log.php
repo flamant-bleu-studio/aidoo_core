@@ -76,6 +76,9 @@ class CMS_Log extends Zend_Log
 	 */
 	public static function getInstance()
 	{
-		return Zend_Registry::get('log');
+		if (Zend_Registry::isRegistered('log'))
+			return Zend_Registry::get('log');
+		
+		return new self();
 	}
 }

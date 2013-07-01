@@ -48,8 +48,8 @@
 	
 {/if}
 
-{appendFile type="css" src="/lib/bxslider/bx_styles/bx_styles.css"}
-{appendFile type="js" src="/lib/bxslider/jquery.bxSlider.min.js"}
+{appendFile type="css" src="/lib/bxslider/jquery.bxslider.css"}
+{appendFile type="js" src="/lib/bxslider/jquery.bxslider.min.js"}
 	
 <script type="text/javascript">
 	$('#diaporama-{$datas.diaporamaId}').find('ul').bxSlider({
@@ -60,16 +60,15 @@
 			mode: '{$datas.bx_type}',
 			displaySlideQty: {$datas.displaySlideQty},
 			moveSlideQty: {$datas.moveSlideQty},
-			{if $datas.pause}pause: {$datas.pause},{/if}
+			
 			
 			{if $datas.pagination}
 				pager: true,
 			{/if}
 		{else}
 			ticker: true,
-			tickerSpeed: 5000,
 		{/if}
-
+		{if $datas.pause}pause: {$datas.pause},{/if}
 		controls: false
 		
 	});

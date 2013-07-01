@@ -41,5 +41,14 @@
 			</defaults>
 		</sitemap>
 		
+		<sitemapUpdate type="Zend_Controller_Router_Route">
+			<route>sitemapUpdate/:action</route>
+			<defaults>
+				<module>sitemap</module>
+				<controller>cron</controller>
+				<action>index</action>
+			</defaults>
+		</sitemapUpdate>
+		
 	</routes>
 </module>

@@ -35,6 +35,13 @@
 		
 		{$form->groupFrontList}
 		
+		<hr />
+		
+		{$form->typeLogin}
+		{$form->pageMiddleOffice}
+		
+		<hr />
+		
 		{$formAcl}
 		
 		<ul class="unstyled">

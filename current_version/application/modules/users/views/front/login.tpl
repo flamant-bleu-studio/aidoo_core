@@ -19,47 +19,20 @@
 
 <div id="user_register">
 	<h2>{t}Register{/t}</h2>
-	<div class="content">
 	
-		<div class="facebook">
-			<a href="{$loginUrlFacebook}"><img src="{$baseUrl}{$skinUrl}/img/facebook_log.jpg"/></a>
-		</div>
-		
-		<p class="login_separator">{t}Or{/t}</p>
-
-		<form id="{$formInscription->getId()}" action="{$formInscription->getAction()}" method="post">
-			<input type="hidden" name="type" value="register">
-			{$formInscription->username}
-			{$formInscription->email}
-			{*{$formInscription->civility}*}
-			{$formInscription->firstname}
-			{$formInscription->lastname}
-			{$formInscription->password}
-			{$formInscription->verifPassword}
-			{$formInscription->submit}
-		</form>
-		
+	<div class="content">
+		{$formInscription}
 	</div>
 </div>
 
 <div id="user_login">
 	<h2>{t}Login{/t}</h2>
-	<div class="content">
 	
-		<div class="facebook">
-			<a href="{$loginUrlFacebook}"><img src="{$baseUrl}{$skinUrl}/img/facebook_log.jpg"/></a>
-		</div>
+	<div class="content">
+		{$loginForm}
 		
-		<p class="login_separator">{t}Or{/t}</p>
-		
-		<form id="{$loginForm->getId()}" action="{$loginForm->getAction()}" method="post">
-			<input type="hidden" name="type" value="login">
-			{$loginForm->email}
-			{$loginForm->password}
-			<div class="left">{$loginForm->submit}</div>
+		{if $typeLogin == CMS_Acl_User::TYPE_LOGIN_MAIL_PASSWORD}
 			<a href="{routeShort action="forgot-password"}" class="link_button">{t}Forgot password{/t}</a>
-			<div class="clear"></div>
-		</form>
+		{/if}
 	</div>
 </div>
-

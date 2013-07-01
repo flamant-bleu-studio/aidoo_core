@@ -27,9 +27,15 @@ class CMS_Application_Paginator
 	
 	private $_currentPage;
 	private $_countPages;
+	
 	private $_routeParams;
-	private $_linkTags = "";
-	private $_classTags = array();
+	private $_url;
+	
+	private $_linkAttr = array();
+	private $_linkClass = array();
+	
+	private $_generatedLinkAttr;
+	private $_generatedLinkClass;
 	
 	private $_routeHelper;
 	
@@ -47,6 +53,11 @@ class CMS_Application_Paginator
 	 */
 	private $_size;
 	
+	/**
+	 * Values: default, ellipsis
+	 */
+	private $_typeRender;
+	
 	public function setAlignment($alignment) {
 		$this->_alignment = $alignment;
 	}
@@ -55,7 +66,11 @@ class CMS_Application_Paginator
 		$this->_size = $size;
 	}
 	
-	private function getClassPagination()
+	public function setTypeRender($type) {
+		$this->_typeRender = $type;
+	}
+	
+	protected function getClassPagination()
 	{
 		$return = 'pagination';
 		
@@ -68,54 +83,138 @@ class CMS_Application_Paginator
 		return $return;
 	}
 	
-	private function getUrl()
+	protected function getUrl()
 	{
+		if (!empty($this->_url))
+			return BASE_URL.$this->_url.'/page-'.$this->_routeParams['page'];
+		
 		return BASE_URL.$this->_routeHelper->full($this->_routeParams["route"], $this->_routeParams);
 	}
 	
-	public function getPrevious()
+	protected function getPrevious()
 	{
 		$return = '';
 		
-		$this->_routeParams["page"] = ($this->_currentPage-1 > 1) ? $this->_currentPage-1 : null;
+		$this->_routeParams["page"] = ($this->_currentPage-1 > 1) ? $this->_currentPage-1 : 1;
 		
-		$return .= '<li class="previous'.($this->_currentPage == 1 ? ' disabled' : '').'"><a href="'.$this->getUrl().'" '.$this->_linkTags.' class="'.implode(" ", $this->_classTags).'" ><</a></li>';
+		$return .= '<li class="previous'.($this->_currentPage == 1 ? ' disabled' : '').'"><a href="'.$this->getUrl().'" '.$this->_generatedLinkAttr.' class="'.$this->_generatedLinkClass.'" ><</a></li>';
 		
 		return $return;
 	}
 	
-	public function getNext()
+	protected function getNext()
 	{
 		$return = '';
 		
 		$this->_routeParams["page"] = ($this->_currentPage+1 <= $this->_countPages) ? $this->_currentPage+1 : $this->_countPages;
 		
-		$return .= '<li class="next'.($this->_currentPage == $this->_countPages ? ' disabled' : '').'"><a href="'.$this->getUrl().'" '.$this->_linkTags.' class="'.implode(" ", $this->_classTags).'" >></a></li>';
+		$return .= '<li class="next'.($this->_currentPage == $this->_countPages ? ' disabled' : '').'"><a href="'.$this->getUrl().'" '.$this->_generatedLinkAttr.' class="'.$this->_generatedLinkClass.'" >></a></li>';
 		
 		return $return;
+	}
+	
+	protected function getFirst()
+	{
+		$return = '';
+		
+		$this->_routeParams["page"] = 1;
+		
+		$return .= '<li class="first'.($this->_currentPage == 1 ? ' disabled' : '').'"><a href="'.$this->getUrl().'" '.$this->_generatedLinkAttr.' class="'.$this->_generatedLinkClass.'" ><<</a></li>';
+		
+		return $return;
+	}
+	
+	protected function getLast()
+	{
+		$return = '';
+		
+		$this->_routeParams["page"] = $this->_countPages;
+		
+		$return .= '<li class="last'.($this->_currentPage == $this->_countPages ? ' disabled' : '').'"><a href="'.$this->getUrl().'" '.$this->_generatedLinkAttr.' class="'.$this->_generatedLinkClass.'" >>></a></li>';
+		
+		return $return;
+	}
+	
+	protected function generateClass()
+	{
+		if (!empty($this->_linkClass))
+			$this->_generatedLinkClass = implode(" ", $this->_linkClass);
+		else
+			$this->_generatedLinkClass = '';
+	}
+	
+	protected function generateAttr() {
+		if (!empty($this->_linkAttr)) {
+			$result = '';
+			foreach ($this->_linkAttr as $key => $value) {
+				$result .= ' '.$key.'="'.$value.'"';
+			}
+			$this->_generatedLinkAttr = $result;
+		}
+		else
+			$this->_generatedLinkAttr = '';
 	}
 	
     public function paginate()
     {
 		$this->countPages();
 		$this->getCurrentPage();
+		$this->generateClass();
+		$this->generateAttr();
 		
 		if($this->_countPages <= 1)
 			return '';
 		
 		$output = '<div class="'.$this->getClassPagination().'"><ul>';
 		
+		$output .= $this->getFirst();
 		$output .= $this->getPrevious();
 		
-		for ($i = 1; $i <= $this->_countPages; $i++) {
-			$this->_routeParams["page"] = ($i != 1) ? $i : null;
-			
-			$output .= '<li'.($this->_currentPage == $i ? ' class="active"' : '').'><a href="'.$this->getUrl().'" '.$this->_linkTags.' class="'.implode(" ", $this->_classTags).'" >'.$i.'</a></li>';
-		}
+		if (!empty($this->_typeRender) && $this->_typeRender == 'ellipsis')
+			$output .= $this->renderPaginateEllipsis();
+		else
+			$output .= $this->renderPaginateNormal();
 		
-		$output .= $this->getNext();	
+		$output .= $this->getNext();
+		$output .= $this->getLast();
 		
 		$output .= '</ul></div>';
+		
+		return $output;
+    }
+    
+	protected function renderPaginateEllipsis()
+    {
+    	$output = '';
+    	
+    	if (($this->_currentPage-3) > 1)
+	    	$output = '<li class="disabled"><a>...</a></li>';
+    	
+    	for ($i = ($this->_currentPage-3); $i <= $this->_currentPage+3; $i++) {
+    		
+    		if ($i > $this->_countPages || $i < 1)
+    			continue;
+    		
+			$this->_routeParams["page"] = ($i != 1) ? $i : 1;
+			
+			$output .= '<li'.($this->_currentPage == $i ? ' class="active"' : '').'><a href="'.$this->getUrl().'" '.$this->_generatedLinkAttr.' class="'.$this->_generatedLinkClass.'" >'.$i.'</a></li>';
+		}
+		
+		if ($this->_currentPage+3 < $this->_countPages)
+    		$output .= '<li class="disabled"><a>...</a></li>';
+    	
+		return $output;
+    }
+    
+    protected function renderPaginateNormal()
+    {
+    	$output = '';
+    	
+    	for ($i = 1; $i <= $this->_countPages; $i++) {
+			$this->_routeParams["page"] = ($i != 1) ? $i : 1;
+			
+			$output .= '<li'.($this->_currentPage == $i ? ' class="active"' : '').'><a href="'.$this->getUrl().'" '.$this->_generatedLinkAttr.' class="'.$this->_generatedLinkClass.'" >'.$i.'</a></li>';
+		}
 		
 		return $output;
     }
@@ -143,54 +242,80 @@ class CMS_Application_Paginator
         }
         return $from;
 	}
-		
+	
 	/**
 	 * Spécifie au paginateur les paramètres de route qui seront utilisés pour générer les liens.
 	 *
-	 * @param array $routeParams
+	 * @param mixed $routeParams
 	 * @throws Zend_Exception
 	 * @return
 	 */
-	public function setRouteParams(array $routeParams)
+	public function setRouteParams($routeParams)
     {
-    	if(!isset($routeParams["route"]) || !isset($routeParams["module"]) || !isset($routeParams["controller"]) || !isset($routeParams["action"]))
-    		throw new Zend_Exception(_t("Paginator route param is missing"));
-    	
-    	$this->_routeParams = $routeParams;
+    	if(is_array($routeParams)) {
+	    	if(!isset($routeParams["route"]) || !isset($routeParams["module"]) || !isset($routeParams["controller"]) || !isset($routeParams["action"]))
+	    		throw new Zend_Exception(_t("Paginator route param is missing"));
+	    	
+	    	$this->_routeParams = $routeParams;
+    	}
+    	else {
+    		$this->_url = $routeParams;
+    	}
     	
         return;
     }
     
-    private function countPages()
+    protected function countPages()
     {
-    	if(!isset($this->_countPages))
+    	if(!isset($this->_countPages)) {
     		if($this->nbItems > 0)
         		$this->_countPages = ceil($this->nbItems / $this->byPage);
         	else
         		$this->_countPages = 1;
+    	}
+    	
         return;
     }
     
+    public function addLinkAttr($key, $value) {
+    	$this->_linkAttr[$key] = $value;
+    }
+    
+    public function addLinkClass($class) {
+    	$this->_linkClass[] = $class;
+    }
+    
+    /**
+     * @deprecated
+     * Use : addLinkAttr()
+     */
     public function addTagInLink($datas = array())
     {
     	if (!empty($datas)){
     		foreach ($datas as $tag => $value) {
-    			$this->_linkTags .= " ".$tag."='".$value."'";
+    			$this->addLinkAttr($tag, $value);
     		}
     	}
     }
     
+    /**
+     * @deprecated
+     * Use : addLinkClass()
+     */
     public function addClassInLink($class = null)
     {
     	if ($class) {
-    		$this->_classTags[] = $class;
+    		$this->addLinkClass($class);
     	}
     }
     
-	private function getCurrentPage()
+	protected function getCurrentPage()
 	{
 		if(!isset($this->_currentPage)){
 			$this->_currentPage = Zend_Controller_Front::getInstance()->getRequest()->getParam("page");
+			
+			if (empty($this->_currentPage))
+				$this->_currentPage = 1;
 			
 			if($this->_currentPage > $this->_countPages)
 				throw new Zend_Controller_Action_Exception(_t("Page not found"), 404);

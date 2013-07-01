@@ -41,11 +41,11 @@
 					</div>
 					
 					<p class="read_more">
-						>>> <a href="{routeFull route="jobs" action="apply" id=$job->id}">Postuler</a>
+						<a href="{routeFull route="jobs" action="apply" id=$job->id}">Postuler</a>
 					</p>
 					
 					<p class="back_joblist">
-						>>> <a href="{routeFull route="jobs"}">Retour à la liste des annonces</a>
+						<a href="{routeFull route="jobs"}">Retour à la liste des annonces</a>
 					</p>
 			
 				</div>

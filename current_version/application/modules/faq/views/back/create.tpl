@@ -28,6 +28,8 @@
 		<div class="zone">
 		
 			{$form->title}
+			{$form->intro}
+			{$form->outro}
 			{$form->access}
 			
 			{if $backAcl->hasPermission("mod_faq", "manage")}
