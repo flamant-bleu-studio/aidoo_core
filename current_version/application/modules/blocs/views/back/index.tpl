@@ -190,7 +190,14 @@
 						{/if}
 						<div class="drop_zone"></div>
 					</div>
-		
+					
+					<div id="t_header3" class="droppable horizontal">
+						{if $templates[0]->getPlaceholder("classic", "header3")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "header3")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
+					
 					<div id="t_middle" class="horizontal">
 		
 						<div id="t_sideleft1" class="droppable vertical">
@@ -223,7 +230,7 @@
 									<div class="drop_zone"></div>
 									
 									<div class="info_ph">
-										<!-- Ne pas mettre de blocs ici pour un modèle de disposition déstiné à une page avec contenu. -->TEST
+										Aucun bloc ici pour un modèle de disposition déstiné à du contenu.
 									</div>
 					
 								</div>
@@ -253,18 +260,25 @@
 					</div>
 		
 					<div id="t_footer1" class="droppable horizontal">
-							{if $templates[0]->getPlaceholder("classic", "footer1")}
-								{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "footer1")} 
-							{/if}
-							<div class="drop_zone"></div>
-						</div>
+						{if $templates[0]->getPlaceholder("classic", "footer1")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "footer1")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
 							
-					<div id="t_footer2" class="droppable horizontal nomarge">
-							{if $templates[0]->getPlaceholder("classic", "footer2")}
-								{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "footer2")} 
-							{/if}
-							<div class="drop_zone"></div>
-						</div>
+					<div id="t_footer2" class="droppable horizontal">
+						{if $templates[0]->getPlaceholder("classic", "footer2")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "footer2")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
+						
+					<div id="t_footer3" class="droppable horizontal nomarge">
+						{if $templates[0]->getPlaceholder("classic", "footer3")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "footer3")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
 		
 				</div>
 			</div>
