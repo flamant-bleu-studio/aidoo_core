@@ -75,6 +75,8 @@ class CMS_Application_ProcessLayout {
 	
 	public function getHTMLJQueryLibs(){
 		
+		$output = '';
+		
 		foreach ($this->_jQueries as $jquery) 
 		{
 			if( !(defined('CACHE_CSS_JS') && (CACHE_CSS_JS)) || !$jquery['cache'])
