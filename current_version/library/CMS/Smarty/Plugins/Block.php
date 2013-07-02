@@ -98,35 +98,39 @@ class CMS_Smarty_Plugins_Block {
 	{
 		if (!$repeat) {
 			
-			if (APPLICATION_ENV == 'development' || (defined('CMS_CACHE_ASSET') && CMS_CACHE_ASSET === false))
+			if (!defined('CMS_CACHE_ASSET') || CMS_CACHE_ASSET === false)
 				return $content;
+			
+			$minFile = PUBLIC_PATH . SKIN_URL . '/cache/min.css';
+			$fileExists = file_exists($minFile);
 
-			if (!file_exists(PUBLIC_PATH.BASE_URL.SKIN_URL.'/cache/min.css')) {
-				$minified = "";
+			if ( (CMS_CACHE_ASSET === 'force') || (CMS_CACHE_ASSET === true && !$fileExists) ) {
 				
 				if(preg_match_all('@href="([^"]+)"@', $content, $matches, PREG_OFFSET_CAPTURE)) {
 					require_once 'Minify/CSS.php';
 					
+					$output = '';
+					$currentDomaine = CMS_Application_Tools::getCurrentDomain();
+					
 					foreach($matches[1] as $i => $m) {
-						if (file_exists(PUBLIC_PATH.BASE_URL.$m[0])) {
-							$minified .= Minify_CSS::minify(file_get_contents(PUBLIC_PATH.BASE_URL.$m[0]), array(
-								'currentDir' => PUBLIC_PATH.BASE_URL.$m[0].'/../',
+
+					
+						$content = file_get_contents($currentDomaine . $m[0]);
+				
+						if ($content !== false) {
+							$output .= Minify_CSS::minify($content, array(
+								'prependRelativePath' => dirname($m[0]) . '/',
 								'preserveComments' => false,
-							))."\n";
+							)) . "\n"; // double quote nécessaire pour interpréter le retour chariot !
 						}
-						else if (file_exists(CMS_PATH.'/..'.$m[0])) {
-							$minified .= Minify_CSS::minify(file_get_contents(CMS_PATH.'/..'.$m[0]), array(
-								'currentDir' => CMS_PATH.'/..'.$m[0].'/../',
-								'preserveComments' => false,
-							))."\n";
-						}
+
 					}
 				}
 				
-				file_put_contents(PUBLIC_PATH.BASE_URL.SKIN_URL.'/cache/min.css', $minified);
+				file_put_contents($minFile, $output);
 			}
 			
-			return '<link rel="stylesheet" href="'.BASE_URL.SKIN_URL.'/cache/min.css" type="text/css" />';
+			return '<link rel="stylesheet" type="text/css" href="' . BASE_URL . SKIN_URL . '/cache/min.css?t=' . @filemtime($minFile) . '" />';
 		}
 	}
 	
@@ -134,29 +138,34 @@ class CMS_Smarty_Plugins_Block {
 	{
 		if (!$repeat) {
 			
-			if (APPLICATION_ENV == 'development' || (defined('CMS_CACHE_ASSET') && CMS_CACHE_ASSET === false))
+			if (!defined('CMS_CACHE_ASSET') || CMS_CACHE_ASSET === false)
 				return $content;
 			
-			if (!file_exists(PUBLIC_PATH.BASE_URL.SKIN_URL.'/cache/min.js')) {
-				$minified = "";
+			$minFile = PUBLIC_PATH . SKIN_URL . '/cache/min.js';
+			$fileExists = file_exists($minFile);
+
+			if ( (CMS_CACHE_ASSET === 'force') || (CMS_CACHE_ASSET === true && !$fileExists) ) {
 				
 				if(preg_match_all('@src="([^"]+)"@', $content, $matches, PREG_OFFSET_CAPTURE)) {
 					require_once 'JShrink.php';
 					
-					foreach($matches[1] as $i => $m){
-						if (file_exists(PUBLIC_PATH.BASE_URL.$m[0])) {
-							$minified .= JShrink::minify(file_get_contents(PUBLIC_PATH.BASE_URL.$m[0]), array('flaggedComments' => false))."\n";
-						}
-						else if (file_exists(CMS_PATH.'/..'.$m[0])) {
-							$minified .= JShrink::minify(file_get_contents(CMS_PATH.'/..'.$m[0]), array('flaggedComments' => false))."\n";
+					$output = '';
+					$currentDomaine = CMS_Application_Tools::getCurrentDomain();
+					
+					foreach ($matches[1] as $i => $m) {
+						
+						$content = file_get_contents($currentDomaine . $m[0]);
+
+						if ($content !== false) {
+							$output .= JShrink::minify($content, array('flaggedComments' => false)) . "\n"; // double quote nécessaire pour interpréter le retour chariot !
 						}
 					}
 				}
-				
-				file_put_contents(PUBLIC_PATH.BASE_URL.SKIN_URL.'/cache/min.js', $minified);
+
+				file_put_contents($minFile, $output);
 			}
 			
-			return '<script type="text/javascript" src="'.BASE_URL.SKIN_URL.'/cache/min.js"></script>';
+			return '<script type="text/javascript" src="' . BASE_URL . SKIN_URL . '/cache/min.js?t=' . @filemtime($minFile) . '"></script>';
 		}
 	}
 }
