@@ -20,63 +20,42 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class CMS_Smarty_Plugins_FunctionNocache {
-	
-	public static function messages($params, $content){
-
+class CMS_Smarty_Plugins_FunctionNocache
+{	
+	public static function messages($params, $content) {
+		
+		$output = '';
+		
 		$types = array(
 			CMS_Error_DisplayManager::TYPE_ERROR,
 			CMS_Error_DisplayManager::TYPE_MESSAGE,
-			CMS_Error_DisplayManager::TYPE_WARNING
+			CMS_Error_DisplayManager::TYPE_WARNING,
+			CMS_Error_DisplayManager::TYPE_INFO,
+			CMS_Error_DisplayManager::TYPE_SUCCESS
 		);
-
-		$displayManager = CMS_Error_DisplayManager::getInstance();
-
 		
-		$html = "";
-		$display = false;
+		$displayManager = CMS_Error_DisplayManager::getInstance();
 		
 		foreach ($types as $type) {
-
-			$messages = $displayManager->getMessages($type);
-
-			/*
-			if (!$messages){
-				$messages = $displayManager->getCurrentMessages($type);
-			}*/
-				
-			if ($messages) {
-				
-				$display = true;
-				
-				$html .= '<ul class="unstyled alert ';
-				
-				switch ($type) {
-					case CMS_Error_DisplayManager::TYPE_MESSAGE:
-						$html .= 'alert-success';
-						break;
-					case CMS_Error_DisplayManager::TYPE_WARNING:
-						break;
-					default:
-						$html .= 'alert-error';
-						break;
-				}
-				
-				$html .= '">';
-				
-
-				foreach ( $messages as $message ) {
-					$html .=  '<li>'.$message->message.'</li>';
-				}
-				
-				$html .= '</ul>';
+			
+			$messages = $displayManager->getCurrentMessages($type);
+			
+			if (empty($messages))
+				continue;
+			
+			$output .= '<div class="alert alert-'.$type.'">';
+			$output .= '<button type="button" class="close" data-dismiss="alert">&times;</button>';
+			$output .= '<ul>';
+			
+			foreach ($messages as $message) {
+				$output .= '<li>'.$message->message.'</li>';
 			}
+			
+			$output .= '</ul>';
+			$output .= '</div>';
 		}
 		
-		if($display)
-			return $html;
-		
-		return "";
+		return $output;
 	}
 	
 	public static function formatDate($params, Smarty_Internal_Template $smarty)

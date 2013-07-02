@@ -20,18 +20,22 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class CMS_Error_DisplayManager extends Zend_Controller_Action_Helper_FlashMessenger {
-
+class CMS_Error_DisplayManager extends Zend_Controller_Action_Helper_FlashMessenger
+{
 	private static $_instance;
 	private $_flashMessenger;
-
+	
 	protected $_namespace = 'default';
-
+	
+	/**
+	 * @deprecated user TYPE_INFO or TYPE_SUCCESS
+	 */
 	const TYPE_MESSAGE 	= 'message';
 	const TYPE_WARNING 	= 'warning';
 	const TYPE_ERROR 	= 'error';
-
-
+	const TYPE_INFO 	= 'info';
+	const TYPE_SUCCESS 	= 'success';
+	
 	/**
 	 * Retrieve singleton instance
 	 *
@@ -39,12 +43,20 @@ class CMS_Error_DisplayManager extends Zend_Controller_Action_Helper_FlashMessen
 	 */
 	public static function getInstance()
 	{
-		if(is_null(self::$_instance)) {
+		if (is_null(self::$_instance)) {
 			self::$_instance = new CMS_Error_DisplayManager();
 		}
+		
 		return self::$_instance;
 	}
-
+	
+	public function __construct()
+	{
+		if (!self::$_session instanceof Zend_Session_Namespace) {
+            self::$_session = new Zend_Session_Namespace($this->getName());
+		}
+	}
+	
 	/**
 	 * Add a message to display at the next page or current controler if has no redirection
 	 * 
@@ -53,24 +65,21 @@ class CMS_Error_DisplayManager extends Zend_Controller_Action_Helper_FlashMessen
 	 * 
 	 * @see library/Zend/Controller/Action/Helper/Zend_Controller_Action_Helper_FlashMessenger::addMessage()
 	 */
-
 	public function addMessage($message, $type)
 	{
 		if (self::$_messageAdded === false) {
 			self::$_session->setExpirationHops(1, null, true);
 		}
-
+		
 		if (!is_array(self::$_session->{$this->_namespace})) {
 			self::$_session->{$this->_namespace}[$type] = array();
 		}
-
+		
 		self::$_session->{$this->_namespace}[$type][] = $this->_factory($message, $type);
-
-
+		
 		return $this;
-
 	}
-
+	
 	/**
 	 * Add and translate message to FlashMessenger
 	 *
@@ -83,65 +92,66 @@ class CMS_Error_DisplayManager extends Zend_Controller_Action_Helper_FlashMessen
 		if (self::$_messageAdded === false) {
 			self::$_session->setExpirationHops(1, null, true);
 		}
-
+		
 		if (!is_array(self::$_session->{$this->_namespace})) {
 			self::$_session->{$this->_namespace}[$type] = array();
 		}
 		
 		$t = Zend_Registry::get('translate');
-				
-		if(is_null($params))
-		{
+		
+		if (is_null($params)) {
 			self::$_session->{$this->_namespace}[$type][] = $this->_factory($t->_($message), $type);
 		}
-		else if(!is_array($params) )
-		{
+		else if (!is_array($params)) {
 			self::$_session->{$this->_namespace}[$type][] = $this->_factory(sprintf($t->_($message), $params), $type);
 		}
-		else if(is_array($params))
-		{
+		else if (is_array($params)) {
 			self::$_session->{$this->_namespace}[$type][] = $this->_factory(vsprintf($t->_($message), $params), $type);
-		}		
-
+		}
+		
 		return $this;
-
 	}
+	
 	protected function _factory($message, $type)
 	{
-		$messg = new stdClass();
-		$messg->message = $message;
-		$messg->type = $type;
-
-		return $messg;
+		$msg = new stdClass();
+		$msg->message = $message;
+		$msg->type = $type;
+		
+		return $msg;
 	}
-
-
-	public function getMessages($type = null)
-	{
-		if($type === null){
-			return parent::getMessages();
-		}
-
-		if (isset(self::$_messages[$this->_namespace][$type])) {
-			return self::$_messages[$this->_namespace][$type];
-		}
-
-		return array();
-	}
-
-
+	
     public function getCurrentMessages($type = null)
     {
-        if($type === null){
+        if ($type === null) {
             return parent::getCurrentMessages();
         }
-
-        if (isset(self::$_session->{$this->_namespace}[$type])) {
+		
+        if ($this->hasCurrentMessages($type)) {
             return self::$_session->{$this->_namespace}[$type];
-        } 
-
+        }
+		
         return array();
-
     }
-	
+    
+    public function hasCurrentMessages($type = null)
+    {
+    	if ($type === null)
+    		return parent::hasCurrentMessages();
+    	
+    	return isset(self::$_session->{$this->_namespace}[$type]);
+    }
+    
+	public function clearCurrentMessages($type = null)
+    {
+    	if ($type === null)
+    		return parent::clearCurrentMessages();
+    	
+        if ($this->hasCurrentMessages($type)) {
+            unset(self::$_session->{$this->_namespace}[$type]);
+            return true;
+        }
+        
+        return false;
+    }
 }

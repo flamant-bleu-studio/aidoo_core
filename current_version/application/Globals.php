@@ -24,6 +24,7 @@
  * Add notice message
  *
  * @param $message string message to display
+ * @deprecated use _success or _info
  */
 function _message($message)
 {
@@ -38,6 +39,26 @@ function _message($message)
 function _error($message)
 {
 	CMS_Error_DisplayManager::getInstance()->addMessage($message, CMS_Error_DisplayManager::TYPE_ERROR);
+}
+
+/**
+ * Add info message
+ *
+ * @param $message string message to display
+ */
+function _info($message)
+{
+	CMS_Error_DisplayManager::getInstance()->addMessage($message, CMS_Error_DisplayManager::TYPE_INFO);
+}
+
+/**
+ * Add success message
+ *
+ * @param $message string message to display
+ */
+function _success($message)
+{
+	CMS_Error_DisplayManager::getInstance()->addMessage($message, CMS_Error_DisplayManager::TYPE_SUCCESS);
 }
 
 /**
