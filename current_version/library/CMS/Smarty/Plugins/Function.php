@@ -72,7 +72,11 @@ class CMS_Smarty_Plugins_Function {
 	public static function GenerateStyleBackground($params, &$smarty)
 	{
 		$page = CMS_Page_Current::getInstance();
-		$template = $smarty->get_template_vars('template');
+		
+		/*
+		 * @TODO : faire en sorte de ne pas déclencher une requete sur la BDD pour récupérer les infos du modèle de disposition
+		 */
+		$template = new Blocs_Object_Template($page->template);
 		
 		if (!($template instanceof Blocs_Object_Template))
 			return '';
