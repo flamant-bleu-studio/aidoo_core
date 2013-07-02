@@ -22,15 +22,14 @@
 
 $hooks = CMS_Application_Hook::getInstance();
 
-	function appendSeoTabMenu($tabs)
+function appendSeoTabMenu($tabs)
+{
+	$backAcl = CMS_Acl_Back::getInstance();
+	if($backAcl->hasPermission("mod_seo", "view"))
 	{
-		$backAcl = CMS_Acl_Back::getInstance();
-		if($backAcl->hasPermission("mod_seo", "view"))
-		{
-			$tabs['seo'] = array("title" => "Référencement", "routeName" => "seo_back",  "moduleName" => "seo", "controllerName" => "back", "icon" => "ref.png");
-		}
-		return $tabs;
+		$tabs['seo'] = array("title" => "SEO", "routeName" => "seo_back",  "moduleName" => "seo", "controllerName" => "back", "icon" => "ref.png");
 	}
+	return $tabs;
+}
     
-	$hooks->add('Back_Main_Menu_Generate', 'appendSeoTabMenu', 560);
-	
+$hooks->add('Back_Main_Menu_Generate', 'appendSeoTabMenu', 560);

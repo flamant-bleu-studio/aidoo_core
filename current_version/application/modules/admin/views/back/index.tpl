@@ -17,10 +17,7 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
-<div class="content_titre">
-	<h1>{t}Dashboard{/t}</h1>
-	<div>Gestion du site</div>
-</div>
+<h1>{t}Dashboard{/t}</h1>
 
 <div class="row-fluid">
 	<div class="span6">
@@ -33,8 +30,7 @@
 			<div class="row-fluid">
 	
 				<div class="span6">
-			
-						
+										
 						<a href='{routeFull route="front"}' class="menu_dashboard btn btn-warning">
 							<div class="item_icone" id="galerie"></div>
 							<div class="item_title">Ma page d'accueil</div>
@@ -161,7 +157,7 @@
 				<h2>Statistiques Google Analytics</h2>
 				<div>Visualisez vos statistiques</div>
 			</div>
-			{if $account}
+			{if !empty($account)}
 			
 			<div id="stats" style="margin-top:10px;">
 				<b>Statistiques sur un mois :</b>
@@ -176,9 +172,9 @@
 				</ul>
 			</div>
 			
-			{else if !$account && !$errorAuthAnalytics}
+			{else if empty($account) && empty($errorAuthAnalytics)}
 				Configurez vos identifiants Google Analytics <a href="{routeFull route='seo_back'}">ici</a>
-			{elseif !$account && $errorAuthAnalytics}
+			{elseif empty($account) && !empty($errorAuthAnalytics)}
 				Erreur lors de l'authentification : Vérifier votre compte Google et vos identifiants <a class="orange" href="{routeFull route='seo_back'}">ici</a><br /><br />
 				Détails :<br />
 				{$errorAuthAnalytics}

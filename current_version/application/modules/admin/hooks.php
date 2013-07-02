@@ -21,74 +21,64 @@
  */
 
 function appendAdminVieduSite($tabs)
-		{
-			$tabs['siteLife'] = array("title" => "Vie du site", "icon" => "vie_site.png");
-			return $tabs;
-		}
-		
-		function appendAdminAutoConfig($tabs)
-		{
-			$tabs['auto'] = array("title" => "Auto", "icon" => "motors.png");
-			return $tabs;
-		}
-		
-		function appendAdminImmoConfig($tabs)
-		{
-			$tabs['immo'] = array("title" => "Immobilier", "icon" => "motors.png");
-			return $tabs;
-		}
-		
-		function appendAdminGestionSite($tabs)
-		{
-			$tabs['siteManage'] = array("title" => "Gestionnaire du site", "icon" => "gest_site.png");
-			return $tabs;
-		}
-		
+{
+	$tabs['siteLife'] = array("title" => "Vie du site");
+	return $tabs;
+}
 
-	    function appendAdminTabMenu($tabs)
-		{
-			$tabs['dashboard'] = array("title" => "Tableau de bord", "routeName" => "admin", "moduleName" => "admin", "controllerName" => "back", "icon" => "tableau_bord.png");
-			return $tabs;
-		}
-		
-	    function appendAdminConfig($tabs)
-		{
-			$tabs['config'] = array("title" => "Configurations du site", "icon" => "config_site.png");
-			return $tabs;
-		}
-	
-		function appendAdminTabMenuSiteConfig($tabs)
-		{     
-			
-			$backAcl = CMS_Acl_Back::getInstance();
-			if($backAcl->hasPermission("admin", "view"))
-			{
-				$tabs['config']['children'][] = array("title" => "Langues", "routeName" => "admin_configuration", "moduleName" => "admin", "controllerName" => "lang", "icon" => "site_config.png");
-				$tabs['config']['children'][] = array("title" => "Site Configuration", "routeName" => "admin_configuration", "moduleName" => "admin", "controllerName" => "config", "icon" => "site_config.png");
-			}
-			return $tabs;
-		}
-		
-		function appendAdminPagesProConfig($tabs) {
-			$tabs['pagesPro'] = array("title" => "PagesPro", "icon" => "config_site.png");
-			return $tabs;
-		}
-		
-		function appendAdminLikeResto($tabs) {
-			$tabs['likeresto'] = array("title" => "LikeResto");
-			return $tabs;
-		}
-		
-		$hooks = CMS_Application_Hook::getInstance();
-		
-		
-		$hooks->add('Back_Main_Menu_Generate', 'appendAdminTabMenu', 1);
-		$hooks->add('Back_Main_Menu_Generate', 'appendAdminGestionSite', 95);
-		$hooks->add('Back_Main_Menu_Generate', 'appendAdminVieduSite', 96);
-		$hooks->add('Back_Main_Menu_Generate', 'appendAdminAutoConfig', 549);
-		$hooks->add('Back_Main_Menu_Generate', 'appendAdminImmoConfig', 550);
-		$hooks->add('Back_Main_Menu_Generate', 'appendAdminLikeResto', 551);
-		$hooks->add('Back_Main_Menu_Generate', 'appendAdminPagesProConfig');
-		$hooks->add('Back_Main_Menu_Generate', 'appendAdminConfig', 599);
-		$hooks->add('Back_Main_Menu_Generate', 'appendAdminTabMenuSiteConfig', 900);
-		
+function appendAdminAutoConfig($tabs)
+{
+	$tabs['auto'] = array("title" => "Auto");
+	return $tabs;
+}
+
+function appendAdminImmoConfig($tabs)
+{
+	$tabs['immo'] = array("title" => "Immobilier");
+	return $tabs;
+}
+
+function appendAdminGestionSite($tabs)
+{
+	$tabs['siteManage'] = array("title" => "Gestion");
+	return $tabs;
+}
+
+function appendAdminConfig($tabs)
+{
+	$tabs['config'] = array("title" => "Configuration");
+	return $tabs;
+}
+
+function appendAdminTabMenuSiteConfig($tabs)
+{     
+	$backAcl = CMS_Acl_Back::getInstance();
+	if ($backAcl->hasPermission("admin", "view")) {
+		$tabs['config']['children'][] = array("title" => "Langues", "routeName" => "admin_configuration", "moduleName" => "admin", "controllerName" => "lang");
+		$tabs['config']['children'][] = array("title" => "Site Configuration", "routeName" => "admin_configuration", "moduleName" => "admin", "controllerName" => "config");
+	}
+	return $tabs;
+}
+
+function appendAdminPagesProConfig($tabs)
+{
+	$tabs['pagesPro'] = array("title" => "PagesPro");
+	return $tabs;
+}
+
+function appendAdminLikeResto($tabs)
+{
+	$tabs['likeresto'] = array("title" => "LikeResto");
+	return $tabs;
+}
+
+$hooks = CMS_Application_Hook::getInstance();
+
+$hooks->add('Back_Main_Menu_Generate', 'appendAdminGestionSite', 95);
+$hooks->add('Back_Main_Menu_Generate', 'appendAdminVieduSite', 96);
+$hooks->add('Back_Main_Menu_Generate', 'appendAdminAutoConfig', 549);
+$hooks->add('Back_Main_Menu_Generate', 'appendAdminImmoConfig', 550);
+$hooks->add('Back_Main_Menu_Generate', 'appendAdminLikeResto', 551);
+$hooks->add('Back_Main_Menu_Generate', 'appendAdminPagesProConfig');
+$hooks->add('Back_Main_Menu_Generate', 'appendAdminConfig', 599);
+$hooks->add('Back_Main_Menu_Generate', 'appendAdminTabMenuSiteConfig', 900);
