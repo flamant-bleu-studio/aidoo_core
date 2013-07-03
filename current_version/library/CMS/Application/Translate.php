@@ -42,13 +42,14 @@ class CMS_Application_Translate {
 	 * @param array $files fichiers TPLs à analyser
 	 * @param string $outputFile Fichier C où enregistrer les chaines récupérées
 	 */
-	public static function getTranslatableStringFromTPL($files, $outputFile){
+	public static function writeTranslatableStringFromTPL($files, $outputFile){
 	
 		// extensions Smarty
 		$extensions = array('tpl');
 		$ldq = preg_quote('{');
 		$cmd = preg_quote('t');
 		$rdq = preg_quote('}');
+		
 		
 		// Ouverture du fichier
 		$file = new SplFileInfo($outputFile);
@@ -96,11 +97,7 @@ class CMS_Application_Translate {
 		
 		$moduleConfig 		= $folderEntity . "/routes.xml";
 		$blocConfig			= $folderEntity . "/bloc.xml";
-		
 		$langPath 			= $folderEntity . "/lang/front";
-		$tradFromTPLFile 	= $langPath 	. "/trad.c";
-		$poFile				= $langPath 	. "/lang.po";
-		$newPoFile			= $langPath 	. "/lang_new.po";
 		
 		$config = CMS_Application_Config::getInstance();
 		$langs = json_decode($config->get("availableFrontLang"), true);
@@ -129,11 +126,11 @@ class CMS_Application_Translate {
 			throw new Exception("Erreur dans la lecture du fichier de conf.");
 		}
 
+		// On coupe si ce n'est pas un package traduisible
 		if($config["lang"]['translatable'] != 'true')
 			return false;
 		
-
-		if($config["lang"]["frontFiles"]["file"] || $config["lang"]["frontFiles"]["folder"]){
+		if(!empty($config["lang"]["frontFiles"]["file"]) || !empty($config["lang"]["frontFiles"]["folder"])) {
 			
 			// Récupération des fichiers et dossiers à parser
 			$allFiles 		= $config["lang"]["frontFiles"]["file"];
@@ -143,12 +140,12 @@ class CMS_Application_Translate {
 			$tplToScan = array();
 			
 			// Si il y a des dossiers à analyser
-			if($allFolders){
+			if (!empty($allFolders)) {
 				
 				$foldersToScan = array();
 				
 				// Reset level si un seul element
-				if(!is_int($key = @key($allFolders))){
+				if (!is_int($key = @key($allFolders))) {
 					$allFolders = array($allFolders);
 				}
 			
@@ -179,7 +176,7 @@ class CMS_Application_Translate {
 				unset($foldersToScan);
 			}
 			
-			if($allFiles){
+			if (!empty($allFiles)) {
 				
 				$filesToScan = array();
 				
@@ -210,40 +207,49 @@ class CMS_Application_Translate {
 				unset($filesToScan);
 			}
 			
-			// Génération du fichier contenant les chaines à traduire dans les TPLs
-			if(CMS_Application_Translate::getTranslatableStringFromTPL($tplToScan, $tradFromTPLFile))
-				$phpToScan[] = $tradFromTPLFile;
+			// fichier temp pour stocker les chaines à traduire depuis les tpls
+			$filePath = sys_get_temp_dir()."/po-".$type.'-'.$config['name'].'.c';
+			
+			// fichier temp qui servira pour fusionner tous les fichiers po
+			$poFilePath = sys_get_temp_dir()."/po-".$type.'-'.$config['name'].'.po';
+			
+			// On recréer les fichiers pour être sûr qu'ils soient vides
+			@unlink($filePath); touch($filePath);
+			@unlink($poFilePath); touch($poFilePath);
+			
+			// écriture du fichier contenant les chaines à traduire dans les TPLs
+			if(CMS_Application_Translate::writeTranslatableStringFromTPL($tplToScan, $filePath))
+				$phpToScan[] = $filePath;
 
+			
 			/**
 			 * @todo : Le retours des commandes exec sont concat dans la variable $output
 			 */
 				
 			// Génération du nouveau PO avec les fichiers récupérés de la configuration du module
-			exec("xgettext --force-po --from-code=UTF-8 --keyword='_t' -o ".$newPoFile." ". implode(" ", $phpToScan)." 2>&1", $output);
+			exec("xgettext --force-po --from-code=UTF-8 --keyword='_t' -o ".$poFilePath." ". implode(" ", $phpToScan)." 2>&1", $output);
 			
 			// Si un ancien PO n'existe pas
 			if(!file_exists($langPath."/".reset($langs).".po")){
 				
 				// Set charset
-				exec("sed --in-place ".$newPoFile." --expression=s/CHARSET/UTF-8/", $output);
+				exec("sed --in-place ".$poFilePath." --expression=s/CHARSET/UTF-8/", $output);
 				
 				// Copy du fichier PO vers toutes les langues disponibles
 				foreach($langs as $id => $code){
-					copy($newPoFile, $langPath."/".$code.".po");
+					copy($poFilePath, $langPath."/".$code.".po");
 				}
 			}
 			else {
 				// Mise à jour de tous les fichiers PO
 				foreach($langs as $id => $code){
-					exec("msgmerge --update ".$langPath."/".$code.".po ".$newPoFile." 2>&1", $output);
+					exec("msgmerge --update ".$langPath."/".$code.".po ".$poFilePath." 2>&1", $output);
 				}
 				
 			}
-			
-			
 
-			unlink($newPoFile);
-			unlink($tradFromTPLFile);
+			@unlink($filePath);			
+			@unlink($poFilePath);
 
 		}
 		
