@@ -27,6 +27,10 @@ msgstr "Page introuvable"
 msgid "The email address or password is incorrect"
 msgstr "Adresse email ou mot de passe incorrect"
 
+#: /var/CMS/current_version/application/modules/users/controllers/LoginController.php:46
+msgid "Invalid login"
+msgstr "Invalid login"
+
 #: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:115
 msgid "Account created successfully"
 msgstr "Compte créé avec succès"

@@ -17,6 +17,12 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
-<h2>LOGIN</h2>
 
-{$form}
+ <form class="form-signin" action="{$form->getAction()}" method="POST">
+	<h2>Administration</h2>
+  
+	{$form->id}
+	{$form->pass}
+
+	<button class="btn btn-large btn-primary" type="submit">Connexion</button>
+</form>

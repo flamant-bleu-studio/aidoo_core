@@ -26,33 +26,27 @@ class Users_LoginController extends Zend_Controller_Action
 	{
 		$pageForm = new Users_Form_LoginForm();
 		 
-		if($this->getRequest()->isPost()) {
-			if($pageForm->isValid($_POST)) {
+		if($this->getRequest()->isPost() && $pageForm->isValid($_POST)) {
 
-				$id 	= $this->_request->getPost('id');
-				$pass 	= $this->_request->getPost('pass');
+			$id 	= $this->_request->getPost('id');
+			$pass 	= $this->_request->getPost('pass');
 
-				if(CMS_Acl_User::login($id, $pass)){
-					
-					if(isset($_SESSION['lasturl'])){
-						$url = $_SESSION['lasturl'];
-						unset($_SESSION['lasturl']);
-						$this->_redirect($url);
-					}
-					else{
-						$this->_redirect($this->_helper->route->full('admin'));
-					}
+			if(!CMS_Acl_User::login($id, $pass)){
+				$pageForm->getElement('pass')->setErrors(array(_t('Invalid login')));
+			}
+			else {
+				if(!isset($_SESSION['lasturl'])){
+					$this->_redirect($this->_helper->route->full('admin'));
 				}
-				else {
-					_error(_t('wrong email or password'));
-					$this->_redirect($this->_helper->route->short('login'));
+				else{
+					$url = $_SESSION['lasturl'];
+					unset($_SESSION['lasturl']);
+					$this->_redirect($url);
 				}
 			}
 		}
 		
-		$pageForm->setAction('/administration/login');
-		//$pageForm->setAction($this->_helper->route->short('index'));
-		
+		$pageForm->setAction('/administration/login');		
 		$this->view->form = $pageForm;
 	}
 	

@@ -23,6 +23,10 @@ msgstr ""
 msgid "Page not found"
 msgstr "Page introuvable"
 
+#: /var/CMS/current_version/application/modules/users/controllers/LoginController.php:46
+msgid "Invalid login"
+msgstr "Identifiants incorrects"
+
 #: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:73
 msgid "The email address or password is incorrect"
 msgstr "Adresse email ou mot de passe incorrect"
