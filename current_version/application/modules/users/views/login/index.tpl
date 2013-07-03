@@ -19,10 +19,10 @@
 
 
  <form class="form-signin" action="{$form->getAction()}" method="POST">
-	<h2>Administration</h2>
+	<h2>{t}Administration{/t}</h2>
   
 	{$form->id}
 	{$form->pass}
 
-	<button class="btn btn-large btn-primary" type="submit">Connexion</button>
+	<button class="btn btn-large btn-primary" type="submit">{t}Login{/t}</button>
 </form>

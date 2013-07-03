@@ -7,11 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-03 18:20+0200\n"
-"PO-Revision-Date: 2013-07-03 18:13+0100\n"
+"POT-Creation-Date: 2013-07-03 18:25+0200\n"
+"PO-Revision-Date: 2013-07-03 18:26+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -111,7 +110,7 @@ msgstr "Password"
 
 #: /var/CMS/current_version/application/modules/users/forms/Login.php:48
 #: /var/CMS/current_version/application/modules/users/forms/Login.php:62
-#: /tmp/po-module-users.c:8
+#: /tmp/po-module-users.c:8 /tmp/po-module-users.c:11
 msgid "Login"
 msgstr "Login"
 
@@ -211,6 +210,10 @@ msgstr "comment"
 #: /tmp/po-module-users.c:6
 msgid "Read more"
 msgstr "Read more"
+
+#: /tmp/po-module-users.c:10
+msgid "Administration"
+msgstr "Administration"
 
 #, fuzzy
 #~ msgid "Invalid login222"
