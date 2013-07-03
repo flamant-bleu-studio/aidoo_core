@@ -7,35 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-22 15:27+0200\n"
-"PO-Revision-Date: 2012-06-06 10:37+0100\n"
+"POT-Creation-Date: 2013-07-03 18:20+0200\n"
+"PO-Revision-Date: 2013-07-03 18:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
 
-#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:38
-#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:227
-#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:353
-#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:391
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:69
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:286
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:409
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:447
 msgid "Page not found"
 msgstr "Page introuvable"
 
-#: /var/CMS/current_version/application/modules/users/controllers/LoginController.php:46
-msgid "Invalid login"
-msgstr "Identifiants incorrects"
-
-#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:73
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:108
 msgid "The email address or password is incorrect"
 msgstr "Adresse email ou mot de passe incorrect"
 
-#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:115
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:129
+msgid "This email address is already used"
+msgstr "Cette adresse email est déjà utilisée"
+
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:161
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:177
 msgid "Account created successfully"
 msgstr "Compte créé avec succès"
 
-#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:116
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:162
 msgid ""
 "An activation email has been sent to you, please follow instructions to "
 "confirm your account"
@@ -43,158 +45,179 @@ msgstr ""
 "Un email d'activation vous a été envoyé, veuillez s'il vous plaît y suivre "
 "les instructions pour confirmer votre compte"
 
-#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:121
-msgid "This email address is already used"
-msgstr "Cette adresse email est déjà utilisée"
-
-#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:272
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:328
 msgid "Account validated successfully"
 msgstr "Compte validé avec succès"
 
-#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:273
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:329
 msgid "From now on, you can connect to your account"
 msgstr "Désormais, vous pouvez vous connecter à votre compte"
 
-#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:277
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:333
 msgid "Validation code invalid : unable to validate account"
 msgstr "Code de validation invalid"
 
-#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:377
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:433
 msgid "Mail sent to your email"
 msgstr "Mail envoyé à votre adresse email"
 
-#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:418
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:474
 msgid "Password changed successfully"
 msgstr "Mot de passe modifié avec succès"
 
-#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:430
+#: /var/CMS/current_version/application/modules/users/controllers/FrontController.php:486
 msgid "Incorrect verification code"
 msgstr "Code de vérification invalide"
 
-#: /var/CMS/current_version/application/modules/users/forms/Login.php:9
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:16
-#: /var/CMS/current_version/application/modules/users/forms/Edit.php:14
-#: /var/CMS/current_version/application/modules/users/forms/ForgotPassword.php:9
+#: /var/CMS/current_version/application/modules/users/controllers/LoginController.php:35
+msgid "Invalid login"
+msgstr "Identifiants incorrects"
+
+#: /var/CMS/current_version/application/modules/users/controllers/LoginController.php:63
+msgid "email & password null"
+msgstr "Email ou mot de passe vide"
+
+#: /var/CMS/current_version/application/modules/users/controllers/LoginController.php:79
+msgid "wrong email or password"
+msgstr "Mauvais email ou mot de passe"
+
+#: /var/CMS/current_version/application/modules/users/forms/Login.php:37
+#: /var/CMS/current_version/application/modules/users/forms/Login.php:56
+#: /var/CMS/current_version/application/modules/users/forms/LoginForm.php:29
+#: /var/CMS/current_version/application/modules/users/forms/LoginForm.php:32
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:43
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:88
+#: /var/CMS/current_version/application/modules/users/forms/Edit.php:34
+#: /var/CMS/current_version/application/modules/users/forms/ForgotPassword.php:29
 msgid "Email"
 msgstr "Email"
 
-#: /var/CMS/current_version/application/modules/users/forms/Login.php:10
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:17
-#: /var/CMS/current_version/application/modules/users/forms/Edit.php:15
-#: /var/CMS/current_version/application/modules/users/forms/ForgotPassword.php:10
+#: /var/CMS/current_version/application/modules/users/forms/Login.php:38
+#: /var/CMS/current_version/application/modules/users/forms/Login.php:57
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:44
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:89
+#: /var/CMS/current_version/application/modules/users/forms/Edit.php:35
+#: /var/CMS/current_version/application/modules/users/forms/ForgotPassword.php:30
 msgid "Enter your email adress"
 msgstr "Entrez votre adresse email"
 
-#: /var/CMS/current_version/application/modules/users/forms/Login.php:15
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:42
-#: /var/CMS/current_version/application/modules/users/forms/PasswordForm.php:16
+#: /var/CMS/current_version/application/modules/users/forms/Login.php:43
+#: /var/CMS/current_version/application/modules/users/forms/LoginForm.php:36
+#: /var/CMS/current_version/application/modules/users/forms/LoginForm.php:37
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:69
+#: /var/CMS/current_version/application/modules/users/forms/PasswordForm.php:36
 msgid "Password"
 msgstr "Mot de passe"
 
-#: /var/CMS/current_version/application/modules/users/forms/Login.php:20
-#: /var/CMS/current_version/application/modules/users/lang/front/trad.c:4
+#: /var/CMS/current_version/application/modules/users/forms/Login.php:48
+#: /var/CMS/current_version/application/modules/users/forms/Login.php:62
+#: /tmp/po-module-users.c:8
 msgid "Login"
 msgstr "Connexion"
 
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:10
-#: /var/CMS/current_version/application/modules/users/forms/Edit.php:8
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:37
+#: /var/CMS/current_version/application/modules/users/forms/Edit.php:28
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:11
-#: /var/CMS/current_version/application/modules/users/forms/Edit.php:9
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:38
+#: /var/CMS/current_version/application/modules/users/forms/Edit.php:29
 msgid "Enter your nickname"
 msgstr "Entrez votre nom d'utilisateur"
 
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:23
-#: /var/CMS/current_version/application/modules/users/forms/Edit.php:21
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:50
+#: /var/CMS/current_version/application/modules/users/forms/Edit.php:41
 msgid "Civility"
 msgstr "Civilité"
 
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:24
-#: /var/CMS/current_version/application/modules/users/forms/Edit.php:22
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:51
+#: /var/CMS/current_version/application/modules/users/forms/Edit.php:42
 msgid "Choose your civility"
 msgstr "Choisissez votre civilité"
 
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:25
-#: /var/CMS/current_version/application/modules/users/forms/Edit.php:23
-#, fuzzy
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:52
+#: /var/CMS/current_version/application/modules/users/forms/Edit.php:43
 msgid "Choose"
 msgstr "Choisir"
 
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:30
-#: /var/CMS/current_version/application/modules/users/forms/Edit.php:27
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:57
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:95
+#: /var/CMS/current_version/application/modules/users/forms/Edit.php:47
 msgid "First name"
 msgstr "Prénom"
 
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:31
-#: /var/CMS/current_version/application/modules/users/forms/Edit.php:28
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:58
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:96
+#: /var/CMS/current_version/application/modules/users/forms/Edit.php:48
 msgid "Enter your first name"
 msgstr "Entrez votre prénom"
 
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:36
-#: /var/CMS/current_version/application/modules/users/forms/Edit.php:32
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:63
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:101
+#: /var/CMS/current_version/application/modules/users/forms/Edit.php:52
 msgid "Last name"
 msgstr "Nom"
 
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:37
-#: /var/CMS/current_version/application/modules/users/forms/Edit.php:33
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:64
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:102
+#: /var/CMS/current_version/application/modules/users/forms/Edit.php:53
 msgid "Enter your last name"
 msgstr "Entrez votre nom"
 
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:43
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:70
 msgid "Enter your password"
 msgstr "Entrez votre mot de passe"
 
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:47
-#: /var/CMS/current_version/application/modules/users/forms/PasswordForm.php:23
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:74
+#: /var/CMS/current_version/application/modules/users/forms/PasswordForm.php:43
 msgid "Confirm password"
 msgstr "Confirmation du mot de passe"
 
-#: /var/CMS/current_version/application/modules/users/forms/Register.php:53
-#: /var/CMS/current_version/application/modules/users/forms/Edit.php:37
-#: /var/CMS/current_version/application/modules/users/lang/front/trad.c:2
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:80
+#: /var/CMS/current_version/application/modules/users/forms/Register.php:106
+#: /var/CMS/current_version/application/modules/users/forms/Edit.php:57
+#: /tmp/po-module-users.c:7
 msgid "Register"
 msgstr "Inscription"
 
-#: /var/CMS/current_version/application/modules/users/forms/ForgotPassword.php:15
+#: /var/CMS/current_version/application/modules/users/forms/ForgotPassword.php:35
 msgid "Send"
 msgstr "Envoyer"
 
-#: /var/CMS/current_version/application/modules/users/forms/PasswordForm.php:9
+#: /var/CMS/current_version/application/modules/users/forms/PasswordForm.php:29
 msgid "Old password"
 msgstr "Ancien mot de passe"
 
-#: /var/CMS/current_version/application/modules/users/forms/PasswordForm.php:29
+#: /var/CMS/current_version/application/modules/users/forms/PasswordForm.php:49
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: /var/CMS/current_version/application/modules/users/lang/front/trad.c:1
-#: /var/CMS/current_version/application/modules/users/lang/front/trad.c:6
-#: /var/CMS/current_version/application/modules/users/lang/front/trad.c:7
+#: /tmp/po-module-users.c:1 /tmp/po-module-users.c:2 /tmp/po-module-users.c:9
 msgid "Forgot password"
 msgstr "Mot de passe oublié"
 
-#: /var/CMS/current_version/application/modules/users/lang/front/trad.c:3
-#: /var/CMS/current_version/application/modules/users/lang/front/trad.c:5
-msgid "Or"
-msgstr "Ou"
-
-#: /var/CMS/current_version/application/modules/users/lang/front/trad.c:8
+#: /tmp/po-module-users.c:3
 msgid "Previous"
 msgstr "Précédent"
 
-#: /var/CMS/current_version/application/modules/users/lang/front/trad.c:9
+#: /tmp/po-module-users.c:4
 msgid "Next"
 msgstr "Suivant"
 
-#: /var/CMS/current_version/application/modules/users/lang/front/trad.c:10
+#: /tmp/po-module-users.c:5
 msgid "comment"
 msgstr "Commentaire"
 
-#: /var/CMS/current_version/application/modules/users/lang/front/trad.c:11
+#: /tmp/po-module-users.c:6
 msgid "Read more"
-msgstr ""
+msgstr "En savoir plus"
+
+#, fuzzy
+#~ msgid "Invalid login222"
+#~ msgstr "Identifiants incorrects"
+
+#~ msgid "Or"
+#~ msgstr "Ou"
 
 #~ msgid "Successful registration, you can connect"
 #~ msgstr "Inscription réussi avec succès, vous pouvez vous connecter"
