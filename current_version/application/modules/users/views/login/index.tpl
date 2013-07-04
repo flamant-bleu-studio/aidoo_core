@@ -19,7 +19,14 @@
 
 
  <form class="form-signin" action="{$form->getAction()}" method="POST">
-	<h2>{t}Administration{/t}</h2>
+	<h2>
+		<span class="icon-stack">
+		  <i class="icon-circle icon-stack-base"></i>
+		  <i class="icon-signin icon-light"></i>
+		</span>
+		
+		{t}Administration{/t}
+	</h2>
   
 	{$form->id}
 	{$form->pass}
