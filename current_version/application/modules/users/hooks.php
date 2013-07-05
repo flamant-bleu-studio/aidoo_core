@@ -21,16 +21,13 @@
  */
 
 function appendUsersTabMenu($tabs)
-	{
-		$backAcl = CMS_Acl_Back::getInstance();
-		if($backAcl->hasPermission("mod_users", "view"))
-		{		
-			$tabs['users'] = array("title" => "Utilisateurs", "routeName" => "users_back",  "moduleName" => "users", "controllerName" => "back", "icon"=>"user.png");
-		}
-		
-		return $tabs;
+{
+	$backAcl = CMS_Acl_Back::getInstance();
+	if ($backAcl->hasPermission("mod_users", "view")) {		
+		$tabs['users'] = array("title" => "Utilisateurs", "routeName" => "users_back",  "moduleName" => "users", "controllerName" => "back", "actionName" => "users");
 	}
-	
-    $hooks = CMS_Application_Hook::getInstance();
-	$hooks->add('Back_Main_Menu_Generate', 'appendUsersTabMenu', 400);
-	
+	return $tabs;
+}
+
+$hooks = CMS_Application_Hook::getInstance();
+$hooks->add('Back_Main_Menu_Generate', 'appendUsersTabMenu', 400);

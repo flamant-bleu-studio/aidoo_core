@@ -20,69 +20,64 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class Users_BackController extends Zend_Controller_Action {
-
-	public function indexAction() {
+class Users_BackController extends CMS_Controller_Action
+{	
+	public function usersAction()
+	{
+		$this->redirectIfNoRights('mod_users', 'view');
+		
+		// Current user
+		$user = Zend_Registry::get('user');
+		$this->view->userId = $user->id;
+		$this->view->groupId = $user->group->id;
+		
+		// Get all users
+		$users = Users_Object_User::get();
+		
+		// inferior users cannot see/edit superior users
 		$backAcl = CMS_Acl_Back::getInstance();
 		
-		// Check permissions
-		if($backAcl->hasPermission("mod_users", "view"))
+		$return = array();
+		foreach($users as $user)
 		{
-			$this->view->backAcl = $backAcl;
-
-			// Current user
-			$user = Zend_Registry::get('user');
-			$this->view->userId = $user->id;
-			$this->view->groupId = $user->group->id;
-
-			
-			/*
-			 * USERS
-			 */
-			// Get all users
-			$users = Users_Object_User::get();
-			
-			// inferior users cannot see/edit superior users
+			if($backAcl->hasPowerOn($user->group->id))
+				array_push($return, $user);
+		}
 		
-			$return = array();
-			foreach($users as $user)
-			{
-				if($backAcl->hasPowerOn($user->group->id))
-					array_push($return, $user);
-			}
-
-			$this->view->users = $return;
-			
-			/*
-			 * GROUPS
-			 */
-			// Get all groups
-			$groups = Users_Lib_Manager::getAllGroups();
-			
-			// Identation
-			foreach($groups as $group)
-			{
-				$n = '';
-				for($i=0; $i < $group->level; $i++)
-					$n .= '<span style="color:grey;">&brvbar;&#8211;</span>';
-					
-				$group->level = $n;
-			}
-			$this->view->groups = $groups;
+		$this->view->users = $return;
+	}
 	
-			/*
-			 * VIEW ACCESS
-			 */
-			$viewAccessModel = new CMS_Acl_DbTable_ViewAccess();
-			$viewAccess = $viewAccessModel->getAllViewAccess();
-			$this->view->viewAccess = $viewAccess;
-			
-		}
-		else
+	public function groupsAction()
+	{
+		$this->redirectIfNoRights('mod_users', 'view');
+		
+		// Current user
+		$user = Zend_Registry::get('user');
+		$this->view->userId = $user->id;
+		$this->view->groupId = $user->group->id;
+		
+		// Get all groups
+		$groups = Users_Lib_Manager::getAllGroups();
+		
+		// Identation
+		foreach($groups as $group)
 		{
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
+			$n = '';
+			for($i=0; $i < $group->level; $i++)
+				$n .= '<span style="color:grey;">&brvbar;&#8211;</span>';
+				
+			$group->level = $n;
 		}
+		$this->view->groups = $groups;
+	}
+	
+	public function accessAction()
+	{
+		$this->redirectIfNoRights('mod_users', 'view');
+		
+		$viewAccessModel = new CMS_Acl_DbTable_ViewAccess();
+		$viewAccess = $viewAccessModel->getAllViewAccess();
+		$this->view->viewAccess = $viewAccess;
 	}
 	
 	public function createUserAction()

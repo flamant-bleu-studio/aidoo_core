@@ -17,6 +17,8 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
+<div id="content">
+
 <h1>{t}Dashboard{/t}</h1>
 
 <div class="row-fluid">
@@ -187,4 +189,6 @@
 			
 		</div>
 	</div>
+</div>
+
 </div>

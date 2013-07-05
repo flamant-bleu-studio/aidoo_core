@@ -50,6 +50,8 @@ abstract class  CMS_Controller_Action extends Zend_Controller_Action
 		} else if(isset($_SESSION['ajax_apiKey'])) {
 			$this->view->ajax_apiKey = $_SESSION['ajax_apiKey'];
 		}
+		
+		$this->view->backAcl = CMS_Acl_Back::getInstance();
 	}
 	
 	/**

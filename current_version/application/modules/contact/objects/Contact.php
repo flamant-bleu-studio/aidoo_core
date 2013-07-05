@@ -358,12 +358,14 @@ class Contact_Object_Contact extends CMS_Object_MonoLangEntityWithNodes
 				
 		}
 		
+		$prependObject = !empty($xml->object) ? $xml->object : "Message envoyé depuis votre site: ";
+		
 		/** Send Mail **/
 		try {
 			
 			$mail	->setBodyHtml($mailContent)
 					->setFrom($this->_form->getValue('email'), $this->_form->getValue('prenom').' '.$this->_form->getValue('nom'))
-					->setSubject("Message envoyé depuis vote site: ". $_SERVER["SERVER_NAME"])
+					->setSubject($prependObject . $_SERVER["SERVER_NAME"])
 			 		->send();
 			
 			// Envoi du mail automatique à l'utilisateur si le champ est renseigné
