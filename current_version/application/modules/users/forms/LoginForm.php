@@ -25,19 +25,17 @@ class Users_Form_LoginForm extends CMS_Form_Default
 
 	public function init()
 	{
-		$item = new Zend_Form_Element_Text("id");
+		$item = new Zend_Form_Element_Text('id');
 		$item->setLabel(_t('Email'));
 		$item->setRequired(true);
 		$item->addValidator(new Zend_Validate_EmailAddress());
+		$item->setAttrib('placeholder', _t('Email'));
 		$this->addElement($item);
 
-		$item = new Zend_Form_Element_Password("pass");
+		$item = new Zend_Form_Element_Password('pass');
 		$item->setLabel(_t('Password'));
+		$item->setAttrib('placeholder', _t('Password'));
 		$item->setRequired(true);
-		$this->addElement($item);
-		
-		$item= new Zend_Form_Element_Submit("submit");
-		$item->setValue(_t('Submit'));
 		$this->addElement($item);
 		
 	}

@@ -42,8 +42,8 @@
 {if $galerie->transition == "fade"}
 	{appendFile src="/lib/slideShow/jquery.slideShowMaison.js" type="js"}
 {else if $galerie->transition == "slide"}
-	{appendFile type="css" src="/lib/bxslider/bx_styles/bx_styles.css"}
-	{appendFile type="js" src="/lib/bxslider/jquery.bxSlider.min.js"}
+	{appendFile type="css" src="{$smarty.const.COMMON_LIB_PATH}/lib/bxslider/jquery.bxslider.css"}
+	{appendFile type="js" src="{$smarty.const.COMMON_LIB_PATH}/lib/bxslider/jquery.bxslider.min.js"}
 {/if}
 
 {if $galerie->nodes[1] && $galerie->controls_position == "top"}

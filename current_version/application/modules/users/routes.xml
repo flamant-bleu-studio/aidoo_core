@@ -12,8 +12,11 @@
 			<translatable>true</translatable>
 			<frontFiles>
 				<file src="/controllers/FrontController.php" />
+				<file src="/controllers/LoginController.php" />
 				<folder src="/views/front" />
+				<folder src="/views/login" />
 				<file src="/forms/Login.php" />
+				<file src="/forms/LoginForm.php" />
 				<file src="/forms/Register.php" />
 				<file src="/forms/Edit.php" />
 				<file src="/forms/ForgotPassword.php" />

@@ -60,8 +60,8 @@
 	
 {if $datas.displayMode == "1" || $datas.displayMode == "2"}
 
-	{appendFile type="css" src="/lib/bxslider/bx_styles/bx_styles.css"}
-	{appendFile type="js" src="/lib/bxslider/jquery.bxSlider.min.js"}
+{appendFile type="css" src="{$smarty.const.COMMON_LIB_PATH}/lib/bxslider/jquery.bxslider.css"}
+{appendFile type="js" src="{$smarty.const.COMMON_LIB_PATH}/lib/bxslider/jquery.bxslider.min.js"}
 	
 <script type="text/javascript">
 	$("#bloc-membres-{$id}").find("ul").bxSlider({

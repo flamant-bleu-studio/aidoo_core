@@ -34,7 +34,7 @@
 				<div class="span6">
 										
 						<a href='{routeFull route="front"}' class="menu_dashboard btn btn-warning">
-							<div class="item_icone" id="galerie"></div>
+							<i class="icon-home icon-2x pull-left"></i>
 							<div class="item_title">Ma page d'accueil</div>
 							<div class="item_subtitle">Votre page d'accueil</div>
 						</a>
@@ -44,7 +44,7 @@
 						{if $backAcl->hasPermission("mod_galeriePhoto", "view")}
 						
 							<a href='{routeFull route="galeriePhoto_back"}' class="menu_dashboard btn btn-warning">
-								<div class="item_icone" id="galerie"></div>
+								<i class="icon-picture icon-2x pull-left"></i>
 								<div class="item_title">Galeries d'images</div>
 								<div class="item_subtitle">Gérez vos galeries</div>
 							</a>
@@ -56,7 +56,7 @@
 						{if $backAcl->hasPermission("mod_documents", "view")}
 						<div>	
 							<a href='{routeFull route="documents_back"}' class="menu_dashboard btn btn-warning">
-								<div class="item_icone" id="docs"></div>
+								<i class="icon-file-text icon-2x pull-left"></i>
 								<div class="item_title">Gestion des pages</div>
 								<div class="item_subtitle">Gérez vos pages</div>
 							</a>
@@ -68,7 +68,7 @@
 						{if $backAcl->hasPermission("mod_skins", "view")}
 						<div>	
 							<a href='{routeFull route="skins_back"}' class="menu_dashboard btn btn-warning">
-								<div class="item_icone" id="skin"></div>
+								<i class="icon-adjust icon-2x pull-left"></i>
 								<div class="item_title">{t}Skins Manager{/t}</div>
 								<div class="item_subtitle">Gérez vos designs</div>
 							</a>
@@ -79,7 +79,7 @@
 					{if $backAcl->hasPermission("mod_seo", "view")}
 					<div>	
 						<a href='{routeFull route="seo_back"}' class="menu_dashboard btn btn-warning">
-							<div class="item_icone" id="ref"></div>
+							<i class="icon-search icon-2x pull-left"></i>
 							<div class="item_title">Mon référencement</div>
 							<div class="item_subtitle">Gérez le référencement</div>
 						</a>
@@ -92,7 +92,7 @@
 					{if $backAcl->hasPermission("mod_menu", "view")}
 					<div>	
 						<a href='{routeFull route="menu_back"}' class="menu_dashboard btn btn-warning">
-							<div class="item_icone" id="manage_page"></div>
+							<i class="icon-sitemap icon-2x pull-left"></i>
 							<div class="item_title">Gestion du menu</div>
 							<div class="item_subtitle">Gérez votre menu</div>
 						</a>
@@ -103,7 +103,7 @@
 						{if $backAcl->hasPermission("mod_users", "view")}
 						<div>	
 							<a href='{routeFull route="users_back"}' class="menu_dashboard btn btn-warning">
-								<div class="item_icone" id="users"></div>
+								<i class="icon-group icon-2x pull-left"></i>
 								<div class="item_title">{t}Users Manager{/t}</div>
 								<div class="item_subtitle">Gérez les utilisateurs</div>
 							</a>
@@ -115,7 +115,7 @@
 						{if $backAcl->hasPermission("mod_bloc", "view")}
 						<div>	
 							<a href='{routeFull route="blocs_back"}' class="menu_dashboard btn btn-warning">
-								<div class="item_icone" id="bloc"></div>
+								<i class="icon-th-large icon-2x pull-left"></i>
 								<div class="item_title">{t}Blocks Manager{/t}</div>
 								<div class="item_subtitle">Gérez tous vos blocs</div>
 							</a>
@@ -127,7 +127,7 @@
 						{if $backAcl->hasPermission("mod_diaporama", "view")}
 						<div>	
 							<a href='{routeFull route="diaporama_back"}' class="menu_dashboard btn btn-warning">
-								<div class="item_icone" id="diapos"></div>
+								<i class="icon-film icon-2x pull-left"></i>
 								<div class="item_title">Gestion des diaporamas</div>
 								<div class="item_subtitle">Gérez vos diaporamas</div>
 							</a>
@@ -140,7 +140,7 @@
 						{if $backAcl->hasPermission("mod_advertising", "view")}
 						<div>	
 							<a href='{routeFull route="advertising_back"}' class="menu_dashboard btn btn-warning">
-								<div class="item_icone" id="pubs"></div>
+								<i class="icon-euro icon-2x pull-left"></i>
 								<div class="item_title">Vos Publicités</div>
 								<div class="item_subtitle">Gérez vos campagnes</div>
 							</a>
