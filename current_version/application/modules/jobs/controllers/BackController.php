@@ -117,11 +117,7 @@ class Jobs_BackController extends Zend_Controller_Action
 					$job->fromArray($form->getValues());
 					$id = $job->save();
 					
-					// Permissions
-					if($_POST['ACL'])
-		            	$backAcl->addPermissionsFromAclForm("mod_jobs-".$id, $_POST['ACL']);
-					else
-						$backAcl->addPermissionsFromDefaultAcl("mod_jobs-".$id, "mod_jobs-default");
+					$backAcl->addPermissionsFromDefaultAcl("mod_jobs-".$id, "mod_jobs-default");
 					
 					$page = new CMS_Page_PersistentObject();
 					
@@ -188,10 +184,7 @@ class Jobs_BackController extends Zend_Controller_Action
 					$job->fromArray($form->getValues());
 					$job->save();
 					
-					if($_POST['ACL'])
-		            	$backAcl->addPermissionsFromAclForm("mod_jobs-".$id, $_POST['ACL']);
-					else 
-						$backAcl->addPermissionsFromDefaultAcl("mod_jobs-".$id, "mod_jobs-default");
+		            $backAcl->updatePermissionsFromAclForm("mod_jobs-".$id, $_POST['ACL']);
 					
 					$hooks = CMS_Application_Hook::getInstance();
 					
@@ -204,7 +197,7 @@ class Jobs_BackController extends Zend_Controller_Action
 					$page->save();
 					
 					_message(_t('Job updated'));
-					
+
 					if($_POST['save'])
 						return $this->_redirect($this->_helper->route->short('edit', array('id' => $id)));
 					
