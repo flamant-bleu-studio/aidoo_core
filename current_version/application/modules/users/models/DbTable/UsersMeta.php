@@ -38,7 +38,7 @@ class Users_Model_DbTable_UsersMeta extends CMS_Db_Table_Abstract {
 	
 	public function getAllUserMeta ($userId)
 	{
-		return $this->getAdapter()->fetchPairs("SELECT meta, value FROM " . DB_TABLE_PREFIX . "user_metas WHERE user_id = ?", array($userId));
+		return $this->getAdapter()->fetchPairs("SELECT meta, value FROM " . $this->getTableName() ." WHERE user_id = ?", array($userId));
 	}
 
 	public function addUserMeta ($userId, $key, $value)
@@ -92,7 +92,7 @@ class Users_Model_DbTable_UsersMeta extends CMS_Db_Table_Abstract {
 	public function searchUserMeta($value){
 		$db = $this->getAdapter();
 		
-		return $db->fetchCol("SELECT user_id FROM " . DB_TABLE_PREFIX . "user_metas WHERE value LIKE ? ", array("%".$value."%"));
+		return $db->fetchCol("SELECT user_id FROM " . $this->getTableName() ." WHERE value LIKE ? ", array("%".$value."%"));
 	}
 	
 	public function getIDFromMetaKey ($meta, $value)

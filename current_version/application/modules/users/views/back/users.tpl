@@ -12,8 +12,6 @@
 
 <hr />
 
-{$user|var_dump}
-
 <div class="datatable">
 	<table class="table table-bordered table-striped table-hover" id="datatable">
 		<thead>
