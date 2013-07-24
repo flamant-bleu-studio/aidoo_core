@@ -139,4 +139,51 @@ abstract class  CMS_Controller_Action extends Zend_Controller_Action
 		else
 			echo '<script language="javascript">parent.$.fancybox.close();</script>';
 	}
+	
+	public function disableSmartyCache()
+	{
+		$viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
+		$viewRenderer->disableCache();
+	}
+	
+	public function suffixSmartyCache($suffix)
+	{
+		$viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
+		$viewRenderer->setSuffixCacheId($suffix);
+	}
+	
+	public function dispatch($action) {
+		// Notify helpers of action preDispatch state
+        $this->_helper->notifyPreDispatch();
+
+        $this->preDispatch();
+        if ($this->getRequest()->isDispatched()) {
+            if (null === $this->_classMethods) {
+                $this->_classMethods = get_class_methods($this);
+            }
+			
+            // If pre-dispatch hooks introduced a redirect then stop dispatch
+            // @see ZF-7496
+            if (!($this->getResponse()->isRedirect())) {
+                // preDispatch() didn't change the action, so we can continue
+                if ($this->getInvokeArg('useCaseSensitiveActions') || in_array($action, $this->_classMethods)) {
+                    if ($this->getInvokeArg('useCaseSensitiveActions')) {
+                        trigger_error('Using case sensitive actions without word separators is deprecated; please do not rely on this "feature"');
+                    }
+                    /**
+                     * @todo : call only if cache smarty no exist
+                     */
+                    $this->$action();
+                } else {
+                    $this->__call($action, array());
+                }
+            }
+            $this->postDispatch();
+        }
+
+        // whats actually important here is that this action controller is
+        // shutting down, regardless of dispatching; notify the helpers of this
+        // state
+        $this->_helper->notifyPostDispatch();
+	}
 }

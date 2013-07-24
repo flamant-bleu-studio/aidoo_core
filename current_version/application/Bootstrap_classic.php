@@ -51,14 +51,12 @@ class Bootstrap_classic extends Bootstrap
 		Zend_Db_Table_Abstract::setDefaultMetadataCache($cache);
 		CMS_Page_Object::setCache($cache);
 		
-		/*
-		$classFileIncCache = CMS_PATH.'/tmp/zend_cache/pluginLoaderCache.php';
+		$classFileIncCache = CMS_PATH.'/tmp/zend_cache/'.CMS_VERSION.'_pluginLoaderCache.php';
 		
 		if (file_exists($classFileIncCache))
 			include_once $classFileIncCache;
 		
 		Zend_Loader_PluginLoader::setIncludeFileCache($classFileIncCache);
-		*/
 	}
 	
     /**

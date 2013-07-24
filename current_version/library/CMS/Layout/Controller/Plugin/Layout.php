@@ -22,7 +22,6 @@
 
 class CMS_Layout_Controller_Plugin_Layout extends Zend_Layout_Controller_Plugin_Layout
 {	
-	
     public function postDispatch(Zend_Controller_Request_Abstract $request)
     {
     	/*
@@ -38,7 +37,7 @@ class CMS_Layout_Controller_Plugin_Layout extends Zend_Layout_Controller_Plugin_
     	}
     	
     	// ID du cache du layout
-    	$cache_id = 'layout-' . $url .'-' . CURRENT_LANG_CODE;
+    	$cache_id = UNIQUE_ID . '-' . CURRENT_LANG_CODE . '-layout-' . $url;
     	
     	// Réglage
     	$smarty = Zend_Layout::getMvcInstance()->getView()->getEngine();

@@ -77,7 +77,7 @@ class CMS_Smarty_Smarty extends Zend_View_Abstract
 		// Compilation
 		if ((bool)$config['compile']['force'])
 			$this->_smarty->force_compile = true;
-				
+		
 		// Cache
 		if ((bool)$config['cache']['enabled']) {
 			$this->_smarty->setCaching(Smarty::CACHING_LIFETIME_SAVED);
@@ -155,9 +155,24 @@ class CMS_Smarty_Smarty extends Zend_View_Abstract
     	return parent::render($name);
     }
     
-    public function renderByViewName($name)
+    public function renderByViewName($name, $cache = true)
     {
-    	return parent::render($name.'.'.$this->_suffix);
+    	if ($cache === false) {
+    		$saveCaching =$this->_smarty->getCaching();
+    		$saveCacheLifetime = $this->_smarty->getCacheLifetime();
+    		
+    		$this->_smarty->setCaching(Smarty::CACHING_OFF);
+    		$this->_smarty->setCacheLifetime(0);
+    	}
+    	
+    	$return = parent::render($name.'.'.$this->_suffix);
+    	
+    	if ($cache === false) {
+    		$this->_smarty->setCaching($saveCaching);
+	    	$this->_smarty->setCacheLifetime($saveCacheLifetime);
+    	}
+    	
+    	return $return;
     }
     
     protected function _run()

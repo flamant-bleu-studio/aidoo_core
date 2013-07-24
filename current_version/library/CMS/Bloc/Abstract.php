@@ -327,15 +327,13 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 	}
 	
 	final public function renderFront()
-	{		
-
+	{
 		if( $this->noRenderBloc !== false)
 			return "";
-
+		
 		/* Instance Smarty */
 		$view = Zend_Layout::getMvcInstance()->getView();
 		$smarty = $view->getEngine();
-		
 		
 		/* Variables de vue */
 		$view->id			= $this->id_item;
@@ -344,8 +342,12 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 		$view->nameBloc 	= $this->getNameBloc();
 		
 		/* Réglage du cache */
-		$smarty->cache_id   	= 'bloc-' . $this->id_item . '-' . CURRENT_LANG_CODE;
-		$smarty->compile_id 	= 'bloc-' . $this->id_item . '-' . CURRENT_LANG_CODE;
+		if ($this->cacheLifeTime === 0)
+			$saveCacheLifetime = $smarty->getCacheLifetime();
+		
+		$smarty->cache_id   	= UNIQUE_ID . '-' . CURRENT_LANG_CODE . '-bloc-' . $this->id_item;
+		$smarty->compile_id 	= UNIQUE_ID . '-' . CURRENT_LANG_CODE . '-bloc-' . $this->id_item;
+		
 		$smarty->cache_lifetime	= (int) $this->cacheLifeTime;
 		
 		// Le cache du bloc est disponible ?
@@ -360,10 +362,10 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 		$path = APPLICATION_PATH . '/blocs/' . $this->getNameBloc() . '/';
 		$override = PUBLIC_PATH . '/skins/'.SKIN_NAME.'/core_features/tpls_override/blocs/templates/'.$this->getNameBloc().'/';
 		$view->initViewAndOverride($path, $override, $this->templateFront);
-			
+		
 		// render HTML placé dans une variable de vue
 		$view->contentBloc = $view->renderByViewName($this->templateFront);
-			
+		
 		// Définition du chemin des décorateurs et surcharge + initialisation
 		$path = PUBLIC_PATH . '/skins/'.SKIN_NAME.'/core_features/tpls_override/blocs/decorators/';
 		$override = PUBLIC_PATH . '/skins/'.SKIN_NAME.'/core_features/tpls_override/blocs/decorators/'.$this->getNameBloc().'/';
@@ -372,10 +374,10 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 		// render HTML du bloc entier
 		$html = $view->renderByViewName($this->decorator);
 		
-		$smarty->cache_lifetime = 3600;
+		if ($this->cacheLifeTime === 0)
+			$smarty->setCacheLifetime($saveCacheLifetime);
 		
 		return $html;
-
 	}
 	
 	final protected function getDecorators()

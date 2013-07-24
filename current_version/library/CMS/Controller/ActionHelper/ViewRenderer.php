@@ -22,6 +22,24 @@
 
 class CMS_Controller_ActionHelper_ViewRenderer extends Zend_Controller_Action_Helper_ViewRenderer
 {
+	protected $_cacheIsDisabled = false;
+	protected $_suffixCacheId= '';
+	
+	public function setSuffixCacheId($suffix)
+	{
+		$this->_suffixCacheId = $suffix;
+	}
+	
+	public function disableCache()
+	{
+		$this->_cacheIsDisabled = true;
+	}
+	
+	public function enableCache()
+	{
+		$this->_cacheIsDisabled = false;
+	}
+	
 	public function postDispatch()
 	{
 		if ($this->_shouldRender()) {
@@ -39,14 +57,29 @@ class CMS_Controller_ActionHelper_ViewRenderer extends Zend_Controller_Action_He
 	    	}
 	    	
 	    	// ID du cache du layout
-	    	$cache_id = 'view-' . $url .'-' . CURRENT_LANG_CODE;
-	    	 
+	    	$cache_id = UNIQUE_ID . '-' . CURRENT_LANG_CODE . '-view-' . $url . ((!empty($this->_suffixCacheId)) ? '-' . $this->_suffixCacheId : '');
+	    	
 	    	// Réglage
 	    	$smarty = Zend_Layout::getMvcInstance()->getView()->getEngine();
-	    	$smarty->compile_id = $cache_id;
-	    	$smarty->cache_id 	= $cache_id;
-			
+	    	
+	    	if ($this->_cacheIsDisabled === false) {
+	    		$smarty->compile_id = $cache_id;
+	    		$smarty->cache_id 	= $cache_id;
+	    	}
+	    	else {
+	    		$saveCaching 		= $smarty->getCaching();
+	    		$saveCacheLifetime 	= $smarty->getCacheLifetime();
+	    		
+	    		$smarty->setCaching(Smarty::CACHING_OFF);
+	    		$smarty->setCacheLifetime(0);
+	    	}
+	    	
 			$this->render();
+			
+			if ($this->_cacheIsDisabled === false) {
+	    		$smarty->setCaching($saveCaching);
+	    		$smarty->setCacheLifetime($saveCacheLifetime);
+	    	}
 		}
 	}
 }
