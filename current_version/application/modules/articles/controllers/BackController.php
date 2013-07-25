@@ -20,26 +20,19 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class Articles_BackController extends Zend_Controller_Action
+class Articles_BackController extends CMS_Controller_Action
 {
-
-	public function migrationMultiLangAction() {
-		
+	/*public function migrationMultiLangAction()
+	{
 		$model = new Articles_Model_DbTable_Articles();
 		$model->migrationMultiLang();
 		
 		die("finish");
-	}
+	}*/
 	
 	public function indexAction()
 	{		
-		$backAcl = CMS_Acl_Back::getInstance();
-		$this->view->backAcl = $backAcl;
-		
-		if(!$backAcl->hasPermission("mod_articles", "view")) {
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
-		}
+		$this->redirectIfNoRights('mod_articles', 'view');
 		
 		// Récupération des articles
 		$articles = Articles_Object_Article::get(array("isSubmitted" => 0));
@@ -55,11 +48,7 @@ class Articles_BackController extends Zend_Controller_Action
 	
 	public function createAction()
 	{
-		// Check des droits de création d'un article
-		if(!CMS_Acl_Back::getInstance()->hasPermission("mod_articles", "create")) {
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
-		}
+		$this->redirectIfNoRights('mod_articles', 'create');
 		
         $typesPath 	= PUBLIC_PATH.'/skins/'.SKIN_FRONT.'/core_features/content_types/articles';
         
@@ -68,7 +57,7 @@ class Articles_BackController extends Zend_Controller_Action
         }
         catch(Exception $e){}
         
-        if($dir){
+        if ($dir) {
         	
 	        foreach ($dir as $fileinfo) {
 	        	
@@ -85,7 +74,6 @@ class Articles_BackController extends Zend_Controller_Action
 			
 			$this->view->types = $types;
         }
-
 	}
 	
 	public function createdocumentAction()
@@ -252,8 +240,6 @@ class Articles_BackController extends Zend_Controller_Action
 		$form->getElement("date_end")->setValue($date_end);
 		
 		$this->view->form = $form;
-		        
-        $this->view->backAcl = $backAcl;
 	}
 	
 	public function editAction()
@@ -436,7 +422,6 @@ class Articles_BackController extends Zend_Controller_Action
 		}
 		
 		$this->view->form = $form;
-		$this->view->backAcl = $backAcl;
 	}
 	
 	public function deleteAction ()
@@ -547,7 +532,6 @@ class Articles_BackController extends Zend_Controller_Action
 			_error(_t("Insufficient rights"));
 			$this->closeandredirect($this->_redirect($this->_helper->route->full('admin')));
 		}
-		$this->view->backAcl = $backAcl;
 		
 		$form = new Articles_Form_Categorie();
 		
@@ -638,7 +622,6 @@ class Articles_BackController extends Zend_Controller_Action
 			_error(_t("Insufficient rights"));
 			$this->closeandredirect($this->_redirect($this->_helper->route->full('admin')));
 		}
-		$this->view->backAcl = $backAcl;
 		
 		$form = new Articles_Form_Categorie();
 		$categorie = new Articles_Object_Categorie($id, 'all');
@@ -776,7 +759,6 @@ class Articles_BackController extends Zend_Controller_Action
 			$formAcl = new CMS_Acl_Form_BackAclForm("mod_articles");
 	    	$this->view->formAcl = $formAcl;
 		}
-		$this->view->backAcl = $backAcl;
 	}
 	
 	public function editOptionsCategoryAction() {

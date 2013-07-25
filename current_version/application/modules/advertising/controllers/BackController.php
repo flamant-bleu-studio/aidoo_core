@@ -20,12 +20,11 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class Advertising_BackController extends Zend_Controller_Action
+class Advertising_BackController extends CMS_Controller_Action
 {
 	public function indexAction()
 	{
 		$backAcl = CMS_Acl_Back::getInstance();
-		$this->view->backAcl = $backAcl;
 		
 		if($backAcl->hasPermission("mod_advertising", "view"))
 		{
@@ -69,7 +68,6 @@ class Advertising_BackController extends Zend_Controller_Action
 	public function createAction()
 	{
 		$backAcl = CMS_Acl_Back::getInstance();
-		$this->view->backAcl = $backAcl;
 		
 		if($backAcl->hasPermission("mod_advertising", "create"))
 		{
@@ -144,7 +142,6 @@ class Advertising_BackController extends Zend_Controller_Action
 	{
 		$id = intval($this->_request->getParam('id'));
 		$backAcl = CMS_Acl_Back::getInstance();
-		$this->view->backAcl = $backAcl;
 		
 		if($backAcl->hasPermission("mod_advertising-".$id, "edit"))
 		{
@@ -248,7 +245,6 @@ class Advertising_BackController extends Zend_Controller_Action
 		$id = intval($this->_request->getParam('id'));
 		
 		$backAcl = CMS_Acl_Back::getInstance();
-		$this->view->backAcl = $backAcl;
 		
 		if($backAcl->hasPermission("mod_advertising-".$id, "delete"))
 		{
@@ -272,7 +268,6 @@ class Advertising_BackController extends Zend_Controller_Action
 		$id = intval($this->_request->getParam('id'));
 		
 		$backAcl = CMS_Acl_Back::getInstance();
-		$this->view->backAcl = $backAcl;
 		
 		if($backAcl->hasPermission("mod_advertising-".$id, "edit"))
 		{
@@ -297,7 +292,6 @@ class Advertising_BackController extends Zend_Controller_Action
 		$id = intval($this->_request->getParam('id'));
 		
 		$backAcl = CMS_Acl_Back::getInstance();
-		$this->view->backAcl = $backAcl;
 		
 		if($backAcl->hasPermission("mod_advertising-".$id, "edit"))
 		{

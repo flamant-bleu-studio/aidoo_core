@@ -24,16 +24,9 @@ class Admin_ConfigController extends CMS_Controller_Action
 {
 	public function indexAction()
 	{
-		$backAcl = CMS_Acl_Back::getInstance();
-		$this->view->backAcl = $backAcl;
-		
-		if(!$backAcl->hasPermission("admin", "manage")) {
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
-		}
+		$this->redirectIfNoRights('admin', 'manage');
 		
 		$config = CMS_Application_Config::getInstance();
-		
 
 		$mobileForm 	= new Admin_Form_MobileConfig();
 		$apiKey 			= $config->get('apiKey');
@@ -41,7 +34,6 @@ class Admin_ConfigController extends CMS_Controller_Action
 		$mobileForm = new Admin_Form_MobileConfig();
 		$logForm	= new Admin_Form_LogConfig();
 
-		
 		if($this->getRequest()->isPost()) {
 			
 			$sizeLst = array();

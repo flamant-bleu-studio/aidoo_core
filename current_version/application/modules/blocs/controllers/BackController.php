@@ -22,276 +22,209 @@
 
 class Blocs_BackController extends CMS_Controller_Action
 {
-	public function migrationBlocsMultiLangAction() {
-		
+	/*public function migrationBlocsMultiLangAction()
+	{
 		$model = new Blocs_Model_DbTable_Items();
 		$model->migrationBlocsMultiLang();
 		
 		die('finish');
-	}
+	}*/
 	
     public function indexAction()
     {
+    	$this->redirectIfNoRights('mod_bloc', 'view');
+    	
     	$backAcl = CMS_Acl_Back::getInstance();
-    	if($backAcl->hasPermission('mod_bloc', 'view')) {
-			$this->view->backAcl = $backAcl;
+    	
+		// Récupération des templates
+		$templates = Blocs_Object_Template::get(null, array('title' => 'ASC'));	
 
-			// Récupération des templates
-			$templates = Blocs_Object_Template::get(null, array('title' => 'ASC'));	
-
-			// Récupération des blocs
-			$blocs = CMS_Bloc_Abstract::get();
-			$this->view->blocs = $blocs;
-			
-			/*
-			 * Construction d'un tableau pour informer Javascript
-			 */
-
-			$info = array(); 
-			foreach($templates as &$t) {
-				
-				$i = 1;
-				
-				$info[$t->id_template] = array();
-				
-				$info[$t->id_template]['infos'] = array(
-					'title'		=> $t->title,
-					'theme' 	=> $t->theme,
-					'classCss' 	=> $t->classCss
-				);
-				
-				$info[$t->id_template]['data'] = array();
-				
-				if($t->defaut == 1)
-					$this->view->defaultTemplate = $t->id_template;
-					
-				if( $itemsPos = $t->getItemsPosition() ){
-				
-					foreach($itemsPos as $type => &$placeholders){
+		// Récupération des blocs
+		$blocs = CMS_Bloc_Abstract::get();
+		$this->view->blocs = $blocs;
 		
-						$info[$t->id_template]['data'][$type] = array();
-						
-						foreach($placeholders as $ph => &$pos){
-						
-							$info[$t->id_template]['data'][$type][$ph] = array();
-							
-							foreach($pos as $key => $id){
-								
-								// Si ce bloc n'existe plus
-								if(!isset($blocs[$id])){
-									
-									unset($itemsPos[$type][$ph][$key]);
-									
-									$t->setItemsPosition($itemsPos);
-									$t->save();
-									
-									_warning('Le bloc '.$id.' n\'existait plus et a donc été supprimé des templates l\'utilisant...');
-									continue;
-								}
-								
-								$info[$t->id_template]['data'][$type][$ph][$i] = array(
-									'id' 			=> $id,
-									'designation' 	=> $blocs[$id]->designation,
-									'type' 			=> $blocs[$id]->getType()
-								);
+		/*
+		 * Construction d'un tableau pour informer Javascript
+		 */
+
+		$info = array(); 
+		foreach($templates as &$t) {
+			
+			$i = 1;
+			
+			$info[$t->id_template] = array();
+			
+			$info[$t->id_template]['infos'] = array(
+				'title'		=> $t->title,
+				'theme' 	=> $t->theme,
+				'classCss' 	=> $t->classCss
+			);
+			
+			$info[$t->id_template]['data'] = array();
+			
+			if($t->defaut == 1)
+				$this->view->defaultTemplate = $t->id_template;
+				
+			if( $itemsPos = $t->getItemsPosition() ){
+			
+				foreach($itemsPos as $type => &$placeholders){
 	
-								$i++;
+					$info[$t->id_template]['data'][$type] = array();
+					
+					foreach($placeholders as $ph => &$pos){
+					
+						$info[$t->id_template]['data'][$type][$ph] = array();
+						
+						foreach($pos as $key => $id){
+							
+							// Si ce bloc n'existe plus
+							if(!isset($blocs[$id])){
+								
+								unset($itemsPos[$type][$ph][$key]);
+								
+								$t->setItemsPosition($itemsPos);
+								$t->save();
+								
+								_warning('Le bloc '.$id.' n\'existait plus et a donc été supprimé des templates l\'utilisant...');
+								continue;
 							}
+							
+							$info[$t->id_template]['data'][$type][$ph][$i] = array(
+								'id' 			=> $id,
+								'designation' 	=> $blocs[$id]->designation,
+								'type' 			=> $blocs[$id]->getType()
+							);
+
+							$i++;
 						}
 					}
 				}
-				else {
-					/*
-					 * En JSON, un tableau associatif est un Object, un tableau vide est un Array.
-					 * Notre mécanique JS de gestion des blocs n'est pas prévu pour du type Array. 
-					 */
-					$info[$t->id_template]['data'] = new stdClass();
-				}
 			}
-
-			$this->view->templates = $templates;
-			$this->view->templates_info = json_encode($info);
-			
-
-			/*
-			 * Formulaire template
-			 */
-			
-			$generalForm = new Blocs_Form_General();
-
-			$item = $generalForm->getElement('select_template');
-			foreach($templates as &$t) 
-				$item->addMultiOption($t->id_template, $t->title);
-				
-			$generalForm->setAction($this->_helper->route->short('index'));
-			
-			$this->view->formGeneral = $generalForm;
-			
-			
-			/*
-			 * Informations des blocs
-			 */
-
-			$blocsInfos = Blocs_Lib_Manager::getAllBlocXml();
-			$this->view->blocsInfos = $blocsInfos;
-			
-			
-			// Trie des blocs par type
-			$retour = array();
-			if(!empty($blocs)) {
-				foreach($blocs as $bloc)
-					$retour[$bloc->getType()][] = $bloc;
+			else {
+				/*
+				 * En JSON, un tableau associatif est un Object, un tableau vide est un Array.
+				 * Notre mécanique JS de gestion des blocs n'est pas prévu pour du type Array. 
+				 */
+				$info[$t->id_template]['data'] = new stdClass();
 			}
-			
-			// >> Tri des blocs dans chaque type
-			function sortByTitle($a, $b){
-			    return strcasecmp($a->designation, $b->designation);
-			}
-
-			foreach($retour as &$blocsLst){
-				usort($blocsLst, 'sortByTitle');
-			}
-			
-			// Trie des types de blocs
-			ksort($retour);
-			
-			unset($blocsLst);
-			// <<
-			
-			$this->view->blocsSortByType = $retour;
-			
-			/*
-			 * Calcul d'un index sur la palette de couleur
-			 */
-			$totalTypes = count($retour);
-			$incrementType = round(30 / $totalTypes)-1;
-			$i = 0;
-			
-			$typeIndex = array();
-			foreach ($retour as $k => $e) {
-				$typeIndex[$k] = $i;
-				$i += $incrementType;
-			}
-			
-			$this->view->typeIndex = $typeIndex;
-						
-			/*
-			 * Type de template
-			 */
-			$config = CMS_Application_Config::getInstance();
-			$mobileConf = @json_decode($config->get('mobileConfig'), true);
-			
-			if(is_array($mobileConf) && !empty($mobileConf)) {
-					$this->view->mobileEnabled = ($mobileConf['mobile']) ? true : false;
-					$this->view->tabletEnabled = ($mobileConf['tablet']) ? true : false;
-			}
-			
-			$newForm = new Blocs_Form_New();
-			$newForm->setAction($this->_helper->route->short('create'));
-			$this->view->formNew = $newForm;
-			
-			
-			$formTemplate = new Blocs_Form_Template(array('id' => 'formTemplate'));
-			$item = $formTemplate->getElement('select_template_duplicate');
-			$templates = Blocs_Object_Template::get();
-			foreach($templates as &$t) { $item->addMultiOption($t->id_template, $t->title); }
-			$this->view->formTemplate = $formTemplate;
-			
-			
-			
-			if($backAcl->hasPermission('mod_bloc', 'manage'))
-			{
-				$formAcl = new CMS_Acl_Form_BackAclForm('mod_bloc');
-				$formAcl->setAction(BASE_URL.$this->_helper->route->short('updateAcl'));
-				$formAcl->addSubmit(_t('Submit'));
-				
-		    	$this->view->formAcl = $formAcl;
-			}
-			
-			// Get id template for home page (to not delete template of home page)
-			$home = CMS_Page_Object::get(CMS_Page_Object::HOME_ID);
-			$this->view->idTemplate_homePage = $home->template;
 		}
-		else
+
+		$this->view->templates = $templates;
+		$this->view->templates_info = json_encode($info);
+		
+
+		/*
+		 * Formulaire template
+		 */
+		
+		$generalForm = new Blocs_Form_General();
+
+		$item = $generalForm->getElement('select_template');
+		foreach($templates as &$t) 
+			$item->addMultiOption($t->id_template, $t->title);
+			
+		$generalForm->setAction($this->_helper->route->short('index'));
+		
+		$this->view->formGeneral = $generalForm;
+		
+		
+		/*
+		 * Informations des blocs
+		 */
+
+		$blocsInfos = Blocs_Lib_Manager::getAllBlocXml();
+		$this->view->blocsInfos = $blocsInfos;
+		
+		
+		// Trie des blocs par type
+		$retour = array();
+		if(!empty($blocs)) {
+			foreach($blocs as $bloc)
+				$retour[$bloc->getType()][] = $bloc;
+		}
+		
+		// >> Tri des blocs dans chaque type
+		function sortByTitle($a, $b){
+		    return strcasecmp($a->designation, $b->designation);
+		}
+
+		foreach($retour as &$blocsLst){
+			usort($blocsLst, 'sortByTitle');
+		}
+		
+		// Trie des types de blocs
+		ksort($retour);
+		
+		unset($blocsLst);
+		// <<
+		
+		$this->view->blocsSortByType = $retour;
+		
+		/*
+		 * Calcul d'un index sur la palette de couleur
+		 */
+		$totalTypes = count($retour);
+		$incrementType = round(30 / $totalTypes)-1;
+		$i = 0;
+		
+		$typeIndex = array();
+		foreach ($retour as $k => $e) {
+			$typeIndex[$k] = $i;
+			$i += $incrementType;
+		}
+		
+		$this->view->typeIndex = $typeIndex;
+					
+		/*
+		 * Type de template
+		 */
+		$config = CMS_Application_Config::getInstance();
+		$mobileConf = @json_decode($config->get('mobileConfig'), true);
+		
+		if(is_array($mobileConf) && !empty($mobileConf)) {
+				$this->view->mobileEnabled = ($mobileConf['mobile']) ? true : false;
+				$this->view->tabletEnabled = ($mobileConf['tablet']) ? true : false;
+		}
+		
+		$newForm = new Blocs_Form_New();
+		$newForm->setAction($this->_helper->route->short('create'));
+		$this->view->formNew = $newForm;
+		
+		
+		$formTemplate = new Blocs_Form_Template(array('id' => 'formTemplate'));
+		$item = $formTemplate->getElement('select_template_duplicate');
+		$templates = Blocs_Object_Template::get();
+		foreach($templates as &$t) { $item->addMultiOption($t->id_template, $t->title); }
+		$this->view->formTemplate = $formTemplate;
+		
+		
+		
+		if($backAcl->hasPermission('mod_bloc', 'manage'))
 		{
-			_error(_t('Insufficient rights'));
-			return $this->_redirect($this->_helper->route->full('admin'));
+			$formAcl = new CMS_Acl_Form_BackAclForm('mod_bloc');
+			$formAcl->setAction(BASE_URL.$this->_helper->route->short('updateAcl'));
+			$formAcl->addSubmit(_t('Submit'));
+			
+	    	$this->view->formAcl = $formAcl;
 		}
-    	
+		
+		// Get id template for home page (to not delete template of home page)
+		$home = CMS_Page_Object::get(CMS_Page_Object::HOME_ID);
+		$this->view->idTemplate_homePage = $home->template;
     }
     
     public function createAction()
     {
-		$backAcl = CMS_Acl_Back::getInstance();
-		if ($backAcl->hasPermission('mod_bloc', 'createBlocs'))
-		{
-	    	$this->view->backAcl = $backAcl;
-		
-	    	$type = $this->_request->getParam('id');
-				
-			if(Blocs_Lib_Manager::isValidBlocType($type))
-			{
-				// Instanciation du bloc (vide)
-				$bloc = new $type();
-				
-				// Récupération de son formulaire
-				$form = $bloc->getAdminForm();
-				
-				// Si données valides
-				if(isset($_POST['from']) && $_POST['from'] == 'bloc_form' && $form->isValid($_POST))
-				{
-	
-					// Appel de la methode d'enregistrement
-					$id = $bloc->save($form->getValues());
-					
-					/** Permissions **/
-					if($_POST['ACL'])
-		            	$backAcl->addPermissionsFromAclForm('mod_bloc-'.$id, $_POST['ACL']);
-					else 
-						$backAcl->addPermissionsFromDefaultAcl('mod_bloc-'.$id, 'mod_bloc-default');
-					
-					if ($_POST['submitandquit'])
-						return $this->_redirect($this->_helper->route->short('index'));
-						
-		            return $this->_redirect($this->_helper->route->short('edit', array('id'=>$id)));
-				}
-					
-				$form->setAction($this->_helper->route->short('create', array('id' => $type)));
-				
-				$this->view->form = $form;
-				$this->view->blocAdmin = $bloc->renderAdmin();
-			}
-			else 
-			{
-				throw new Zend_Exception('Ce type de bloc n\'existe pas');
-			}
-			
-			// Affichage du gestionnaire de permission si droit de manage
-			if($backAcl->hasPermission('mod_bloc-default', 'manage'))
-			{
-				$formAcl = new CMS_Acl_Form_BackAclForm('mod_bloc-default');
-				$form->addSubForm($formAcl, 'permissions');
-				$this->view->formAcl = $formAcl;
-			}
-		}
-		else
-		{
-			_error(_t('Insufficient rights'));
-			return $this->_redirect($this->_helper->route->full('admin'));
-		}
-    }
-    
-    public function editAction()
-    {
-    	$id = (int)$this->_request->getParam('id');
+		$this->redirectIfNoRights('mod_bloc', 'createBlocs');
     	
 		$backAcl = CMS_Acl_Back::getInstance();
-		if ($backAcl->hasPermission('mod_bloc-'.$id, 'edit'))
+    	
+		$type = $this->_request->getParam('id');
+			
+		if(Blocs_Lib_Manager::isValidBlocType($type))
 		{
-	    	$this->view->backAcl = $backAcl;
-		
-			// Instanciation du bloc
-			$bloc = CMS_Bloc_Abstract::getBlocInstance($id, 'all');
+			// Instanciation du bloc (vide)
+			$bloc = new $type();
 			
 			// Récupération de son formulaire
 			$form = $bloc->getAdminForm();
@@ -299,36 +232,82 @@ class Blocs_BackController extends CMS_Controller_Action
 			// Si données valides
 			if(isset($_POST['from']) && $_POST['from'] == 'bloc_form' && $form->isValid($_POST))
 			{
-				// Appelle de la methode d'enregistrement
-				$bloc->save($form->getValues());
+
+				// Appel de la methode d'enregistrement
+				$id = $bloc->save($form->getValues());
 				
-				$backAcl->updatePermissionsFromAclForm('mod_bloc-'.$id, $_POST['ACL']);
+				/** Permissions **/
+				if($_POST['ACL'])
+	            	$backAcl->addPermissionsFromAclForm('mod_bloc-'.$id, $_POST['ACL']);
+				else 
+					$backAcl->addPermissionsFromDefaultAcl('mod_bloc-'.$id, 'mod_bloc-default');
 				
 				if ($_POST['submitandquit'])
 					return $this->_redirect($this->_helper->route->short('index'));
-
+					
 	            return $this->_redirect($this->_helper->route->short('edit', array('id'=>$id)));
 			}
-			
-			$form->setAction($this->_helper->route->short('edit', array('id' => $id)));
-			$form->populate($bloc->toArray());
+				
+			$form->setAction($this->_helper->route->short('create', array('id' => $type)));
 			
 			$this->view->form = $form;
 			$this->view->blocAdmin = $bloc->renderAdmin();
-			
-			// Affichage du gestionnaire de permission si droit de manage
-			if($backAcl->hasPermission('mod_bloc-'.$id, 'manage'))
-			{
-				$formAcl = new CMS_Acl_Form_BackAclForm('mod_bloc-'.$id);
-				$form->addSubForm($formAcl, 'permissions');
-				$this->view->formAcl = $formAcl;
-			} 
 		}
-		else
+		else 
 		{
-			_error(_t('Insufficient rights'));
-			return $this->_redirect($this->_helper->route->full('admin'));
+			throw new Zend_Exception('Ce type de bloc n\'existe pas');
 		}
+		
+		// Affichage du gestionnaire de permission si droit de manage
+		if($backAcl->hasPermission('mod_bloc-default', 'manage'))
+		{
+			$formAcl = new CMS_Acl_Form_BackAclForm('mod_bloc-default');
+			$form->addSubForm($formAcl, 'permissions');
+			$this->view->formAcl = $formAcl;
+		}
+    }
+    
+    public function editAction()
+    {
+    	$id = (int)$this->_request->getParam('id');
+    	
+    	$this->redirectIfNoRights('mod_bloc-'.$id, 'edit');
+    	
+		$backAcl = CMS_Acl_Back::getInstance();
+		
+		// Instanciation du bloc
+		$bloc = CMS_Bloc_Abstract::getBlocInstance($id, 'all');
+		
+		// Récupération de son formulaire
+		$form = $bloc->getAdminForm();
+		
+		// Si données valides
+		if(isset($_POST['from']) && $_POST['from'] == 'bloc_form' && $form->isValid($_POST))
+		{
+			// Appelle de la methode d'enregistrement
+			$bloc->save($form->getValues());
+			
+			$backAcl->updatePermissionsFromAclForm('mod_bloc-'.$id, $_POST['ACL']);
+			
+			if ($_POST['submitandquit'])
+				return $this->_redirect($this->_helper->route->short('index'));
+
+            return $this->_redirect($this->_helper->route->short('edit', array('id'=>$id)));
+		}
+		
+		$form->setAction($this->_helper->route->short('edit', array('id' => $id)));
+		$form->populate($bloc->toArray());
+		
+		$this->view->form = $form;
+		$this->view->blocAdmin = $bloc->renderAdmin();
+		
+		// Affichage du gestionnaire de permission si droit de manage
+		if($backAcl->hasPermission('mod_bloc-'.$id, 'manage'))
+		{
+			$formAcl = new CMS_Acl_Form_BackAclForm('mod_bloc-'.$id);
+			$form->addSubForm($formAcl, 'permissions');
+			$this->view->formAcl = $formAcl;
+		} 
     }
     
     public function deleteAction()

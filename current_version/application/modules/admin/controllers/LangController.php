@@ -20,46 +20,36 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class Admin_LangController extends Zend_Controller_Action {
+class Admin_LangController extends CMS_Controller_Action {
 
 	public function indexAction() {
+		
+		$this->redirectIfNoRights('admin', 'view');
+		
+		$config = CMS_Application_Config::getInstance();
+		
+		$backLangs 		= json_decode($config->get("availableBackLang"), true);
+		$backDefault 	= $config->get("defaultBackLang");
+		
+		$frontLangs = json_decode($config->get("availableFrontLang"), true);
+		$frontDefault = $config->get("defaultFrontLang");
 
-		$backAcl = CMS_Acl_Back::getInstance();
+		$this->view->backLangs = $backLangs;
+		$this->view->backDefault = $backDefault;
+		$this->view->frontLangs = $frontLangs;
+		$this->view->frontDefault = $frontDefault;
 
-		if($backAcl->hasPermission("admin", "view")) {
-			
-			$this->view->backAcl = $backAcl;
+		$allLanguages = Zend_Locale::getTranslationList('Language');
 
-			$config = CMS_Application_Config::getInstance();
-			
-			$backLangs 		= json_decode($config->get("availableBackLang"), true);
-			$backDefault 	= $config->get("defaultBackLang");
-			
-			$frontLangs = json_decode($config->get("availableFrontLang"), true);
-			$frontDefault = $config->get("defaultFrontLang");
-
-			$this->view->backLangs = $backLangs;
-			$this->view->backDefault = $backDefault;
-			$this->view->frontLangs = $frontLangs;
-			$this->view->frontDefault = $frontDefault;
-
-			$allLanguages = Zend_Locale::getTranslationList('Language');
-
-			$new = array();
-			foreach ($allLanguages as $key => $value) {
-				if(strlen($key) <= 2 && Zend_Locale::isLocale($key, true))
-					$new[$key] = $value;
-			}
-			asort($new, SORT_LOCALE_STRING);
-
-			$this->view->liste = $new;
-
+		$new = array();
+		foreach ($allLanguages as $key => $value) {
+			if(strlen($key) <= 2 && Zend_Locale::isLocale($key, true))
+				$new[$key] = $value;
 		}
-		else
-		{
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
-		}
+		asort($new, SORT_LOCALE_STRING);
+
+		$this->view->liste = $new;
+		
 	}
 	public function checkFilesAction(){
 		

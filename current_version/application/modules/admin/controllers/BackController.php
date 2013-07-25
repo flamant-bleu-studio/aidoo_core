@@ -20,15 +20,11 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class Admin_BackController extends Zend_Controller_Action
+class Admin_BackController extends CMS_Controller_Action
 {
 
     public function indexAction()
     {
-
-		$backAcl = CMS_Acl_Back::getInstance();
-		$this->view->backAcl = $backAcl;
-		
 		//Statistiques sur le tableau de bord		
 		$config = CMS_Application_Config::getInstance();
 		$campaign = json_decode($config->get("social"));
