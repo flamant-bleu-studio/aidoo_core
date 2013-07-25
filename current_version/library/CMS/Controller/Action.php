@@ -152,6 +152,11 @@ abstract class  CMS_Controller_Action extends Zend_Controller_Action
 		$viewRenderer->setSuffixCacheId($suffix);
 	}
 	
+	public function _redirectCurrentPage()
+	{
+		$this->_redirect($this->_helper->route->magic($this->getRequest()->getActionName()));
+	}
+	
 	public function dispatch($action) {
 		// Notify helpers of action preDispatch state
         $this->_helper->notifyPreDispatch();

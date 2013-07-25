@@ -111,8 +111,8 @@ class Users_BackController extends CMS_Controller_Action
 		}
 		$userForm->setAction( $this->_helper->route->short('create-user') );
 		$this->view->form = $userForm;
-
 	}
+	
 	public function createGroupAction()
 	{
 		$groupForm = new Users_Form_GroupForm();
@@ -141,12 +141,13 @@ class Users_BackController extends CMS_Controller_Action
 		$this->view->form = $groupForm;
 
 	}
+	
 	public function createViewaccessAction()
 	{
-
+		$this->redirectIfNoRights('mod_users', 'manage');
+		
 		$viewAccessForm = new Users_Form_ViewAccessForm();
 		
-
 		if($this->getRequest()->isPost()) {
 			if($viewAccessForm->isValid($_POST)) {
 				
@@ -178,7 +179,6 @@ class Users_BackController extends CMS_Controller_Action
 		$viewAccessForm->addElement('submit', 'submit', array('label' => _t("Create view-access")));
 		
 		$this->view->form = $viewAccessForm;
-
 	}
 	
 	public function editUserAction()
@@ -362,7 +362,6 @@ class Users_BackController extends CMS_Controller_Action
 		_message(_t('group deleted'));
 
 	    return $this->_redirect( $this->_helper->route->short('index'));
-	    
 	}
 	
 	public function activeUserAction()
@@ -469,53 +468,46 @@ class Users_BackController extends CMS_Controller_Action
 		$form->setAction($this->_helper->route->short('export'));
 		$this->view->form = $form;
 	}
-
-	public function editOptionsUsersAction() {
-		$this->_helper->layout()->setLayout('lightbox');
 	
-		$backAcl = CMS_Acl_Back::getInstance();
-		if($backAcl->hasPermission("mod_users", "manage")){
-				
-			$form = new Users_Form_OptionsUsers();
-				
-			$config = CMS_Application_Config::getInstance();
-				
-			if($this->getRequest()->isPost()){
-				if($form->isValid($_POST)){
-	
-						
-					$config->set("mod_users-options", json_encode($form->getValues()));
-						
-					$backAcl->updatePermissionsFromAclForm("mod_users", $_POST['ACL']);
-	
-					return $this->closeIframe();
-				}
-			}
-			else {
-				$options = json_decode($config->get("mod_users-options"), true);
-	
-				if($options)
-					$form->populate($options);
-					
-			}
-				
-			$form->setAction($this->_helper->route->short('edit-options-users'));
-			$this->view->form = $form;
-				
-			$formAcl = new CMS_Acl_Form_BackAclForm("mod_users");
-			$this->view->formAcl = $formAcl;
-		}
-	}
-	
-	public function closeandredirect($url)
+	public function optionsAction()
 	{
-		// reloading or updating the parent windows will force the popup to close
-		echo '<script language="javascript">
-				parent.$.fancybox.close();
-				parent.location.href="'.BASE_URL.$url.'";
-			</script>';
+		$this->redirectIfNoRights('mod_users', 'manage');
+		
+		$form = new Users_Form_OptionsUsers();
+		
+		$config = CMS_Application_Config::getInstance();
+		
+		if ($this->getRequest()->isPost()) {
+			if ($form->isValid($_POST)) {
+				$config->set("mod_users-options", json_encode($form->getValues()));
+				$this->_redirectCurrentPage();
+			}
+		}
+		else {
+			$options = json_decode($config->get("mod_users-options"), true);
+			
+			if($options)
+				$form->populate($options);
+		}
+		
+		$this->view->form = $form;
 	}
-	public function closeIframe() {
-		echo '<script language="javascript">parent.$.fancybox.close();</script>';
+	
+	public function permissionsAction()
+	{
+		$this->redirectIfNoRights('mod_users', 'manage');
+		
+		$backAcl = CMS_Acl_Back::getInstance();
+		
+		$formAcl = new CMS_Acl_Form_BackAclForm("mod_users");
+		
+		if ($this->getRequest()->isPost()) {
+			if ($formAcl->isValid($_POST)) {
+				$backAcl->updatePermissionsFromAclForm("mod_users", $_POST['ACL']);
+				$this->_redirectCurrentPage();
+			}
+		}
+		
+		$this->view->formAcl = $formAcl;
 	}
 }
