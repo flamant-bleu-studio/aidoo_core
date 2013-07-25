@@ -27,7 +27,7 @@ function appendSeoTabMenu($tabs)
 	$backAcl = CMS_Acl_Back::getInstance();
 	if($backAcl->hasPermission("mod_seo", "view"))
 	{
-		$tabs['seo'] = array("title" => "SEO", "routeName" => "seo_back",  "moduleName" => "seo", "controllerName" => "back", "icon" => "ref.png");
+		$tabs['seo'] = array("title" => "SEO", "routeName" => "seo_back",  "moduleName" => "seo", "controllerName" => "back", "actionName" => "pages");
 	}
 	return $tabs;
 }
