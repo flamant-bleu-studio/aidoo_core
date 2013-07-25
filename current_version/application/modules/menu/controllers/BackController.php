@@ -20,115 +20,108 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class Menu_BackController extends Zend_Controller_Action {
+class Menu_BackController extends CMS_Controller_Action {
 
-	public function migrationMultiLangAction() {
-	
+	/*public function migrationMultiLangAction()
+	{
 		$model = new Menu_Model_DbTable_Menu();
 		$model->migrationMultiLang();
 		       
 		die("finish");
-	}
+	}*/
 	
-	public function indexAction() {
-
+	public function indexAction()
+	{
 		// Unset session liaison module externe
 		$session = new Zend_Session_Namespace('createFromMenu');
 		$session->unsetAll();
-			
-		$backAcl = CMS_Acl_Back::getInstance();
 		
-		if($backAcl->hasPermission("mod_menu", "view")) {
-			$this->view->backAcl = $backAcl;
-
-			$id_lst = Menu_Object_Menu::getAllMenuID();
+		$this->redirectIfNoRights('mod_menu', 'view');
+		
+		$backAcl = CMS_Acl_Back::getInstance();
+		$this->view->backAcl = $backAcl;
+		
+		$id_lst = Menu_Object_Menu::getAllMenuID();
+		
+		$menus = array();
+		foreach ($id_lst as $id) {
+			$object = new Menu_Object_Menu((int)$id);
+			$object->generate();
 			
-			$menus = array();
-			foreach ($id_lst as $id) {
-				$object = new Menu_Object_Menu((int)$id);
-				$object->generate();
-				
-				$menus[] = $object;
-			}
-							
-			$this->view->menus = $menus;
-			$this->view->type_folder = Menu_Object_Item::$TYPE_FOLDER;
-			
-			if($backAcl->hasPermission("mod_menu", "manage"))
-			{
-				$formAcl = new CMS_Acl_Form_BackAclForm("mod_menu");
-				$formAcl->setAction(BASE_URL.$this->_helper->route->short('update-acl'));
-				$formAcl->addSubmit(_t("Submit"));
-				
-		    	$this->view->formAcl = $formAcl;
-			}
+			$menus[] = $object;
 		}
-		else
-		{
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
-		}
+		
+		$this->view->menus = $menus;
+		$this->view->type_folder = Menu_Object_Item::$TYPE_FOLDER;
 	}
 	
-	public function addMenuAction() {
+	public function permissionsAction()
+	{
+		$this->redirectIfNoRights('mod_menu', 'manage');
 		
 		$backAcl = CMS_Acl_Back::getInstance();
-		if(!$backAcl->hasPermission("mod_menu", "create")) {
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
+		
+		$formAcl = new CMS_Acl_Form_BackAclForm('mod_menu');
+		$formAcl->addSubmit(_t('Submit'));
+		
+		if ($this->getRequest()->isPost() && $formAcl->isValid($_POST)) {
+			$backAcl->updatePermissionsFromAclForm('mod_menu', $_POST['ACL']);
+			$this->_redirectCurrentPage();
 		}
 		
-		/** FORM **/
+    	$this->view->formAcl = $formAcl;
+	}
+	
+	public function addMenuAction()
+	{
+		$this->setLayoutIframe();
+		
+		$this->redirectIfNoRights('mod_menu', 'menu');
+		
+		$backAcl = CMS_Acl_Back::getInstance();
+		
 		$form = new Menu_Form_Menu();
 		
-		/** POST **/
-		if($this->getRequest()->isPost()) {
-			if($form->isValid($_POST)) {
-
-				$menu = new Menu_Object_Menu();
-				
-				$menu->label = $_POST["label"];
-				$menu->subtitle = $_POST["subtitle"];
-				$menu->type = Menu_Object_Item::$TYPE_SYSTEM;
-				
-				$id = $menu->save();
-				
-				/** DATAS - Permissions **/
-				if($_POST['ACL'])
-		            $backAcl->addPermissionsFromAclForm("mod_menu-menu-".$id, $_POST['ACL']);
-				else 
-					$backAcl->addPermissionsFromDefaultAcl("mod_menu-menu-".$id, "mod_menu-menu-default");
-				
-				_message(_t('Menu created'));
-				
-				return $this->_redirect($this->_helper->route->short('index'));
-			}
+		if ($this->getRequest()->isPost() && $form->isValid($_POST)) {
+			$menu = new Menu_Object_Menu();
+			
+			$menu->label = $_POST["label"];
+			$menu->subtitle = $_POST["subtitle"];
+			$menu->type = Menu_Object_Item::$TYPE_SYSTEM;
+			
+			$id = $menu->save();
+			
+			if($_POST['ACL'])
+	            $backAcl->addPermissionsFromAclForm("mod_menu-menu-".$id, $_POST['ACL']);
+			else 
+				$backAcl->addPermissionsFromDefaultAcl("mod_menu-menu-".$id, "mod_menu-menu-default");
+			
+			_message(_t('Menu created'));
+			
+			$this->closeFancyboxAndRefresh();
 		}
 		
 		/** Permissions **/
-		if($backAcl->hasPermission("mod_menu-menu-default", "manage"))
-		{
+		if ($backAcl->hasPermission("mod_menu-menu-default", "manage")) {
 			$formAcl = new CMS_Acl_Form_BackAclForm("mod_menu-menu-default");
 			$form->addSubForm($formAcl, "permissions");	
 			$this->view->formAcl = $formAcl;
 		}
 		
-		/** View **/
 		$this->view->backAcl = $backAcl;
 		$this->view->form = $form;
 	}
-	public function addItemAction() {
-		
-		$this->_helper->layout()->setLayout('lightbox');
+	
+	public function addItemAction()
+	{
+		$this->setLayoutIframe();
 		
 		$menu_id 	= (int)$this->_request->getParam('id');
 		$parent_id 	= (int)$this->_request->getParam('elem') ? (int)$this->_request->getParam('elem') : $menu_id;
 		
+		$this->redirectIfNoRights('mod_menu-'.$menu_id, 'insert');
+		
 		$backAcl = CMS_Acl_Back::getInstance();
-		if(!$backAcl->hasPermission("mod_menu-menu-".$menu_id, "insert")) {
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
-		}
 		
 		$form = new Menu_Form_Item();
 
@@ -204,7 +197,6 @@ class Menu_BackController extends Zend_Controller_Action {
 				}
 			}
 		
-			/** PERSMISSIONS **/
 			$form->setAction( $this->_helper->route->short('additem', array('id' => $menu_id, 'elem' => $parent_id)) );
 			
 			if($backAcl->hasPermission("mod_menu-item-default", "manage"))
@@ -217,19 +209,18 @@ class Menu_BackController extends Zend_Controller_Action {
 			/** VIEW **/
 			$this->view->backAcl = $backAcl;
 			$this->view->form = $form;
-		
 	}
-	public function addFolderAction() {
-		$this->_helper->layout()->setLayout('lightbox');
+	
+	public function addFolderAction()
+	{
+		$this->setLayoutIframe();
 		
 		$menu_id 	= (int)$this->_request->getParam('id');
 		$parent_id 	= (int)$this->_request->getParam('elem');
-
+		
+		$this->redirectIfNoRights('mod_menu-menu-'.$menu_id, 'insert');
+		
 		$backAcl = CMS_Acl_Back::getInstance();
-		if(!$backAcl->hasPermission("mod_menu-menu-".$menu_id, "insert")) {
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
-		}
 		
 		/** FROM **/
 		$form = new Menu_Form_Folder();
@@ -277,15 +268,13 @@ class Menu_BackController extends Zend_Controller_Action {
 				}
 				_message(_t('menu item created'));
 				
-				$url = $this->_helper->route->short('index');
-				$this->closeandredirect($url);
+				$this->closeFancyboxAndRefresh();
 			}
 		}
 		
 		/** PERSMISSIONS **/
 		$form->setAction($this->_helper->route->short('add-folder', array('id' => $menu_id, 'elem' => $parent_id)));
-		if($backAcl->hasPermission("mod_menu-item-default", "manage"))
-		{
+		if ($backAcl->hasPermission("mod_menu-item-default", "manage")) {
 			$formAcl = new CMS_Acl_Form_BackAclForm("mod_menu-item-default");
 			$form->addSubForm($formAcl, "permissions");
 			$this->view->formAcl = $formAcl;
@@ -296,87 +285,68 @@ class Menu_BackController extends Zend_Controller_Action {
 		$this->view->form = $form;
 	}
 	
-	/** EDIT **/
-	
 	public function editMenuAction()
 	{
-		$id = $this->_request->getParam('id');
-		$backAcl = CMS_Acl_Back::getInstance();
+		$this->setLayoutIframe();
 		
-		if ($backAcl->hasPermission("mod_menu-menu-".$id, "edit"))
-		{
-			/** EDIT **/
-			$item = new Menu_Object_Item((int)$id, "all");
-			
-			/** FROM **/
-			$form = new Menu_Form_Menu();
+		$id = (int)$this->_request->getParam('id');
+		
+		$this->redirectIfNoRights('mod_menu-menu-'.$id, 'edit');
+		
+		$backAcl = CMS_Acl_Back::getInstance();
+		$item = new Menu_Object_Item($id, 'all');
+		
+		/** FROM **/
+		$form = new Menu_Form_Menu();
+		
+		if ($this->getRequest()->isPost()) {
+			if ($form->isValid($_POST)) {
+				/** DATAS **/
+				$datas = array();
+				$datas["label"] 	= $_POST["label"];
+				$datas["subtitle"] 	= $_POST["subtitle"];
+				
+				/** UPDATE **/
+				$item->fromArray($datas);
+				$item->save();
+				
+				/** PERMISSIONS **/
+				$backAcl->updatePermissionsFromAclForm("mod_menu-menu-".$id, $_POST['ACL']);
+				
+				$this->closeFancyboxAndRefresh();
+			}
+		}
+		else {
 			$form->populate($item->toArray());
-			
-			if($this->getRequest()->isPost())
-			{
-				if($form->isValid($_POST))
-				{
-					/** DATAS **/
-					$datas = array();
-					$datas["label"] 	= $_POST["label"];
-					$datas["subtitle"] 	= $_POST["subtitle"];
-					
-					/** UPDATE **/
-					$item->fromArray($datas);
-					$item->save();
-					
-					/** PERMISSIONS **/
-					$backAcl->updatePermissionsFromAclForm("mod_menu-menu-".$id, $_POST['ACL']);
-					
-					return $this->_redirect($this->_helper->route->short('index'));
-				}
-				else
-				{
-					$form->populate($_POST);
-					_message(_t('invalid form'));
-				}
-			}
-			
-			/** PERMISSIONS **/
-			$form->setAction($this->_helper->route->short('edit-menu', array('id' => $id)) );
-			// Affichage du gestionnaire de permission si droit de manage
-			if($backAcl->hasPermission("mod_menu-menu-".$id, "manage"))
-			{
-				$formAcl = new CMS_Acl_Form_BackAclForm("mod_menu-menu-".$id);
-				$form->addSubForm($formAcl, "permissions");	
-				$this->view->formAcl = $formAcl;
-			}
-			
-			/** VIEW **/
-			$this->view->form = $form;
-			$this->view->backAcl = $backAcl;
 		}
-		else
-		{
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
+		
+		$form->setAction($this->_helper->route->short('edit-menu', array('id' => $id)));
+		
+		// Affichage du gestionnaire de permission si droit de manage
+		if ($backAcl->hasPermission("mod_menu-menu-".$id, "manage")) {
+			$formAcl = new CMS_Acl_Form_BackAclForm("mod_menu-menu-".$id);
+			$form->addSubForm($formAcl, "permissions");	
+			$this->view->formAcl = $formAcl;
 		}
+		
+		$this->view->form = $form;
+		$this->view->backAcl = $backAcl;
 	}
 	
-	public function editItemAction() {
+	public function editItemAction()
+	{
+		$this->setLayoutIframe();
 		
-		$this->_helper->layout()->setLayout('lightbox');
 		$id = intval($this->_request->getParam('id'));
 		
+		$this->redirectIfNoRights('mod_menu-item-'.$id, 'edit');
+		
 		$backAcl = CMS_Acl_Back::getInstance();
-		if(!$backAcl->hasPermission("mod_menu-item-".$id, "edit")) {	
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
-		}
 		
-		
-		/** EDIT **/
 		$item = new Menu_Object_Item($id, "all");
 		
-		/** FORM **/
 		$form = new Menu_Form_Item();
 		
-		/** POST **/
 		if($this->getRequest()->isPost()) {
 			if($form->isValid($_POST)) {
 				
@@ -461,112 +431,103 @@ class Menu_BackController extends Zend_Controller_Action {
 		/** VIEW **/
 		$this->view->backAcl = $backAcl;
 		$this->view->form = $form;
-		
-
 	}
 	
-	public function editFolderAction() {
-		$this->_helper->layout()->setLayout('lightbox');
+	public function editFolderAction()
+	{
+		$this->setLayoutIframe();
 		
 		$id = intval($this->_request->getParam('id'));
 		
+		$this->redirectIfNoRights('mod_menu-item-'.$id, 'edit');
+		
 		$backAcl = CMS_Acl_Back::getInstance();
-		if($backAcl->hasPermission("mod_menu-item-".$id, "edit"))
-		{
-			/** EDIT **/
-			$item = new Menu_Object_Item($id, "all");
-			
-			/** FORM **/
-			$form = new Menu_Form_Folder();
-			
-			/** POST **/
-			if($this->getRequest()->isPost())
-			{
-				if($form->isValid($_POST))
+		/** EDIT **/
+		$item = new Menu_Object_Item($id, "all");
+		
+		/** FORM **/
+		$form = new Menu_Form_Folder();
+		
+		/** POST **/
+		if ($this->getRequest()->isPost()) {
+			if ($form->isValid($_POST)) {
+				/** DATAS **/
+				$datas = array();
+				$datas["label"] 	= $_POST["label"];
+				$datas["access"] 	= $_POST["access"];
+				$datas["hidetitle"] = $_POST["hidetitle"];
+				$datas["image"]		= $form->getValue("image");
+				
+				$linkType = $form->getValue("linkType");
+				
+				if($linkType == 1)
 				{
-					/** DATAS **/
-					$datas = array();
-					$datas["label"] 	= $_POST["label"];
-					$datas["access"] 	= $_POST["access"];
-					$datas["hidetitle"] = $_POST["hidetitle"];
-					$datas["image"]		= $form->getValue("image");
-					
-					$linkType = $form->getValue("linkType");
-					
-					if($linkType == 1)
-					{
-						$datas["type"] = Menu_Object_Item::$TYPE_FOLDER_LINK_CHILDREN;
-					}
-					else if($linkType == 2)
-					{
-						$datas['type'] = Menu_Object_Item::$TYPE_FOLDER_PAGE;
-						$datas['link'] = $form->getValue("existingpage");
-					}
-					else if($linkType == 3)
-					{
-						$datas['type'] = Menu_Object_Item::$TYPE_FOLDER_EXTERNAL;
-						$datas['link'] = $form->getValue("externalpage");
-					}
-					else if($linkType == 4)
-					{
-						$datas['type'] = Menu_Object_Item::$TYPE_FOLDER_NO_LINK;
-					}
-					
-					$item->fromArray($datas);
-					$item->save();
-					
-					/** PERSMISSIONS **/
-					$backAcl->updatePermissionsFromAclForm("mod_menu-item-".$id, $_POST['ACL']);
-					
-					$this->closeandredirect($this->_helper->route->short('index'));
+					$datas["type"] = Menu_Object_Item::$TYPE_FOLDER_LINK_CHILDREN;
 				}
+				else if($linkType == 2)
+				{
+					$datas['type'] = Menu_Object_Item::$TYPE_FOLDER_PAGE;
+					$datas['link'] = $form->getValue("existingpage");
+				}
+				else if($linkType == 3)
+				{
+					$datas['type'] = Menu_Object_Item::$TYPE_FOLDER_EXTERNAL;
+					$datas['link'] = $form->getValue("externalpage");
+				}
+				else if($linkType == 4)
+				{
+					$datas['type'] = Menu_Object_Item::$TYPE_FOLDER_NO_LINK;
+				}
+				
+				$item->fromArray($datas);
+				$item->save();
+				
+				/** PERSMISSIONS **/
+				$backAcl->updatePermissionsFromAclForm("mod_menu-item-".$id, $_POST['ACL']);
+				
+				$this->closeandredirect($this->_helper->route->short('index'));
 			}
-			else {
-				$form->populate($item->toArray());
-			}
-			
-			/** SET VALUE TYPE PAGE **/
-			if( $item->type == Menu_Object_Item::$TYPE_FOLDER_LINK_CHILDREN )
-			{
-				$form->getElement("linkType")->setValue(1);
-			}
-			else if ( $item->type == Menu_Object_Item::$TYPE_FOLDER_PAGE )
-			{
-				$form->getElement("existingpage")->setValue($item->link);
-				$form->getElement("linkType")->setValue(2);
-			}
-			else if( $item->type == Menu_Object_Item::$TYPE_FOLDER_EXTERNAL)
-			{
-				$form->getElement("externalpage")->setValue($item->link);
-				$form->getElement("linkType")->setValue(3);
-			}
-			else if ( $item->type == Menu_Object_Item::$TYPE_FOLDER_NO_LINK )
-			{
-				$form->getElement("linkType")->setValue(4);
-			}
-			
-			/** PERSMISSIONS **/
-			$form->setAction($this->_helper->route->short('edit-folder', array('id' => $id)));
-			if($backAcl->hasPermission("mod_menu-item-default", "manage"))
-			{
-				$formAcl = new CMS_Acl_Form_BackAclForm("mod_menu-item-default");
-				$form->addSubForm($formAcl, "permissions");
-				$this->view->formAcl = $formAcl;
-			}
-			
-			/** VIEW **/
-			$this->view->backAcl = $backAcl;
-			$this->view->form = $form;
 		}
-		else
+		else {
+			$form->populate($item->toArray());
+		}
+		
+		/** SET VALUE TYPE PAGE **/
+		if( $item->type == Menu_Object_Item::$TYPE_FOLDER_LINK_CHILDREN )
 		{
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
+			$form->getElement("linkType")->setValue(1);
 		}
+		else if ( $item->type == Menu_Object_Item::$TYPE_FOLDER_PAGE )
+		{
+			$form->getElement("existingpage")->setValue($item->link);
+			$form->getElement("linkType")->setValue(2);
+		}
+		else if( $item->type == Menu_Object_Item::$TYPE_FOLDER_EXTERNAL)
+		{
+			$form->getElement("externalpage")->setValue($item->link);
+			$form->getElement("linkType")->setValue(3);
+		}
+		else if ( $item->type == Menu_Object_Item::$TYPE_FOLDER_NO_LINK )
+		{
+			$form->getElement("linkType")->setValue(4);
+		}
+		
+		/** PERSMISSIONS **/
+		$form->setAction($this->_helper->route->short('edit-folder', array('id' => $id)));
+		if($backAcl->hasPermission("mod_menu-item-default", "manage"))
+		{
+			$formAcl = new CMS_Acl_Form_BackAclForm("mod_menu-item-default");
+			$form->addSubForm($formAcl, "permissions");
+			$this->view->formAcl = $formAcl;
+		}
+		
+		/** VIEW **/
+		$this->view->backAcl = $backAcl;
+		$this->view->form = $form;
 	}
 	
-	public function createContentAction() {
-		
+	public function createContentAction()
+	{
 		if(!Zend_Session::namespaceIsset("createContentFromMenu"))
 			throw new Zend_Exception(_t("Missing datas from menu"));
 		
@@ -583,9 +544,8 @@ class Menu_BackController extends Zend_Controller_Action {
 		$hooks 		= CMS_Application_Hook::getInstance();
 		$allPages 	= $hooks->apply_filters("listCreateApi");
 		
-		foreach($allPages as $key => $type)
-		{
-			if($datas["chooseType"] == $key){
+		foreach ($allPages as $key => $type) {
+			if ($datas["chooseType"] == $key) {
 				$apiInfo = $type;
 				break;
 			}
@@ -989,19 +949,5 @@ class Menu_BackController extends Zend_Controller_Action {
 			parent.location.href="'.BASE_URL.$url.'";
 		</script></html>';
 
-	}
-	
-	public function updateAclAction()
-	{
-		if($this->getRequest()->isPost()) 
-		{
-			$backAcl = CMS_Acl_Back::getInstance();
-			if($backAcl->updatePermissionsFromAclForm("mod_menu", $_POST['ACL']))
-				_message(_t("Rights updated"));
-			else 
-				_error(_t("Insufficient rights"));
-		}
-		
-		return $this->_redirect( $this->_helper->route->short('index'));
 	}
 }

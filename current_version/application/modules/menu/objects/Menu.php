@@ -277,9 +277,10 @@ class Menu_Object_Menu extends CMS_Object_MultiLangEntity
 	                	$parent = &$parent[$depths[$i]];
 	            }
 	            
-	            $parent->children[$key] = $item;
-	            $depths[($item->level-1) + 1] = $key;
-	        	
+	            if (!empty($parent) && is_object($parent)) {
+		            $parent->children[$key] = $item;
+		            $depths[($item->level-1) + 1] = $key;
+	            }
 	        }
 	    }
 	    

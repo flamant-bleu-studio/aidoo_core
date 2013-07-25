@@ -129,15 +129,22 @@ abstract class  CMS_Controller_Action extends Zend_Controller_Action
 	 * Ferme la fancybox courante (iframe), et redirige la fenêtre parente si le param 'url' est fournit
 	 * @param string $url Page à charger dans la fenêtre parente
 	 */
-	public function closeFancybox($url = null)
+	public function closeFancybox($url = null, $refresh = false)
 	{
 		if ($this->_helper->layout()->getLayout() != 'lightbox')
 			throw new Exception('Invalid layout');
 		
 		if ($url !== null)
 			echo '<html><script language="javascript">parent.location.href="'.BASE_URL.$url.'";</script></html>';
+		else if ($refresh !== false)
+			echo '<html><script language="javascript">parent.$.fancybox.close();parent.location.reload();</script></html>';
 		else
 			echo '<script language="javascript">parent.$.fancybox.close();</script>';
+	}
+	
+	public function closeFancyboxAndRefresh()
+	{
+		$this->closeFancybox($url = null, $refresh = true);
 	}
 	
 	public function disableSmartyCache()
@@ -190,5 +197,10 @@ abstract class  CMS_Controller_Action extends Zend_Controller_Action
         // shutting down, regardless of dispatching; notify the helpers of this
         // state
         $this->_helper->notifyPostDispatch();
+	}
+	
+	public function setLayoutIframe()
+	{
+		$this->_helper->layout()->setLayout('lightbox');
 	}
 }
