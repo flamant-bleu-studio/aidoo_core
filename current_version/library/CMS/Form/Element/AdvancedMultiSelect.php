@@ -43,8 +43,8 @@ class CMS_Form_Element_AdvancedMultiSelect extends Zend_Form_Element_Multiselect
     {
 		$processLayout = CMS_Application_ProcessLayout::getInstance();
 		
-		$processLayout->appendJsFile(COMMON_LIB_PATH.'/lib/chosen/chosen.jquery.min.js');
-    	$processLayout->appendCssFile(COMMON_LIB_PATH.'/lib/chosen/chosen.css');
+		$processLayout->appendJsFile(COMMON_LIB_PATH.'/lib/chosen/v0.14.0/chosen.jquery.min.js');
+    	$processLayout->appendCssFile(COMMON_LIB_PATH.'/lib/chosen/v0.14.0/chosen.css');
     	
     	$processLayout->appendJsScript("
     		
