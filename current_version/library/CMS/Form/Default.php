@@ -44,10 +44,10 @@ class CMS_Form_Default extends Zend_Form
     	if($initValidation)
     	{
 	    	$append = CMS_Application_ProcessLayout::getInstance();
-	    	$append->appendJsFile(COMMON_LIB_PATH."/lib/formValidation/js/languages/jquery.validationEngine-fr-min.js");
-	    	$append->appendJsFile(COMMON_LIB_PATH."/lib/formValidation/js/contrib/other-validations.js");
-	    	$append->appendJsFile(COMMON_LIB_PATH."/lib/formValidation/js/jquery.validationEngine-min.js");
-			$append->appendCssFile(COMMON_LIB_PATH."/lib/formValidation/css/validationEngine.jquery-min.css");
+	    	$append->appendJsFile(COMMON_LIB_PATH."/lib/formValidation/v2/js/languages/jquery.validationEngine-fr-min.js");
+	    	$append->appendJsFile(COMMON_LIB_PATH."/lib/formValidation/v2/js/contrib/other-validations.js");
+	    	$append->appendJsFile(COMMON_LIB_PATH."/lib/formValidation/v2/js/jquery.validationEngine-min.js");
+			$append->appendCssFile(COMMON_LIB_PATH."/lib/formValidation/v2/css/validationEngine.jquery-min.css");
 			
 			if($startValidation)
     		{
