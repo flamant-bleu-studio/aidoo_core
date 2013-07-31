@@ -451,7 +451,7 @@ class Admin_ConfigController extends CMS_Controller_Action
     	}
     		
     	$smarty = Zend_Layout::getMvcInstance()->getView()->getEngine();
-    	$smarty->clearCache();
+    	$smarty->clearAllCache();
     	
     	_message(_t("Cache deleted successfully"));
     		    			
