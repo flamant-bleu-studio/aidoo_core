@@ -23,7 +23,7 @@
 class Packager_Api_PackageController extends CMS_Controller_Api{
 
 	protected $_actionToken = array();
-	protected static $_rights 	= array('changeStatPlugin' => array('mod_packager' => 'edit'));
+	protected static $_rights 	= array('changeStatePlugin' => array('mod_packager' => 'edit'));
 		
 		
 	public function indexAction() {}
@@ -38,7 +38,7 @@ class Packager_Api_PackageController extends CMS_Controller_Api{
 
 	public function headAction() {}
 	
-	public function changeStatPluginAction()
+	public function changeStatePluginAction()
 	{
 		$config = CMS_Application_Config::getInstance();
 			
@@ -60,7 +60,7 @@ class Packager_Api_PackageController extends CMS_Controller_Api{
 		$config->set("activePlugins", json_encode($configPackageList));
 	}
 	
-	public function changeStatModuleAction() {
+	public function changeStateModuleAction() {
 		if(!$params = CMS_Application_Tools::checkPOST(array('name')))
 			return $this->view->codeError = self::ERROR_CODE_PARAM; // Missing param
 		 
@@ -81,7 +81,7 @@ class Packager_Api_PackageController extends CMS_Controller_Api{
 		$zendConfig->set('activeModule', json_encode($activeModule));
 	}	
 	
-	public function changeStatBlocAction() {
+	public function changeStateBlocAction() {
 		if(!$params = CMS_Application_Tools::checkPOST(array('name')))
 			return $this->view->codeError = self::ERROR_CODE_PARAM; // Missing param
 			

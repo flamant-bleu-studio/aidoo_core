@@ -27,7 +27,7 @@ $hooks = CMS_Application_Hook::getInstance();
 		$backAcl = CMS_Acl_Back::getInstance();
 		if($backAcl->hasPermission("mod_packager", "edit"))
 		{
-			$tabs['config']['children'][] = array("title" => "Packages", "routeName" => "packager_back",  "moduleName" => "packager", "controllerName" => "back", "icon" => "pack.png");
+			$tabs['config']['children'][] = array("title" => "Packages", "routeName" => "packager_back",  "moduleName" => "packager", "controllerName" => "back", "actionName" => "modules");
 		}
 		return $tabs;
 	}

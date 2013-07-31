@@ -21,52 +21,23 @@
  */
 
 class packager_BackController extends CMS_Controller_Action
-{	
-    public function indexAction()
+{
+    public function modulesAction()
     {
-    	$backAcl = CMS_Acl_Back::getInstance();
-		
-		if($backAcl->hasPermission("mod_packager", "edit"))
-		{
-			$this->view->backAcl = $backAcl;
-			
-	    	// List installed packages
-	    	$this->listBlocTypes();
-	    	
-	    	// Upload new packages
-	    	
-	    	$uploadForm = new packager_Form_uploadForm();
+    	$this->redirectIfNoRights('mod_packager', 'edit');
+    	$this->view->modules = $this->getList('modules');
+    }
+    
+	public function blocsAction()
+    {
+    	$this->redirectIfNoRights('mod_packager', 'edit');
+    	$this->view->blocs = $this->getList('blocs');
+    }
 	
-			if($this->getRequest()->isPost()) {
-					
-				if($uploadForm->isValid($_POST)) {
-					if($uploadForm->zip->isUploaded()){
-						$uploadForm->zip->receive();
-						$this->installPackage( CMS_PATH . '/tmp/upload' , basename($uploadForm->zip->getFileName()));
-					}
-				}
-				else {
-					_error(_t('invalid form'));
-				}
-			}
-			
-			$uploadForm->setAction($this->_helper->route->short('index'));
-			$this->view->form = $uploadForm;
-
-			if($backAcl->hasPermission("mod_packager", "manage"))
-			{
-				$formAcl = new CMS_Acl_Form_BackAclForm("mod_packager");
-				$formAcl->setAction(BASE_URL.$this->_helper->route->short('updateAcl'));
-				$formAcl->addSubmit(_t("Submit"));
-
-		    	$this->view->formAcl = $formAcl;
-			} 
-		}
-		else
-		{
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
-		}
+    public function pluginsAction()
+    {
+    	$this->redirectIfNoRights('mod_packager', 'edit');
+    	$this->view->plugins = $this->getList('plugins');
     }
     
     public function  editpluginAction()
@@ -89,7 +60,6 @@ class packager_BackController extends CMS_Controller_Action
 				unset($configPackageList[$pluginFile]);
 			}
 			
-// 			$configPackageList[$pluginFile] = 1-$configPackageList[$pluginFile];
 			$zendConfig->set("activePlugins", json_encode($configPackageList));
 			
 			return $this->_redirect($this->_helper->route->short('index'));
@@ -340,7 +310,27 @@ class packager_BackController extends CMS_Controller_Action
     	return $this->_redirect( $this->_helper->route->short('index'));
     }
     
-    public function listBlocTypes()
+    private function getList($type)
+    {
+    	switch ($type) {
+    		case 'blocs':
+    			$return = $this->getListBlocs();
+    			break;
+    		case 'modules':
+    			$return = $this->getListModules();
+    			break;
+    		case 'plugins':
+    			$return = $this->getListPlugins();
+    			break;
+    		default:
+    			_error('Invalid type packages');
+    			break;
+    	}
+    	
+    	return $return;
+    }
+    
+    public function getListBlocs()
     {
 		$zendConfig = CMS_Application_Config::getInstance();
 		
@@ -372,6 +362,13 @@ class packager_BackController extends CMS_Controller_Action
 			}
 		}
 		
+		return $blocList;	
+    }
+    
+     public function getListPlugins()
+     {
+     	$zendConfig = CMS_Application_Config::getInstance();
+     	
 		/**
 		 * Liste des plugins (filtres)
 		 */
@@ -426,7 +423,12 @@ class packager_BackController extends CMS_Controller_Action
 				);
 			}
 		}
-		
+     }
+
+     public function getListModules()
+     {
+     	$zendConfig = CMS_Application_Config::getInstance();
+     	
 		/**
 		 * Liste des modules
 		 */
@@ -467,41 +469,7 @@ class packager_BackController extends CMS_Controller_Action
 			}
 		}
 		
-    	$this->view->blocList   	= $blocList;
-    	$this->view->pluginList 	= $pluginList;
-    	$this->view->CMSpluginList 	= $CMSpluginList;
-    	$this->view->moduleList 	= $moduleList;
-    }
-    
-    public function compareRecurseDirectory($source, $dest, &$existing, &$nbr)
-    {
-	   	 $ignore = array( '.', '.svn','..' );
-	   	 
-	     $dh = @opendir( $source );
-	     while( false !== ( $file = readdir( $dh ) ) )
-	     { // Loop through the directory 
-		
-	     	if( !in_array( $file, $ignore ) )
-	     	{    
-	 
-	         if( is_dir( "$source/$file" ) )
-	         {
-		         // Its a directory, so we need to keep reading down...
-		         $this->compareRecurseDirectory( "$source/$file", "$dest/$file", $existing, $nbr ); 
-	         } 
-	         else 
-	         {
-				if(file_exists("$dest/$file"))
-				{
-					$existing[$nbr++]="$dest/$file";
-				}
-	         } 
-	 
-	     	}  
-		
-	     }//while
-	     closedir( $dh );
-    	
+		return $moduleList;
     }
     
     public function checkInstalledInstance($packageName,$packageType)
@@ -544,223 +512,5 @@ class packager_BackController extends CMS_Controller_Action
     		break;
     	}
     }
-    
-    public function checkOverwriting( $temppath, $file )
-	{
-		$config = new Zend_Config_Xml($temppath.'/'.$file.'.xml');
-    	$configArray = $config->toArray();
-    	$existing = array();
-    	$nbrDoublon = 0;
-    	
-    	switch ($configArray['type'])
-    	{
-    		case "Bloc":
-    		$packageTypeFolder = "blocs";
-    		break;
-    		
-    		case "Module":
-    		$packageTypeFolder = "modules";
-    		break;
-    		
-    		case "Plugin":
-    		$packageTypeFolder = "plugins";
-    		break;
-    		
-    		default:
-			_error(_t('Install type unsupported'));
-    		break;
-    	}
-    			
-    			
-    	if ($configArray['files'])
-    	{
-             foreach ($configArray['files'] as $fileToCopy)
-             {
-             	if (file_exists(APPLICATION_PATH.'/'.$packageTypeFolder.'/'.$file.'/'.$fileToCopy))
-             	{
-             		$existing[$nbrDoublon++]=APPLICATION_PATH.'/'.$packageTypeFolder.'/'.$file.'/'.$fileToCopy;
-             	}
-             }
-             
-             if (file_exists(APPLICATION_PATH.'/'.$packageTypeFolder.'/'.$file.'/'.$file.'.xml'))
-             {
-				$existing[$nbrDoublon++]=APPLICATION_PATH.'/'.$packageTypeFolder.'/'.$file.'/'.$file.'.xml';
-             }
-    	}
-    	
-    	if ($configArray['folder'])
-    	{
-    		if (file_exists(BASE_PATH.'/'.$configArray['folder']['dest']))
-    		{
-    			$this->compareRecurseDirectory($temppath.'/'.$configArray['folder']['src'], BASE_PATH.'/'.$configArray['folder']['dest'], $existing, $nbrDoublon);
-    		}
-    	}
-	    	
-    	
-    	if ($nbrDoublon==0)
-    	{
-    		$this->executePackageConfig($temppath, $file);
-    	}
-    	else
-    	{
-    		$this->view->existingFiles = $existing;
-    		$this->view->uploadedPackage = $file;
-    	}
-	}
-    
-	public function executePackageConfig( $temppath, $file )
-	{
-
-		$config = new Zend_Config_Xml($temppath.'/'.$file.'.xml');
-    	$configArray = $config->toArray();
-    	
-    	switch ($configArray['type'])
-    	{
-    		case "Bloc":
-    			$packageTypeFolder = "blocs";
-    		break;
-    		case "Module":
-    			$packageTypeFolder = "modules";
-    		break;
-    			
-    		case "Plugin":
-    			$packageTypeFolder = "plugins";
-    		break;
-    			
-    		default:
-			_error(_t('Install type unsupported'));
-    		break;
-    	}
-    			
-    	if ($configArray['files'])
-    	{
-             foreach ($configArray['files'] as $fileToCopy)
-             {
-
-             	if (file_exists($temppath.'/'.$fileToCopy))
-             	{
-             		if (!file_exists(APPLICATION_PATH.'/'.$packageTypeFolder.'/'.$file)){
-             			if(!mkdir(APPLICATION_PATH.'/'.$packageTypeFolder.'/'.$file,0777))
-             				_error(_t('Folder block is not writable'));
-             		}	
-             		
-        			rename($temppath.'/'.$fileToCopy, APPLICATION_PATH.'/'.$packageTypeFolder.'/'.$file.'/'.$fileToCopy);
-
-             	}
-        		else
-        		{
-					_error(_t('No files in the package'));
-        		}
-             }
-             
-             rename($temppath.'/'.$file.'.xml', APPLICATION_PATH.'/'.$packageTypeFolder.'/'.$file.'/'.$file.'.xml');
-
-    	}
-    	
-    	if ($configArray['folder'])
-    	{
-    		rename($temppath.'/'.$configArray['folder']['src'], BASE_PATH.'/'.$configArray['folder']['dest']);
-    	}
-    	
-    	_message(_t('Package installed'));
-	}
-	
-	public function installPackage( $temppath, $file )
-	{
-		$filter     = new CMS_Filter_Decompress(array(
-		    'adapter' => 'Zip',
-		    'options' => array(
-		    'target' => $temppath,
-		    )
-		));
-
-		$compressed = $filter->filter($temppath."/".$file);
-		
-		if ($compressed == true)
-		{
-			$fileNoExtension = substr($file,0,-4);
-			
-			$this->checkOverwriting($temppath,$fileNoExtension);
-		}
-		else
-		{
-			_error(_t('unpack package failed'));
-		}
-	}
-	
-	public function uninstallPackage( $packageName, $packageType, $deleteBdd = true )
-	{
-		if( $packageType == 'Bloc' )
-		{
-			$dir = APPLICATION_PATH.'/blocs/'.$packageName;
-			
-			 if (is_dir($dir))
-			 {
-			     $objects = scandir($dir);
-			     foreach ($objects as $object)
-			     {
-			     	if ($object != "." && $object != "..")
-			     	{
-			        	if (filetype($dir."/".$object) == "dir")
-			         		rmdir($dir."/".$object);
-			        	else
-			        		unlink($dir."/".$object);
-			     	}
-			     }
-			     reset($objects);
-			     rmdir($dir);
-			     _message(sprintf(_t("Package %s sucessfully uninstalled"), $packageName));
-			 }
-			 else
-			 {
-			 	_error(sprintf(_t("Enable to delete %s"), $packageName));
-			 }
-		}
-		elseif ( $packageType == 'Module' )
-		{
-			$pathModules = APPLICATION_PATH.'/modules/';
-			$pathModuleUninstall = $pathModules.$packageName;
-			
-			if(is_dir($pathModuleUninstall))
-			{
-				$configXml = new Zend_Config_Xml($pathModuleUninstall.'/routes.xml', 'config');
-				$config = $configXml->toArray();
-				if($config['uninstallable'] == 'true')
-				{
-				 	if( $deleteBdd && file_exists($pathModuleUninstall.'/uninstall.php') )
-			     		include_once $pathModuleUninstall.'/uninstall.php';
-					
-			     	$this->removeDirectory($pathModuleUninstall, true);
-			     	
-			     	_message(sprintf(_t("Module %s sucessfully uninstalled"), $packageName));
-				}
-				else 
-					_error(sprintf(_t("Package %s can't be uninstalled"), $packageName));
-			}
-			else
-			{
-				_error(sprintf(_t("Enable to delete %s"), $packageName));
-			}
-		}	
-	}
-	
-	private function removeDirectory($pathDirectory, $deleteRacine = true)
-	{
-    	$directory = new DirectoryIterator($pathDirectory);
-
-    	foreach ($directory as $fileinfo)
-    	{
-    		
-        	if ($fileinfo->isFile() || $fileinfo->isLink())
-            	unlink($fileinfo->getPathName());
-            
-        	elseif (!$fileinfo->isDot() && $fileinfo->isDir())
-            	$this->removeDirectory($fileinfo->getPathName());
-            	
-    	}
-		
-    	if($deleteRacine)
-	    	rmdir($pathDirectory);
-	}
 }
 	

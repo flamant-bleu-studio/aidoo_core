@@ -17,6 +17,72 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
+{include file="{$smarty.const.APPLICATION_PATH}/modules/packager/views/back/menu.tpl" active="modules"}
+
+<div id="content">
+	<table id="datatable" class="table table-bordered table-striped table-hover dataTable">
+		<thead>
+			<tr>
+				<th>{t}Name{/t}</th>
+				<th>{t}Version{/t}</th>
+				<th>{t}Type{/t}</th>
+				<th>{t}Description{/t}</th>
+				<th>{t}Action{/t}</th>
+			</tr>
+		</thead>
+		
+		{if $modules != null}
+			<tbody>
+				{foreach from=$modules item=item}
+					<tr>
+						<td>{$item.name}</td>
+						<td>{$item.version}</td>
+						<td>{$item.locationPath} {$item.type}</td>
+						<td>{if isset($item.description)}{$item.description}{/if}</td>
+						<td>
+							{if (isset($item.deactivable)) && ($item.deactivable == "true")}
+								<a href="{routeShort action="load-unload-module" id=$item.name type=$item.type}" data-name="{$item.name}" class="changeStatModule showTooltip btn btn-mini {if $item.load}btn-danger{else}btn-success{/if}" title="{if $item.load}{t}Disable{/t}{else}{t}Enable{/t}{/if}">
+									<i class="icon-off icon-white"></i>
+								</a>
+							{/if}
+						</td>
+					</tr>
+				 {/foreach}
+			 </tbody>
+		{/if}
+		
+	</table>
+</div>
+
+<script>
+{literal}
+$(document).ready(function(){
+	$('.changeStatModule').on('click', function(){
+		$.ajax({
+			url : baseUrl+'/api/packager/package/change-state-module', 
+			data : {
+				name : $(this).data('name')
+			},
+			cache: false,
+			type: 'POST',
+			success : function(e){
+				if (!e.error) {
+					$('.changeStatModule[data-name="' + e.moduleName + '"]').parent().effect("highlight", {}, 1000);		
+					if (e.actualStat == 'disable'){
+						$('.changeStatModule[data-name="' + e.moduleName + '"]').removeClass('btn-danger').addClass('btn-success').attr('title', {/literal}'{t}Enable{/t}'{literal});
+					}else if (e.actualStat == 'enable')
+						$('.changeStatModule[data-name="' + e.moduleName + '"]').removeClass('btn-success').addClass('btn-danger').attr('title', {/literal}'{t}Disable{/t}'{literal});
+				}
+			}
+		});
+		
+		return false;
+	});
+});
+{/literal}
+</script>
+
+{*
 <div class="content_titre">
 	<h1>{t}Packages{/t}</h1>
 	<div>{t}Manage packages{/t}</div>
@@ -327,3 +393,4 @@ $(document).ready(function() {
 });
 </script>
 {/literal}
+*}
