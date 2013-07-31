@@ -56,7 +56,7 @@ class CMS_Form_Element_ColorPicker extends Zend_Form_Element_Text
 					$('#".$this->_name."').val(hex).css('border-color', '#' + hex);
 				}
 			})
-			.live('keyup', function(){
+			.on('keyup', function(){
 				$(this).ColorPickerSetColor(this.value).css('border-color', '#'+this.value);
 			});
 		

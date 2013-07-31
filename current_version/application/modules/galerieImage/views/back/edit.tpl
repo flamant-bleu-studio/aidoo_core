@@ -199,7 +199,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	$("#style").live("change", function(e){
+	$("#style").on("change", function(e){
 		if($(this).val() == 0){
 			$("#details_style_diapo").show();
 		}
