@@ -20,73 +20,49 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class Documents_BackController extends Zend_Controller_Action
+class Documents_BackController extends CMS_Controller_Action
 {
-	
-	public function migrationMultiLangAction() {
-		
+	/*public function migrationMultiLangAction() {
 		$model = new Documents_Model_DbTable_Documents();
 		$model->migrationMultiLang();
-		
 		die("finish");
-	}
+	}*/
 	
-	public function indexAction() {
+	public function indexAction()
+	{
+		$this->redirectIfNoRights('mod_documents', 'view');
 		
-		$backAcl = CMS_Acl_Back::getInstance();
-		$this->view->backAcl = $backAcl;
-		
-		if(!$backAcl->hasPermission("mod_documents", "view")){
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
-		}
-			
-		$this->view->c = Documents_Object_Document::get();
-		
-		if($backAcl->hasPermission("mod_documents", "manage")) {
-			$formAcl = new CMS_Acl_Form_BackAclForm("mod_documents");
-			$formAcl->setAction(BASE_URL.$this->_helper->route->short('updateacl'));
-			$formAcl->addSubmit(_t("Submit"));
-			
-	    	$this->view->formAcl = $formAcl;
-		} 
+		$this->view->docs = Documents_Object_Document::get();
 	}
 	
 	public function createAction()
 	{
-		$backAcl = CMS_Acl_Back::getInstance();
-		if($backAcl->hasPermission("mod_documents", "create"))
-		{
-	        $typesPath 	= PUBLIC_PATH.'/skins/'.SKIN_FRONT.'/core_features/content_types/documents';
-	        
-			try{
-	        	$dir = new DirectoryIterator($typesPath);
-	        }
-	        catch(Exception $e){}
-	        
-	        if($dir){
-	        	$types = array();
-		        foreach ($dir as $fileinfo) {
+		$this->redirectIfNoRights('mod_documents', 'create');
+		
+        $typesPath 	= PUBLIC_PATH.'/skins/'.SKIN_FRONT.'/core_features/content_types/documents';
+        
+		try {
+        	$dir = new DirectoryIterator($typesPath);
+        }
+        catch(Exception $e){}
+        
+        if ($dir) {
+        	$types = array();
+	        foreach ($dir as $fileinfo) {
 				
-		        	if ($fileinfo->isDir() && !$fileinfo->isDot() && file_exists($fileinfo->getPathname().'/type.xml')){
-						$desc = new Zend_Config_Xml($fileinfo->getPathname().'/type.xml');
-						
-						$types[] = array(
-							"type" 			=> $fileinfo->getFileName(),	
-							"name" 			=> $desc->name,
-							"description"	=> $desc->description
-						);
-					}
+	        	if ($fileinfo->isDir() && !$fileinfo->isDot() && file_exists($fileinfo->getPathname().'/type.xml')) {
+					$desc = new Zend_Config_Xml($fileinfo->getPathname().'/type.xml');
+					
+					$types[] = array(
+						"type" 			=> $fileinfo->getFileName(),	
+						"name" 			=> $desc->name,
+						"description"	=> $desc->description
+					);
 				}
-				
-				$this->view->types = $types;
-	        }
-		}
-		else
-		{
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
-		}
+			}
+			
+			$this->view->types = $types;
+        }
 	}
 	
 	public function createdocumentAction()

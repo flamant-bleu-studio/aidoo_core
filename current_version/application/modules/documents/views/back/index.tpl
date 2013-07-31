@@ -17,30 +17,19 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
-<div class="content_titre">
-	<h1>{t}My pages{/t}</h1>
-	<div>{t}Manage my pages{/t}</div>
-</div>
+{include file="{$smarty.const.APPLICATION_PATH}/modules/documents/views/back/menu.tpl" active="pages"}
 
-<div class="zone">
-	<div class="zone_titre">
-		<h2>{t}List of your documents{/t}</h2>
-		<div>{t}All documents of your website{/t}</div>
-	</div>
-	
+<div id="content">
+
 	{if $backAcl->hasPermission("mod_documents", "create")}
-	<div class="pull-left btn_label">
-		<div>{t}Add document{/t}</div>
-		<div class="info_details">{t}Create a new document{/t}</div>
-	</div>
-	
-	<a href="{routeShort action="create"}" class="btn btn-success">
-		<div><i class="icon-plus icon-white"></i> {t}Add{/t}</div>
-	</a>
-
+		<a href="{routeShort action="create"}" class="btn btn-success">
+			<div><i class="icon-plus icon-white"></i> {t}Add{/t}</div>
+		</a>
+		
+		<hr />
 	{/if}
 
-	<table class="datatable table table-bordered table-striped" id="datatable">
+	<table id="datatable" class="table table-bordered table-striped table-hover dataTable">
 		<thead>
 			<tr>
 				<th><span>{t}Title{/t}</span></th>
@@ -51,8 +40,8 @@
 			</tr>
 		</thead>
 		<tbody>
-	{if $c != null}
-		 {foreach from=$c item=v}
+	{if $docs != null}
+		 {foreach from=$docs item=v}
 		 
 			<tr>
 				
@@ -83,32 +72,3 @@
 	</table>
 
 </div>
-
-{if $backAcl->hasPermission("mod_documents", "manage")}
-	<div class="content_titre">
-		<h1>{t}Options{/t}</h1>
-		<div>{t}Choose your options{/t}</div>
-	</div>
-	
-	<div class="zone">
-		<div class="zone_titre">
-			<h2>{t}Module Rights{/t}</h2>
-		</div>
-			
-		<form action="{$formAcl->getAction()}" method="post"> 
-			<div class="droits_content">
-				{$formAcl}
-				<ul class="unstyled">
-					<li><span class="bleu">Manage :</span> éditer les droits</li>
-					<li><span class="bleu">View :</span> voir le module et son contenu</li>
-					<li><span class="bleu">Create :</span> créer de nouveaux articles</li>
-				</ul>
-			</div>
-			<div class="droits_submit">
-				{$formAcl->submit}
-			</div>
-		</form> 
-					
-	</div>
-{/if}	
-	

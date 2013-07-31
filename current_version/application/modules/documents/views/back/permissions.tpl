@@ -17,32 +17,18 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
-{include file="{$smarty.const.APPLICATION_PATH}/modules/documents/views/back/menu.tpl" active="new-pages"}
+{include file="{$smarty.const.APPLICATION_PATH}/modules/seo/views/back/menu.tpl" active="permissions"}
 
 <div id="content">
-	<h3 style="text-align: center;">{t}Select a type for your new document{/t}</h3>
-	
-	{if $types}
-		<div class="choixDoc">		
-			{foreach from=$types item=item}
-				<div>
-					<button id="documents_{$item["type"]}" class="typeChoice" data-choice="{$item["type"]}"></button>
-					<p id="doc_types_desc" class="help-block">
-						{$item["description"]}
-					</p>
-				</div>
-			{/foreach}
-		</div>
-	{else}
-		<p>{t}No type is available{/t}</p>
-	{/if}
+	<form method="post" id="{$formAcl->getId()}"> 
+		{$formAcl}
+		
+		<ul class="unstyled">
+			<li><span class="bleu">Manage :</span> éditer les droits</li>
+			<li><span class="bleu">View :</span> voir le module et son contenu</li>
+			<li><span class="bleu">Create :</span> créer de nouveaux articles</li>
+		</ul>
+		
+		<button class="btn btn-large btn-success">{t}Submit{/t}</button>
+	</form>
 </div>
-
-<script>
-$(document).ready(function(){
-	$(".typeChoice").on('click', function(e){
-		e.preventDefault();
-		window.location.href = "{routeShort action="createdocument"}/" + $(this).attr('data-choice');
-	});
-});
-</script>

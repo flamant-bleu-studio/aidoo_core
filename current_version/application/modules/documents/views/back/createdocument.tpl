@@ -17,6 +17,10 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
+{include file="{$smarty.const.APPLICATION_PATH}/modules/documents/views/back/menu.tpl" active="new-pages"}
+
+<div id="content">
+
 <style>
 	.manage_zone_hide, .manage_zone_show {
 		float:left;
@@ -24,6 +28,8 @@
 		padding-right:7px;
 	}
 </style>
+
+<br />
 
 <form method="post" action="{routeShort action='createdocument' id=$documentType}" id="{$seoForm->getId()}">
 	
@@ -87,6 +93,8 @@
 
 </form>
 
+</div>
+
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -97,13 +105,13 @@ $(document).ready(function(){
 	
 	$(".manage_zone_hide").hide().parent().parent().find(".content").hide();
 
-	$(".manage_zone_hide").live("click", function(){
+	$(".manage_zone_hide").on("click", function(){
 		$(this).parent().parent().find(".content").hide();
 		$(this).hide();
 		$(this).parent().find(".manage_zone_show").show();
 	});
 	
-	$(".manage_zone_show").live("click", function(){
+	$(".manage_zone_show").on("click", function(){
 		$(this).parent().parent().find(".content").show();
 		$(this).hide();
 		$(this).parent().find(".manage_zone_hide").show();
