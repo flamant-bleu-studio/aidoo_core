@@ -100,13 +100,13 @@ $(document).ready(function(){
 		$(this).parent().parent().find(".content").hide();
 	});
 	
-	$(".manage_zone_hide").live("click", function(){
+	$(".manage_zone_hide").on("click", function(){
 		$(this).parent().parent().find(".content").hide();
 		$(this).hide();
 		$(this).parent().find(".manage_zone_show").show();
 	});
 	
-	$(".manage_zone_show").live("click", function(){
+	$(".manage_zone_show").on("click", function(){
 		$(this).parent().parent().find(".content").show();
 		$(this).hide();
 		$(this).parent().find(".manage_zone_hide").show();
