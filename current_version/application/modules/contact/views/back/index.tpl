@@ -193,7 +193,7 @@
 			$(this).parent().find(".showInformations").show();
 		});
 		
-		$(".showInformations, .hideInformations").live("click", function(){
+		$(".showInformations, .hideInformations").on("click", function(){
 			$(this).parent().find(".section_content").toggle();
 			$(this).parent().find(".hideInformations").toggle();
 			$(this).parent().find(".showInformations").toggle();
@@ -212,7 +212,7 @@
 		});
 		
 		// A chaque changement de choix sur le select ou multi select
-		$("input:radio").live("change", function() {
+		$("input:radio").on("change", function() {
 			
 			if( $(this).val() == 0 ) {
 				$(this).parent().parent().parent().parent().find(".type_select").hide();
@@ -226,14 +226,14 @@
 		});
 		
 		// Affichage des réponses auto quand on coche la case
-		$("input[id*='response_check']").live("change", function() {
+		$("input[id*='response_check']").on("change", function() {
 			if( $(this).is(':checked'))
 				$(this).parent().parent().next("div[id*='auto_response']").show();
 			else 
 				$(this).parent().parent().next("div[id*='auto_response']").hide();			
 		});
 		
-		$(".type_select #addSelect").live("click", function(e){
+		$(".type_select #addSelect").on("click", function(e){
 			e.preventDefault();
 			
 			var selector = $(this).parent();
