@@ -40,6 +40,9 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 	protected static $_model;
 	protected static $_modelClass = "Blocs_Model_DbTable_Items";
 	
+	protected $_helperRedirector;
+	protected $_helperRoute;
+	
 	public function __construct($data = null, $id_lang = CURRENT_LANG_ID){
 		
 		// Surcharge du constructeur pour vérifier l'implémentation de l'interface
@@ -47,6 +50,9 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
     		throw new Zend_Exception("Le bloc de class ".get_class($this)." doit implémenter l'interface 'CMS_Bloc_Interface'");
     	
 		parent::__construct($data, $id_lang);
+		
+		$this->_helperRedirector = new Zend_Controller_Action_Helper_Redirector();
+		$this->_helperRoute		 = Zend_Controller_Action_HelperBroker::getExistingHelper('route');
 	}
 
 	/**
@@ -312,7 +318,11 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 		}
 	}
 	
-
+	public function beforeRuntimeAdmin()
+	{
+		
+	}
+	
 	final public function renderAdmin() {
 		$view = Zend_Layout::getMvcInstance()->getView();
 		

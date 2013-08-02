@@ -226,6 +226,8 @@ class Blocs_BackController extends CMS_Controller_Action
 			// Instanciation du bloc (vide)
 			$bloc = new $type();
 			
+			$bloc->beforeRuntimeAdmin();
+			
 			// Récupération de son formulaire
 			$form = $bloc->getAdminForm();
 			
