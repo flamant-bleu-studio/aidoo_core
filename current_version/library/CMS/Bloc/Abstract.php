@@ -227,7 +227,7 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 	public function getAdminForm(){
 		
 		if($class = $this->_adminFormClass)
-			return new $class($this->getDecorators());
+			return new $class($this->getDecorators(), $this->getTemplates());
 		else
 			throw new Zend_Exception("Il n'y a pas de class déclarée pour le form admin");
 		
@@ -415,6 +415,30 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 		}
 		
 		return $decorators;
+	}
+	
+	final protected function getTemplates()
+	{
+		/** Name Skin Front **/
+		$config = CMS_Application_Config::getInstance();
+		$skinFront = $config->get("skinfront");
+		
+		$templates = array();
+				
+		/** Templates in skin **/
+		if ( file_exists(PUBLIC_PATH . '/skins/'.$skinFront.'/core_features/tpls_override/blocs/templates/'.$this->getNameBloc().'/') ) {
+			
+			$filesDirectoryDecorators = new DirectoryIterator(PUBLIC_PATH . '/skins/'.$skinFront.'/core_features/tpls_override/blocs/templates/'.$this->getNameBloc().'/');
+			
+			foreach ($filesDirectoryDecorators as $file) {
+				if ( !$file->isDir() && substr($file, strlen($file)-3, 3) == 'tpl' ) {
+					$name = substr($file->getFileName(), 0, strlen($file->getFileName())-4);
+					$templates[$name] = $name;
+				}
+			}
+		}
+		
+		return $templates;
 	}
 	
 	public function generateSearch()

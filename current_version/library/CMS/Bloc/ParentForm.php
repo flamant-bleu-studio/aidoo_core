@@ -23,10 +23,12 @@
 class CMS_Bloc_ParentForm extends CMS_Form_Default
 {
 	private $decoratorsBloc;
+	private $templatesBloc;
 	
-	public function __construct($decorators)
+	public function __construct($decorators, $templates)
 	{
 		$this->decoratorsBloc = $decorators;
+		$this->templatesBloc = $templates;
 		
 		parent::__construct();
 	}
@@ -68,6 +70,23 @@ class CMS_Bloc_ParentForm extends CMS_Form_Default
 		$item->setValue("default");
 		
 		$item->setRequired(true);
+		$this->addElement($item);
+		
+		if (!empty($this->templatesBloc)) {
+			$item = new Zend_Form_Element_Select("templateFront");
+			$item->setLabel(_t("Template"));
+			
+			$item->addMultiOption(0, _t('Default'));
+			$item->addMultiOptions($this->templatesBloc);
+			
+			$item->setRequired(true);
+		}
+		else {
+			$item = new Zend_Form_Element_Hidden("templateFront");
+		}
+		
+		$item->setValue(0);
+		
 		$this->addElement($item);
 		
 		/* ---- Thèmes ---- */

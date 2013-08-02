@@ -35,6 +35,7 @@
 			{$form->title}
 			
 			{$form->decorator}
+			{$form->templateFront}
 			{$form->theme}
 			{$form->classCss}
 			
