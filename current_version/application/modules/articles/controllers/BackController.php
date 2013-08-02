@@ -566,6 +566,7 @@ class Articles_BackController extends CMS_Controller_Action
 				$page->content_id 	= $id_categorie;
 				$page->url_system 	= $this->_helper->route->full('articles', array("module"=>"articles", "controller"=>"front", "action"=>"cat", "id"=>$id_categorie));
 				$page->enable 		= 1;
+				$page->wildcard 	= 1;
 				$page->save();
 				
 				if($redirect === true) {
