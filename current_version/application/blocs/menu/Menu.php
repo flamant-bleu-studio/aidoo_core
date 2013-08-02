@@ -39,6 +39,16 @@ class Bloc_Menu_Menu extends CMS_Bloc_Abstract implements CMS_Bloc_Interface {
 	
 	protected static $_translatableFields = array();
 	
+	public function beforeRuntimeAdmin()
+	{
+		$menus = Menu_Object_Menu::getAllMenuID();
+		
+		if (empty($menus)) {
+			_error(_('No instance of menu'));
+			$this->_helperRedirector->gotoUrl($this->_helperRoute->short('index'));
+		}
+	}
+	
 	public function runtimeAdmin($view)
 	{
 		$view->idMenu = $this->idMenu;
@@ -46,7 +56,7 @@ class Bloc_Menu_Menu extends CMS_Bloc_Abstract implements CMS_Bloc_Interface {
 	}
 	
 	public function runtimeFront($view)
-	{		
+	{
 		$menu = new Menu_Object_Menu($this->idMenu);
 		$menu->disableInactive();
 		$menu->disableNoAccessItems();
