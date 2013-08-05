@@ -119,7 +119,7 @@ class Menu_BackController extends CMS_Controller_Action {
 		$menu_id 	= (int)$this->_request->getParam('id');
 		$parent_id 	= (int)$this->_request->getParam('elem') ? (int)$this->_request->getParam('elem') : $menu_id;
 		
-		$this->redirectIfNoRights('mod_menu-'.$menu_id, 'insert');
+		$this->redirectIfNoRights('mod_menu-menu-'.$menu_id, 'insert');
 		
 		$backAcl = CMS_Acl_Back::getInstance();
 		
