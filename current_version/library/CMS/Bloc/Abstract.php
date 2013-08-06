@@ -104,9 +104,11 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 		$this->theme 		= $post["theme"];
 		$this->type			= get_class($this);
 		
-		if( empty($this->templateFront) )
+		if (empty($this->templateFront))
 			$this->templateFront = "front";
-			
+		else
+			$this->templateFront = $post["templateFront"];
+		
 		return parent::save();
 	}
 	
