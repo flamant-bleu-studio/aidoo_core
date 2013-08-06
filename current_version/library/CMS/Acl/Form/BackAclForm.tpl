@@ -21,17 +21,17 @@
 
 <input type="hidden" name="ACL[permission_name]" value="{$formAcl->permission_name}" />
 
-	<table id="backAclManagement">
+	<table id="backAclManagement" class="table table-bordered table-striped table-hover">
 		<tr>
 			<th></th>
 			{foreach from=$formAcl->modes key=name item=m}
-			<th>{$name}</th>
+				<th>{$name}</th>
 			{/foreach}
 		</tr>
 		
 		{foreach from=$formAcl->groups item=g}
 		<tr>
-			<td class="group_name">&nbsp;{$g->level}{$g->name}&nbsp;</td>
+			<td class="group_name">&nbsp;{$g->level}<b>{$g->name}</b>&nbsp;</td>
 			{foreach from=$formAcl->modes key=name item=m}
 			{assign var='test' value="_"|cat:$g->id}
 			<td><input type="checkbox" name="ACL[{$name}-{$g->id}]" id="{$name}-{$g->id}" class="aclCheckbox {$name}-{$g->parent}" {if isset($m[$test]) && $m[$test] == 1} checked{/if} /></td>
