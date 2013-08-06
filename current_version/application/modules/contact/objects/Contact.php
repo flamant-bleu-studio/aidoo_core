@@ -322,7 +322,7 @@ class Contact_Object_Contact extends CMS_Object_MonoLangEntityWithNodes
 		}
 		 
 		/** Generaet content email **/
-		$mailContent = $view->renderInnerTpl("email.tpl");
+		$mailContent = $view->renderInnerTpl("email.tpl", false);
 		
 		/** Config Mail **/
 		$mail = new Zend_Mail('UTF-8');

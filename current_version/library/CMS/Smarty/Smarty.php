@@ -150,9 +150,24 @@ class CMS_Smarty_Smarty extends Zend_View_Abstract
         print parent::render($name);
     }
     
-    public function renderInnerTpl($name)
+    public function renderInnerTpl($name, $cache = true)
     {
-    	return parent::render($name);
+    	if ($cache === false) {
+    		$saveCaching =$this->_smarty->getCaching();
+    		$saveCacheLifetime = $this->_smarty->getCacheLifetime();
+    		
+    		$this->_smarty->setCaching(Smarty::CACHING_OFF);
+    		$this->_smarty->setCacheLifetime(0);
+    	}
+    	
+    	$return = parent::render($name);
+    	
+    	if ($cache === false) {
+    		$this->_smarty->setCaching($saveCaching);
+	    	$this->_smarty->setCacheLifetime($saveCacheLifetime);
+    	}
+    	
+    	return $return;
     }
     
     public function renderByViewName($name, $cache = true)
