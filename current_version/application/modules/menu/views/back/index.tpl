@@ -81,30 +81,15 @@
 					
 					{if $backAcl->hasPermission("mod_menu-item-"|cat:$entry_item->id_menu, "delete")}
 						{if $entry_item->id_menu && $entry_item->type|in_array:$type_folder}
-							<a href="{routeShort action="delete-folder" id=$entry_item->id_menu}" class="btn btn-mini btn-danger showTooltip" title='{t}Delete{/t} "{$entry_item->label|escape}"' 
-								onClick="confirmDeleteMenuFolder( this.href, this.href+'/deletechildren', this.href+'/deletechildrenandcontent',
-									'<h1>{t escape='quote'}Are you sure you want to delete this folder ?{/t}</h1>', 
-									'{t escape='quote'}Delete folder only{/t}',
-									'{t escape='quote'}Delete folder and his items{/t}',
-									'{t escape='quote'}Delete folder, his items and their content{/t}',
-									'{t escape='quote'}Delete{/t}',
-									'{t escape='quote'}Cancel{/t}');
-								return false;">
+							<a href="{routeShort action="delete-folder" id=$entry_item->id_menu}" class="btn btn-mini btn-danger showTooltip confirmDeleteMenuFolder" title='{t}Delete{/t} "{$entry_item->label|escape}"'>
 								<i class="icon-trash icon-white"></i>
 							</a>
 						{elseif $entry_item->id_menu && $entry_item->isDeletableContent()}
-							<a href="{routeShort action="delete-item" id=$entry_item->id_menu}" class="btn btn-mini btn-danger showTooltip" title='{t}Delete{/t} "{$entry_item->label|escape}"' 
-								onClick="confirmDeleteMenuItem( this.href, this.href+'/deletecontent',
-									'<h1>{t escape='quote'}Are you sure you want to delete this item ?{/t}</h1>', 
-									'{t escape='quote'}Delete item only{/t}',
-									'{t escape='quote'}Delete item and his content{/t}',
-									'{t escape='quote'}Delete{/t}',
-									'{t escape='quote'}Cancel{/t}');
-								return false;">
+							<a href="{routeShort action="delete-item" id=$entry_item->id_menu}" class="btn btn-mini btn-danger showTooltip confirmDeleteMenuItemWhitContent" title='{t}Delete{/t} "{$entry_item->label|escape}"'>
 								<i class="icon-trash icon-white"></i>
 							</a>
 						{else}
-							<a href="{routeShort action="delete-item" id=$entry_item->id_menu}" class="btn btn-mini btn-danger showTooltip" title='{t}Delete{/t} "{$entry_item->label|escape}"' onClick="confirmDelete(this.href, '<h1>{t}Are you sure you want to delete this item ?{/t}', '{t}Delete{/t}', '{t}Cancel{/t}');return false;">
+							<a href="{routeShort action="delete-item" id=$entry_item->id_menu}" class="btn btn-mini btn-danger showTooltip confirmDeleteMenuItem" title='{t}Delete{/t} "{$entry_item->label|escape}"'>
 								<i class="icon-trash icon-white"></i>
 							</a>
 						{/if}
@@ -169,7 +154,7 @@
 					{/if}
 					
 					{if $backAcl->hasPermission("mod_menu-menu-"|cat:$entry_menu->id_menu, "delete")}
-					<a class="btn btn-danger showTooltip" href="{routeShort action="delete-menu" id=$entry_menu->id_menu}" title='{t}Delete menu{/t} "{$entry_menu->label|escape}"' onClick="confirmDelete(this.href, '<h1>{t}Delete this menu ?{/t}</h1>', '{t}Delete{/t}', '{t}Cancel{/t}');return false;">
+					<a class="btn btn-danger showTooltip confirmDeleteMenu" href="{routeShort action="delete-menu" id=$entry_menu->id_menu}" title='{t}Delete menu{/t} "{$entry_menu->label|escape}"'>
 						<i class="icon-trash icon-white"></i>
 					</a>
 					{/if}
