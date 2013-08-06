@@ -17,20 +17,11 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
-<div class="zone">
-	<div class="zone_titre">
-		<h2>{t}Edit your document{/t} <span class="helper"></span></h2>
-		<div>{t}Enter the informations{/t}</div>
-	</div>
-	
-	
-	{$form->id}
-	{$form->type}
-	{$form->status}
-	{$form->access}
-	{$form->title}
-	{$form->template}
-	
-	{$form->typeElements}
-	
-</div>
+{$form->id}
+{$form->type}
+{$form->status}
+{$form->access}
+{$form->title}
+{$form->template}
+
+{$form->typeElements}

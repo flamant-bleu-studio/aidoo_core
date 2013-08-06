@@ -62,7 +62,7 @@
 					{/if}
 					
 					{if $backAcl->hasPermission("mod_documents-"|cat:$v->id_document, "delete")}
-						<a title="{t}Delete{/t}" class="delete btn btn-danger btn-mini" href="{routeShort action="delete" id=$v->id_document}" onClick="confirmDelete(this.href, '<h1>{t}Are you sure to delete this document ?{/t}</h1>', '{t}Delete{/t}', '{t}Cancel{/t}');return false;"><i class="icon-trash icon-white"></i></a>
+						<a title="{t}Delete{/t}" class="delete btn btn-danger btn-mini confirmDeleteDocument" href="{routeShort action="delete" id=$v->id_document}"><i class="icon-trash icon-white"></i></a>
 					{/if}
 				</td>
 			</tr>

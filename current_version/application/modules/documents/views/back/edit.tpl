@@ -25,6 +25,10 @@
 	}
 </style>
 
+{include file="{$smarty.const.APPLICATION_PATH}/modules/documents/views/back/menu.tpl" active="edit"}
+
+<div id="content">
+
 <form method="post" action='{routeShort action="edit" id=$id_content}' id="{$seoForm->getId()}">
 	
 	{$content}
@@ -86,6 +90,8 @@
 	{formButtons cancelLink="{routeShort action='index'}"}
 	
 </form>
+
+</div>
 
 <script type="text/javascript">
 
