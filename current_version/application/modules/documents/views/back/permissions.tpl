@@ -17,7 +17,7 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
-{include file="{$smarty.const.APPLICATION_PATH}/modules/seo/views/back/menu.tpl" active="permissions"}
+{include file="{$smarty.const.APPLICATION_PATH}/modules/documents/views/back/menu.tpl" active="permissions"}
 
 <div id="content">
 	<form method="post" id="{$formAcl->getId()}"> 

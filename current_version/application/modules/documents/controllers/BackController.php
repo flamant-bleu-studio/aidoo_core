@@ -255,17 +255,21 @@ class Documents_BackController extends CMS_Controller_Action
 		}
 	}
 	
-	public function updateaclAction()
+	public function permissionsAction()
 	{
-		if($this->getRequest()->isPost()) 
-		{
-			$backAcl = CMS_Acl_Back::getInstance();
-			if($backAcl->updatePermissionsFromAclForm("mod_documents", $_POST['ACL']))
-				_message(_t("Rights updated"));
-			else 
-				_error(_t("Insufficient rights"));
+		$this->redirectIfNoRights('mod_documents', 'manage');
+		
+		$backAcl = CMS_Acl_Back::getInstance();
+		
+		$formAcl = new CMS_Acl_Form_BackAclForm("mod_documents");
+		
+		if ($this->getRequest()->isPost()) {
+			if ($formAcl->isValid($_POST)) {
+				$backAcl->updatePermissionsFromAclForm("mod_documents", $_POST['ACL']);
+				$this->_redirectCurrentPage();
+			}
 		}
 		
-		return $this->_redirect( $this->_helper->route->short('index'));
+		$this->view->formAcl = $formAcl;
 	}
 }
