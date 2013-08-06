@@ -153,7 +153,7 @@ $(document).ready(function() {
 		});
 
 		$('#gallerie_thumbs a:first').addClass('pager-active');
-		$('#gallerie_thumbs a').live("click", function(e){
+		$('#gallerie_thumbs a').on("click", function(e){
 			e.preventDefault();
 			
 		   	var thumbIndex = $('#gallerie_thumbs a').index(this);
@@ -164,20 +164,20 @@ $(document).ready(function() {
 
 		});
 		
-		$("#start_gallerie").live('click', function(){
+		$("#start_gallerie").on('click', function(){
 			$('#gallerie_photo').data("gallery").start();
 			$("#stop_gallerie").show();
 			$("#start_gallerie").hide();
 		});
-		$("#stop_gallerie").live('click', function(){
+		$("#stop_gallerie").on('click', function(){
 			$('#gallerie_photo').data("gallery").stop();
 			$("#stop_gallerie").hide();
 			$("#start_gallerie").show();
 		});
-		$("#previous_gallerie").live('click', function(){
+		$("#previous_gallerie").on('click', function(){
 			$('#gallerie_photo').data("gallery").previous();
 		});
-		$("#next_gallerie").live('click', function(){
+		$("#next_gallerie").on('click', function(){
 			$('#gallerie_photo').data("gallery").next();
 		});
 	}
@@ -198,7 +198,7 @@ $(document).ready(function() {
 	});
 
 	$('#gallerie_thumbs a:first').addClass('pager-active');
-	$('#gallerie_thumbs a').live("click", function(e){
+	$('#gallerie_thumbs a').on("click", function(e){
 		e.preventDefault();
 		
 	   	var thumbIndex = $('#gallerie_thumbs a').index(this);
@@ -209,20 +209,20 @@ $(document).ready(function() {
 
 	});
 	  
-	$("#start_gallerie").live('click', function(){
+	$("#start_gallerie").on('click', function(){
 		bxslider.startShow();
 		$("#stop_gallerie").show();
 		$("#start_gallerie").hide();
 	});
-	$("#stop_gallerie").live('click', function(){
+	$("#stop_gallerie").on('click', function(){
 		bxslider.stopShow();
 		$("#stop_gallerie").hide();
 		$("#start_gallerie").show();
 	});
-	$("#previous_gallerie").live('click', function(){
+	$("#previous_gallerie").on('click', function(){
 		bxslider.goToPreviousSlide();
 	});
-	$("#next_gallerie").live('click', function(){
+	$("#next_gallerie").on('click', function(){
 		bxslider.goToNextSlide();
 	});
 {/if}

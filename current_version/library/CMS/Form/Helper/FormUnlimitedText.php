@@ -60,7 +60,7 @@ class CMS_Form_Helper_FormUnlimitedText extends Zend_View_Helper_FormText
    		$processLayout = CMS_Application_ProcessLayout::getInstance();
     	$processLayout->appendJsScript('
 			
-			$("#'.$name.'_new").live("click", function(e){
+			$("#'.$name.'_new").on("click", function(e){
 				e.preventDefault();
 				
 				// Récupération du dernier input text "new"
@@ -85,7 +85,7 @@ class CMS_Form_Helper_FormUnlimitedText extends Zend_View_Helper_FormText
 				
 			});
 			
-			$(".remove_crit").live("click", function(e){
+			$(".remove_crit").on("click", function(e){
 				e.preventDefault();
 				$(this).prev().remove();
 				$(this).remove();

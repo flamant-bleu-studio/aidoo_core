@@ -122,7 +122,7 @@ $(document).ready(function(){
 	$('input[id^="title-"]').on("change", function(){
 		var id = extractID.exec($(this).attr('id'));
 		changeSeoTitle(id[1], $(this).val());
-	}).live("keyup", function(){
+	}).on("keyup", function(){
 		var id = extractID.exec($(this).attr('id'));
 		changeSeoTitle(id[1], $(this).val());
 	});

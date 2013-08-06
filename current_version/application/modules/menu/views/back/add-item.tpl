@@ -82,25 +82,25 @@
 	}
 	
 	
-	$('#linkType-1').live('click', function(){
+	$('#linkType-1').on('click', function(){
 		$('.newgroup').show();
 		$('.existinggroup').hide();
 		$('.externalgroup').hide();
 	});
 	
-	$('#linkType-2').live('click', function(){
+	$('#linkType-2').on('click', function(){
 		$('.newgroup').hide();
 		$('.existinggroup').show();
 		$('.externalgroup').hide();
 	});
 	
-	$('#linkType-3').live('click', function(){
+	$('#linkType-3').on('click', function(){
 		$('.newgroup').hide();
 		$('.existinggroup').hide();
 		$('.externalgroup').show();
 	});
 	
-	$(".typeChoice").live('click',function(e){
+	$(".typeChoice").on('click',function(e){
 		e.preventDefault();
 		$("#chooseType").val($(this).attr('id'));
 		$(".typeChoice").removeClass('active');
