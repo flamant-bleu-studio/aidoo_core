@@ -35,13 +35,9 @@
 	{/foreach}
 {/function}
 
+{include file="{$smarty.const.APPLICATION_PATH}/modules/blocs/views/back/menu.tpl" active="templates"}
 
-<div class="content_titre">
-	<h1>{t}Manage your templates{/t}</h1>
-	<div>{t}Add, edit et delete your templates and blocs{/t}</div>
-</div>
-
-<div class="zone">
+<div id="content">
 
 	<div id="templateManager" class="row-fluid">
 	
@@ -74,7 +70,7 @@
 				{if $blocsSortByType|@count > 0}
 					{foreach from=$blocsSortByType key=key item=item name="foreachtype"}
 					<li>
-						<a href="#" class="section-head {$key} index-{$typeIndex[{$key}]}">{$blocsInfos[{$key}].name}</a>
+						<a href="#" class="section-head {$key} index-{$typeIndex[{$key}]}">{$blocsInfos[{$key}].name}<span class="down"><i class="icon-caret-down"></i></span></a>
 						<ul class="section-content unstyled">
 							{foreach from=$item item=bloc}
 								<li class="line draggable">
@@ -287,40 +283,6 @@
 		</div>
 	</div>
 </div>	
-
-{if $backAcl->hasPermission("mod_bloc", "manage")}
-	<div class="content_titre">
-		<h1>{t}Options{/t}</h1>
-		<div>{t}Choose your options{/t}</div>
-	</div>
-	
-	<div class="zone">
-		<div class="zone_titre">
-			<h2>{t}Module Rights{/t}</h2>
-		</div>
-		<div class="droits_content">
-			
-			<form action="{$formAcl->getAction()}" method="post"> 
-				<div class="aclBloc">
-					{$formAcl}
-				</div>
-				<ul class="unstyled">
-					<li><span class="bleu">Manage :</span> éditer les droits</li>
-					<li><span class="bleu">View :</span> voir le module et son contenu</li>
-					<li><span class="bleu">ViewBloc :</span> voir la liste des blocs</li>
-					<li><span class="bleu">CreateBlocs :</span> créer de nouveaux blocs</li>
-					<li><span class="bleu">EditTemplates :</span> éditer les templates (déplacer les blocs, ajouter de nouveaux blocs, supprimer les blocs, enregister)</li>
-					<li><span class="bleu">DeleteTemplates :</span> supprimer les templates</li>
-					<li><span class="bleu">CreateTemplates :</span> créer des templates</li>
-				</ul>
-				<div class="droits_submit">
-					{$formAcl->submit}
-				</div>
-			</form> 
-			
-		</div>
-	</div>
-{/if}
 
 <div style="display:none;">
 	<div id="form_new_template">

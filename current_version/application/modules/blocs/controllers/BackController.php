@@ -197,17 +197,6 @@ class Blocs_BackController extends CMS_Controller_Action
 		foreach($templates as &$t) { $item->addMultiOption($t->id_template, $t->title); }
 		$this->view->formTemplate = $formTemplate;
 		
-		
-		
-		if($backAcl->hasPermission('mod_bloc', 'manage'))
-		{
-			$formAcl = new CMS_Acl_Form_BackAclForm('mod_bloc');
-			$formAcl->setAction(BASE_URL.$this->_helper->route->short('updateAcl'));
-			$formAcl->addSubmit(_t('Submit'));
-			
-	    	$this->view->formAcl = $formAcl;
-		}
-		
 		// Get id template for home page (to not delete template of home page)
 		$home = CMS_Page_Object::get(CMS_Page_Object::HOME_ID);
 		$this->view->idTemplate_homePage = $home->template;
@@ -439,28 +428,30 @@ class Blocs_BackController extends CMS_Controller_Action
 			    if($form->getValue('defaut') && $template->defaut != 1)
 			    	Blocs_Object_Template::setDefault($id);
     			
-			    //return $this->_redirect($this->_helper->route->current());
-			    
     			return $this->closeFancybox();
     		}
     	}
     	else {
     		$form->populate($template->toArray());
     	}
-    	
     }
     
-	public function updateaclAction()
+	public function permissionsAction()
 	{
-		if($this->getRequest()->isPost()) 
-		{
-			$backAcl = CMS_Acl_Back::getInstance();
-			if($backAcl->updatePermissionsFromAclForm('mod_bloc', $_POST['ACL']))
-				_message(_t('Rights updated'));
-			else 
-				_error(_t('Insufficient rights'));
+		$this->redirectIfNoRights('mod_bloc', 'manage');
+		
+		$backAcl = CMS_Acl_Back::getInstance();
+		
+		$formAcl = new CMS_Acl_Form_BackAclForm("mod_bloc");
+		
+		if ($this->getRequest()->isPost()) {
+			if ($formAcl->isValid($_POST)) {
+				$backAcl->updatePermissionsFromAclForm("mod_bloc", $_POST['ACL']);
+				$this->_redirectCurrentPage();
+			}
 		}
-		return $this->_redirect( $this->_helper->route->short('index'));
-	}    
+		
+		$this->view->formAcl = $formAcl;
+	}
 }
 	

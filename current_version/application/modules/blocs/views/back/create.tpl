@@ -17,41 +17,32 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
-<div class="content_titre">
-	<h1>Création d'un bloc</h1>
-	<div>Mise à disposition d'un nouveau bloc sur votre site</div>
-</div>
+{include file="{$smarty.const.APPLICATION_PATH}/modules/blocs/views/back/menu.tpl" active="create"}
 
-<form method="post" action="{$form->getAction()}" id="{$form->getId()}">
-	<div class="zone">
-		<div class="zone_titre">
-			<h2>Informations<span class="helper"></span></h2>
-			<div>Remplissez les informations nécessaires</div>
-		</div>
-					
-			{$form->from}
-			
-			{$form->designation}
-			{$form->title}
-			
-			{$form->decorator}
-			{$form->templateFront}
-			{$form->theme}
-			{$form->classCss}
-			
-			{$blocAdmin}
-	</div>
-	<div class="zone">
-			<div class="zone_titre">
-				<h2>{t}Rights{/t}</h2>
-				<div>{t}Manage rights{/t}</div>
-			</div>
+<div id="content">
 
-			<div class="droits_content">		
-				{$form->permissions}
-			</div>
-	</div>
-			
+	<form method="post" action="{$form->getAction()}" id="{$form->getId()}">
+						
+		{$form->from}
+		
+		{$form->designation}
+		{$form->title}
+		
+		{$form->decorator}
+		{$form->templateFront}
+		{$form->theme}
+		{$form->classCss}
+		
+		<hr />
+		
+		{$blocAdmin}
+		
+		<hr />	
+		
+		{$form->permissions}
+		
 	{formButtons cancelLink="{routeShort action='index'}"}		
+	
+	</form>
 
-</form>
+</div>
