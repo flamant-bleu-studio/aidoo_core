@@ -17,17 +17,10 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
-<div class="content_titre">
-	<h1>{t}My articles{/t}</h1>
-	<div>{t}Manage my articles{/t}</div>
-</div>
+{include file="{$smarty.const.APPLICATION_PATH}/modules/articles/views/back/menu.tpl" active="new"}
 
-<div class="zone">
-	<div class="zone_titre">
-		<h2>{t}Your futur article{/t} <span class="helper"></span></h2>
-		<div>{t}Enter the informations{/t}</div>
-	</div>
-	
+<div id="content">
+
 	<form id="{$form->getId()}" enctype="multipart/form-data" action="{$form->getAction()}" method="post">
 	
 		<div class="zone">

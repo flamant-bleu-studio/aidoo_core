@@ -17,17 +17,12 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
-<div class="content_titre">
-	<h1>{t}Create a new article{/t}</h1>
-	<div>{t}Creation of a new article{/t}</div>
-</div>
+{include file="{$smarty.const.APPLICATION_PATH}/modules/articles/views/back/menu.tpl" active="new"}
 
-<div class="zone">
-	<div class="zone_titre">
-		<h2>{t}Select a type{/t} <span class="helper"></span></h2>
-		<div>{t}Select a type for your new article{/t}</div>
-	</div>
-		
+<div id="content">
+
+	<h3>{t}Select a type{/t}</h3>
+	
 	{if $types}
 		<div class="choixDoc">		
 		{foreach from=$types item=item}					

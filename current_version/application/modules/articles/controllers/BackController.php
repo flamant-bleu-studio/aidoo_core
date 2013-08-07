@@ -30,7 +30,7 @@ class Articles_BackController extends CMS_Controller_Action
 		die("finish");
 	}*/
 	
-	public function indexAction()
+	public function articlesAction()
 	{		
 		$this->redirectIfNoRights('mod_articles', 'view');
 		
@@ -40,6 +40,11 @@ class Articles_BackController extends CMS_Controller_Action
 		
 		$articles = Articles_Object_Article::get(array("isSubmitted" => 1));
 		$this->view->submittedArticles = $articles;
+	}
+	
+	public function categoriesAction()
+	{
+		$this->redirectIfNoRights('mod_categories', 'view');
 		
 		// Récupération des catégories
 		$categories = Articles_Object_Categorie::get();
@@ -214,7 +219,7 @@ class Articles_BackController extends CMS_Controller_Action
 
 			// IF Save & Quit
 			if ($_POST['submitandquit'])
-				return $this->_redirect($this->_helper->route->short("index"));
+				return $this->_redirect($this->_helper->route->short("articles"));
             
             // Redirection vers l'accueil des documents
             return $this->_redirect($this->_helper->route->short("edit", array('id'=>$id)));
@@ -244,6 +249,8 @@ class Articles_BackController extends CMS_Controller_Action
 	
 	public function editAction()
 	{
+		$this->setLayoutIframe();
+		
 		// Récupération de l'id et du document correspondant
 		$id = (int) $this->_request->getParam('id');
 		
@@ -373,7 +380,7 @@ class Articles_BackController extends CMS_Controller_Action
 					}
 					
 					if ($_POST['submitandquit'])
-						return $this->_redirect($this->_helper->route->short("index"));
+						return $this->_redirect($this->_helper->route->short("articles"));
 					
 					return $this->_redirect($this->_helper->route->short("edit", array('id'=>$id)));
 				}
@@ -454,7 +461,7 @@ class Articles_BackController extends CMS_Controller_Action
 			$page->delete();
 		
 		_message(_t('Article deleted'));
-		return $this->_redirect($this->_helper->route->short('index'));
+		return $this->_redirect($this->_helper->route->short('articles'));
 	}
 	
 	public function enableAction ()
@@ -488,7 +495,7 @@ class Articles_BackController extends CMS_Controller_Action
 	
 		_message(_t('Article published'));
 			
-		return $this->_redirect($this->_helper->route->short('index'));
+		return $this->_redirect($this->_helper->route->short('articles'));
 	}
 	
 	public function disableAction ()
@@ -521,7 +528,7 @@ class Articles_BackController extends CMS_Controller_Action
 		_message(_t('Article drafted'));
 
 			
-		return $this->_redirect($this->_helper->route->short('index'));
+		return $this->_redirect($this->_helper->route->short('articles'));
 	}
 		
 	private function createCategory($redirect = true) {
@@ -530,7 +537,7 @@ class Articles_BackController extends CMS_Controller_Action
 		$backAcl = CMS_Acl_Back::getInstance();
 		if(!$backAcl->hasPermission("mod_categories", "create")) {
 			_error(_t("Insufficient rights"));
-			$this->closeandredirect($this->_redirect($this->_helper->route->full('admin')));
+			$this->closeFancybox($this->_helper->route->full('admin'));
 		}
 		
 		$form = new Articles_Form_Categorie();
@@ -571,7 +578,7 @@ class Articles_BackController extends CMS_Controller_Action
 				
 				if($redirect === true) {
 					_message(_t('Category created'));
-					$this->closeandredirect($this->_helper->route->short('index'));
+					$this->closeFancyboxAndRefresh();
 				}
 				else {
 					$categorie->title = $categorie->title[CURRENT_LANG_ID];
@@ -659,7 +666,7 @@ class Articles_BackController extends CMS_Controller_Action
 				$backAcl->updatePermissionsFromAclForm("mod_categories-".$id, $_POST['ACL']);
 				
 				_message(_t('Category updated'));
-				$this->closeandredirect($this->_helper->route->short('index'));
+				$this->closeFancyboxAndRefresh();
 			}
 			else {
 				$form->populate($_POST);
@@ -721,7 +728,7 @@ class Articles_BackController extends CMS_Controller_Action
 			$page->delete();
 		
 		_message(_t('Category deleted'));
-		$this->_redirect($this->_helper->route->short('index'));
+		$this->_redirect($this->_helper->route->short('categories'));
 	}
 	
 	public function editOptionsArticleAction() {
@@ -743,7 +750,7 @@ class Articles_BackController extends CMS_Controller_Action
 	
 					_message(_t("Options updated"));
 					
-					return $this->closeandredirect($this->_helper->route->short('index'));
+					$this->closeFancyboxAndRefresh();
 				}
 			}
 			else {
@@ -781,7 +788,7 @@ class Articles_BackController extends CMS_Controller_Action
 			
 					_message(_t("Options updated"));
 						
-					return $this->closeandredirect($this->_helper->route->short('index'));
+					$this->closeFancyboxAndRefresh();
 				}
 			}
 			else {
@@ -867,20 +874,6 @@ class Articles_BackController extends CMS_Controller_Action
 		
 		_message(_t("Rewrite générés."));
 		$this->closeandredirect($this->_redirect($this->_helper->route->short('edit-options-article')));
-	}
-	
-	public function closeandredirect($url)
-	{
-		// reloading or updating the parent windows will force the popup to close  
-		echo '
-		<html><script language="javascript">
-			parent.location.href="'.BASE_URL.$url.'";
-		</script></html>';
-	}
-	
-	public function closeIframe() {
-		echo '<script language="javascript">parent.$.fancybox.close();</script>';
-		
 	}
 }
 

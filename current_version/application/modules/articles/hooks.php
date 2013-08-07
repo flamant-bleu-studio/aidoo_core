@@ -30,7 +30,7 @@ function appendArticlesTabMenu($tabs)
 	$backAcl = CMS_Acl_Back::getInstance();
 	if($backAcl->hasPermission("mod_articles", "view"))
 	{
-		$tabs['siteLife']['children'][] = array("title" => "Articles", "routeName" => "articles_back",  "moduleName" => "articles", "controllerName" => "back", "icon" => "doc.png");
+		$tabs['siteLife']['children'][] = array("title" => "Articles", "routeName" => "articles_back",  "moduleName" => "articles", "controllerName" => "back", "actionName" => "articles");
 	}
 	return $tabs;
 }
