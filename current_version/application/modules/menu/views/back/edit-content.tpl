@@ -25,6 +25,8 @@
 	}
 </style>
 
+<div id="content">
+
 <div class="content_titre">
 	<h1>Edition du contenu</h1>
 	<div>Entrez les informations associées à la page de votre contenu</div>
@@ -70,7 +72,7 @@
 	{formButtons cancelLink="{routeShort action='index'}"}
 
 </form>
-
+</div>
 <script type="text/javascript">
 
 $(document).ready(function(){

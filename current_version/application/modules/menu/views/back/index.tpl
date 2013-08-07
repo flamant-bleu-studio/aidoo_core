@@ -62,7 +62,7 @@
 						{/if}
 						
 						{if $entry_item->isEditableContent()}
-						<a class="btn btn-mini btn-primary showTooltip" href="{routeShort action="edit-content" id=$entry_item->id_menu}" title="{t}Edit content of this page{/t}">
+						<a class="btn btn-mini btn-primary showTooltip iframe" href="{routeShort action="edit-content" id=$entry_item->id_menu}" title="{t}Edit content of this page{/t}">
 							<i class="icon-pencil icon-white"></i> <i class="icon-file icon-white"></i>
 						</a>
 						{/if}

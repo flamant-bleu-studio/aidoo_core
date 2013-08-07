@@ -713,6 +713,8 @@ class Menu_BackController extends CMS_Controller_Action {
 	
 	public function editContentAction()
 	{
+		$this->setLayoutIframe();
+		
 		// ID de l'item de menu
 		$id = $this->_request->getParam('id');
 		
