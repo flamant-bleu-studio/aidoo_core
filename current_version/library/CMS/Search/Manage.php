@@ -214,8 +214,14 @@ abstract class CMS_Search_Manage
 		if (!empty($this->_index))
 			return;
 		
-		if (file_exists($this->_indexPath.$this->_indexName))
-			$this->openIndex();
+		if (file_exists($this->_indexPath.$this->_indexName)) {
+			try {
+				$this->openIndex();
+			}
+			catch (Exception $e) {
+				$this->createIndex();
+			}
+		}
 		else
 			$this->createIndex();
 	}
@@ -345,7 +351,7 @@ abstract class CMS_Search_Manage
 	 */
 	public function deleteItem($item_id)
 	{
-		$this->openIndex();
+		$this->getOrCreateIndex();
 		
 		$hits = $this->_index->find('item_id:' . $this->sanitizeString($item_id));
 		
