@@ -54,7 +54,7 @@ class CMS_Form_Helper_FormMultiUpload extends Zend_View_Helper_FormElement
 
             	<span class="btn btn-success fileinput-button">
                     <i class="icon-plus icon-white"></i>
-                    <span>Add files...</span>
+                    <span>'._t("Add files").'</span>
                     
                     <input id="'.$name.'" type="file" name="'.$name.'[]" multiple>
                     
@@ -62,16 +62,16 @@ class CMS_Form_Helper_FormMultiUpload extends Zend_View_Helper_FormElement
                 
                 <button type="submit" class="btn btn-primary start">
                     <i class="icon-upload icon-white"></i>
-                    <span>Start upload</span>
+                    <span>'._t("Start upload").'</span>
                 </button>
                 
                 <button type="reset" class="btn btn-warning cancel">
                     <i class="icon-ban-circle icon-white"></i>
-                    <span>Cancel upload</span>
+                    <span>'._t("Cancel").'</span>
                 </button>
                 <button type="button" class="btn btn-danger delete">
                     <i class="icon-trash icon-white"></i>
-                    <span>Delete</span>
+                    <span>'._t("Delete").'</span>
                 </button>
                <input type="checkbox" class="toggle">
             </div>
