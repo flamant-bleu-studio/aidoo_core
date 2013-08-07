@@ -42,7 +42,7 @@
 		<tbody>
 			{foreach from=$frontLangs key=id item=lang}
 			<tr>
-				<td><img src="{$baseUrl}/images/flags/{$lang}.png" /></td>
+				<td><img src="{$baseUrl}{$skinUrl}/images/flags/{$lang}.png" /></td>
 				<td>{$lang}</td>
 				<td>
 					{if $id == $frontDefault}
@@ -104,7 +104,7 @@
 		<tbody>
 			{foreach from=$backLangs key=id item=lang}
 			<tr>
-				<td><img src="{$baseUrl}/images/flags/{$lang}.png" /></td>
+				<td><img src="{$baseUrl}{$skinUrl}/images/flags/{$lang}.png" /></td>
 				<td>{$lang}</td>
 				<td>
 					{if $id == $backDefault}
