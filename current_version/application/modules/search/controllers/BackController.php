@@ -125,7 +125,7 @@ class Search_BackController extends CMS_Controller_Action
 		if($this->_request->isPost())
 			$this->_redirect($this->_helper->route->full('search_query_back', array('module' => 'search', 'controller' => 'back', 'action' => 'search', 'query' => urlencode(htmlentities(strip_tags($_POST['search']))))));
 		
-		$keywords = urldecode($this->_request->getParam("query"));
+		$keywords = html_entity_decode((urldecode($this->_request->getParam("query"))));
 		
 		if (!$keywords)
 			throw new Exception(_t('Page not found'), 404);

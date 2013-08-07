@@ -17,6 +17,8 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
+<div id="content">
+
 <div id="search_results">
 	
 	<h1 class="title">{t}Result of your search{/t} "<span class="keywords italic">{$keywords}</span>"</h1>
@@ -74,4 +76,5 @@
 	
 	{$pagination}
 	
+</div>
 </div>
