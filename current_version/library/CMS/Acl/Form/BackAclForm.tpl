@@ -23,7 +23,7 @@
 
 	<table id="backAclManagement" class="table table-bordered table-striped table-hover">
 		<tr>
-			<th></th>
+			<th style="color: #777777;">{t}Manage permissions{/t}</th>
 			{foreach from=$formAcl->modes key=name item=m}
 				<th>{$name}</th>
 			{/foreach}
