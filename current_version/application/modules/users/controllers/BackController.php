@@ -226,7 +226,7 @@ class Users_BackController extends CMS_Controller_Action
 						$user->save();
 						
 						_message(_t("user saved"));
-	    				return $this->_redirect( $this->_helper->route->short('index'));
+	    				return $this->_redirect( $this->_helper->route->short('users'));
 					}
 					else
 						_error(_t("Invalid form"));
