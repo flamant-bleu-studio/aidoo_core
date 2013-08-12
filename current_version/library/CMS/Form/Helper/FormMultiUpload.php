@@ -89,7 +89,7 @@ class CMS_Form_Helper_FormMultiUpload extends Zend_View_Helper_FormElement
         
         <!-- The table listing the files available for upload/download -->
         <table class="table table-striped fileupload-files">
-        	<tbody class="files sortable" data-toggle="modal-gallery" data-target="#modal-gallery">
+        	<tbody class="files '. (($attribs["options"]["sortable"]) ? "sortable" : "") .'" data-toggle="modal-gallery" data-target="#modal-gallery">
         	';
         	
 			if($value){

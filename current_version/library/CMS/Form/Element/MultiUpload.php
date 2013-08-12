@@ -72,6 +72,10 @@ class CMS_Form_Element_MultiUpload extends Zend_Form_Element_Text
 		$this->_options["autoUpload"] = $value;
 	}
 	
+	public function setSortable($value = true) {
+		$this->_options["sortable"] = $value;
+	}
+	
 	private function setLibParams(){
 	
 		if(is_string($this->_options["allowedExtensions"]))
