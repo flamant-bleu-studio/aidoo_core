@@ -216,50 +216,17 @@ class Diaporama_BackController extends CMS_Controller_Action
 	
 	public function deleteAction()
 	{
-		$id = intval($this->_request->getParam('id'));
+		$id = (int)$this->_request->getParam('id');
 		
-		$backAcl = CMS_Acl_Back::getInstance();
-		$this->view->backAcl = $backAcl;
+		$this->redirectIfNoRights($this->namePermission.'-'.$id, 'delete');
 		
-		if($backAcl->hasPermission($this->_namePermission."-".$id, "delete"))
-		{			
-			/** Delete Galerie **/
-			$galerie = new GalerieImage_Object_Galerie($id);
-			$galerie->delete();
-			
-			/** Delete Permission **/
-			$backAcl->deletePermissions($this->_namePermission."-".$id);
-			
-			/** Delete diaporama in page **/
-			$pages = CMS_Page_Object::get(array("diaporama" => $id));
-			if( count($pages) > 0 )
-			{
-				foreach ($pages as $page)
-				{
-					$page->diaporama = null;
-					$page->save();
-				}
-			}
-			
-			if ($this->_idTypeGalerie == GalerieImage_Lib_Manager::ID_TYPE_GALERIE) {
-				
-				$page = CMS_Page_PersistentObject::getOneFromDB(array('type' => 'galerieImage', 'content_id' => $id), null, null, "all");
-				
-				if (!$page)
-					_error(_t("Page object has not been deleted because it was not found"));
-				else
-					$page->delete();
-				
-			}
-			
-			_message(_t('Galerie deleted'));
-			return $this->_redirect($this->_helper->route->short('index'));
-		}
-		else
-		{
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
-		}
+		$diaporama = new Diaporama_Object_Diaporama($id);
+		$diaporama->delete();
+		
+		CMS_Acl_Back::getInstance()->deletePermissions($this->namePermission.'-'.$id);
+		
+		_message(_t('Diaporama deleted'));
+		return $this->_redirect($this->_helper->route->short('index'));
 	}
 	
 	public function permissionsAction()
