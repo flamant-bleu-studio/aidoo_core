@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	
+	<config>
+		<name>diaporama</name>
+		<version>0.0</version>
+		<type>Module</type>
+		<description>Diaporama</description>
+		<uninstallable>true</uninstallable>
+		<deactivable>true</deactivable>
+		
+		<lang>
+			<translatable>true</translatable>
+			<frontFiles>
+				<file src="/controllers/FrontController.php" />
+				<folder src="/views/front/" />
+			</frontFiles>
+		</lang>
+	</config>
+	
+	<routes>
+		<diaporama_back type="Zend_Controller_Router_Route">
+			<route>administration/diaporama/:action/:id</route>
+			<defaults>
+				<module>diaporama</module>
+				<controller>back</controller>
+				<action>index</action>
+				<id>0</id>
+				<_isAdmin>true</_isAdmin>
+				<_isDiaporama>true</_isDiaporama>
+				<page>1</page>
+			</defaults>
+		</diaporama_back>	
+	</routes>
+	
+</module>

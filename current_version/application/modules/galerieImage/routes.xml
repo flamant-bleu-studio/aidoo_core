@@ -42,31 +42,6 @@
 				<page>1</page>
 			</defaults>
 		</galeriePhoto_back>
-
-		<diaporama type="Zend_Controller_Router_Route">
-			<route>diaporama/:action/:id</route>
-			<defaults>
-				<action>index</action>
-				<controller>front</controller>
-				<module>galerieImage</module>
-				<id>0</id>
-				<_isDiaporama>true</_isDiaporama>
-			</defaults>
-		</diaporama>
-		
-		<diaporama_back type="Zend_Controller_Router_Route">
-			<route>administration/diaporama/:action/:id</route>
-			<defaults>
-				<module>galerieImage</module>
-				<controller>back</controller>
-				<action>index</action>
-				<id>0</id>
-				<_isAdmin>true</_isAdmin>
-				<_isDiaporama>true</_isDiaporama>
-				<page>1</page>
-			</defaults>
-		</diaporama_back>
-		
 	</routes>
 	
 </module>

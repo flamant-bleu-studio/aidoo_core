@@ -20,34 +20,32 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-$hooks = CMS_Application_Hook::getInstance();
-
-function appendGalerieImageTabMenu($tabs)
+class Diaporama_Object_Diaporama extends CMS_Object_MonoLangEntityWithNodes
 {
-	$backAcl = CMS_Acl_Back::getInstance();
+	public $id;
+	public $title;
+	public $size;
 	
-	if($backAcl->hasPermission("mod_galeriePhoto", "view"))
-	{
-		$tabs['siteLife']['children'][] = array("title" => "Galeries Photo", "routeName" => "galeriePhoto_back",  "moduleName" => "galerieImage", "controllerName" => "back", "icon" => "actu.png");
-	}
+	protected $nodes;
 	
-	return $tabs;
-}
-
-$hooks->add('Back_Main_Menu_Generate', 'appendGalerieImageTabMenu', 150);
-
-	function ApiCreateGalerieImage($tab)
+	protected static $_modelClass = "Diaporama_Model_DbTable_Diaporama";
+	protected static $_model;
+	
+	protected static $_nodes = array(
+		"nodes" => "Diaporama_Object_Image"
+	);
+	
+	public function existByName($image)
 	{
-		$backAcl = CMS_Acl_Back::getInstance();
-		if (!$backAcl->hasPermission('mod_galeriePhoto', 'create')) {
-			return $tab;
+		$nodes = parent::__get('nodes');
+		
+		if (!empty($nodes)) {
+			foreach ($nodes as $i) {
+				if ($image === $i->image)
+					return $i;
+			}
 		}
 		
-		$tab["galerieImage"] = array(
-			"name" => "Galerie image",
-			"api_name" => "GalerieImage_Lib_Api"
-		);
-	
-		return $tab;
+		return false;
 	}
-	$hooks->add('listCreateApi', 'ApiCreateGalerieImage', 151);
+}

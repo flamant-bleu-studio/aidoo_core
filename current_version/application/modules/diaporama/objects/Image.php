@@ -20,34 +20,31 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-$hooks = CMS_Application_Hook::getInstance();
-
-function appendGalerieImageTabMenu($tabs)
-{
-	$backAcl = CMS_Acl_Back::getInstance();
+class Diaporama_Object_Image extends CMS_Object_MonoLangEntity {
 	
-	if($backAcl->hasPermission("mod_galeriePhoto", "view"))
-	{
-		$tabs['siteLife']['children'][] = array("title" => "Galeries Photo", "routeName" => "galeriePhoto_back",  "moduleName" => "galerieImage", "controllerName" => "back", "icon" => "actu.png");
-	}
+	public $id;
+	public $parent_id;
+	public $text;
+	public $image;
 	
-	return $tabs;
-}
-
-$hooks->add('Back_Main_Menu_Generate', 'appendGalerieImageTabMenu', 150);
-
-	function ApiCreateGalerieImage($tab)
-	{
-		$backAcl = CMS_Acl_Back::getInstance();
-		if (!$backAcl->hasPermission('mod_galeriePhoto', 'create')) {
-			return $tab;
+	public $link_type; // 0 = no link, 1 = internal link, 2 = external link
+	public $link_internal;
+	public $link_external;
+	public $link_target_blank;
+	public $background_color;
+	
+	protected static $_modelClass = "Diaporama_Model_DbTable_Image";
+	protected static $_model;
+	
+	public function getLink() {
+		if ($this->link_type == 1) {
+			$page = CMS_Page_Object::get((int)$this->link_internal);
+			return ($page) ? BASE_URL . $page->getUrl() : "#";
+		}
+		else if ($this->link_type == 2) {
+			return $this->link_external;
 		}
 		
-		$tab["galerieImage"] = array(
-			"name" => "Galerie image",
-			"api_name" => "GalerieImage_Lib_Api"
-		);
-	
-		return $tab;
+		return null;
 	}
-	$hooks->add('listCreateApi', 'ApiCreateGalerieImage', 151);
+}

@@ -22,32 +22,16 @@
 
 $hooks = CMS_Application_Hook::getInstance();
 
-function appendGalerieImageTabMenu($tabs)
+function appendDiaporamaTabMenu($tabs)
 {
 	$backAcl = CMS_Acl_Back::getInstance();
 	
-	if($backAcl->hasPermission("mod_galeriePhoto", "view"))
+	if($backAcl->hasPermission("mod_diaporama", "view"))
 	{
-		$tabs['siteLife']['children'][] = array("title" => "Galeries Photo", "routeName" => "galeriePhoto_back",  "moduleName" => "galerieImage", "controllerName" => "back", "icon" => "actu.png");
+		$tabs['siteLife']['children'][] = array("title" => "Diaporama", "routeName" => "diaporama_back",  "moduleName" => "diaporama", "controllerName" => "back");
 	}
 	
 	return $tabs;
 }
 
-$hooks->add('Back_Main_Menu_Generate', 'appendGalerieImageTabMenu', 150);
-
-	function ApiCreateGalerieImage($tab)
-	{
-		$backAcl = CMS_Acl_Back::getInstance();
-		if (!$backAcl->hasPermission('mod_galeriePhoto', 'create')) {
-			return $tab;
-		}
-		
-		$tab["galerieImage"] = array(
-			"name" => "Galerie image",
-			"api_name" => "GalerieImage_Lib_Api"
-		);
-	
-		return $tab;
-	}
-	$hooks->add('listCreateApi', 'ApiCreateGalerieImage', 151);
+$hooks->add('Back_Main_Menu_Generate', 'appendDiaporamaTabMenu', 150);
