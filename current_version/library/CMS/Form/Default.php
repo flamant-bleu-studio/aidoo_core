@@ -136,4 +136,64 @@ class CMS_Form_Default extends Zend_Form
     	
     	return parent::isValid($data);
     }
+    
+    protected function addLinkElements()
+    {
+    	/* Type de lien */
+   		$linkType= new CMS_Form_Element_Radio('link_type');
+    	$linkType->setLabel(_t('Select your Link Type:'));
+    	$linkType->setDescription(_t("Choose you link type"));
+        $linkType->setMultiOptions(array( _t('No link'), _t('Internal link') , _t('External link')));
+        $linkType->setValue(0);
+		$this->addElement($linkType);
+		
+		/* Page à lier */
+		$item = new Zend_Form_Element_Select('link_internal');
+		$item->setLabel(_t("Choose page to link"));
+		$item->setDescription(_t("Choose page to link"));
+		
+		$pages = CMS_Page_Object::get(array("enable" => "1", "visible" => "1"), array("title"));
+		$types = (array)CMS_Page_Type::get();
+		
+		$item->addMultiOption(1, _t('Home'));
+		
+		// Génération d'un tableau associatif : type => array object
+		$tmp = array();
+		foreach($types as $type){
+			$tmp[$type->type] = $type->toArray();
+		}
+		$types = $tmp;
+		
+		// Remplissage de chaque type avec leurs pages
+		foreach($pages as $page) {
+			if(!$types[$page->type])
+				continue;
+			else
+				$types[$page->type]["pages"][] = $page;
+		}
+		
+		foreach ($types as $type) {
+			if (isset($type["pages"]) && $type["pages"]) {
+				$item->addMultiOptions(array($type["type"] => array()));
+				foreach ($type["pages"] as $page) {
+					$item->addMultiOption($page->id_page, ' - '.$page->title);
+				}
+			}
+		}
+		
+		$this->addElement($item);
+		
+		/* Page externe */
+		$item = $this->createElement('text', 'link_external');
+		$item->setLabel(_t('Enter external adress to link (add before link \'http://\' or \'https://\')'));
+		$item->setDescription(_t(""));
+		$item->setAttrib('size',50);
+		$this->addElement($item);
+		
+		/* Nouvelle fenetre */
+        $item = new Zend_Form_Element_Checkbox('link_target_blank');
+        $item->setLabel(_t('Open in new window'));
+        $item->setDescription(_t("Check the box"));
+        $this->addElement($item);
+    }
 }
