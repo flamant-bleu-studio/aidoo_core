@@ -7,7 +7,6 @@ DROP TABLE IF EXISTS `1_diaporamas`;
 CREATE TABLE IF NOT EXISTS `1_diaporamas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
-  `nb_image` int(11) NOT NULL,
   `size` int(11) DEFAULT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
@@ -33,3 +32,5 @@ CREATE TABLE IF NOT EXISTS `1_diaporamas_images` (
   `link_target_blank` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- UPDATE `1_diaporamas_images` SET image=REPLACE(image, '/resources/cms_local/upload/', '');

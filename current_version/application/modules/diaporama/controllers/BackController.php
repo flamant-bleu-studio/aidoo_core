@@ -246,4 +246,12 @@ class Diaporama_BackController extends CMS_Controller_Action
 		
 		$this->view->formAcl = $formAcl;
 	}
+	
+	public function migrateOldAction()
+	{
+		$model = new Diaporama_Model_DbTable_Diaporama();
+		$model->migrate();
+		
+		die('finish');
+	}
 }
