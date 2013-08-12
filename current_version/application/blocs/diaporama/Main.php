@@ -57,58 +57,25 @@ class Bloc_Diaporama_Main extends CMS_Bloc_Abstract implements CMS_Bloc_Interfac
 				return;
 			}
 			
-			$galerieObject 	= new GalerieImage_Object_Galerie($id);
-			$items 			= GalerieImage_Lib_Manager::unsetInactiveImage($galerieObject->nodes);
+			$diaporama 	= new Diaporama_Object_Diaporama($id);
+			$items 			= $diaporama->nodes;
 			$count 			= count($items);
 			
 			if ($count > 0) {
 				$usePagination = $this->pagination ? "true" : "false";
 				
-				
-				
-				
-				
-				if($galerieObject->nb_image > 1) {
+				if (count($items) > 0) {
 					$processLayout = CMS_Application_ProcessLayout::getInstance();
 					$processLayout->appendJsFile("/lib/slideShow/jquery.slideShowMaison.js");
 					$processLayout->appendJsScript("$('#diaporama.diaporama-".$id."').gallery({'usePagination': ".$usePagination."});");
 				}
 				
-				$return = array();
-				
-				foreach ($items as $item) {
-					$temp = array();
-					
-					$datas = json_decode($item->datas, true);
-										
-					$temp["addLink"] = $datas["addLink"];
-					
-					if($datas["addLink"]){
-						if( $datas["link_type"] == 1 ){
-							$temp["url"] = "http://" . $datas["external_page"];
-						}
-						else if ( $datas["link_type"] == 0 ) {
-							if ($datas["page_link"]) {
-								$page = CMS_Page_Object::getOne((int)$datas["page_link"]);
-								$temp["url"] = BASE_URL . $page->getUrl();	
-							}
-						}
-					}
-					
-					$temp["window"] = $datas["window"] ? 1 : 0;
-					$temp["image"] = $item->path;
-					$temp["image2"] = $item->path2;
-					$temp["description"] = urldecode($item->description);
-					
-					$return[] = $temp;
-				}
-				
-				$view->items = $return;
+				$view->items = $items;
 				
 				$diaporama_size = json_decode(DIAPORAMA_SIZE, true);
 				
-				$view->diaporamaWidth = $diaporama_size[$galerieObject->size]["width"];
-				$view->diaporamaHeight = $diaporama_size[$galerieObject->size]["height"];
+				$view->diaporamaWidth = $diaporama_size[$diaporama->size]["width"];
+				$view->diaporamaHeight = $diaporama_size[$diaporama->size]["height"];
 				
 				$view->datas = $this->toArray();
 			}

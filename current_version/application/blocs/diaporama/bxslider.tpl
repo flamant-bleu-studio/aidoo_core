@@ -17,27 +17,24 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
+
 {if $items|@count > 0}
 
-	<div id="diaporama-{$datas.diaporamaId}"  class="diaporama bxslider">
+	<div id="diaporama-{$datas.diaporamaId}"  class="diaporama diapo_classic">
 		<ul>
 		{foreach name=diaporama key=key from=$items item=diapo}
 			<li class="diapo" id="diapo{$key+1}">
-			
-				{if $diapo['addLink']}
-					<a class="link" href="{$diapo['url']}" {if $diapo['window']}target="_blank"{/if}>
+				
+				{if $diapo->link_type != 0}
+					<a class="link" href="$diapo->getUrl()" {if $diapo->link_target_blank}target="_blank"{/if}>
 				{/if}
-					<img class="img" src="{$diapo['image']}" width="{$diaporamaWidth}px" height="{$diaporamaHeight}px" />
-					
-					{if $diapo['image2']}
-						<img class="img2" src="{$diapo['image2']}" />
-					{/if}
+					<img src="{image folder='diaporama' name=$diapo->image}" />
 					
 					<div class="caption">
-						{$diapo["description"]}
+						{$diapo->text}
 					</div>
 					
-				{if $diapo['addLink']}
+				{if $diapo->link_type != 0}
 					</a>
 				{/if}
 					

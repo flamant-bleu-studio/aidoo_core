@@ -31,7 +31,7 @@ class Bloc_Diaporama_AdminForm extends CMS_Bloc_ParentForm
 		$item->addMultiOptions(array( 'specific' => _t('Set a slideshow') , 'byPage' => _t('Current page defines the slideshow')));
 		$this->addElement($item);
 		
-		$diaporamas = GalerieImage_Object_Galerie::get( array( 'type' => GalerieImage_Object_Galerie::TYPE_DIAPORAMA ) );
+		$diaporamas = Diaporama_Object_Diaporama::get();
 		$options = array();
 		if( $diaporamas )
 			foreach ( $diaporamas as $diaporama )
