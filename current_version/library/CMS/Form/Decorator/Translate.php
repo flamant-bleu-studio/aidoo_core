@@ -244,14 +244,14 @@ class CMS_Form_Decorator_Translate extends Zend_Form_Decorator_Abstract implemen
 		*/
 		$output  = "";
 		$output .= '<div class="langSwitcher">';
-		$output .= '<img class="langActive" src="'. BASE_URL .'/images/flags/'. DEFAULT_LANG_CODE .'.png" realid="'. DEFAULT_LANG_ID .'">';
+		$output .= '<img class="langActive" src="'. BASE_URL . SKIN_URL . '/images/flags/'. DEFAULT_LANG_CODE .'.png" realid="'. DEFAULT_LANG_ID .'">';
 		$output .= '<div class="others">';
 		
 		foreach($langs as $id_lang => $code_lang) {
 			if( $id_lang == DEFAULT_LANG_ID )
-				$output .= '<img src="'. BASE_URL .'/images/flags/'. $code_lang .'.png" realid="'. $id_lang .'" class="current flag">';
+				$output .= '<img src="'. BASE_URL . SKIN_URL . '/images/flags/'. $code_lang .'.png" realid="'. $id_lang .'" class="current flag">';
 			else
-				$output .= '<img src="'. BASE_URL .'/images/flags/'. $code_lang .'.png" realid="'. $id_lang .'" class="flag">';
+				$output .= '<img src="'. BASE_URL . SKIN_URL . '/images/flags/'. $code_lang .'.png" realid="'. $id_lang .'" class="flag">';
 		}
 		
 		$output .= '</div>';
