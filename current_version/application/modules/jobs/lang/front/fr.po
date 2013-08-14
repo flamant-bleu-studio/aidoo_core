@@ -1,0 +1,48 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: jmarrot <jmarrot@flamant-bleu.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /var/CMS_github/current_version/application/modules/jobs/controllers/FrontController.php:90
+#: /var/CMS_github/current_version/application/modules/jobs/controllers/FrontController.php:105
+msgid "Page not found"
+msgstr "Page introuvable"
+
+#: /var/CMS_github/current_version/application/modules/jobs/controllers/FrontController.php:199
+msgid "File XML not found"
+msgstr "Fichier XML introuvable"
+
+#: /var/CMS_github/current_version/application/modules/jobs/controllers/FrontController.php:210
+msgid "Send"
+msgstr "Envoyer"
+
+#: /var/CMS_github/current_version/application/modules/jobs/controllers/FrontController.php:237
+msgid "Missing nodes"
+msgstr ""
+
+#: /var/CMS_github/current_version/application/modules/jobs/controllers/FrontController.php:243
+msgid "Missing mail contact"
+msgstr ""
+
+#: /tmp/po-module-jobs.c:1
+msgid "Mail succesfully send"
+msgstr "Mail envoyé avec succès"
+
+#: /tmp/po-module-jobs.c:2
+msgid "Mail error send"
+msgstr "Une erreur s'est produite lors de l'envoi de l'email"
+
+#: /tmp/po-module-jobs.c:3
+msgid "Read more"
+msgstr "En lire plus"
+
+#: /tmp/po-module-jobs.c:4
+msgid "Apply for this job"
+msgstr "Postulez à cette offre"
+
