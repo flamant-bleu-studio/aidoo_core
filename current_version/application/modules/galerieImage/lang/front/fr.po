@@ -1,0 +1,3 @@
+#: /var/CMS_github/current_version/application/modules/galerieImage/controllers/FrontController.php:32
+msgid "Page not found"
+msgstr ""

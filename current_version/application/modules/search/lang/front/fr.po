@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 12:08+0100\n"
+"POT-Creation-Date: 2013-08-14 10:42+0200\n"
 "PO-Revision-Date: 2012-12-12 12:11+0100\n"
 "Last-Translator: jmarrot <jmarrot@flamant-bleu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,19 +16,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /var/CMS/current_version/application/modules/search/controllers/FrontController.php:16
+#: /var/CMS_github/current_version/application/modules/search/controllers/FrontController.php:36
 msgid "Page not found"
 msgstr "Page non trouvée"
 
-#: /var/CMS/current_version/application/modules/search/lang/front/trad.c:1
+#: /tmp/po-module-search.c:1
 msgid "Result of your search"
 msgstr "Résultat de votre recherche"
 
-#: /var/CMS/current_version/application/modules/search/lang/front/trad.c:2
+#: /tmp/po-module-search.c:2
 msgid "Read more"
 msgstr "Voir plus"
 
-#: /var/CMS/current_version/application/modules/search/lang/front/trad.c:3
+#: /tmp/po-module-search.c:3
 msgid "No results"
 msgstr "Aucun résultat"
-

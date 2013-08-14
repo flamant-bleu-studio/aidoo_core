@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-03 14:20+0200\n"
+"POT-Creation-Date: 2013-08-14 10:42+0200\n"
 "PO-Revision-Date: 2012-08-22 16:44+0100\n"
 "Last-Translator: Louis Samson <l.samson@flamant-bleu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,26 +16,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /var/CMS/current_version/application/modules/contact/controllers/FrontController.php:16
+#: /var/CMS_github/current_version/application/modules/contact/controllers/FrontController.php:32
 msgid "Page not found"
 msgstr "Page non trouvée"
 
-#: /var/CMS/current_version/application/modules/contact/controllers/FrontController.php:49
+#: /var/CMS_github/current_version/application/modules/contact/controllers/FrontController.php:78
 msgid "This contact form type doesn't exist"
 msgstr "Ce contact n'existe plus."
 
-#: /var/CMS/current_version/application/modules/contact/controllers/FrontController.php:56
+#: /var/CMS_github/current_version/application/modules/contact/controllers/FrontController.php:85
 msgid "This contact form type not available to page"
 msgstr "The formulaire de contact n'est plus accessible"
 
-#: /var/CMS/current_version/application/modules/contact/controllers/FrontController.php:77
+#: /var/CMS_github/current_version/application/modules/contact/controllers/FrontController.php:106
 msgid "No email is configure for this form"
 msgstr "Aucun email configuré pour ce formulaire"
 
-#: /var/CMS/current_version/application/modules/contact/controllers/FrontController.php:162
+#: /var/CMS_github/current_version/application/modules/contact/controllers/FrontController.php:191
 msgid "Acknowledgment of your email from "
 msgstr "Accusé de réception de votre email venant de"
 
-#: /var/CMS/current_version/application/modules/contact/controllers/FrontController.php:197
+#: /var/CMS_github/current_version/application/modules/contact/controllers/FrontController.php:226
 msgid "Send"
 msgstr "Envoyer"

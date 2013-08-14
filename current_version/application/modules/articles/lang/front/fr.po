@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-10 10:17+0200\n"
+"POT-Creation-Date: 2013-08-14 10:42+0200\n"
 "PO-Revision-Date: 2012-09-10 10:20+0100\n"
 "Last-Translator: Louis Samson <l.samson@flamant-bleu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,145 +16,144 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /var/CMS/current_version/application/modules/articles/controllers/FrontController.php:134
-#: /var/CMS/current_version/application/modules/articles/controllers/FrontController.php:140
-#: /var/CMS/current_version/application/modules/articles/controllers/FrontController.php:144
+#: /var/CMS_github/current_version/application/modules/articles/controllers/FrontController.php:159
+#: /var/CMS_github/current_version/application/modules/articles/controllers/FrontController.php:165
+#: /var/CMS_github/current_version/application/modules/articles/controllers/FrontController.php:169
 msgid "Page not found"
 msgstr "Page non trouvée"
 
-#: /var/CMS/current_version/application/modules/articles/controllers/MiddleController.php:102
+#: /var/CMS_github/current_version/application/modules/articles/controllers/MiddleController.php:122
 msgid "Successful creation of the article. This article must be validated."
 msgstr "Article créé avec succès. Cet article doit être validé."
 
-#: /var/CMS/current_version/application/modules/articles/controllers/MiddleController.php:122
+#: /var/CMS_github/current_version/application/modules/articles/controllers/MiddleController.php:145
 msgid "You are not the owner of this article"
 msgstr "Vous n'êtes pas le propriétaire de cet article"
 
-#: /var/CMS/current_version/application/modules/articles/controllers/MiddleController.php:164
+#: /var/CMS_github/current_version/application/modules/articles/controllers/MiddleController.php:187
 msgid "Article updated"
 msgstr "Article mis à jour"
 
-#: /var/CMS/current_version/application/modules/articles/controllers/MiddleController.php:172
+#: /var/CMS_github/current_version/application/modules/articles/controllers/MiddleController.php:195
 msgid "Page object has not been updated because it was not found"
 msgstr "L'objet Page n'a pu être mis à jour parce qu'il n'a pas été trouvé"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:25
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:13
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:31
+#: /tmp/po-module-articles.c:15
 msgid "Status"
 msgstr "État"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:26
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:32
 msgid "Drafted"
 msgstr "Brouillon"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:26
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:16
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:32
+#: /tmp/po-module-articles.c:18
 msgid "Published"
 msgstr "Publié"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:43
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:53
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:49
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:59
 msgid "Others"
 msgstr "Autres"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:59
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:11
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:65
+#: /tmp/po-module-articles.c:13
 msgid "Categories"
 msgstr "Catégorie"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:69
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:75
 msgid "Access"
 msgstr "Accès"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:77
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:83
 msgid "Activation date"
 msgstr "Date d'activation"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:83
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:89
 msgid "Article permanent ?"
 msgstr "Article permanent ?"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:84
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:120
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:90
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:125
 msgid "Check to activate"
 msgstr "Cochez pour activer"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:88
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:94
 msgid "Deactivation date"
 msgstr "Date de désactivation"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:96
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:10
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:102
+#: /tmp/po-module-articles.c:12
 msgid "Title"
 msgstr "Titre"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:108
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:114
 msgid "Image"
 msgstr "Image"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:112
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:118
 msgid "Headline"
 msgstr "Chapeau"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:119
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:124
 msgid "Link read more"
 msgstr "Lien en lire plus"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:127
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:132
 msgid "Show comments"
 msgstr "Afficher les commentaires"
 
-#: /var/CMS/current_version/application/modules/articles/forms/Article.php:128
+#: /var/CMS_github/current_version/application/modules/articles/forms/Article.php:133
 msgid "Display facebook comments in article"
 msgstr "Afficher les commentaires facebook dans l'article"
 
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:1
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:7
-msgid "comment"
-msgstr "commentaire"
-
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:2
-msgid "Back"
-msgstr "Retour"
-
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:3
-msgid "Written by"
-msgstr "Rédigé par"
-
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:4
-msgid "No item to display"
-msgstr "Aucun élément à afficher"
-
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:5
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:8
-msgid "Read more"
-msgstr "En lire plus"
-
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:6
-msgid "No items"
-msgstr "Aucun article"
-
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:9
+#: /tmp/po-module-articles.c:1 /tmp/po-module-articles.c:3
+#: /tmp/po-module-articles.c:11
 msgid "No news to display"
 msgstr "Aucun article à afficher"
 
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:12
+#: /tmp/po-module-articles.c:2
+msgid "No item to display"
+msgstr "Aucun élément à afficher"
+
+#: /tmp/po-module-articles.c:4 /tmp/po-module-articles.c:10
+msgid "Read more"
+msgstr "En lire plus"
+
+#: /tmp/po-module-articles.c:5
+msgid "No items"
+msgstr "Aucun article"
+
+#: /tmp/po-module-articles.c:6 /tmp/po-module-articles.c:9
+msgid "comment"
+msgstr "commentaire"
+
+#: /tmp/po-module-articles.c:7
+msgid "Back"
+msgstr "Retour"
+
+#: /tmp/po-module-articles.c:8
+msgid "Written by"
+msgstr "Rédigé par"
+
+#: /tmp/po-module-articles.c:14
 msgid "Last update"
 msgstr "Dernière mise à jour"
 
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:14
+#: /tmp/po-module-articles.c:16
 msgid "Actions"
 msgstr "Actions"
 
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:15
+#: /tmp/po-module-articles.c:17
 msgid "Pending validation"
 msgstr "En attente de validation"
 
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:17
+#: /tmp/po-module-articles.c:19
 msgid "Edit"
 msgstr "Éditer"
 
-#: /var/CMS/current_version/application/modules/articles/lang/front/trad.c:18
+#: /tmp/po-module-articles.c:20
 msgid "View"
 msgstr "Voir"
 
