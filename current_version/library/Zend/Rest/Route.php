@@ -14,9 +14,9 @@
  *
  * @category   Zend
  * @package    Zend_Rest
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Route.php 24013 2011-05-04 21:19:12Z ralph $
+ * @version    $Id: Route.php 24593 2012-01-05 20:35:02Z matthew $
  */
 
 /**
@@ -46,7 +46,7 @@ require_once 'Zend/Controller/Request/Abstract.php';
  *
  * @category   Zend
  * @package    Zend_Rest
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
@@ -133,7 +133,7 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
         $params = $request->getParams();
         $values = array();
         $path   = trim($path, self::URI_DELIMITER);
-        
+
         if ($path != '') {
 
             $path = explode(self::URI_DELIMITER, $path);
@@ -191,7 +191,7 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
                     $params[$key] = urldecode($val);
                 }
             }
-            
+
             // Determine Action
             $requestMethod = strtolower($request->getMethod());
             if ($requestMethod != 'get') {
@@ -202,7 +202,7 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
                 } else {
                     $values[$this->_actionKey] = $requestMethod;
                 }
-                
+
                 // Map PUT and POST to actual create/update actions
                 // based on parameter count (posting to resource or collection)
                 switch( $values[$this->_actionKey] ){
