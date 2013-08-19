@@ -11,15 +11,6 @@
 	</config>
 	
 	<routes>
-	
-		<statistics type="Zend_Controller_Router_Route">
-			<route>statistics/</route>
-			<defaults>
-				<action>index</action>
-				<controller>front</controller>
-				<module>statistics</module>
-			</defaults>
-		</statistics>
 		
 		<statistics_back type="Zend_Controller_Router_Route">
 			<route>administration/statistics/</route>
@@ -30,8 +21,6 @@
 				<_isAdmin>true</_isAdmin>
 				<page>1</page>
 			</defaults>
-
-			
 		</statistics_back>
 	
 	</routes>

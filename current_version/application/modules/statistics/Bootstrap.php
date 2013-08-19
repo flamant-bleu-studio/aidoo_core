@@ -22,7 +22,6 @@
 
 class Statistics_Bootstrap extends Zend_Application_Module_Bootstrap
 {
-
     protected function _initModule()
     {
 	      CMS_Application_InitModule::initModule('statistics', dirname(__FILE__));

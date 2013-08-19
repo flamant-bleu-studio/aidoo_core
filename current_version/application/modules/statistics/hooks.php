@@ -25,10 +25,11 @@ $hooks = CMS_Application_Hook::getInstance();
 function appendStatisticsTabMenu($tabs)
 {
 	$backAcl = CMS_Acl_Back::getInstance();
-	if($backAcl->hasPermission("mod_statistics", "view"))
-	{
-		$tabs['siteLife']['children'][] = array("title" => "Statistiques", "routeName" => "statistics_back",  "moduleName" => "statistics", "controllerName" => "back", "icon" => "actu.png");
+	
+	if($backAcl->hasPermission("mod_statistics", "view")) {
+		$tabs['siteLife']['children'][] = array("title" => "Statistiques", "routeName" => "statistics_back",  "moduleName" => "statistics", "controllerName" => "back");
 	}
+	
 	return $tabs;
 }
 
