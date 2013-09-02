@@ -17,36 +17,21 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
-{include file="{$smarty.const.APPLICATION_PATH}/modules/blocs/views/back/menu.tpl" active="create"}
+{$form->background_color}
+{$form->text}
+{$form->text_color}
+{$form->icon}
 
-<div id="content">
-
-	<form method="post" action="{$form->getAction()}" id="{$form->getId()}">
-						
-		{$form->from}
-		
-		{$form->designation}
-		{$form->title}
-		
-		{$form->decorator}
-		{$form->templateFront}
-		{$form->theme}
-		{$form->classCss}
-		
-		<hr />
-		
-		{$form->sizeBloc}
-		
-		<hr />
-		
-		{$blocAdmin}
-		
-		<hr />	
-		
-		{$form->permissions}
-		
-	{formButtons cancelLink="{routeShort action='index'}"}		
-	
-	</form>
-
+<div style="width: 80px;height: 80px;margin-left: 200px;">
+	<img id="preview_icon" src="" data-origin="http://{$smarty.server.SERVER_NAME}{$baseUrl}/skins/{$smarty.const.SKIN_FRONT}/icon/" />
 </div>
+
+{$form->id_page}
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#form_icon').on('change', 'select', function(){
+		$('#preview_icon').attr('src', $('#preview_icon').data('origin')+$(this).val()+'.png');
+	});
+});
+</script>

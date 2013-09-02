@@ -17,36 +17,21 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
-{include file="{$smarty.const.APPLICATION_PATH}/modules/blocs/views/back/menu.tpl" active="create"}
-
-<div id="content">
-
-	<form method="post" action="{$form->getAction()}" id="{$form->getId()}">
-						
-		{$form->from}
-		
-		{$form->designation}
-		{$form->title}
-		
-		{$form->decorator}
-		{$form->templateFront}
-		{$form->theme}
-		{$form->classCss}
-		
-		<hr />
-		
-		{$form->sizeBloc}
-		
-		<hr />
-		
-		{$blocAdmin}
-		
-		<hr />	
-		
-		{$form->permissions}
-		
-	{formButtons cancelLink="{routeShort action='index'}"}		
+{if $url}
+<a href="{$url}">
+{/if}
+<div class="mbloc {if $icon}hasIcon{else}hasNoIcon{/if} {if $text}hasText{else}hasNoText{/if}" style="background-color:#{$background_color};">
 	
-	</form>
-
+	{if $icon}
+		<img src="http://{$smarty.server.SERVER_NAME}{$baseUrl}/skins/{$smarty.const.SKIN_FRONT}/icon/{$icon}.png" />
+	{/if}
+	
+	{if $text}
+		<div class="text" style="color:#{$text_color};">{$text}</div>
+	{/if}
+	
+	<div class="clear"></div>
 </div>
+{if $url}
+</a>
+{/if}

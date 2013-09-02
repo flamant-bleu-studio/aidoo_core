@@ -39,6 +39,12 @@
 			{$form->templateFront}
 			{$form->theme}
 			{$form->classCss}
+			
+			<hr />
+			
+			{$form->sizeBloc}
+			
+			<hr />
 				
 			{$blocAdmin}
 			<div class="clearfix"></div>

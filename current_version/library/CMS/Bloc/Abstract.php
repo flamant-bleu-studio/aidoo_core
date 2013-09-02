@@ -30,6 +30,7 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 	public $theme;
 	public $decorator;
 	public $templateFront;
+	public $sizeBloc;
 	
 	protected $type;
 	protected $noRenderBloc  = false; /* true : Désactive le render front du bloc */
@@ -103,6 +104,7 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 		$this->decorator 	= $post["decorator"];
 		$this->theme 		= $post["theme"];
 		$this->type			= get_class($this);
+		$this->sizeBloc		= $post["sizeBloc"];
 		
 		if (empty($this->templateFront))
 			$this->templateFront = "front";
@@ -338,6 +340,11 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 		return $view->render('admin.tpl');
 	}
 	
+	public function beforeRenderFront()
+	{
+		
+	}
+	
 	final public function renderFront()
 	{
 		if( $this->noRenderBloc !== false)
@@ -352,6 +359,7 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 		$view->titleBloc 	= $this->title;
 		$view->classCssBloc = $this->classCss . (($this->theme) ? ' ' . $this->theme : '');;
 		$view->nameBloc 	= $this->getNameBloc();
+		$view->sizeBloc 	= $this->sizeBloc;
 		
 		/* Réglage du cache */
 		if ($this->cacheLifeTime === 0)

@@ -76,7 +76,7 @@ class CMS_Bloc_ParentForm extends CMS_Form_Default
 			$item = new Zend_Form_Element_Select("templateFront");
 			$item->setLabel(_t("Template"));
 			
-			$item->addMultiOption(0, _t('Default'));
+			$item->addMultiOption('front', _t('Default'));
 			$item->addMultiOptions($this->templatesBloc);
 			
 			$item->setRequired(true);
@@ -129,6 +129,17 @@ class CMS_Bloc_ParentForm extends CMS_Form_Default
 		}
 		else
 			$item = new Zend_Form_Element_Hidden('classCss');
+		$this->addElement($item);
+		
+		$item = new Zend_Form_Element_Select('sizeBloc');
+		$item->addMultiOptions(array(
+			'25' => '25%',
+			'50' => '50%',
+			'75' => '75%',
+			'100' => '100%'
+		));
+		$item->setLabel(_t('Size'));
+		$item->setDescription(_t('To mobile'));
 		$this->addElement($item);
 		
 		$item = new CMS_Form_Element_SubmitCustom("submit");

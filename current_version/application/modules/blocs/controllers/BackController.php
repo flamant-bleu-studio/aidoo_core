@@ -34,6 +34,9 @@ class Blocs_BackController extends CMS_Controller_Action
     {
     	$this->redirectIfNoRights('mod_bloc', 'view');
     	
+    	$templateType = $this->_request->getParam('id');
+    	$this->view->templateType = (!empty($templateType) ? $templateType : 'classic');
+    	
     	$backAcl = CMS_Acl_Back::getInstance();
     	
 		// Récupération des templates

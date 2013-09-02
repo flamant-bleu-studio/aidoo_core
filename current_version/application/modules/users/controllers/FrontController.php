@@ -65,6 +65,8 @@ class Users_FrontController extends CMS_Controller_Action
 	 */
 	public function loginAction() {
 		
+		$this->disableSmartyCache();
+		
 		if( !defined('CMS_MIDDLE_USER_GROUPE') || empty($this->config['pageMiddleOffice']) ) {
 			throw new Exception(_t('Page not found'), 404);
 		}

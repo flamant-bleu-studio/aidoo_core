@@ -26,7 +26,7 @@ class Blocs_Model_DbTable_Items extends CMS_Model_MultiLang {
 	protected $_dependentTables = array('Blocs_Model_DbTable_Map');
 	
 	protected $_primaryKey 			= "id_item";
-	protected $_values 				= array("active", "templateFront", "decorator", "classCss", "theme", "type");
+	protected $_values 				= array("active", "templateFront", "decorator", "classCss", "theme", "type", "sizeBloc");
 	protected $_translatedValues 	= array("designation", "title", "params");
 	
 	

@@ -145,19 +145,16 @@
 				
 			</div>
 	
-	
-	
-	
 			<div class="btn-toolbar actions_tpl">
 		
 				{if !empty($mobileEnabled) || !empty($tabletEnable)}
 					<div id="typeSelect" class="btn-group" data-toggle="buttons-radio">
-						<button value="classic" class="btn active">{t}Classic{/t}</button>
+						<button value="classic" class="btn {if $templateType == 'classic'}active{/if}" data-url="{routeShort action='index'}">{t}Classic{/t}</button>
 						{if !empty($mobileEnabled)} 
-							<button value="mobile" class="btn">{t}Mobile{/t}</button>
+							<button value="mobile" class="btn {if $templateType == 'mobile'}active{/if}" data-url="{routeShort id='mobile'}">{t}Mobile{/t}</button>
 						{/if}
 						{if !empty($tabletEnabled)}
-							<button value="tablet" class="btn">{t}Touchpad{/t}</button>
+							<button value="tablet" class="btn{if $templateType == 'tablet'}active{/if}" data-url="{routeShort id='tablet'}">{t}Touchpad{/t}</button>
 						{/if}
 					</div>
 				{/if}
@@ -169,7 +166,9 @@
 				{/if}
 				
 			</div>
-	
+			
+			{if $templateType == 'classic'}
+			
 			<div class="row-fluid">
 				<div id="template" class="span8">
 					
@@ -278,7 +277,69 @@
 		
 				</div>
 			</div>
-	
+			
+			{else if $templateType == 'mobile'}
+			
+			<div class="row-fluid">
+				<div id="template" class="span8">
+					<div id="t_line1" class="droppable horizontal">
+						{if $templates[0]->getPlaceholder("classic", "line1")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("mobile", "line1")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
+					<div id="t_line2" class="droppable horizontal">
+						{if $templates[0]->getPlaceholder("classic", "line2")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("mobile", "line2")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
+					<div id="t_line3" class="droppable horizontal">
+						{if $templates[0]->getPlaceholder("classic", "line3")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("mobile", "line3")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
+					<div id="t_line4" class="droppable horizontal">
+						{if $templates[0]->getPlaceholder("classic", "line4")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("mobile", "line4")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
+					<div id="t_line5" class="droppable horizontal">
+						{if $templates[0]->getPlaceholder("classic", "line5")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("mobile", "line5")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
+					<div id="t_line6" class="droppable horizontal">
+						{if $templates[0]->getPlaceholder("classic", "line6")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("mobile", "line6")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
+					<div id="t_line7" class="droppable horizontal">
+						{if $templates[0]->getPlaceholder("classic", "line7")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("mobile", "line7")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
+					<div id="t_line8" class="droppable horizontal">
+						{if $templates[0]->getPlaceholder("classic", "line8")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("mobile", "line8")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
+					<div id="t_line9" class="droppable horizontal">
+						{if $templates[0]->getPlaceholder("classic", "line9")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("mobile", "line9")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
+				</div>
+			</div>
+			
+			{/if}
 	
 		</div>
 	</div>
@@ -331,6 +392,8 @@ padding: 0 10px;
 	var permission_createTemplates = {/literal}{if $backAcl->hasPermission("mod_bloc", "createTemplates")}true{else}false{/if}{literal};
 	var permission_editTemplates = {/literal}{if $backAcl->hasPermission("mod_bloc", "editTemplates")}true{else}false{/if}{literal};
 	var permission_deleteTemplates = {/literal}{if $backAcl->hasPermission("mod_bloc", "deleteTemplates")}true{else}false{/if}{literal};
+
+	
 	
 {/literal}
 
@@ -342,10 +405,9 @@ padding: 0 10px;
 	    	lastId : {counter},
 	    	defaultTpl: '{$defaultTemplate}',
 	    	homePageIdTpl: '{$idTemplate_homePage}',
-	    	urlDeleteTpl: '{routeShort action="deletetemplate"}'
-	    	
+	    	urlDeleteTpl: '{routeShort action="deletetemplate"}',
+	    	templateType: '{$templateType}'
 	    });
-
 	});
 	
 	
