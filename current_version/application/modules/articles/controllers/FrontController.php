@@ -55,7 +55,7 @@ class Articles_FrontController extends CMS_Controller_Action
 	public function catAction() {
 		
 		$id = (int)$this->_request->getParam('id');
-				
+		
 		$paginator = new CMS_Application_Paginator();
 		
 		/* bloc de traitement si fragment HTML (chargement des pages en ajax */

@@ -170,7 +170,15 @@
 			{if $templateType == 'classic'}
 			
 			<div class="row-fluid">
+				
 				<div id="template" class="span8">
+				
+					<div id="t_contentContainer" class="droppable horizontal" style="background-color:#b0c5d1;">
+						{if $templates[0]->getPlaceholder("classic", "contentContainer")}
+							{call name=generateBloc datas=$templates[0]->getPlaceholder("classic", "contentContainer")} 
+						{/if}
+						<div class="drop_zone"></div>
+					</div>
 					
 					<div id="t_header1" class="droppable horizontal">
 						{if $templates[0]->getPlaceholder("classic", "header1")}

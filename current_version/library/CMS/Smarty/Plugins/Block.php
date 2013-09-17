@@ -101,9 +101,18 @@ class CMS_Smarty_Plugins_Block {
 			if (!defined('CMS_CACHE_ASSET') || CMS_CACHE_ASSET === false)
 				return $content;
 			
-			$minFile = PUBLIC_PATH . SKIN_URL . '/cache/min.css';
+			$suffix = '.css';
+			
+			if (defined('MOBILE')) {
+				if (MOBILE == 'mobile')
+					$suffix = '.m' . $suffix;
+				else if (MOBILE == 'tablet')
+					$suffix = '.t' . $suffix;
+			}	
+			
+			$minFile = PUBLIC_PATH . SKIN_URL . '/cache/min' . $suffix;
 			$fileExists = file_exists($minFile);
-
+			
 			if ( (CMS_CACHE_ASSET === 'force') || (CMS_CACHE_ASSET === true && !$fileExists) ) {
 				
 				if(preg_match_all('@href="([^"]+)"@', $content, $matches, PREG_OFFSET_CAPTURE)) {
@@ -130,7 +139,7 @@ class CMS_Smarty_Plugins_Block {
 				file_put_contents($minFile, $output);
 			}
 			
-			return '<link rel="stylesheet" type="text/css" href="' . BASE_URL . SKIN_URL . '/cache/min.css?t=' . @filemtime($minFile) . '" />';
+			return '<link rel="stylesheet" type="text/css" href="' . BASE_URL . SKIN_URL . '/cache/min'. $suffix .'?t=' . @filemtime($minFile) . '" />';
 		}
 	}
 	
@@ -141,7 +150,16 @@ class CMS_Smarty_Plugins_Block {
 			if (!defined('CMS_CACHE_ASSET') || CMS_CACHE_ASSET === false)
 				return $content;
 			
-			$minFile = PUBLIC_PATH . SKIN_URL . '/cache/min.js';
+			$suffix = '.js';
+			
+			if (defined('MOBILE')) {
+				if (MOBILE == 'mobile')
+					$suffix = '.m' . $suffix;
+				else if (MOBILE == 'tablet')
+					$suffix = '.t' . $suffix;
+			}	
+			
+			$minFile = PUBLIC_PATH . SKIN_URL . '/cache/min' . $suffix;
 			$fileExists = file_exists($minFile);
 
 			if ( (CMS_CACHE_ASSET === 'force') || (CMS_CACHE_ASSET === true && !$fileExists) ) {
@@ -165,7 +183,7 @@ class CMS_Smarty_Plugins_Block {
 				file_put_contents($minFile, $output);
 			}
 			
-			return '<script type="text/javascript" src="' . BASE_URL . SKIN_URL . '/cache/min.js?t=' . @filemtime($minFile) . '"></script>';
+			return '<script type="text/javascript" src="' . BASE_URL . SKIN_URL . '/cache/min'. $suffix .'?t=' . @filemtime($minFile) . '"></script>';
 		}
 	}
 }

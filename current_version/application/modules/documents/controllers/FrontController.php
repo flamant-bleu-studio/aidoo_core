@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class Documents_FrontController extends Zend_Controller_Action
+class Documents_FrontController extends CMS_Controller_Action
 {
 	public function viewAction(){		
 		$id = (int) $this->_request->getParam('id');

@@ -18,16 +18,20 @@
 *}
 
 {if $url}
-<a href="{$url}">
+<a href="{$url}" {if $link_target_blank}target="_blank"{/if} {if $load_ajax}class="load_ajax"{/if}>
 {/if}
-<div class="mbloc {if $icon}hasIcon{else}hasNoIcon{/if} {if $text}hasText{else}hasNoText{/if}" style="background-color:#{$background_color};">
+<div class="mbloc {if $icon}hasIcon{else}hasNoIcon{/if} {if $text}hasText{else}hasNoText{/if}" style="{if $background_color}background-color:#{$background_color};{/if}{if $background_image}background:url('{image folder='others' name=$background_image}') no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;{/if}">
 	
 	{if $icon}
 		<img src="http://{$smarty.server.SERVER_NAME}{$baseUrl}/skins/{$smarty.const.SKIN_FRONT}/icon/{$icon}.png" />
 	{/if}
 	
-	{if $text}
+	{if $text && !$background_text}
 		<div class="text" style="color:#{$text_color};">{$text}</div>
+	{else if $text && $background_text}
+		{if $background_text}<div class="text_bg" style="background-color: {$background_text};display:inline-block;padding: 15px;">{/if}
+			<div class="text" style="color:#{$text_color};display:inline-block;">{$text}</div>
+		{if $background_text}</div>{/if}
 	{/if}
 	
 	<div class="clear"></div>
