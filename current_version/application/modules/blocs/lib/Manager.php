@@ -102,7 +102,7 @@ class Blocs_Lib_Manager {
 		$sidebar[0] = $sidebar[$defaultTemplate[0]->id_template];
 		
 		/** Diaporamas **/
-		$diaporamas = GalerieImage_Object_Galerie::get(array("type" => GalerieImage_Object_Galerie::TYPE_DIAPORAMA));
+		$diaporamas = Diaporama_Object_Diaporama::get();
 		$listDiaporamas = array();
     	$listDiaporamas["null"] = "Aucun";
     	$listDiaporamas[0] = "par défaut";
