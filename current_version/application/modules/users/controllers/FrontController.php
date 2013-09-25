@@ -146,7 +146,7 @@ class Users_FrontController extends CMS_Controller_Action
 						
 						$codeVerif = Users_Lib_Manager::generateCodeVerif();
 						$user->metas->codeVerif = $codeVerif;
-						$user->metas->mustEditProfil = 1;
+						$user->metas->mustEditProfil = 0;
 						
 						$user_id = $user->save();
 						
