@@ -69,9 +69,13 @@ class CMS_Controller_Plugin_LoadSkin extends Zend_Controller_plugin_Abstract {
 	        $this->_view->actionName 		= $this->_actionName;
 	        $this->_view->controllerName	= $this->_controllerName;
 	        
-	        define("BASE_URL", Zend_Controller_Front::getInstance()->getBaseUrl());
+			$front = CMS_Controller_Front::getInstance();
+	       
+			define('CURRENT_MODULE_DIRECTORY', $front->getModuleDirectory());
+			define('BASE_URL', $front->getBaseUrl());
+	        
 	    	$this->_view->baseUrl = BASE_URL;
-    	
+	    	
 	        $this->_config					= CMS_Application_Config::getInstance();
 	        $this->_processLayout			= CMS_Application_ProcessLayout::getInstance();
 	        

@@ -150,6 +150,12 @@ class CMS_Smarty_Smarty extends Zend_View_Abstract
         print parent::render($name);
     }
     
+    /**
+     * Déclenche le traitement du template, dont le nom est passé en paramètre et le chemin se trouve dans le "viewPath"
+     * @param string $name nom du template
+     * @param bool $cache activer ou non la récupération du cache
+     * @return la vue traitée
+     */
     public function renderInnerTpl($name, $cache = true)
     {
     	if ($cache === false) {
@@ -170,6 +176,14 @@ class CMS_Smarty_Smarty extends Zend_View_Abstract
     	return $return;
     }
     
+    /**
+     * Déclenche le traitement du template, dont le nom est passé en paramètre et le chemin se trouve dans le "viewPath"
+     * @param string $name nom du template (suffix automatiquement ajouté)
+     * @param bool $cache activer ou non la récupération du cache
+     * @return la vue traitée
+     * 
+     * @deprecated Préférez l'utilisation de la méthode <b>renderInnerTpl</b>.
+     */
     public function renderByViewName($name, $cache = true)
     {
     	if ($cache === false) {
@@ -188,6 +202,18 @@ class CMS_Smarty_Smarty extends Zend_View_Abstract
     	}
     	
     	return $return;
+    }  
+    
+    /**
+     * Déclenche le traitement du template donné en paramètre
+     * @param string $name nom du template (suffix automatiquement ajouté)
+     * @param bool $cache activer ou non la récupération du cache
+     * @return la vue traitée
+     *
+     */
+    public function renderFile($template)
+    {
+    	$this->_smarty->display($template);
     }
     
     protected function _run()
@@ -195,7 +221,7 @@ class CMS_Smarty_Smarty extends Zend_View_Abstract
     	$template = @func_get_arg(0);
     	$this->_smarty->display($template);
     }
-        
+    
     public function initViewAndOverride($path, $overridePath = null, $viewPathName = null)
     {
     	
