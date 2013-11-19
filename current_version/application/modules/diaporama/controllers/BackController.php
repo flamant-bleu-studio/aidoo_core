@@ -130,7 +130,7 @@ class Diaporama_BackController extends CMS_Controller_Action
 	
 	public function editImageAction()
 	{
-		$this->redirectIfNoRights($this->namePermission, 'edit');
+		$this->redirectIfNoRights($this->namePermission, 'create');
 		
 		$this->setLayoutIframe();
 		
@@ -150,12 +150,21 @@ class Diaporama_BackController extends CMS_Controller_Action
 				$image->text 				= $form->getValue('text');
 				$image->background_color 	= $form->getValue('background_color');
 				
+				$date_start = $form->getValue('date_start');
+				$date_end = $form->getValue('date_end');
+				
+				$image->date_start 			= !empty($date_start) ? CMS_Application_Tools::_convertDateTimePickerToUs($date_start) : null;
+				$image->date_end 			= !empty($date_end) ? CMS_Application_Tools::_convertDateTimePickerToUs($date_end) : null;
+				
 				$image->save();
 				
 				$this->closeFancyboxAndRefresh();
 			}
 		}
 		else {
+			$datas = $image->toArray();
+			$datas['date_start'] = CMS_Application_Tools::_convertDateTimeUsToPicker($image->date_start);
+			$datas['date_end'] = CMS_Application_Tools::_convertDateTimeUsToPicker($image->date_end);
 			$form->populate($image->toArray());
 		}
 		

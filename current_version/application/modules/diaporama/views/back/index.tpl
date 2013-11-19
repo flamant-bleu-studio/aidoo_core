@@ -44,6 +44,9 @@
 					<td>
 						<div class="actions">
 							{if $backAcl->hasPermission({'mod_diaporama'|cat:"-"|cat:$v->id}, "edit")}
+								<a class="btn btn-success btn-mini" href="{routeShort action="add-image" id=$v->id}"><i class="icon-picture icon-white"></i></a>
+							{/if}
+							{if $backAcl->hasPermission({'mod_diaporama'|cat:"-"|cat:$v->id}, "edit")}
 								<a class="btn btn-primary btn-mini" href="{routeShort action="edit" id=$v->id}"><i class="icon-pencil icon-white"></i></a>
 							{/if}
 							{if $backAcl->hasPermission({'mod_diaporama'|cat:"-"|cat:$v->id}, "delete")}

@@ -20,21 +20,15 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class Contact_Model_DbTable_Contact extends CMS_Model_MonoLang
+class Admin_Form_ImageDefault extends CMS_Form_Default
 {
-	protected $_name 		= "contact";
-	protected $_primaryKey 	= "id";
-	protected $_values 		= array("type", "emails", "emailsCci", "content", "typeSelect", "auto_response", "save_data", "module");
-
-	public function getNbSubmission($id = null)
+	public function init()
 	{
-		$sql = 'SELECT COUNT(DISTINCT(num_send)) FROM 1_contact_save where parent_id = '.$id ;
-		return $this->getAdapter()->fetchOne($sql);
-	}
-	
-	public function getKeyInForm($id = null)
-	{
-		$sql = 'SELECT DISTINCT 1_contact_save.key  FROM 1_contact_save where parent_id = '.$id;
-		return $this->getAdapter()->fetchAll($sql);
+		$item = new CMS_Form_Element_MultiUpload("imageDefault");
+        $item->setLabel(_t('Default image'));
+        $item->setAllowedExtensions(array('png', 'gif', 'jpeg', 'jpg', 'bmp'));
+        $item->setUploadPath('');
+        $item->setAutoUpload(true);
+        $this->addElement($item);
 	}
 }

@@ -417,7 +417,8 @@ class Contact_BackController extends Zend_Controller_Action
 				$contact->content 			= null;
 				$contact->auto_response 	= null;
 				$contact->save_data 		= 1;
-
+				$contact->module 			= $formulaire['module'];
+				
 				$contact->save();
 				$nb_insert_contact++;
 			}

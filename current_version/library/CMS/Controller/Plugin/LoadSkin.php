@@ -332,6 +332,7 @@ class CMS_Controller_Plugin_LoadSkin extends Zend_Controller_plugin_Abstract {
 		    					$blocsInstance[$blocsId]->classCss .= " last";
 	
 	    					try {
+	    						$blocsInstance[$blocsId]->beforeRenderFront();
 	    						$placeholderHTML .= $blocsInstance[$blocsId]->renderFront();
 	    					}catch(Exception $e){
 	    						if(defined("NOTFOUND"))

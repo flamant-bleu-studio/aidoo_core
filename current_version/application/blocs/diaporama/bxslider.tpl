@@ -23,22 +23,24 @@
 	<div id="diaporama-{$datas.diaporamaId}"  class="diaporama diapo_classic">
 		<ul>
 		{foreach name=diaporama key=key from=$items item=diapo}
-			<li class="diapo" id="diapo{$key+1}">
-				
-				{if $diapo->link_type != 0}
-					<a class="link" href="$diapo->getUrl()" {if $diapo->link_target_blank}target="_blank"{/if}>
-				{/if}
-					<img src="{image folder='diaporama' name=$diapo->image}" />
+			{if $diapo->isActive()}
+				<li class="diapo" id="diapo{$key+1}">
 					
-					<div class="caption">
-						{$diapo->text}
-					</div>
-					
-				{if $diapo->link_type != 0}
-					</a>
-				{/if}
-					
-			</li>
+					{if $diapo->link_type != 0}
+						<a class="link" href="$diapo->getUrl()" {if $diapo->link_target_blank}target="_blank"{/if}>
+					{/if}
+						<img src="{image folder='diaporama' name=$diapo->image}" />
+						
+						<div class="caption">
+							{$diapo->text}
+						</div>
+						
+					{if $diapo->link_type != 0}
+						</a>
+					{/if}
+						
+				</li>
+			{/if}
 		{/foreach}
 		</ul>
 	</div>

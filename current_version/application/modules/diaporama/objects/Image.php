@@ -33,6 +33,9 @@ class Diaporama_Object_Image extends CMS_Object_MonoLangEntity {
 	public $link_target_blank;
 	public $background_color;
 	
+	public $date_start;
+	public $date_end;
+	
 	protected static $_modelClass = "Diaporama_Model_DbTable_Image";
 	protected static $_model;
 	
@@ -46,5 +49,39 @@ class Diaporama_Object_Image extends CMS_Object_MonoLangEntity {
 		}
 		
 		return null;
+	}
+	
+	public function isActive()
+	{
+		if (empty($this->date_start) && empty($this->date_end))
+			return true;
+		
+		$date_start = null;
+		if (!empty($this->date_start))
+			$date_start = new DateTime($this->date_start);
+		
+		$date_end = null;
+		if (!empty($this->date_end))
+			$date_end = new DateTime($this->date_end);
+		
+		$now = new DateTime();
+		
+		if (!empty($this->date_start) && !empty($this->date_end)) {
+			if ($date_start < $now && $now < $date_end)
+				return true;
+			return false;
+		}
+		
+		if (!empty($this->date_start) && empty($this->date_end)) {
+			if ($date_start < $now)
+				return true;
+			return false;
+		}
+		
+		if (empty($this->date_start) && !empty($this->date_end)) {
+			if ($now < $date_end)
+				return true;
+			return false;
+		}
 	}
 }

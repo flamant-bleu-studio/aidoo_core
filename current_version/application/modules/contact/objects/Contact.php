@@ -33,10 +33,12 @@ class Contact_Object_Contact extends CMS_Object_MonoLangEntityWithNodes
 	public $content;
 	public $auto_response;
 	public $save_data;
-
+	
+	public $module;
+	
 	protected $nodes;
 	protected $_form;
-		
+	
 	protected static $_nodes = array(
 			"nodes" => "Contact_Object_ContactSave"
 	);
@@ -135,23 +137,40 @@ class Contact_Object_Contact extends CMS_Object_MonoLangEntityWithNodes
 						$object = Contact_Object_Contact::getOne(array("type" => $xml->name));
 						if( $object )
 							$values = $object->toArray();
-						$contactType[] = array( "values" => $values ? $values : array(), "name" => $xml->name, "description" => $xml->description );
+						$contactType[] = array( "values" => $values ? $values : array(), "name" => $xml->name, "description" => $xml->description, "module" => $xml->module );
 						/** Page in page_cores **/
 						if( $xml->page && $xml->page == "true" )
 						{
 							$helper = Zend_Controller_Action_HelperBroker::getStaticHelper('Route');
-							$page = CMS_Page_Object::get($helper->full('contact', array('action'=>"contact", 'type'=>$xml->name)));
-
-							//$page = CMS_Page_Object::get($this->_helper->route->full('contact', array('action'=>"contact", 'type'=>$xml->name)));
-							if( !$page )
-							{
-								$page 				= new CMS_Page_PersistentObject();
-								$page->title 		= array(CURRENT_LANG_ID => $xml->description);
-								$page->type 		= "contact";
-								$page->url_system	= $helper->full('contact', array('action'=>"contact", 'type'=>$xml->name));
-								$page->enable 		= 1;
-								$page->visible 		= 1;
-								$page->save();
+							
+							if (!$xml->module) {
+								
+								$page = CMS_Page_Object::get($helper->full('contact', array('action'=>"contact", 'type'=>$xml->name)));
+								
+								if (!$page)
+								{
+									$page 				= new CMS_Page_PersistentObject();
+									$page->title 		= array(CURRENT_LANG_ID => $xml->description);
+									$page->type 		= "contact";
+									$page->url_system	= $helper->full('contact', array('action'=>"contact", 'type'=>$xml->name));
+									$page->enable 		= 1;
+									$page->visible 		= 1;
+									$page->save();
+								}
+							}
+							else {
+								$page = CMS_Page_Object::get($helper->full($xml->route, array('action'=>"contact", 'id'=>$xml->name)));
+								
+								if (!$page)
+								{
+									$page 				= new CMS_Page_PersistentObject();
+									$page->title 		= array(CURRENT_LANG_ID => $xml->description);
+									$page->type 		= $xml->module."-contact";
+									$page->url_system	= $helper->full($xml->route, array('action'=>"contact", 'id'=>$xml->name));
+									$page->enable 		= 1;
+									$page->visible 		= 1;
+									$page->save();
+								}
 							}
 						}
 					}
@@ -358,7 +377,7 @@ class Contact_Object_Contact extends CMS_Object_MonoLangEntityWithNodes
 				
 		}
 		
-		$prependObject = !empty($xml->object) ? $xml->object : "Message envoyé depuis votre site: ";
+		$prependObject = !empty($xml->object) ? $xml->object : "Message envoyé depuis votre site : ";
 		
 		/** Send Mail **/
 		try {

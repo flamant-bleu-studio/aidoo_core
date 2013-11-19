@@ -20,7 +20,7 @@
 {function name=generateBloc}
 	{foreach from=$datas item=id}
 
-		<div class="template_item {$blocs[$id]->getType()} index-{$typeIndex[$blocs[$id]->getType()]}" title="{$blocs[$id]->designation}" id="bloc-{counter}" realid="{$id}">
+		<div class="template_item {$blocs[$id]->getType()} index-{$typeIndex[$blocs[$id]->getType()]}" title="{$blocs[$id]->designation}-{$blocs[$id]->sizeBloc}" id="bloc-{counter}" realid="{$id}" sizeBloc="{$blocs[$id]->sizeBloc}">
 		{$blocs[$id]->designation}
  		
 		{if $backAcl->hasPermission("mod_bloc-{$id}", "edit")}
@@ -91,6 +91,7 @@
 										<div class="id">{$bloc->id_item}</div>
 										<div class="type">{$bloc->getType()} index-{$typeIndex[{$key}]}</div>
 										<div class="title">{$bloc->title}</div>
+										<div class="sizeBloc">{$bloc->sizeBloc}</div>
 									</div>
 									
 									<div class="clearfix"></div>
@@ -289,7 +290,7 @@
 			{else if $templateType == 'mobile'}
 			
 			<div class="row-fluid">
-				<div id="template" class="span8">
+				<div id="template" class="span8 mobile">
 					<div id="t_line1" class="droppable horizontal">
 						{if $templates[0]->getPlaceholder("classic", "line1")}
 							{call name=generateBloc datas=$templates[0]->getPlaceholder("mobile", "line1")} 

@@ -25,7 +25,7 @@ class Diaporama_Model_DbTable_Image extends CMS_Model_MonoLang {
 	protected $_name = "diaporamas_images";
 	
 	protected $_primaryKey 	= "id";
-	protected $_values 		= array("parent_id", "text", "background_color", "image", "link_type", "link_internal", "link_external", "link_target_blank");
+	protected $_values 		= array("parent_id", "text", "background_color", "image", "link_type", "link_internal", "link_external", "link_target_blank", "date_start", "date_end");
 	
 	public function insert($datas){
 		return parent::insert($datas, false);

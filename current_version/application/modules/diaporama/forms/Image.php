@@ -35,6 +35,14 @@ class Diaporama_Form_Image extends CMS_Form_Default
 		$bg_color_image->setDescription(_t('Background Color of the image'));
 		$this->addElement($bg_color_image);
 		
+		$item = new CMS_Form_Element_DatePicker('date_start');
+		$item->setLabel(_t('Date start'));
+		$this->addElement($item);
+		
+		$item = new CMS_Form_Element_DatePicker('date_end');
+		$item->setLabel(_t('Date end'));
+		$this->addElement($item);
+		
 		$save = new CMS_Form_Element_SubmitCustom("save");
 		$save->setLabel(_t('Save'));
 		$save->setValue(_t('Save'));

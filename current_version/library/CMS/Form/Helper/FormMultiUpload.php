@@ -140,7 +140,8 @@ var '.$name.'Opts = {
 		$html .='maxNumberOfFiles : '.$attribs["options"]["maxNumberOfFiles"].',';
 	}
 	
-	$html .= 'allowedExtensions : "'. implode("|", $attribs["options"]["allowedExtensions"]) .'",
+	if (!empty($attribs["options"]["allowedExtensions"]))
+		$html .= 'allowedExtensions : "'. implode("|", $attribs["options"]["allowedExtensions"]) .'",
 }
 
 runJqueryFilesUpload("'.$name.'");

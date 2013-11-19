@@ -57,6 +57,9 @@ function appendAdminTabMenuSiteConfig($tabs)
 		$tabs['config']['children'][] = array("title" => "Langues", "routeName" => "admin_configuration", "moduleName" => "admin", "controllerName" => "lang");
 		$tabs['config']['children'][] = array("title" => "Site Configuration", "routeName" => "admin_configuration", "moduleName" => "admin", "controllerName" => "config");
 	}
+	if ($backAcl->hasPermission("admin", "viewPictures")) {
+		$tabs['config']['children'][] = array("title" => "Images", "routeName" => "admin_configuration", "moduleName" => "admin", "controllerName" => "config", "actionName" => "pictures");
+	}
 	return $tabs;
 }
 

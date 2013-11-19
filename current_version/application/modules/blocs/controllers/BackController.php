@@ -60,7 +60,7 @@ class Blocs_BackController extends CMS_Controller_Action
 			$info[$t->id_template]['infos'] = array(
 				'title'		=> $t->title,
 				'theme' 	=> $t->theme,
-				'classCss' 	=> $t->classCss
+				'classCss' 	=> $t->classCss,
 			);
 			
 			$info[$t->id_template]['data'] = array();
@@ -95,7 +95,8 @@ class Blocs_BackController extends CMS_Controller_Action
 							$info[$t->id_template]['data'][$type][$ph][$i] = array(
 								'id' 			=> $id,
 								'designation' 	=> $blocs[$id]->designation,
-								'type' 			=> $blocs[$id]->getType()
+								'type' 			=> $blocs[$id]->getType(),
+								'sizeBloc'		=> $blocs[$id]->sizeBloc
 							);
 
 							$i++;
@@ -162,7 +163,6 @@ class Blocs_BackController extends CMS_Controller_Action
 		// <<
 		
 		$this->view->blocsSortByType = $retour;
-		
 		/*
 		 * Calcul d'un index sur la palette de couleur
 		 */

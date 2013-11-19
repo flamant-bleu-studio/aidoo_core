@@ -27,76 +27,26 @@ class Admin_ConfigController extends CMS_Controller_Action
 		$this->redirectIfNoRights('admin', 'manage');
 		
 		$config = CMS_Application_Config::getInstance();
-
+		
 		$mobileForm 	= new Admin_Form_MobileConfig();
 		$apiKey 			= $config->get('apiKey');
-
+		
 		$mobileForm = new Admin_Form_MobileConfig();
 		$logForm	= new Admin_Form_LogConfig();
-
-		if($this->getRequest()->isPost()) {
-			
-			$sizeLst = array();
-			
-			if(is_array($_POST['name']) && !empty($_POST['name'])){
-				foreach($_POST['name'] as $key => $name){
-					
-					$name = strtolower(htmlspecialchars($name));
-					$width = (int)$_POST['height'][$key];
-					$height = (int)$_POST['height'][$key];
-					
-					if($name && $width && $height){
-						$sizeLst[$name] = array(
-							'name' => $name,
-							'width' => (int)$_POST['width'][$key],
-							'height' => (int)$_POST['height'][$key],
-							'adaptiveResize' => (($_POST['adaptiveResize'][$key] == 'on') ? true : false)
-						);
-					}
-				}
-				
-				if(!isset($sizeLst["default"]))
-					throw new Exception(_t("One configuration must be named 'default'"));
-			}
-
-			$config->set("configThumbSizes", json_encode($sizeLst));
-
-			_message(_t('Thumbs sizes updated'));
-			return $this->_redirect( $this->_helper->route->short('index'));
-
-		}
-		else {
-			
-			$sizeLst = json_decode($config->get('configThumbSizes'), true);
-			
-			if(!is_array($sizeLst) || empty($sizeLst)){
-				
-				$sizeLst = array(array(
-					'name' => "default",
-					'width' => 150,
-					'height' => 100,
-					'adaptiveResize' => false
-				));
-				
-				$config->set("configThumbSizes", json_encode($sizeLst));
-			}
-			
-			$this->view->thumbs_sizes = $sizeLst;
-			
-			$datas = @json_decode($config->get('mobileConfig'), true);
-			
-			if(is_array($datas) && !empty($datas))
-				$mobileForm->populate($datas);
-			
-			/**
-			 * Populate formulaire de configuration des logs
-			 */
-			
-			$logConfig = json_decode($config->get('logConfig'), true);
-			
-			if($logConfig) {
-				$logForm->populate($logConfig);
-			}
+		
+		$datas = @json_decode($config->get('mobileConfig'), true);
+		
+		if(is_array($datas) && !empty($datas))
+			$mobileForm->populate($datas);
+		
+		/**
+		 * Populate formulaire de configuration des logs
+		 */
+		
+		$logConfig = json_decode($config->get('logConfig'), true);
+		
+		if($logConfig) {
+			$logForm->populate($logConfig);
 		}
 		
 		$mobileForm->setAction($this->_helper->route->short('save-mobile-option'));
@@ -179,7 +129,7 @@ class Admin_ConfigController extends CMS_Controller_Action
 		
 		_message(_t('Regeneration of pictures finished'));
 		
-		return $this->_redirect( $this->_helper->route->short('index'));
+		return $this->_redirect( $this->_helper->route->short('pictures'));
 	}
 	
 
@@ -456,6 +406,74 @@ class Admin_ConfigController extends CMS_Controller_Action
     	_message(_t("Cache deleted successfully"));
     		    			
     	return $this->_redirect( $this->_helper->route->short('index'));
-
+    }
+    
+    public function picturesAction()
+    {
+    	$this->redirectIfNoRights('admin', 'managePictures');
+    	
+    	$config = CMS_Application_Config::getInstance();
+    	
+    	$defaultImage = $config->get('defaultImage');
+    	
+    	$form = new Admin_Form_ImageDefault();
+    	
+    	if($this->getRequest()->isPost()) {
+			
+			$sizeLst = array();
+			
+			if(is_array($_POST['name']) && !empty($_POST['name'])){
+				foreach($_POST['name'] as $key => $name){
+					
+					$name = strtolower(htmlspecialchars($name));
+					$width = (int)$_POST['height'][$key];
+					$height = (int)$_POST['height'][$key];
+					
+					if($name && $width && $height){
+						$sizeLst[$name] = array(
+							'name' => $name,
+							'width' => (int)$_POST['width'][$key],
+							'height' => (int)$_POST['height'][$key],
+							'adaptiveResize' => (($_POST['adaptiveResize'][$key] == 'on') ? true : false)
+						);
+					}
+				}
+				
+				if(!isset($sizeLst["default"]))
+					throw new Exception(_t("One configuration must be named 'default'"));
+			}
+			
+			$config->set("configThumbSizes", json_encode($sizeLst));
+			
+			$valueDefaultImage = reset($_POST['imageDefault']);
+			
+			if (!empty($valueDefaultImage)) {
+				$config->set('defaultImage', $valueDefaultImage);
+			}
+			
+			_message(_t('Thumbs sizes updated'));
+			return $this->_redirect( $this->_helper->route->short('pictures'));
+		}
+		else {
+			
+			$sizeLst = json_decode($config->get('configThumbSizes'), true);
+			
+			if(!is_array($sizeLst) || empty($sizeLst)){
+				
+				$sizeLst = array(array(
+					'name' => "default",
+					'width' => 150,
+					'height' => 100,
+					'adaptiveResize' => false
+				));
+				
+				$config->set("configThumbSizes", json_encode($sizeLst));
+			}
+			
+			$this->view->thumbs_sizes = $sizeLst;
+			
+			$form->getElement('imageDefault')->setValue($defaultImage);
+			$this->view->form = $form;
+		}
     }
 }

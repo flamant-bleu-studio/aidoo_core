@@ -32,5 +32,8 @@
 	
 	{$form->background_color}
 	
+	{$form->date_start}
+	{$form->date_end}
+	
 	{$form->save}
 </form>

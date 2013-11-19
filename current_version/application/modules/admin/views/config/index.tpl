@@ -25,55 +25,6 @@
 <div class="zone">
 	
 	<div class="zone_titre">
-		<h2>{t}Images{/t}</h2>
-		<div>{t}Manage image sizes{/t}</div>
-	</div>	
-	
-	<form action='{routeShort action="index"}' method="post" id="form-size" >
-		
-		{counter start="0" assign="test" print=false}
-		
-		{if $thumbs_sizes}
-		{foreach from=$thumbs_sizes item=size}
-		    <div class="well form-inline">
-			    <input type="text" name="name[{$test}]" class="name input-small" placeholder="{t}Title{/t}" value="{$size.name}" {if $size.name == 'default'}readonly="readonly"{/if}/>
-			    
-			    &nbsp;
-			 	<label for="width[{$test}]">
-				 	<div class="input-prepend">
-				 		Width <input name="width[{$test}]" type="text" class="width input-mini" value="{$size.width}" /><span class="add-on">px</span>
-				 	</div>
-			 	</label>
-				<label for="height[{$test}]">
-					<div class="input-prepend">
-						Height <input name="height[{$test}]" type="text" class="height input-mini" value="{$size.height}" /><span class="add-on">px</span>
-					</div>
-				</label>
-				
-				&nbsp;
-				<label for="adaptiveResize[{$test}]">
-					Adaptive resize  
-					<input type="checkbox" name="adaptiveResize[{$test}]" class="adaptiveResize" {if $size.adaptiveResize}checked{/if} /> <span class="help-inline">{t}(cropped from center){/t}</span>
-				</label>
-				
-				&nbsp;
-				{if $size.name != 'default'}
-			   		<button class="btn btn-danger delete-size"><i class="icon-trash icon-white"></i></button>
-			   	{/if}
-		    </div>
-		    
-		    {counter print=false}
-	    {/foreach}
-	    {/if}
-		
-		<div class="form_submit">
-			<button class="btn btn-success add" id="add-size"><i class="icon-plus icon-white"></i> {t}Add new size{/t}</button>		
-			<button class="btn btn-primary">{t}Save{/t}</button>
-			<a href='{routeShort action="regenerate-pictures"}' class="btn btn-danger right" onClick="confirmDelete(this.href, '<h1>{t}Are you sure you want to regenerate images ?{/t}</h1><br/><span style=\'color: red;\'>{t}This action may take several minutes.{/t}</span>', '{t}Yes{/t}', '{t}No{/t}');return false;""><i class="icon-repeat icon-white"></i>  {t}Regenerate pictures{/t}</a>
-		</div>
-	</form>
-	
-	<div class="zone_titre">
 		<h2>{t}Mobile{/t}</h2>
 		<div>{t}Mobile configuration{/t}</div>
 	</div>	

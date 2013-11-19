@@ -110,18 +110,22 @@ class CMS_Image
 			$folder = '/' . $folder;
 		
 		if ($configSize !== null) {
-			$miniaturePath = self::generateUploadThumbsPath($folder) . $configSize . '-' . $name;
-			
-			// Si la miniature demandée n'existe pas, ajout d'un warning en log et renverra l'image non miniaturisé
-			if (!file_exists($miniaturePath)) {
+			// Si la miniature demandée n'existe pas, on renvoit l'image non miniaturisé
+			if (!file_exists(self::generateUploadThumbsPath($folder) . $configSize . '-' . $name))
 				$configSize = null;
-				//Zend_Registry::get('log')->warn('CMS_Image - getLink() - Miniature inexistante : ' . $miniature);
-			}
 		}
 		
 		// L'image de base (non miniature)
-		if ($configSize === null)
+		if ($configSize === null) {
+			
+			// Si l'image de base n'existe pas : retourne l'image par defaut configuré
+			if (!file_exists(self::generateUploadPath($folder) . $name)) {
+				$config = CMS_Application_Config::getInstance();
+				return self::generateUploadUrl('') . $config->get('defaultImage');
+			}
+			
 			return self::generateUploadUrl($folder) . $name;
+		}
 		
 		// Un des formats miniature de l'image
 		return self::generateUploadThumbsUrl($folder) . $configSize . '-' . $name;

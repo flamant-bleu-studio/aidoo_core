@@ -17,8 +17,6 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 
-{appendFile type="js" src="{$smarty.const.COMMON_LIB_PATH}/lib/cms/adminReclame.js"}
-
 <div class="content_titre">
 	<h1>{t}Create an campaign{/t}</h1>
 	<div>Création d'une nouvelle campagne de pub</div>

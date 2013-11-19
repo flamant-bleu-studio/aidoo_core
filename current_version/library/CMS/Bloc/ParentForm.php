@@ -35,6 +35,8 @@ class CMS_Bloc_ParentForm extends CMS_Form_Default
 	
 	public function init()
 	{
+		$backAcl = CMS_Acl_Back::getInstance();
+		
 		$item = new Zend_Form_Element_Hidden("from");
 		$item->setValue("bloc_form");
 		$this->addElement($item);
@@ -53,26 +55,32 @@ class CMS_Bloc_ParentForm extends CMS_Form_Default
 		$item->setTranslatable(true);
 		$this->addElement($item);
 		
-		$item = new Zend_Form_Element_Select("decorator");
-		$item->setLabel(_t("Decorator"));
-		$item->setDescription(_t("Your bloc design"));
-		
-		if ($this->decoratorsBloc['general']) {
-			$item->addMultiOptions( array( _t('Common') => array() ) );
-			$item->addMultiOptions($this->decoratorsBloc['general']);
+		if ($backAcl->hasPermission('mod_bloc', 'manage')) {
+			$item = new Zend_Form_Element_Select("decorator");
+			$item->setLabel(_t("Decorator"));
+			$item->setDescription(_t("Your bloc design"));
+			
+			if ($this->decoratorsBloc['general']) {
+				$item->addMultiOptions( array( _t('Common') => array() ) );
+				$item->addMultiOptions($this->decoratorsBloc['general']);
+			}
+			
+			if( isset($this->decoratorsBloc['bloc']) && $this->decoratorsBloc['bloc'] ) {
+				$item->addMultiOptions( array( _t('Specific') => array() ) );
+				$item->addMultiOptions($this->decoratorsBloc['bloc']);
+			}
+			
+			$item->setValue("default");
+			
+			$item->setRequired(true);
+			$this->addElement($item);
+		}
+		else {
+			$item = new Zend_Form_Element_Hidden("decorator");
+			$this->addElement($item);
 		}
 		
-		if( isset($this->decoratorsBloc['bloc']) && $this->decoratorsBloc['bloc'] ) {
-			$item->addMultiOptions( array( _t('Specific') => array() ) );
-			$item->addMultiOptions($this->decoratorsBloc['bloc']);
-		}
-		
-		$item->setValue("default");
-		
-		$item->setRequired(true);
-		$this->addElement($item);
-		
-		if (!empty($this->templatesBloc)) {
+		if (!empty($this->templatesBloc) && $backAcl->hasPermission('mod_bloc', 'manage')) {
 			$item = new Zend_Form_Element_Select("templateFront");
 			$item->setLabel(_t("Template"));
 			
@@ -89,40 +97,42 @@ class CMS_Bloc_ParentForm extends CMS_Form_Default
 		
 		$this->addElement($item);
 		
-		/* ---- Thèmes ---- */
-		$item = new Zend_Form_Element_Select("theme");
-		$item->setLabel(_t("Theme"));
-		$item->setDescription(_t("Theme of your bloc"));
-		$item->addMultiOption('', _t('None'));
-		
-		try {
-			$config		= CMS_Application_Config::getInstance();
-	    	$skinFront 	= $config->get("skinfront");
-	    	
-	    	$themes = new Zend_Config_Xml(PUBLIC_PATH.'/skins/' . $skinFront . '/skin.xml', 'blocsThemes');
+		if ($backAcl->hasPermission('mod_bloc', 'manage')) {
+			/* ---- Thèmes ---- */
+			$item = new Zend_Form_Element_Select("theme");
+			$item->setLabel(_t("Theme"));
+			$item->setDescription(_t("Theme of your bloc"));
+			$item->addMultiOption('', _t('None'));
 			
-			if( $themes->theme )
-			{
-				$themes = $themes->theme->toArray();
-
-				// Reset level for Zend_Config_XML
-				if(key($themes) != "0")
-					$themes = array($themes);
-				   
-				foreach ($themes as $theme) {
-					$item->addMultiOption($theme["class"], $theme["name"]);
-				}
-            }
-	    	
-		}catch(Exception $e){}
+			try {
+				$config		= CMS_Application_Config::getInstance();
+		    	$skinFront 	= $config->get("skinfront");
+		    	
+		    	$themes = new Zend_Config_Xml(PUBLIC_PATH.'/skins/' . $skinFront . '/skin.xml', 'blocsThemes');
+				
+				if( $themes->theme )
+				{
+					$themes = $themes->theme->toArray();
+	
+					// Reset level for Zend_Config_XML
+					if(key($themes) != "0")
+						$themes = array($themes);
+					   
+					foreach ($themes as $theme) {
+						$item->addMultiOption($theme["class"], $theme["name"]);
+					}
+	            }
+		    	
+			}catch(Exception $e){}
+			
+			$this->addElement($item);
+		}
+		else {
+			$item = new Zend_Form_Element_Hidden("theme");
+			$this->addElement($item);
+		}
 		
-		$this->addElement($item);
-    	
-		
-		$userCurrent = Zend_Registry::get('user');
-		
-		if( $userCurrent->group->id == 1)
-		{
+		if ($backAcl->hasPermission('mod_bloc', 'manage')) {
 			$item = new Zend_Form_Element_Text('classCss');
 			$item->setLabel(_t("CSS class"));
 			$item->setDescription(_t("your bloc class css"));
