@@ -50,6 +50,7 @@ class Contact_FrontController extends Zend_Controller_Action
 		
 		// Si le type email fourni un tpl "page.tpl" on l'utilise pour générer la vue.
 		if(file_exists($contactTypeFolder."/page.tpl")) {
+			$this->view->original_form = $form;
 			$view = Zend_Layout::getMvcInstance()->getView();
 		    $path = $view->getScriptPaths();
 		    $view->setScriptPath($contactTypeFolder);
