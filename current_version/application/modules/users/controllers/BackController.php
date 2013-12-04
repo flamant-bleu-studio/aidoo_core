@@ -102,7 +102,7 @@ class Users_BackController extends CMS_Controller_Action
 				
     			_message(_t('User created'));
     			
-				return $this->_redirect($this->_helper->route->short('index'));
+				return $this->_redirect($this->_helper->route->short('users'));
 			}
 			else {
 				_error(_t('invalid form'));
@@ -127,7 +127,7 @@ class Users_BackController extends CMS_Controller_Action
 				
     			_message(_t('Group created'));
     			
-				return $this->_redirect($this->_helper->route->short('index'));
+				return $this->_redirect($this->_helper->route->short('users'));
 			}
 			else {
 				_error(_t('invalid form'));
@@ -168,7 +168,7 @@ class Users_BackController extends CMS_Controller_Action
 				
     			_message(_t('View Access created'));
     			
-				return $this->_redirect($this->_helper->route->short('index'));
+				return $this->_redirect($this->_helper->route->short('users'));
 			}
 			else {
 				_error(_t('invalid form'));
@@ -302,7 +302,7 @@ class Users_BackController extends CMS_Controller_Action
 				
     			_message(_t("View Access saved"));
     			
-    			return $this->_redirect($this->_helper->route->short('index'));
+    			return $this->_redirect($this->_helper->route->short('users'));
 			}
 			else {
 				_error(_t('invalid form'));
@@ -338,7 +338,7 @@ class Users_BackController extends CMS_Controller_Action
 	    	_error(_t("Are you crazy ? Are you sure to delete yourself ?!"));
 	    }
 	    
-	    return $this->_redirect( $this->_helper->route->short('index'));
+	    return $this->_redirect( $this->_helper->route->short('users'));
 	    
 	}
 	public function deleteGroupAction ()
@@ -349,7 +349,7 @@ class Users_BackController extends CMS_Controller_Action
 	    
 		_message(_t('group deleted'));
 
-	    return $this->_redirect( $this->_helper->route->short('index'));
+	    return $this->_redirect( $this->_helper->route->short('users'));
 	    
 	}
 	public function deleteViewaccessAction ()
@@ -361,7 +361,7 @@ class Users_BackController extends CMS_Controller_Action
 	    
 		_message(_t('group deleted'));
 
-	    return $this->_redirect( $this->_helper->route->short('index'));
+	    return $this->_redirect( $this->_helper->route->short('users'));
 	}
 	
 	public function activeUserAction()
@@ -373,7 +373,7 @@ class Users_BackController extends CMS_Controller_Action
 		
 		_message(vsprintf(_t('user %s %s actived'), array($row->firstname, $row->lastname)));
 
-		return $this->_redirect( $this->_helper->route->short('index'));
+		return $this->_redirect( $this->_helper->route->short('users'));
 	}
 	public function deactiveUserAction()
 	{
@@ -389,7 +389,7 @@ class Users_BackController extends CMS_Controller_Action
 			_message(_t('user desactived'));
 	    }
 	    
-		return $this->_redirect( $this->_helper->route->short('index'));
+		return $this->_redirect( $this->_helper->route->short('users'));
 	}
 	
 	public function exportAction() {
