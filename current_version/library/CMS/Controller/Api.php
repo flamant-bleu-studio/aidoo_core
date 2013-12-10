@@ -65,7 +65,7 @@ abstract class  CMS_Controller_Api extends Zend_Rest_Controller
 					if (!$backAcl->hasPermission($keyRight, $valueRight))
 						throw new Exception(_t('Unauthorized token'), 401);
 			
-			$this->_user = new Users_Object_User(Zend_Registry::get('user')->user_id);
+			$this->_user = new Users_Object_User(Zend_Registry::get('user')->id);
 		} else {
 			//Check du token
 			$this->_token = $this->getRequest()->getHeader('token');
