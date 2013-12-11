@@ -55,6 +55,25 @@ abstract class CMS_Bloc_Abstract extends CMS_Object_MultiLangEntity {
 		$this->_helperRedirector = new Zend_Controller_Action_Helper_Redirector();
 		$this->_helperRoute		 = Zend_Controller_Action_HelperBroker::getExistingHelper('route');
 	}
+	
+	public static function getBlocsInstance($ids, $id_lang = CURRENT_LANG_ID)
+	{
+		self::_getModel();
+		
+		$id_lang = ($id_lang != "all") ? $id_lang : null;
+		
+		$ids['id_lang'] = $id_lang;
+		
+		$rows = self::$_model->get($ids);
+		
+		$instances = array();
+		
+		foreach ($rows as $row) {
+			$instances[$row['id_item']] = new $row["type"]($row, $id_lang);
+		}
+		
+		return ($instances) ? $instances : null;
+	}
 
 	/**
 	 * Retourne une instance d'un bloc avec résolution de class à la volée

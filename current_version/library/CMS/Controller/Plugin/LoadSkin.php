@@ -298,28 +298,39 @@ class CMS_Controller_Plugin_LoadSkin extends Zend_Controller_plugin_Abstract {
 	    	else {
 	    		$blocsPosition = $blocsPosition["classic"];
 	    	}
-    	
+    		
 	    	// Création d'un tableau contenant les instances de blocs
 	    	$blocsInstance = array();
 	    	
 	    	// Vérification que des blocs existent (sinon warning lors du passage dans le foreach)
-	    	if( $blocsPosition && (count($blocsPosition) > 0) ) {
-	    	
-	    		$test = array();
+	    	if ($blocsPosition && (count($blocsPosition) > 0)) {
+	    		
+	    		$tempIds = array();
+	    		$checkIds = array();
+	    		$sql = "";
+	    		
+	    		foreach ($blocsPosition as $placeholders => $blocsIdLst) {
+	    			foreach ($blocsIdLst as $blocsId){
+	    				if (!in_array($blocsId, $checkIds)) {
+	    					$sql .= 'A.id_item = ? OR ';
+		    				$tempIds[] = $blocsId;
+		    				$checkIds[] = $blocsId;
+	    				}
+	    			}
+	    		}
+	    		$sql .= ' 0';
+		    	
+	    		//pre_dump(array($sql => $tempIds));die;
+	    		$blocsInstance = CMS_Bloc_Abstract::getBlocsInstance(array('id' => array_merge(array($sql), $tempIds)));
+	    		
 	    		$placeholderHTML = "";
-		    	foreach($blocsPosition as $placeholders => $blocsIdLst){
-		    		
+		    	foreach ($blocsPosition as $placeholders => $blocsIdLst) {
 		    		$i = 1;
 		    		$lenght = count($blocsIdLst);
 		    		
-		    		foreach($blocsIdLst as $blocsId){
-		    			if(!key_exists($blocsId, $blocsInstance)){
-		    				$bloc = CMS_Bloc_Abstract::getBlocInstance($blocsId);
-		    				if($bloc)
-		    					$blocsInstance[$blocsId] = $bloc;
-		    			}
-	
-		    			if($blocsInstance[$blocsId]){
+		    		foreach ($blocsIdLst as $blocsId) {
+						
+		    			if ($blocsInstance[$blocsId]) {
 		    				
 		    				// Stockage class css temporaire pour restauration en fin de traitement
 		    				$tmpClassCss = $blocsInstance[$blocsId]->classCss;
