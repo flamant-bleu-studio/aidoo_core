@@ -47,9 +47,12 @@ class Bootstrap_api extends Bootstrap
 		else
 			$cache = Zend_Cache::factory('Core', 'file', $frontend, $backend);
 		
+		Zend_Registry::set('cache', $cache);
+		
 		Zend_Date::setOptions(array('cache' => $cache));
 		Zend_Db_Table_Abstract::setDefaultMetadataCache($cache);
 		CMS_Page_Object::setCache($cache);
+		CMS_Cache::setCacheObject($cache);
 		
 		/*
 		$classFileIncCache = CMS_PATH.'/tmp/zend_cache/pluginLoaderCache.php';

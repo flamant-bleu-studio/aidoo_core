@@ -20,20 +20,29 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class CMS_Acl_DbTable_ViewAccess {   
-
-	public function getAllViewAccess ()
+class CMS_Acl_DbTable_ViewAccess
+{
+	public function getAllViewAccess()
 	{
-		global $multi_site_prefix;
+		$cache = CMS_Cache::getInstance();
 		
-		$db = Zend_Registry::get('db');
-	    $results = $db->query("SELECT id, name, groups
-								FROM " . DB_TABLE_PREFIX . $multi_site_prefix."view_access");
-	    
-		return $results->fetchAll(Zend_Db::FETCH_OBJ);
+		if (!$cache->exist('view_access')) {
+			global $multi_site_prefix;
+			
+			$db = Zend_Registry::get('db');
+		    $results = $db->query("SELECT id, name, groups FROM " . DB_TABLE_PREFIX . $multi_site_prefix."view_access");
+		    
+		    $return = $results->fetchAll(Zend_Db::FETCH_OBJ);
+		    $cache->set('view_access', $return);
+		}
+		else {
+	   		$return = $cache->get('view_access');
+		}
+		
+		return $return;
 	}
 	
-	public function getViewAccess ($id = null)
+	public function getViewAccess($id = null)
 	{
 		global $multi_site_prefix;
 		
@@ -53,7 +62,7 @@ class CMS_Acl_DbTable_ViewAccess {
 		return $viewAccess;
 	}
 	
-	public function addViewAccess ($name = null, $datas = null)
+	public function addViewAccess($name = null, $datas = null)
 	{
 		global $multi_site_prefix;
 		
@@ -69,7 +78,7 @@ class CMS_Acl_DbTable_ViewAccess {
 	    
 	}
 	
-	public function updateViewAccess ($id = null, $name = null, $datas = null)
+	public function updateViewAccess($id = null, $name = null, $datas = null)
 	{
 		global $multi_site_prefix;
 		
@@ -88,10 +97,9 @@ class CMS_Acl_DbTable_ViewAccess {
 	    	), 
 	    	"id = ".$id
 	    );
-	    
 	}
 	
-	public function delViewAccess ($id = null)
+	public function delViewAccess($id = null)
 	{
 		global $multi_site_prefix;
 		
@@ -102,6 +110,5 @@ class CMS_Acl_DbTable_ViewAccess {
 		
 		$db = Zend_Registry::get('db');
 	    $db->delete(DB_TABLE_PREFIX . $multi_site_prefix."view_access", "id = ".$id);
-
 	}
 }

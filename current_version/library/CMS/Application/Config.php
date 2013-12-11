@@ -41,14 +41,24 @@ class CMS_Application_Config {
 		return self::$_instance;
 	}
 	
-	private function __construct(){
-		$this->_configModel = new Admin_Model_DbTable_Config();
-		
-		$rows = $this->_configModel->getAllPDO();
+	private function __construct()
+	{
+		$cache = CMS_Cache::getInstance();
+		if ($cache->exist('config')) {
+			$this->_cache = $cache->get('config');
+		}
+		else {
 			
-		$this->_cache = array();
-		foreach($rows as $row){
-			$this->_cache[$row->name] = $row->value;
+			$this->_configModel = new Admin_Model_DbTable_Config();
+			
+			$rows = $this->_configModel->getAllPDO();
+				
+			$this->_cache = array();
+			foreach($rows as $row){
+				$this->_cache[$row->name] = $row->value;
+			}
+			
+			$cache->set('config', $this->_cache);
 		}
 	}
 	
@@ -74,7 +84,10 @@ class CMS_Application_Config {
 	public function set($name, $value){
 				
 		$this->_configModel->setConfigItem($name, $value);
-
+		
+		$cache = CMS_Cache::getInstance();
+		$cache->delete();
+		
 		self::$_instance = null;
 	}
 	

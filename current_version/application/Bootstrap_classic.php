@@ -47,9 +47,12 @@ class Bootstrap_classic extends Bootstrap
 		else
 			$cache = Zend_Cache::factory('Core', 'file', $frontend, $backend);
 		
+		Zend_Registry::set('cache', $cache);
+		
 		Zend_Date::setOptions(array('cache' => $cache));
 		Zend_Db_Table_Abstract::setDefaultMetadataCache($cache);
 		CMS_Page_Object::setCache($cache);
+		CMS_Cache::setCacheObject($cache);
 		
 		$classFileIncCache = CMS_PATH.'/tmp/zend_cache/'.CMS_VERSION.'_pluginLoaderCache.php';
 		
@@ -88,6 +91,7 @@ class Bootstrap_classic extends Bootstrap
 	}
 	
 	protected function _initZFDebug() {
+		$this->_initDb();
 		// Setup autoloader with namespace
 		$autoloader = Zend_Loader_Autoloader::getInstance();
 		$autoloader->registerNamespace('ZFDebug');
@@ -98,7 +102,9 @@ class Bootstrap_classic extends Bootstrap
 		// Only enable zfdebug if options have been specified for it
 		if ($this->hasOption('zfdebug')) {
 			// Create ZFDebug instance
-			$zfdebug = new ZFDebug_Controller_Plugin_Debug($this->getOption('zfdebug'));
+			$options = $this->getOption('zfdebug');
+			$options['Database'] = array('adapter' => Zend_Registry::get('db'));
+			$zfdebug = new ZFDebug_Controller_Plugin_Debug($options);
 			// Register ZFDebug with the front controller
 			$front->registerPlugin($zfdebug);
 		}

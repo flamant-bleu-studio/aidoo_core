@@ -71,6 +71,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
      */
 	protected function _initDb()
 	{
+		try {
+			$db = Zend_Registry::get('db');
+			return $db;
+		}
+		catch(Exception $e) {}
+		
     	// Récupération du fichier de configuration
     	$config = Zend_Registry::get('config');
     	
