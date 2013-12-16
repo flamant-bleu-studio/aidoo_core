@@ -43,14 +43,13 @@ class CMS_Application_Config {
 	
 	private function __construct()
 	{
+		$this->_configModel = new Admin_Model_DbTable_Config();
+		
 		$cache = CMS_Cache::getInstance();
 		if ($cache->exist('config')) {
 			$this->_cache = $cache->get('config');
 		}
 		else {
-			
-			$this->_configModel = new Admin_Model_DbTable_Config();
-			
 			$rows = $this->_configModel->getAllPDO();
 				
 			$this->_cache = array();
