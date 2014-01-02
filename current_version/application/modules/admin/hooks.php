@@ -85,3 +85,16 @@ $hooks->add('Back_Main_Menu_Generate', 'appendAdminLikeResto', 551);
 $hooks->add('Back_Main_Menu_Generate', 'appendAdminPagesProConfig');
 $hooks->add('Back_Main_Menu_Generate', 'appendAdminConfig', 599);
 $hooks->add('Back_Main_Menu_Generate', 'appendAdminTabMenuSiteConfig', 900);
+
+function updateObject($object)
+{
+	$config = Zend_Registry::get('config');
+	
+	if ((bool)$config->smarty->compile->force === false && (bool)$config->smarty->cache->enabled === true) {
+		$smarty = Zend_Layout::getMvcInstance()->getView()->getEngine()->clearAllCache();
+	}
+}
+
+$hooks->add('CMS_Object_AfterInsert', 'updateObject');
+$hooks->add('CMS_Object_AfterUpdate', 'updateObject');
+$hooks->add('CMS_Object_AfterDelete', 'updateObject');
