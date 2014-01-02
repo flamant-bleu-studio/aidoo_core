@@ -46,6 +46,8 @@
 		{$form->existinggroup}
 		{$form->externalgroup}
 		
+		{$form->cssClass}
+		
 		{$form->access}
 		{$form->permissions}
 		<div class="droits_submit">

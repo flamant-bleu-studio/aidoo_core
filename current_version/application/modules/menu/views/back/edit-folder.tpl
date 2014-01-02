@@ -47,6 +47,8 @@
 		{$form->existinggroup}
 		{$form->externalgroup}
 		
+		{$form->cssClass}
+		
 		{$form->access}
 		{$form->permissions}
 		

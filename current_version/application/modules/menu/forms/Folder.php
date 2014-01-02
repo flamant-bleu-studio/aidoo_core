@@ -127,6 +127,10 @@ class Menu_Form_Folder extends CMS_Form_Default
         ));
 		
 		/*****************/
+        
+        $item = new Zend_Form_Element_Text("cssClass");
+		$item->setLabel(_t("Class CSS"));
+		$this->addElement($item);
 		
         $item = new Zend_Form_Element_Submit("submit");
         $item->setValue(_t('Submit'));        

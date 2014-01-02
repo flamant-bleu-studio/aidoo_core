@@ -62,14 +62,6 @@ class Bloc_Diaporama_Main extends CMS_Bloc_Abstract implements CMS_Bloc_Interfac
 			$count 			= count($items);
 			
 			if ($count > 0) {
-				$usePagination = $this->pagination ? "true" : "false";
-				
-				if (count($items) > 0) {
-					$processLayout = CMS_Application_ProcessLayout::getInstance();
-					$processLayout->appendJsFile("/lib/slideShow/jquery.slideShowMaison.js");
-					$processLayout->appendJsScript("$('#diaporama.diaporama-".$id."').gallery({'usePagination': ".$usePagination."});");
-				}
-				
 				$view->items = $items;
 				
 				$diaporama_size = json_decode(DIAPORAMA_SIZE, true);

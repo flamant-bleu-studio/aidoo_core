@@ -21,7 +21,7 @@
  */
 
 require_once 'Smarty/Smarty.class.php';
-
+require_once 'Smarty/plugins/outputfilter.trimwhitespace.php';
 
 class CMS_Smarty_Smarty extends Zend_View_Abstract
 {
@@ -39,6 +39,8 @@ class CMS_Smarty_Smarty extends Zend_View_Abstract
 	
 	public function loadPlugins() 
 	{
+		$this->_smarty->registerFilter('output', 'smarty_outputfilter_trimwhitespace');
+		
 		// Chargement des plugins smarty type "block"
 		$blockMethods = get_class_methods('CMS_Smarty_Plugins_Block');
 		foreach($blockMethods as $value)

@@ -72,9 +72,6 @@
 	
 	
 {if $datas.displayMode == "1" || $datas.displayMode == "2"}
-
-{appendFile type="css" src="{$smarty.const.COMMON_LIB_PATH}/lib/bxslider/jquery.bxslider.css"}
-{appendFile type="js" src="{$smarty.const.COMMON_LIB_PATH}/lib/bxslider/jquery.bxslider.min.js"}
 	
 <script type="text/javascript">
 	$("#bloc-articles-{$id}").find("ul").bxSlider({

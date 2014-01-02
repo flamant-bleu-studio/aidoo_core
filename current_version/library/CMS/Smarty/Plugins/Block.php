@@ -139,7 +139,7 @@ class CMS_Smarty_Plugins_Block {
 				file_put_contents($minFile, $output);
 			}
 			
-			return '<link rel="stylesheet" type="text/css" href="' . BASE_URL . SKIN_URL . '/cache/min'. $suffix .'?t=' . @filemtime($minFile) . '" />';
+			return '<link rel="stylesheet" type="text/css" href="' . BASE_URL . SKIN_URL . '/cache/min'. $suffix . '" />';
 		}
 	}
 	
@@ -183,7 +183,7 @@ class CMS_Smarty_Plugins_Block {
 				file_put_contents($minFile, $output);
 			}
 			
-			return '<script type="text/javascript" src="' . BASE_URL . SKIN_URL . '/cache/min'. $suffix .'?t=' . @filemtime($minFile) . '"></script>';
+			return '<script type="text/javascript" src="' . BASE_URL . SKIN_URL . '/cache/min'. $suffix . '"></script>';
 		}
 	}
 }

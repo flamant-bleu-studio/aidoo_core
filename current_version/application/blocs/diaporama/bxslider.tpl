@@ -47,9 +47,6 @@
 	
 {/if}
 
-{appendFile type="css" src="{$smarty.const.COMMON_LIB_PATH}/lib/bxslider/jquery.bxslider.css"}
-{appendFile type="js" src="{$smarty.const.COMMON_LIB_PATH}/lib/bxslider/jquery.bxslider.min.js"}
-	
 <script type="text/javascript">
 	$('#diaporama-{$datas.diaporamaId}').find('ul').bxSlider({
 		

@@ -237,6 +237,7 @@ class Menu_BackController extends CMS_Controller_Action {
 				$item->access		= $form->getValue("access");
 				$item->image		= $form->getValue("image");
 				$item->hidetitle	= $form->getValue("hidetitle");
+				$item->cssClass		= $form->getValue("cssClass");
 				
 				$linkType = $form->getValue("linkType");
 				
@@ -457,6 +458,7 @@ class Menu_BackController extends CMS_Controller_Action {
 				$datas["access"] 	= $_POST["access"];
 				$datas["hidetitle"] = $_POST["hidetitle"];
 				$datas["image"]		= $form->getValue("image");
+				$datas["cssClass"]	= $form->getValue("cssClass");
 				
 				$linkType = $form->getValue("linkType");
 				

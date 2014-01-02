@@ -241,23 +241,34 @@ CREATE TABLE `1_menu` (
 		if($id === null)
 			throw new Zend_Exception(_t('Missing parameter'));
 		
-		$sql = 'SELECT node.*, lang.*, (COUNT(parent.id_menu)-1) AS level
+		$cache = CMS_Cache::getInstance();
+		$id_cache = 'menu_'.$id.'_'.md5($id.serialize($filters));
 		
-				FROM ('.$this->getTableName().' AS node 
-						LEFT JOIN '.$this->getTableName().'_lang AS lang
-						ON node.' . $this->_primaryKey . ' = lang.' . $this->_primaryKey . ' ),
-				
-				'.$this->getTableName().' AS parent
-								
-				WHERE node.lft BETWEEN parent.lft AND parent.rgt
-				
-				      AND node.menu_id   = ?
-				      AND parent.menu_id = ?
-				      
-				GROUP BY node.id_menu, lang.id_lang
-				ORDER BY node.lft; ';
-	
-		return $this->prepareFieldsForLoad($this->getAdapter()->fetchAll($sql, array( $id, $id ), PDO::FETCH_OBJ));
+		if ($cache->exist($id_cache)) {
+			$result = $cache->get($id_cache);
+		}
+		else {
+			$sql = 'SELECT node.*, lang.*, (COUNT(parent.id_menu)-1) AS level
+			
+					FROM ('.$this->getTableName().' AS node 
+							LEFT JOIN '.$this->getTableName().'_lang AS lang
+							ON node.' . $this->_primaryKey . ' = lang.' . $this->_primaryKey . ' ),
+					
+					'.$this->getTableName().' AS parent
+									
+					WHERE node.lft BETWEEN parent.lft AND parent.rgt
+					
+					      AND node.menu_id   = ?
+					      AND parent.menu_id = ?
+					      
+					GROUP BY node.id_menu, lang.id_lang
+					ORDER BY node.lft; ';
+			
+			$result = $this->getAdapter()->fetchAll($sql, array( $id, $id ), PDO::FETCH_OBJ);
+			$cache->set($id_cache, $result);
+		}
+		
+		return $this->prepareFieldsForLoad($result);
 	}
 	
 	
