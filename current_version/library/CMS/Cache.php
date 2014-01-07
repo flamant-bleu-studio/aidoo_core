@@ -70,6 +70,9 @@ class CMS_Cache
 	{
 		self::getCache();
 		
+		if (!defined('APPLICATION_ENV') || (defined('APPLICATION_ENV') && APPLICATION_ENV === 'development'))
+			return false;
+		
 		return self::$_cache[$identifier] ? true : false;
 	}
 	

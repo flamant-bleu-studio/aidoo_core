@@ -363,50 +363,7 @@ class Admin_ConfigController extends CMS_Controller_Action
 		}
 
 		return $this->_redirect( $this->_helper->route->short('index'));
-	}	
-	
-    public function deletecacheAction()
-    {
-    	$backAcl = CMS_Acl_Back::getInstance();
-		
-		if ($backAcl->hasPermission("admin", "manage"))
-		{
-			$config = CMS_Application_Config::getInstance();
-			$defaultSkinFront = $config->get("skinfront");
-			
-	        if (file_exists(PUBLIC_PATH.BASE_URL.'/skins/'.$defaultSkinFront.'/cache/min.css') && unlink(PUBLIC_PATH.BASE_URL.'/skins/'.$defaultSkinFront.'/cache/min.css')) {
-	        	if (file_exists(PUBLIC_PATH.BASE_URL.'/skins/'.$defaultSkinFront.'/cache/min.js') && unlink(PUBLIC_PATH.BASE_URL.'/skins/'.$defaultSkinFront.'/cache/min.js')) {
-		        	_message(_t("Cache deleted successfully"));
-		        }
-	        }
-	        else
-	        	_error(_t("Error in delete cache"));
-			
-			return $this->_redirect( $this->_helper->route->short('index'));
-		}
-		else
-		{
-			_error(_t("Insufficient rights"));
-			return $this->_redirect($this->_helper->route->full('admin'));
-		}
-    }
-    
-    public function clearCacheTplAction()
-    {
-    	$backAcl = CMS_Acl_Back::getInstance();
-    
-    	if(!$backAcl->hasPermission("admin", "manage")) {
-    		_error(_t("Insufficient rights"));
-    		return $this->_redirect($this->_helper->route->full('admin'));
-    	}
-    		
-    	$smarty = Zend_Layout::getMvcInstance()->getView()->getEngine();
-    	$smarty->clearAllCache();
-    	
-    	_message(_t("Cache deleted successfully"));
-    		    			
-    	return $this->_redirect( $this->_helper->route->short('index'));
-    }
+	}
     
     public function picturesAction()
     {

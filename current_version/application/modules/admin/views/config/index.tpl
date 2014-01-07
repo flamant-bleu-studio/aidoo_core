@@ -84,14 +84,6 @@
 	</form>
 	
 	<div class="zone_titre">
-		<h2>{t}Caches{/t}</h2>
-	</div>	
-
-	<a href='{routeShort action="deletecache"}' class="btn btn-primary btn-large">{t}Clear CSS & Javascript cache{/t}</a>
-	<a href='{routeShort action="clear-cache-tpl"}' class="btn btn-primary btn-large">{t}Clear templates cache{/t} </a>
-	<br /><br />
-	
-	<div class="zone_titre">
 		<h2>{t}Contents{/t}</h2>
 		<div>{t}Manage site contents{/t}</div>
 	</div>	
