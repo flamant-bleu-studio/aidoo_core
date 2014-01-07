@@ -103,7 +103,7 @@ class Seo_Form_Page extends CMS_Form_Default
 		$item->addMultiOption("null", "Aucun");
 		$item->addMultiOption("0", "par défaut");
 		
-		$diaporamas = GalerieImage_Object_Galerie::get(array("type" => GalerieImage_Object_Galerie::TYPE_DIAPORAMA));
+		$diaporamas = Diaporama_Object_Diaporama::get();
 		if(count($diaporamas)>0) 
 			foreach ($diaporamas as $diaporama) 
 				$item->addMultiOption($diaporama->id, " - ".$diaporama->title);
