@@ -132,11 +132,11 @@ class CMS_Form_Helper_FormMultiUpload extends Zend_View_Helper_FormElement
 var '.$name.'Opts = {
 	countItems : '.$countItem.',';
 	
-	if($attribs["options"]["autoUpload"]){
+	if(isset($attribs["options"]["autoUpload"])){
 		$html .='autoUpload : true,';
 	}
 	
-	if($attribs["options"]["maxNumberOfFiles"]){
+	if(isset($attribs["options"]["maxNumberOfFiles"])){
 		$html .='maxNumberOfFiles : '.$attribs["options"]["maxNumberOfFiles"].',';
 	}
 	
