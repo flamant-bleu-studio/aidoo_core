@@ -62,14 +62,14 @@ class CMS_Controller_ActionHelper_ViewRenderer extends Zend_Controller_Action_He
 	    	// Réglage
 	    	$smarty = Zend_Layout::getMvcInstance()->getView()->getEngine();
 	    	
+	    	$saveCaching 		= $smarty->getCaching();
+	    	$saveCacheLifetime 	= $smarty->getCacheLifetime();
+	    	
 	    	if ($this->_cacheIsDisabled === false) {
 	    		$smarty->compile_id = $cache_id;
 	    		$smarty->cache_id 	= $cache_id;
 	    	}
 	    	else {
-	    		$saveCaching 		= $smarty->getCaching();
-	    		$saveCacheLifetime 	= $smarty->getCacheLifetime();
-	    		
 	    		$smarty->setCaching(Smarty::CACHING_OFF);
 	    		$smarty->setCacheLifetime(0);
 	    	}
