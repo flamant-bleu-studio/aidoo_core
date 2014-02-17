@@ -71,8 +71,8 @@ class CMS_Controller_Plugin_LoadSkin extends Zend_Controller_plugin_Abstract {
 	        
 			$front = CMS_Controller_Front::getInstance();
 	       
-			define('CURRENT_MODULE_DIRECTORY', $front->getModuleDirectory());
-			define('BASE_URL', $front->getBaseUrl());
+			defined('CURRENT_MODULE_DIRECTORY') || define('CURRENT_MODULE_DIRECTORY', $front->getModuleDirectory());
+			defined('BASE_URL') 				|| define('BASE_URL', $front->getBaseUrl());
 	        
 	    	$this->_view->baseUrl = BASE_URL;
 	    	
@@ -183,7 +183,7 @@ class CMS_Controller_Plugin_LoadSkin extends Zend_Controller_plugin_Abstract {
 
         }
         
-        define("SKIN_FRONT", $this->_config->get("skinfront"));
+       defined('SKIN_FRONT') || define('SKIN_FRONT', $this->_config->get('skinfront'));
     	
     	/* Désactivation du moteur de template si Ajax */
         if($this->_isAjax){
@@ -192,14 +192,13 @@ class CMS_Controller_Plugin_LoadSkin extends Zend_Controller_plugin_Abstract {
         	Zend_Controller_Front::getInstance()->setParam('noViewRenderer', true);
         }
         else {
-
 	        $this->_layout->setLayoutPath($this->skinPath);
 	        $this->_layout->setLayout($layoutFile);
         }
 
-        define("SKIN_NAME", $this->skinName);
-    	define("SKIN_PATH", $this->skinPath);
-    	define("SKIN_URL", $this->skinUrl);
+        defined('SKIN_NAME') 	|| define('SKIN_NAME', $this->skinName);
+    	defined('SKIN_PATH')	|| define('SKIN_PATH', $this->skinPath);
+    	defined('SKIN_URL') 	|| define('SKIN_URL', $this->skinUrl);
     	
     	if(defined('ISHOME'))
 			$this->_view->isHome = ISHOME;
