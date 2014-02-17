@@ -76,7 +76,7 @@ class CMS_Smarty_Plugins_Function {
 		/*
 		 * @TODO : faire en sorte de ne pas déclencher une requete sur la BDD pour récupérer les infos du modèle de disposition
 		 */
-		$template = new Blocs_Object_Template($page->template);
+		$template = new Blocs_Object_Template((int)$page->template);
 		
 		if (!($template instanceof Blocs_Object_Template))
 			return '';
