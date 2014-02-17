@@ -94,7 +94,7 @@ function extractDocumentToSearch($object) {
 	foreach ($xml['nodes'] as $node) {
 		$name = key($node);
 		
-		if (!in_array($node[$name]['type'], array('text', 'textarea')))
+		if (!in_array($node[$name]['type'], array('text', 'textarea', 'TinyMCE')))
 			continue;
 		
 		$isSearchable = ($node[$name]['options']['searchable'] === null) ? true : (($node[$name]['options']['searchable'] === "true" ? true : false));

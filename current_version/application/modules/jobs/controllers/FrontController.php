@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-class Jobs_FrontController extends Zend_Controller_Action
+class Jobs_FrontController extends CMS_Controller_Action
 {
 	private $storageFolder="/tmp/upload";
 
@@ -94,6 +94,8 @@ class Jobs_FrontController extends Zend_Controller_Action
 
 	public function applyAction()
 	{
+		$this->disableSmartyCache();
+		
 		$id = (int) $this->_request->getParam('id');
 		
 		if(!$id)
@@ -194,6 +196,8 @@ class Jobs_FrontController extends Zend_Controller_Action
 	
 	public function candidatureAction()
 	{
+		$this->disableSmartyCache();
+		
 		$path = realpath(dirname(__FILE__)).'/../types/default';
 		if( !file_exists( $path ))
 			throw new Zend_Exception(_t("File XML not found"));
@@ -265,7 +269,9 @@ class Jobs_FrontController extends Zend_Controller_Action
 		            		$mail->createAttachment($contentFile, $_FILES[$key]['type'], Zend_Mime::DISPOSITION_INLINE, Zend_Mime::ENCODING_BASE64, $_FILES[$key]["name"]);
 		            	}
 		            	
-		            	unlink($_FILES[$key]["tmp_name"]);
+		            	if (file_exists($_FILES[$key]["tmp_name"])) {
+		            		unlink($_FILES[$key]["tmp_name"]);
+		            	}
 	            	}
 	            }
 					 
@@ -275,7 +281,10 @@ class Jobs_FrontController extends Zend_Controller_Action
 				else
 					$this->view->sendError = true;
 		       	
-				$view->setScriptPath($pathView); 
+				$path = APPLICATION_PATH . '/modules/jobs/views/';
+				$override = PUBLIC_PATH . '/skins/'.SKIN_NAME.'/core_features/tpls_override/modules/jobs/';
+				
+				$this->view->initViewAndOverride($path, $override, "front/candidature");
 			}
 		}
 		

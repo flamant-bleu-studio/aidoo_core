@@ -53,10 +53,13 @@ function appendAdminConfig($tabs)
 function appendAdminTabMenuSiteConfig($tabs)
 {     
 	$backAcl = CMS_Acl_Back::getInstance();
+	
 	if ($backAcl->hasPermission("admin", "view")) {
 		$tabs['config']['children'][] = array("title" => "Langues", "routeName" => "admin_configuration", "moduleName" => "admin", "controllerName" => "lang");
-		$tabs['config']['children'][] = array("title" => "Cache", "routeName" => "admin_configuration", "moduleName" => "admin", "controllerName" => "cache", "actionName" => "index");
 		$tabs['config']['children'][] = array("title" => "Site Configuration", "routeName" => "admin_configuration", "moduleName" => "admin", "controllerName" => "config");
+	}
+	if ($backAcl->hasPermission("config_cache", "manage")) {
+		$tabs['config']['children'][] = array("title" => "Cache", "routeName" => "admin_configuration", "moduleName" => "admin", "controllerName" => "cache", "actionName" => "index");
 	}
 	if ($backAcl->hasPermission("admin", "viewPictures")) {
 		$tabs['config']['children'][] = array("title" => "Images", "routeName" => "admin_configuration", "moduleName" => "admin", "controllerName" => "config", "actionName" => "pictures");

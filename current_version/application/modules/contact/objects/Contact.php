@@ -379,11 +379,14 @@ class Contact_Object_Contact extends CMS_Object_MonoLangEntityWithNodes
 		
 		$prependObject = !empty($xml->object) ? $xml->object : "Message envoyé depuis votre site : ";
 		
+		$from_email = !empty($xml->from->email) ? $xml->from->email : $this->_form->getValue('email');
+		$from_name = !empty($xml->from->name) ? $xml->from->name : $this->_form->getValue('prenom').' '.$this->_form->getValue('nom');
+		
 		/** Send Mail **/
 		try {
 			
 			$mail	->setBodyHtml($mailContent)
-					->setFrom($this->_form->getValue('email'), $this->_form->getValue('prenom').' '.$this->_form->getValue('nom'))
+					->setFrom($from_email, $from_name)
 					->setSubject($prependObject . $_SERVER["SERVER_NAME"])
 			 		->send();
 			

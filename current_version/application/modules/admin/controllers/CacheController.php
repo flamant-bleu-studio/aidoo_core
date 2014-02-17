@@ -22,14 +22,15 @@
 
 class Admin_CacheController extends CMS_Controller_Action
 {
+	// INSERT INTO `1_permissions` (`id`, `name`, `rights`) VALUES (NULL, 'config_cache', '{"manage":["3"]}');
 	public function indexAction()
 	{
-		$this->redirectIfNoRights('admin', 'manage');
+		$this->redirectIfNoRights('config_cache', 'manage');
 	}
 	
 	public function clearAssetsAction()
     {
-    	$this->redirectIfNoRights('admin', 'manage');
+    	$this->redirectIfNoRights('config_cache', 'manage');
     	
     	if ($this->clearAssets()) {
     		_message(_t("Cache deleted successfully"));
@@ -43,7 +44,7 @@ class Admin_CacheController extends CMS_Controller_Action
     
     public function clearTemplatesAction()
     {
-    	$this->redirectIfNoRights('admin', 'manage');
+    	$this->redirectIfNoRights('config_cache', 'manage');
     	
     	$this->clearTemplates();
     	
@@ -53,7 +54,7 @@ class Admin_CacheController extends CMS_Controller_Action
     
 	public function clearCmsAction()
     {
-    	$this->redirectIfNoRights('admin', 'manage');
+    	$this->redirectIfNoRights('config_cache', 'manage');
     	
     	$this->clearCms();
     	
@@ -63,7 +64,7 @@ class Admin_CacheController extends CMS_Controller_Action
     
     public function clearAllAction()
     {
-    	$this->redirectIfNoRights('admin', 'manage');
+    	$this->redirectIfNoRights('config_cache', 'manage');
     	
     	$this->clearAssets();
     	$this->clearTemplates();

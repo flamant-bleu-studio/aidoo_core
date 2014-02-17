@@ -77,6 +77,8 @@ class CMS_Bloc_ParentForm extends CMS_Form_Default
 		}
 		else {
 			$item = new Zend_Form_Element_Hidden("decorator");
+			$item->setValue("default");
+			$item->setRequired(true);
 			$this->addElement($item);
 		}
 		

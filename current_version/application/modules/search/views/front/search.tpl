@@ -37,7 +37,7 @@
 				
 				{if $result.description}
 					<p class="description">
-						{$result.description} 
+						{$result.description|truncate:250} 
 					</p>
 				{/if}
 				
