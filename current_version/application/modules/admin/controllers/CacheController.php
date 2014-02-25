@@ -22,7 +22,6 @@
 
 class Admin_CacheController extends CMS_Controller_Action
 {
-	// INSERT INTO `1_permissions` (`id`, `name`, `rights`) VALUES (NULL, 'config_cache', '{"manage":["3"]}');
 	public function indexAction()
 	{
 		$this->redirectIfNoRights('config_cache', 'manage');
@@ -68,7 +67,7 @@ class Admin_CacheController extends CMS_Controller_Action
     	
     	$this->clearAssets();
     	$this->clearTemplates();
-    	$this->clearApc();
+    	$this->clearCms();
     	
     	_message(_t("Cache deleted successfully"));
     	return $this->_redirect($this->_helper->route->magic('index'));
